@@ -1,4 +1,4 @@
-package myProject;
+package vista;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,8 +19,8 @@ public class GUI extends JFrame {
         initGUI();
 
         //Default JFrame configuration
-        this.setTitle("The Title app");
-        this.setSize(200,100);
+        this.setTitle("I Know that word !!");
+        this.setSize(600,400);
         //this.pack();
         this.setResizable(true);
         this.setVisible(true);
@@ -36,7 +36,7 @@ public class GUI extends JFrame {
         //Set up JFrame Container's Layout
         //Create Listener Object and Control Object
         //Set up JComponents
-        headerProject = new Header("Header ...", Color.BLACK);
+        headerProject = new Header(" Prueba tu memoria episódica verbal reciente ", Color.BLUE);
 
         this.add(headerProject,BorderLayout.NORTH); //Change this line if you change JFrame Container's Layout
     }
