@@ -52,6 +52,7 @@ public class GUI extends JFrame {
         //Set up JComponents
         headerProject = new Header(" Prueba tu memoria episódica verbal reciente ", Color.BLUE);
 
+
         canvas = new Canvas();
 
        // BorderLayout borderLayout = new BorderLayout();

@@ -39,6 +39,9 @@ public class Juego {
         this.acierto_Exigido = acierto_Exigido;
     }
 
+    /**
+     * Método constructor
+     */
     public Juego(){
         nivel =1;
         palabras_a_Memorizar = 10;
