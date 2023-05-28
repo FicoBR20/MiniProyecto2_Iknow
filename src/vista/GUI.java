@@ -10,7 +10,21 @@ import java.awt.*;
  */
 public class GUI extends JFrame {
 
+    private Canvas canvas;
+
     private Header headerProject;
+    /**
+     * JPanel que mostrará las palabras
+     */
+    private JPanel muestraPalabras;
+    /**
+     * JButtons que recibiran la decision del usuario
+     * si_es -> la palabra presentada a consideracion SI le fue mostrada y la recuerda
+     * no_es -> la palabra presentada a condideracion NO le fue mostrada y esta seguro de ello.
+     */
+    private JButton si_es, no_es;
+
+
 
     /**
      * Constructor of GUI class
@@ -37,6 +51,22 @@ public class GUI extends JFrame {
         //Create Listener Object and Control Object
         //Set up JComponents
         headerProject = new Header(" Prueba tu memoria episódica verbal reciente ", Color.BLUE);
+
+        canvas = new Canvas();
+
+       // BorderLayout borderLayout = new BorderLayout();
+
+        muestraPalabras = new JPanel();
+       // muestraPalabras.setPreferredSize(new Dimension(500, 300));
+        si_es = new JButton(" Si la recuerdo ");
+        no_es = new JButton("NO la recueddo");
+
+        muestraPalabras.add(si_es, BorderLayout.SOUTH);
+        muestraPalabras.add(no_es, BorderLayout.SOUTH);
+
+        this.add(canvas, BorderLayout.CENTER);
+
+        this.add(muestraPalabras, BorderLayout.SOUTH);
 
         this.add(headerProject,BorderLayout.NORTH); //Change this line if you change JFrame Container's Layout
     }
