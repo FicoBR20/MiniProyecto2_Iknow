@@ -55,15 +55,53 @@ public class Juego {
                 acierto_Exigido=0.7;
                 break;
             case 2:
-                palabras_a_Memorizar=10;
-                palabras_del_nivel=20;
+                palabras_a_Memorizar=20;
+                palabras_del_nivel=40;
                 acierto_Exigido=0.7;
                 break;
             case 3:
-                palabras_a_Memorizar=10;
-                palabras_del_nivel=20;
-                acierto_Exigido=0.7;
+                palabras_a_Memorizar=25;
+                palabras_del_nivel=50;
+                acierto_Exigido=0.75;
                 break;
+            case 4:
+                palabras_a_Memorizar=30;
+                palabras_del_nivel=60;
+                acierto_Exigido=0.8;
+                break;
+            case 5:
+                palabras_a_Memorizar=35;
+                palabras_del_nivel=70;
+                acierto_Exigido=0.8;
+                break;
+            case 6:
+                palabras_a_Memorizar=40;
+                palabras_del_nivel=80;
+                acierto_Exigido=0.85;
+                break;
+            case 7:
+                palabras_a_Memorizar=50;
+                palabras_del_nivel=100;
+                acierto_Exigido=0.9;
+                break;
+            case 8:
+                palabras_a_Memorizar=60;
+                palabras_del_nivel=120;
+                acierto_Exigido=0.9;
+                break;
+            case 9:
+                palabras_a_Memorizar=70;
+                palabras_del_nivel=140;
+                acierto_Exigido=0.95;
+                break;
+            case 10:
+                palabras_a_Memorizar=100;
+                palabras_del_nivel=200;
+                acierto_Exigido=1;
+                break;
+            default:
+                palabras_a_Memorizar=0;
+                System.out.println(" no hay mas palabras a memorizar ese nivel no existe");
 
         }
     }
