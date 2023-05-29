@@ -31,7 +31,13 @@ public class Front_Inicial extends JPanel {
         escucha = new Escucha();
 
         si_Juego = new JButton(" SI ");
+        si_Juego.setBackground(new Color(188, 234, 192));
+        si_Juego.setForeground(new Color(82, 25, 196));
         no_Juego = new JButton(" NO ");
+        no_Juego.setBackground(new Color(188, 234, 192));
+        no_Juego.setForeground(new Color(82, 25, 196));
+
+
 
         si_Juego.addActionListener(escucha);
         no_Juego.addActionListener(escucha);

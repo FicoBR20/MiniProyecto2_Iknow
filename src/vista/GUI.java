@@ -52,8 +52,8 @@ public class GUI extends JFrame {
         //Set up JFrame Container's Layout
         //Create Listener Object and Control Object
         //Set up JComponents
-        headerProject = new Header(" Prueba tu memoria episódica verbal reciente ", Color.BLUE);
-
+        Color color = new Color(188, 234, 192);
+        headerProject = new Header(" ejercita tu memoria ", color);
         frontInicial = new Front_Inicial();
         frontInicial.setBackground(new Color(82, 25, 196));
 

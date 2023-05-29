@@ -13,8 +13,10 @@ public class Header extends JLabel {
     public Header(String title, Color colorBackground){
         this.setText(title);
         this.setBackground(colorBackground);
-        this.setForeground(new Color(255,255,255));
-        this.setFont(new Font(Font.DIALOG,Font.BOLD,20));
+        this.setForeground(new Color(82, 25, 196));
+        Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 20);
+
+        this.setFont(font);
         this.setHorizontalAlignment(JLabel.CENTER);
         this.setVerticalAlignment(JLabel.CENTER);
         this.setOpaque(true);
