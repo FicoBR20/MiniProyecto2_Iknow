@@ -8,17 +8,26 @@ import java.awt.event.ActionListener;
 public class Front_Inicial extends JPanel {
 
     private JButton si_Juego, no_Juego;
-    private JLabel info_al_Jugador;
+
+    private JTextArea info_al_Jugador;
 
     private Escucha escucha;
 
-    public Front_Inicial(String title, Color colorBack){
-        this.setBackground(new Color(108, 40, 162));
+
+    public Front_Inicial(){
+        initGui();
+        this.setSize(400,300);
         this.setOpaque(true);
+
 
     }
 
     public void initGui(){
+
+
+        Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 36);
+
+
         escucha = new Escucha();
 
         si_Juego = new JButton(" SI ");
@@ -27,14 +36,52 @@ public class Front_Inicial extends JPanel {
         si_Juego.addActionListener(escucha);
         no_Juego.addActionListener(escucha);
 
-        info_al_Jugador = new JLabel("I know that word\n" +
+
+
+
+        info_al_Jugador = new JTextArea();
+        info_al_Jugador.append("I know that word\n" +
                 "Ejercite su memoria episódica\n" +
                 "Desea jugar?");
-        info_al_Jugador.setSize(new Dimension(400,300));
+        info_al_Jugador.setFont(font);
+        info_al_Jugador.setForeground(new Color(188, 234, 192));;
+        info_al_Jugador.setOpaque(false);
 
-        this.add(info_al_Jugador, BorderLayout.CENTER);
-        this.add(si_Juego, BorderLayout.SOUTH);
-        this.add(no_Juego, BorderLayout.SOUTH);
+        GridBagLayout gridBagLayout = new GridBagLayout();
+
+        this.setLayout(gridBagLayout);
+
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        gbc.gridx=1; // columna 0
+        gbc.gridy=0; // fila 0
+        gbc.gridwidth=5; // ocupara 4 columnas
+        gbc.gridheight=2; // ocupara 3 filas
+        gbc.weightx = 1.0; // no se deformara
+        gbc.weighty = 1.0; // no se deformara
+        //gbc.fill = GridBagConstraints.BOTH; // se proporcionara parejo
+        this.add(info_al_Jugador, gbc);
+
+        gbc.gridx=1; // columna 0
+        gbc.gridy=3; // fila 0
+        gbc.gridwidth=1; // ocupara 4 columnas
+        gbc.gridheight=1; // ocupara 3 filas
+        gbc.weightx = 1.0; // no se deformara
+        gbc.weighty = 1.0; // no se deformara
+        //gbc.fill = GridBagConstraints.BOTH; // se proporcionara parejo
+        this.add(si_Juego, gbc);
+
+        gbc.gridx=3; // columna 0
+        gbc.gridy=3; // fila 0
+        gbc.gridwidth=1; // ocupara 4 columnas
+        gbc.gridheight=1; // ocupara 3 filas
+        gbc.weightx = 1.0; // no se deformara
+        gbc.weighty = 1.0; // no se deformara
+        //gbc.fill = GridBagConstraints.BOTH; // se proporcionara parejo
+        this.add(no_Juego, gbc);
+
+
+
 
     }
 

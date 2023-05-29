@@ -10,6 +10,8 @@ import java.awt.*;
  */
 public class GUI extends JFrame {
 
+    private Front_Inicial frontInicial;
+
     private Canvas canvas;
 
     private Header headerProject;
@@ -52,22 +54,26 @@ public class GUI extends JFrame {
         //Set up JComponents
         headerProject = new Header(" Prueba tu memoria episódica verbal reciente ", Color.BLUE);
 
+        frontInicial = new Front_Inicial();
+        frontInicial.setBackground(new Color(82, 25, 196));
+
 
         canvas = new Canvas();
-
-       // BorderLayout borderLayout = new BorderLayout();
+;
 
         muestraPalabras = new JPanel();
-       // muestraPalabras.setPreferredSize(new Dimension(500, 300));
+
         si_es = new JButton(" Si la recuerdo ");
         no_es = new JButton("NO la recueddo");
 
         muestraPalabras.add(si_es, BorderLayout.SOUTH);
         muestraPalabras.add(no_es, BorderLayout.SOUTH);
 
-        this.add(canvas, BorderLayout.CENTER);
+        this.add(frontInicial, BorderLayout.CENTER);
 
-        this.add(muestraPalabras, BorderLayout.SOUTH);
+//        this.add(canvas, BorderLayout.CENTER);
+//
+//        this.add(muestraPalabras, BorderLayout.SOUTH);
 
         this.add(headerProject,BorderLayout.NORTH); //Change this line if you change JFrame Container's Layout
     }
