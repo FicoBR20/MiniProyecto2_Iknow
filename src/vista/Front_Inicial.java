@@ -1,13 +1,25 @@
 package vista;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.ImageObserver;
+import java.text.AttributedCharacterIterator;
 
 public class Front_Inicial extends JPanel {
 
-    private JButton si_Juego, no_Juego;
+
+    private JButton si_Juego;
+
+    private JButton no_Juego;
+
+    private JButton prueba;
+
 
     private JTextArea info_al_Jugador;
 
@@ -25,24 +37,24 @@ public class Front_Inicial extends JPanel {
     public void initGui(){
 
 
+        Color verdeClaro = new Color(188, 234, 192);
+        Color fondoLila = new Color(82, 25, 196);
+
         Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 36);
 
+        si_Juego = new JButton();
 
+         ImageIcon imageIcon = new ImageIcon(getClass().getResource("/resources/Boton.png"));
+
+        si_Juego.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(120,62,Image.SCALE_SMOOTH)));
+        si_Juego.setBorder(BorderFactory.createEmptyBorder());
         escucha = new Escucha();
 
-        si_Juego = new JButton(" SI ");
-        si_Juego.setBackground(new Color(188, 234, 192));
-        si_Juego.setForeground(new Color(82, 25, 196));
+
         no_Juego = new JButton(" NO ");
-        no_Juego.setBackground(new Color(188, 234, 192));
-        no_Juego.setForeground(new Color(82, 25, 196));
-
-
 
         si_Juego.addActionListener(escucha);
         no_Juego.addActionListener(escucha);
-
-
 
 
         info_al_Jugador = new JTextArea();
@@ -50,7 +62,7 @@ public class Front_Inicial extends JPanel {
                 "Ejercite su memoria episódica\n" +
                 "Desea jugar?");
         info_al_Jugador.setFont(font);
-        info_al_Jugador.setForeground(new Color(188, 234, 192));;
+        info_al_Jugador.setForeground(verdeClaro);;
         info_al_Jugador.setOpaque(false);
 
         GridBagLayout gridBagLayout = new GridBagLayout();
@@ -107,4 +119,9 @@ public class Front_Inicial extends JPanel {
 
         }
     }
+
+
+
+
+
 }
