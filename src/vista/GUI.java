@@ -69,11 +69,11 @@ public class GUI extends JFrame {
         muestraPalabras.add(si_es, BorderLayout.SOUTH);
         muestraPalabras.add(no_es, BorderLayout.SOUTH);
 
-        this.add(frontInicial, BorderLayout.CENTER);
+        //this.add(frontInicial, BorderLayout.CENTER);
 
-//        this.add(canvas, BorderLayout.CENTER);
-//
-//        this.add(muestraPalabras, BorderLayout.SOUTH);
+        this.add(canvas, BorderLayout.CENTER);
+
+        this.add(muestraPalabras, BorderLayout.SOUTH);
 
         this.add(headerProject,BorderLayout.NORTH); //Change this line if you change JFrame Container's Layout
     }

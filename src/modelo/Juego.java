@@ -32,6 +32,7 @@ public class Juego {
     }
 
     public double getAcierto_Exigido() {
+        //palabras_del_nivel
         return acierto_Exigido;
     }
 
@@ -43,13 +44,11 @@ public class Juego {
      * Método constructor
      */
     public Juego(){
-        nivel =1;
-        palabras_a_Memorizar = 10;
-        palabras_del_nivel = 20;
-        acierto_Exigido = 0.7;
+        setUp_Nivel(1);
+
     }
 
-    public void setUp_Juego(int nivel_de_Juego){
+    public void setUp_Nivel(int nivel_de_Juego){
 
         switch (nivel_de_Juego){
             case 1:
