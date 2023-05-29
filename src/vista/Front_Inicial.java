@@ -1,15 +1,9 @@
 package vista;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.ImageObserver;
-import java.text.AttributedCharacterIterator;
 
 public class Front_Inicial extends JPanel {
 
@@ -43,15 +37,30 @@ public class Front_Inicial extends JPanel {
         Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 36);
 
         si_Juego = new JButton();
-
-         ImageIcon imageIcon = new ImageIcon(getClass().getResource("/resources/Boton.png"));
-
+        ImageIcon imageIcon = new ImageIcon(getClass().getResource("/resources/Boton_SI.png"));
+        ImageIcon imageIcon_Pressed = new ImageIcon(getClass().getResource("/resources/Boton_S_PRESSED.png"));
         si_Juego.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(120,62,Image.SCALE_SMOOTH)));
         si_Juego.setBorder(BorderFactory.createEmptyBorder());
+        si_Juego.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(120,62,Image.SCALE_SMOOTH)));
+
+
+
+
+
+
+
         escucha = new Escucha();
 
 
-        no_Juego = new JButton(" NO ");
+
+        no_Juego = new JButton();
+        imageIcon = new ImageIcon(getClass().getResource("/resources/Boton_NO.png"));
+        imageIcon_Pressed = new ImageIcon(getClass().getResource("/resources/Boton_NO_PRESSED.png"));
+        no_Juego.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(120,62,Image.SCALE_SMOOTH)));
+        no_Juego.setBorder(BorderFactory.createEmptyBorder());
+        no_Juego.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(120,62,Image.SCALE_SMOOTH)));
+
+
 
         si_Juego.addActionListener(escucha);
         no_Juego.addActionListener(escucha);
