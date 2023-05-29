@@ -38,7 +38,7 @@ public class Front_Inicial extends JPanel {
 
         si_Juego = new JButton();
         ImageIcon imageIcon = new ImageIcon(getClass().getResource("/resources/Boton_SI.png"));
-        ImageIcon imageIcon_Pressed = new ImageIcon(getClass().getResource("/resources/Boton_S_PRESSED.png"));
+        ImageIcon imageIcon_Pressed = new ImageIcon(getClass().getResource("/resources/Boton_SI_PRESSED.png"));
         si_Juego.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(120,62,Image.SCALE_SMOOTH)));
         si_Juego.setBorder(BorderFactory.createEmptyBorder());
         si_Juego.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(120,62,Image.SCALE_SMOOTH)));
