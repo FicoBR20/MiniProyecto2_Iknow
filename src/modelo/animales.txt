@@ -1,0 +1,200 @@
+1. Perro
+2. Gato
+3. Elefante
+4. León
+5. Tigre
+6. Oso
+7. Caballo
+8. Vaca
+9. Cerdo
+10. Cebra
+11. Jirafa
+12. Mono
+13. Conejo
+14. Rata
+15. Ratón
+16. Murciélago
+17. Zorro
+18. Ardilla
+19. Nutria
+20. Lobo
+21. Delfín
+22. Ballena
+23. Orca
+24. Pingüino
+25. Pato
+26. Águila
+27. Búho
+28. Cisne
+29. Colibrí
+30. Paloma
+31. Canguro
+32. Koala
+33. Oveja
+34. Cabra
+35. Ciervo
+36. Rinoceronte
+37. Hipopótamo
+38. Gorila
+39. Chimpancé
+40. Cangrejo
+41. Langosta
+42. Pulpo
+43. Calamar
+44. Medusa
+45. Estrella de mar
+46. Pez payaso
+47. Tiburón
+48. Caballito de mar
+49. Tortuga
+50. Cocodrilo
+51. Serpiente
+52. Rana
+53. Sapo
+54. Salamandra
+55. Lagarto
+56. Tortuga marina
+57. Araña
+58. Escorpión
+59. Hormiga
+60. Abeja
+61. Mariposa
+62. Mosca
+63. Mosquito
+64. Libélula
+65. Grillo
+66. Cigarra
+67. Saltamontes
+68. Cucaracha
+69. Caracol
+70. Avestruz
+71. Pavo
+72. Gallina
+73. Pato
+74. Pájaro carpintero
+75. Loro
+76. Flamenco
+77. Cisne
+78. Pavo real
+79. Cóndor
+80. Lombriz
+81. Escarabajo
+82. Abejorro
+83. Erizo
+84. Murciélago
+85. Puercoespín
+86. Caimán
+87. Escorpión
+88. Tarántula
+89. Abeja reina
+90. Langosta
+91. Gusano de seda
+92. Sapo común
+93. Grillo topo
+94. Canario
+95. Gaviota
+96. Alce
+97. Murciélago frugívoro
+98. Búho real
+99. Escarabajo rinoceronte
+100. Murciélago vampiro
+101. Ciempiés
+102. Aguilucho
+103. Cocodrilo del Nilo
+104. Boa constrictora
+105. Salmón
+106. Mosquito tigre
+107. Culebra de agua
+108. Halcón
+109. Cisne negro
+110. Orangután
+111. Rata topo desnuda
+112. Gorrión
+113. Camello
+114. Ciempiés gigante
+115. Suricata
+116. Hipopótamo pigmeo
+117. Ornitorrinco
+118. Avestruz emú
+119. Tarántula gigante
+120. Faisán
+121. Petauro del azúcar
+122. Oropéndola
+123. Avispa
+124. Gorgojo
+125. Escarabajo bombardero
+126. Puercoespín de la India
+127. Flamenco enano
+128. Tucán
+129. Hipopótamo pigmeo
+130. Rana toro
+131. Murciélago frutero de cabeza de martillo
+132. Foca
+133. Caracol gigante africano
+134. Ciempiés venenoso de Texas
+135. Medusa melena de león
+136. Cucaracha gigante de Madagascar
+137. Pez luna
+138. Salamandra gigante china
+139. Cangrejo herradura
+140. Leopardo de las nieves
+141. Ocelote
+142. Guepardo
+143. Gorila de montaña
+144. Armadillo
+145. Foca leopardo
+146. Mariposa monarca
+147. Mosca de la fruta
+148. Abeja melífera
+149. Rana flecha venenosa
+150. Loro gris africano
+151. Tarántula Goliat
+152. Búfalo
+153. Rana venenosa dorada
+154. Erizo pigmeo africano
+155. Insecto palo
+156. Grillo topo gigante
+157. Ameba
+158. Cocodrilo del Nilo
+159. Mosquito tigre asiático
+160. Culebra marina
+161. Dragón de Komodo
+162. Pingüino emperador
+163. Elefante africano
+164. Sapo común europeo
+165. Lagarto cornudo de Texas
+166. Gaviota argéntea
+167. Canario roller
+168. Ciervo rojo
+169. Lobo gris
+170. Lobo ártico
+171. Cisne trompetero
+172. Búho manchado
+173. Mariposa tigre
+174. Rana de ojos rojos
+175. Gorgojo del banano
+176. Salamandra de fuego
+177. Cigüeña
+178. Cangrejo ermitaño
+179. Pato mandarín
+180. Búho cornudo
+181. Murciélago nariz de hoja
+182. Ciempiés de la selva
+183. Cabra montés
+184. Hipopótamo pigmeo
+185. Tordo
+186. Caballito de mar pigmeo
+187. Saltamontes gigante
+188. Abeja carpintera
+189. Gacela
+190. Escarabajo ciervo
+191. Calamar gigante
+192. Oveja merina
+193. Chimpancé bonobo
+194. Águila calva
+195. Serpiente cascabel
+196. Pingüino de penacho amarillo
+197. Gorila occidental de llanura
+198. Zorro ártico
+199. Pájaro del paraíso
+200. Tiburón blanco
