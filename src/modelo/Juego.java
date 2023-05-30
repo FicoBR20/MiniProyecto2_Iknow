@@ -1,11 +1,62 @@
 package modelo;
 
+/**
+ * Esta Clase manejara la lógica del juego.
+ */
 public class Juego {
-
+    /**
+     * nivel: indica el nivel en que se desarrolla el juego
+     * empieza en nivel 1.
+     */
     private int nivel;
+    /**
+     * Cantidad de palabras que se le presentaran al jugador
+     * y se deben memorizar para superar el nivel.
+      */
     private int palabras_a_Memorizar;
+    /**
+     * Cantidad de palabras existentes en cada nivel
+     * las cuales se le presentaran al jugador.
+     * Están incluidas las palabras_a_Memorizar y las demás
+     * que NO se le presentaron al jugador para ser memorizadas.
+     */
     private int palabras_del_nivel;
+    /**
+     * Porcentaje de aciertos exigido
+     * en cada nivel.
+      */
     private double acierto_Exigido;
+    /**
+     * Acumulador que suma de a 10 puntos
+     * por cada acierto del jugador.
+     */
+    private int puntaje_Logrado;
+
+    /**
+     * Una palabra se le presenta al jugador, el debe decidir en dos vías; SI Ó NO.
+     *
+     * DECISION DEL JUGADOR : SI -> la palabra SI está dentro del grupo de PALABRAS A MEMORIZAR.
+     *                        NO -> la palabra NO está dentro del grupo de PALABRAS A MEMORIZAR.
+     *
+     * acierto_del_Jugador => true -> jugador acertó.
+     *                     => false -> jugador NO acertó.
+     */
+    private boolean acierto_del_Jugador;
+
+
+    // From here implements the Class methods ==================================================
+
+    /**
+     * Constructor method.
+     */
+    public Juego(){
+        setUp_Nivel(1);// juego inicia en nivel 1
+        puntaje_Logrado=0;
+        acierto_del_Jugador=false;
+
+    }
+
+    // Getter and Setter ===============================
 
     public int getNivel() {
         return nivel;
@@ -32,7 +83,6 @@ public class Juego {
     }
 
     public double getAcierto_Exigido() {
-        //palabras_del_nivel
         return acierto_Exigido;
     }
 
@@ -41,13 +91,34 @@ public class Juego {
     }
 
     /**
-     * Método constructor
+     * This method add 10 point for each correct decision of
+     * the player.
+     * @return puntaje_logrado
      */
-    public Juego(){
-        setUp_Nivel(1);
-
+    public int getPuntaje_Logrado() {
+        if (acierto_del_Jugador){
+            puntaje_Logrado +=10;
+        }
+        return puntaje_Logrado;
     }
 
+    public void setPuntaje_Logrado(int puntaje_Logrado) {
+        this.puntaje_Logrado = puntaje_Logrado;
+    }
+
+
+    // Methods of Class ===============================
+
+    /**
+     * Waiting for a method maybe boolean for have decision about the player alive or not
+     * take of de value percent correct decisions over whole options.
+     */
+
+
+    /**
+     * Método que configura el juego según el nivel.
+     * @param nivel_de_Juego
+     */
     public void setUp_Nivel(int nivel_de_Juego){
 
         switch (nivel_de_Juego){
@@ -106,6 +177,16 @@ public class Juego {
                 System.out.println(" no hay mas palabras a memorizar ese nivel no existe");
 
         }
+    }
+
+    /**
+     * Método que certifica el acierto del jugador.
+     * true -> decisión correcta del jugador
+     * bien sea que la palabra SI está entre las palabras a memorizar
+     * ó bien sea que la palabra NO está entre las palabras a memorizar.
+     */
+    public void decision_Correcta(){
+        acierto_del_Jugador=true;
     }
 
 
