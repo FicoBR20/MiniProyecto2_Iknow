@@ -82,6 +82,7 @@ public class Palabra {
 
     //Crea un método para leer el archivo de texto y obtener las palabras
     public List<String> obtenerPalabras(String archivo) throws IOException {
+
         BufferedReader lector = new BufferedReader(new FileReader(archivo));
         String linea;
 
