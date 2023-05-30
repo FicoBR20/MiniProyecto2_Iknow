@@ -112,6 +112,7 @@ public class Juego {
     /**
      * Waiting for a method maybe boolean for have decision about the player alive or not
      * take of de value percent correct decisions over whole options.
+     * maybe like that "estado".. with values integers ?
      */
 
 
