@@ -24,7 +24,7 @@ public class Canvas extends JPanel {
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
         String receptor = "";
-        receptor = palabra.getPalabra_a_Memorizar();
+      //  receptor = palabra.getPalabra_a_Memorizar();
         g.setFont(font);
         g.drawString("La palabra a memorizar es" + receptor,20,20);
 
