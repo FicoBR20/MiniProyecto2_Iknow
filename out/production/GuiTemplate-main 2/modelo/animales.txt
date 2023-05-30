@@ -128,12 +128,12 @@
 128. Tucán
 129. Hipopótamo pigmeo
 130. Rana toro
-131. Murciélago frutero de cabeza de martillo
+131. Murciélago frutero
 132. Foca
-133. Caracol gigante africano
-134. Ciempiés venenoso de Texas
+133. Caracol africano
+134. Ciempiés venenoso
 135. Medusa melena de león
-136. Cucaracha gigante de Madagascar
+136. Cucaracha gigante
 137. Pez luna
 138. Salamandra gigante china
 139. Cangrejo herradura
@@ -189,7 +189,7 @@
 189. Gacela
 190. Escarabajo ciervo
 191. Calamar gigante
-192. Oveja merina
+192. Oveja marina
 193. Chimpancé bonobo
 194. Águila calva
 195. Serpiente cascabel
