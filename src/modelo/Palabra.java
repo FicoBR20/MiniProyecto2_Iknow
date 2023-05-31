@@ -47,7 +47,6 @@ public class Palabra {
             if (!palabra_a_Memorizar.contains(memoria)) {
                 palabra_a_Memorizar.add(memoria);
             }
-
             else{
                 String aux = "";
                 while (palabra_a_Memorizar.contains(memoria)){
@@ -141,30 +140,27 @@ public class Palabra {
     //Usa la consola para pruebas
     public static void main(String[] args) throws IOException {
         Palabra palabra = new Palabra();
-        palabra.setPalabra_del_nivel("src/modelo/animales.txt");
+        palabra.setPalabra_del_nivel("src/modelo/ciudades.txt");
         palabra.setPalabra_a_Memorizar();
         palabra.ini();
     }
 
 
-//    /**
-//     * Método que retorna true si el string ingresado es idéntico
-//     * a la palabra a memorizar.
-//     * @param palabra lista_de_palabras
-//     * @return
-//     */
-//    public  Boolean comparacion(String palabra, List<String> lista_de_palabras){
-//        for (int i = 0; i < lista_de_palabras.size()-1; i++){
-//            if (palabra == lista_de_palabras.get(i)){
-//                acierto = true;
-//                break;
-//            }
-//            else {
-//                acierto = false;
-//                break;
-//            }
-//
-//        }
-//            return acierto;
-//    }
+    /**
+     * Método que retorna true si la palabra esta en la lista de palabra a memorizar
+     * @param palabra lista_de_palabras
+     * @return
+     */
+    public  Boolean comparacion(String palabra, List<String> lista_de_palabras){
+        for (int i = 0; i < lista_de_palabras.size()-1; i++){
+            if (palabra == lista_de_palabras.get(i)){
+                acierto = true;
+            }
+            else {
+                acierto = false;
+            }
+
+        }
+            return acierto;
+    }
 }
