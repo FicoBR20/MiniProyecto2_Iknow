@@ -6,10 +6,12 @@ package modelo;
 public class Juego {
     /**
      * nivel: indica el nivel en que se desarrolla el juego
+
      * empieza en nivel 1.
      */
     private int nivel;
     /**
+
      * Cantidad de palabras que se le presentaran al jugador
      * y se deben memorizar para superar el nivel.
       */
@@ -41,7 +43,7 @@ public class Juego {
      * acierto_del_Jugador => true -> jugador acertó.
      *                     => false -> jugador NO acertó.
      */
-    private boolean acierto_del_Jugador;
+
 
 
     // From here implements the Class methods ==================================================
@@ -50,7 +52,7 @@ public class Juego {
      * Constructor method.
      */
     public Juego(){
-        setUp_Nivel(1);// juego inicia en nivel 1
+
         puntaje_Logrado=0;
         acierto_del_Jugador=false;
 
@@ -66,20 +68,20 @@ public class Juego {
         this.nivel = nivel;
     }
 
-    public int getPalabras_a_Memorizar() {
-        return palabras_a_Memorizar;
+    public int getCant_Palabras_a_Memorizar() {
+        return cant_Palabras_a_Memorizar;
     }
 
-    public void setPalabras_a_Memorizar(int palabras_a_Memorizar) {
-        this.palabras_a_Memorizar = palabras_a_Memorizar;
+    public void setCant_Palabras_a_Memorizar(int cant_Palabras_a_Memorizar) {
+        this.cant_Palabras_a_Memorizar = cant_Palabras_a_Memorizar;
     }
 
-    public int getPalabras_del_nivel() {
-        return palabras_del_nivel;
+    public int getTotal_Palabras_del_Nivel() {
+        return total_Palabras_del_Nivel;
     }
 
-    public void setPalabras_del_nivel(int palabras_del_nivel) {
-        this.palabras_del_nivel = palabras_del_nivel;
+    public void setTotal_Palabras_del_Nivel(int total_Palabras_del_Nivel) {
+        this.total_Palabras_del_Nivel = total_Palabras_del_Nivel;
     }
 
     public double getAcierto_Exigido() {
@@ -91,12 +93,7 @@ public class Juego {
     }
 
     /**
-     * This method add 10 point for each correct decision of
-     * the player.
-     * @return puntaje_logrado
-     */
-    public int getPuntaje_Logrado() {
-        if (acierto_del_Jugador){
+
             puntaje_Logrado +=10;
         }
         return puntaje_Logrado;
@@ -107,13 +104,12 @@ public class Juego {
     }
 
 
+
     // Methods of Class ===============================
 
     /**
      * Waiting for a method maybe boolean for have decision about the player alive or not
      * take of de value percent correct decisions over whole options.
-     */
-
 
     /**
      * Método que configura el juego según el nivel.
@@ -123,57 +119,58 @@ public class Juego {
 
         switch (nivel_de_Juego){
             case 1:
-                palabras_a_Memorizar=10;
-                palabras_del_nivel=20;
+                cant_Palabras_a_Memorizar =10;
+                total_Palabras_del_Nivel =20;
                 acierto_Exigido=0.7;
                 break;
             case 2:
-                palabras_a_Memorizar=20;
-                palabras_del_nivel=40;
+                cant_Palabras_a_Memorizar =20;
+                total_Palabras_del_Nivel =40;
                 acierto_Exigido=0.7;
                 break;
             case 3:
-                palabras_a_Memorizar=25;
-                palabras_del_nivel=50;
+                cant_Palabras_a_Memorizar =25;
+                total_Palabras_del_Nivel =50;
                 acierto_Exigido=0.75;
                 break;
             case 4:
-                palabras_a_Memorizar=30;
-                palabras_del_nivel=60;
+                cant_Palabras_a_Memorizar =30;
+                total_Palabras_del_Nivel =60;
                 acierto_Exigido=0.8;
                 break;
             case 5:
-                palabras_a_Memorizar=35;
-                palabras_del_nivel=70;
+                cant_Palabras_a_Memorizar =35;
+                total_Palabras_del_Nivel =70;
                 acierto_Exigido=0.8;
                 break;
             case 6:
-                palabras_a_Memorizar=40;
-                palabras_del_nivel=80;
+                cant_Palabras_a_Memorizar =40;
+                total_Palabras_del_Nivel =80;
                 acierto_Exigido=0.85;
                 break;
             case 7:
-                palabras_a_Memorizar=50;
-                palabras_del_nivel=100;
+                cant_Palabras_a_Memorizar =50;
+                total_Palabras_del_Nivel =100;
                 acierto_Exigido=0.9;
                 break;
             case 8:
-                palabras_a_Memorizar=60;
-                palabras_del_nivel=120;
+                cant_Palabras_a_Memorizar =60;
+                total_Palabras_del_Nivel =120;
                 acierto_Exigido=0.9;
                 break;
             case 9:
-                palabras_a_Memorizar=70;
-                palabras_del_nivel=140;
+                cant_Palabras_a_Memorizar =70;
+                total_Palabras_del_Nivel =140;
                 acierto_Exigido=0.95;
                 break;
             case 10:
-                palabras_a_Memorizar=100;
-                palabras_del_nivel=200;
+                cant_Palabras_a_Memorizar =100;
+                total_Palabras_del_Nivel =200;
                 acierto_Exigido=1;
                 break;
             default:
-                palabras_a_Memorizar=0;
+                cant_Palabras_a_Memorizar =0;
+                estado=99;
                 System.out.println(" no hay mas palabras a memorizar ese nivel no existe");
 
         }
@@ -186,8 +183,7 @@ public class Juego {
      * ó bien sea que la palabra NO está entre las palabras a memorizar.
      */
     public void decision_Correcta(){
-        acierto_del_Jugador=true;
-    }
+
 
 
 }

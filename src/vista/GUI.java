@@ -4,9 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * This class is used for ...
- * @autor Carlos Felipe Montoya carlos.felipe.montoya@correounivalle.edu.co
- * @version v.1.0.0 date:21/03/2023
+ * Esta clase gestiona los recursos gráficos del juego.
+ * @autor Federico Barbetti email:federico.barbetti@correounivalle.edu.co
+ * @autor Jose Erley Murillo email:jose.erley.murillo@correounivalle.edu.co
+ * @version v.1.0.0 date:1/06/2023
  */
 public class GUI extends JFrame {
 
@@ -83,11 +84,11 @@ public class GUI extends JFrame {
      * @param args Object used in order to send input data from command line when
      *             the program is execute by console.
      */
-    public static void main(String[] args){
-        EventQueue.invokeLater(() -> {
-            GUI miProjectGUI = new GUI();
-        });
-    }
+//    public static void main(String[] args){
+//        EventQueue.invokeLater(() -> {
+//            GUI miProjectGUI = new GUI();
+//        });
+//    }
 
     /**
      * inner class that extends an Adapter Class or implements Listeners used by GUI class
