@@ -17,19 +17,19 @@ public class Front_Inicial extends JPanel {
 
     private JTextArea info_al_Jugador;
 
+
     private Escucha escucha;
+
 
 
     public Front_Inicial(){
         initGui();
-        this.setSize(400,300);
-        this.setOpaque(true);
+        this.setSize(400,400);
 
 
     }
 
     public void initGui(){
-
 
         Color verdeClaro = new Color(188, 234, 192);
         Color fondoLila = new Color(82, 25, 196);
@@ -43,15 +43,7 @@ public class Front_Inicial extends JPanel {
         si_Juego.setBorder(BorderFactory.createEmptyBorder());
         si_Juego.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(120,62,Image.SCALE_SMOOTH)));
 
-
-
-
-
-
-
         escucha = new Escucha();
-
-
 
         no_Juego = new JButton();
         imageIcon = new ImageIcon(getClass().getResource("/resources/Boton_NO.png"));
@@ -69,9 +61,10 @@ public class Front_Inicial extends JPanel {
         info_al_Jugador = new JTextArea();
         info_al_Jugador.append("I know that word\n" +
                 "Ejercite su memoria episódica\n" +
-                "Desea jugar?");
+                "Desea jugar ?\n");
         info_al_Jugador.setFont(font);
-        info_al_Jugador.setForeground(verdeClaro);;
+        info_al_Jugador.setForeground(verdeClaro);
+        info_al_Jugador.setEditable(false);
         info_al_Jugador.setOpaque(false);
 
         GridBagLayout gridBagLayout = new GridBagLayout();
@@ -107,10 +100,9 @@ public class Front_Inicial extends JPanel {
         //gbc.fill = GridBagConstraints.BOTH; // se proporcionara parejo
         this.add(no_Juego, gbc);
 
-
-
-
     }
+
+
 
     /**
      * inner class implements Listeners used by Front_Inicial class
@@ -120,6 +112,7 @@ public class Front_Inicial extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource()==si_Juego){
+
                 System.out.println(" que empieze el juego ");
             }
             else if(e.getSource()==no_Juego){

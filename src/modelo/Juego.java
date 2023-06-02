@@ -6,27 +6,25 @@ package modelo;
 public class Juego {
     /**
      * nivel: indica el nivel en que se desarrolla el juego
-
+     * cada nivel define el valor de sus atributos.
      * empieza en nivel 1.
      */
     private int nivel;
     /**
-
-     * Cantidad de palabras que se le presentaran al jugador
-     * y se deben memorizar para superar el nivel.
-      */
-    private int palabras_a_Memorizar;
-    /**
-     * Cantidad de palabras existentes en cada nivel
-     * las cuales se le presentaran al jugador.
-     * Están incluidas las palabras_a_Memorizar y las demás
-     * que NO se le presentaron al jugador para ser memorizadas.
+     * Es un atributo del nivel que indica
+     * cuantas palabras se le presentaran al jugador para que las memorize.
      */
-    private int palabras_del_nivel;
+    private int cant_Palabras_a_Memorizar;
     /**
-     * Porcentaje de aciertos exigido
-     * en cada nivel.
-      */
+     * Es un atributo de nivel que indica el total
+     * de palabras existentes en el nivel.
+     */
+    private int total_Palabras_del_Nivel;
+    /**
+     * Es un atributo de nivel que indica el porcentaje mínimo
+     * de aciertos para lograr superar el nivel que se esta jugando
+     * y poder pasar al siguiente nivel.
+     */
     private double acierto_Exigido;
     /**
      * Acumulador que suma de a 10 puntos
@@ -43,7 +41,42 @@ public class Juego {
      * acierto_del_Jugador => true -> jugador acertó.
      *                     => false -> jugador NO acertó.
      */
+    private boolean acierto_del_Jugador; // estado = 12 -> jugador acertó
 
+    /**
+     * Nos indica el estado del juego en cierto momento.
+     * Dependiendo de su valor se ejecutaran acciones diversas.
+     * 1 -> indica el inicio del juego, empieza en el nivel 1.
+     * 2 -> indica que el jugador SI acertó en su decisión
+     *   => acumulará 10 puntos
+     * 3 -> indica que los 5 segundos para ver e intentar memorizar cada palabra ya pasaron.
+     *   => se mostrará la próxima para palabra.
+     * 4 -> indica que ya se presentaron todas las palabras a memorizar del respectivo nivel.
+     *   => a continuacion se prsentarán todas las palabras del nivel para intentar acertar.
+     * 5 -> indica que los 7 segundos para ver cada palabra y responder ya pasaron.
+     *   => no acumulará puntos, es decir se toma como respuesta erronea y se presenta la siguiente palabra.
+     * 6 -> indica que ya se presetaron todas las palabras del nivel.
+     *   => se procede a verificar si el nivel se superó según el porcentaje de acierto exigido.
+     *   => se le pregunta al jugador si desea seguir jugando (repetir nivel o siguiente nivel).
+     *   => se registra el puntaje obtenido en el nivel por el jugador, el nivel que superó.
+     * 7 ->
+     *
+     *
+     *
+     *
+     * 99 -> indica un error de nivel debordado, solo existen 10 niveles.
+     *
+     *
+     */
+    private int estado;
+
+
+    /**
+     * Categoria nos indica cual biblioteca de palabras se usara en el juego
+     * @info el jugador decidirá su preferencia.
+     * @info se cuenta con 3 categorias; Ciudades, Animales, Profesiones.
+     */
+    private int categoria;
 
 
     // From here implements the Class methods ==================================================
@@ -52,7 +85,8 @@ public class Juego {
      * Constructor method.
      */
     public Juego(){
-
+        estado=1;
+        setUp_Nivel(estado);// juego inicia en nivel 1
         puntaje_Logrado=0;
         acierto_del_Jugador=false;
 
@@ -93,7 +127,12 @@ public class Juego {
     }
 
     /**
-
+     * Acumula de a 10 puntos por cada
+     * acierto del jugador.
+     * @return puntaje_logrado
+     */
+    public int getPuntaje_Logrado() {
+        if (estado==2){
             puntaje_Logrado +=10;
         }
         return puntaje_Logrado;
@@ -103,6 +142,47 @@ public class Juego {
         this.puntaje_Logrado = puntaje_Logrado;
     }
 
+    public boolean isAcierto_del_Jugador() {
+        return acierto_del_Jugador;
+    }
+
+    public void setAcierto_del_Jugador(boolean acierto_del_Jugador) {
+        this.acierto_del_Jugador = acierto_del_Jugador;
+    }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+
+    public int getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(int categoria) {
+
+        String ruta="";
+        switch (categoria){
+            case 1:
+                ruta = "src/resources/animales.txt";
+                System.out.println(" la biblioteca es anmimal");
+                break;
+            case 2:
+                ruta = "src/resources/ciudades.txt";
+                System.out.println(" la biblioteca es ciudades");
+                break;
+            case 3:
+                ruta = "src/resources/profecion.txt";
+                System.out.println(" la biblioteca es profesiones");
+                break;
+            default:
+                System.out.println(" solo hay 3 biliotecas por ahora");
+        }
+    }
+
 
 
     // Methods of Class ===============================
@@ -110,6 +190,10 @@ public class Juego {
     /**
      * Waiting for a method maybe boolean for have decision about the player alive or not
      * take of de value percent correct decisions over whole options.
+     * maybe like that "estado".. with values integers ?
+     */
+
+
 
     /**
      * Método que configura el juego según el nivel.
@@ -183,7 +267,24 @@ public class Juego {
      * ó bien sea que la palabra NO está entre las palabras a memorizar.
      */
     public void decision_Correcta(){
+        estado=12;
+        acierto_del_Jugador=true;
+    }
 
+    /**
+     * Método que indica si el jugador supera un nivel tomando como base
+     * los puntos obtenidos.
+     * @return true -> si logra igualar o superar el porcentaje de acierto exigido en el nivel en el cual está.
+     *          false -> si NO se logra igualar o superar el porcentaje de acierto exigido en el nivel que está.
+     */
+    public boolean nivel_Superado(){
+        if (puntaje_Logrado/10* total_Palabras_del_Nivel <acierto_Exigido){
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
 
 
 }
