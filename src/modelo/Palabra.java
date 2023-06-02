@@ -3,7 +3,7 @@ package modelo;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+
 
 
 public class Palabra {
@@ -75,27 +75,6 @@ public class Palabra {
         acierto = false;
     }
 
-    public void ini(){
-        System.out.println("Palabras Del nivel\n");
-        for (int i = 0; i <= palabra_del_Nivel.size()-1; i++){
-            System.out.println("Palabra = "+(i+1)+" "+palabra_del_Nivel.get(i));
-        }
-        System.out.println("\nPalabras a memorizar\n");
-        for (int i = 0; i <= palabra_a_Memorizar.size()-1; i++){
-            System.out.println("Palabra = "+(i+1)+" "+palabra_a_Memorizar.get(i));
-        }
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("\nIngrese un número: ");
-        int numero = scanner.nextInt();
-
-        while (numero != 0){
-            comparacion(palabra_del_Nivel.get(numero-1),palabra_a_Memorizar);
-            System.out.print("\nIngrese un número: ");
-            numero = scanner.nextInt();
-        }
-    }
-
     /**
      * Método que retorna true si la palabra esta en la lista de palabra a memorizar
      * @param palabra lista_de_palabras
@@ -113,11 +92,4 @@ public class Palabra {
         return acierto;
     }
 
-    //Usa la consola para pruebas
-    public static void main(String[] args) throws IOException {
-        Palabra palabra = new Palabra();
-        palabra.setPalabra_del_nivel("src/modelo/ciudades.txt");
-        palabra.setPalabra_a_Memorizar();
-        palabra.ini();
-    }
 }

@@ -1,8 +1,6 @@
 package modelo;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -16,6 +14,7 @@ import java.util.Random;
 public class String_Basico {
 
     private  List<String> lista_palabra;
+    private BufferedReader lector;
 
 
     public String_Basico() {
@@ -31,25 +30,38 @@ public class String_Basico {
      */
     public List<String> obtenerPalabras(String categoria) throws IOException {
 
-        BufferedReader lector = new BufferedReader(new FileReader(categoria));
-        String linea;
+        try {
+            lector = new BufferedReader(new FileReader(categoria));
+            String linea;
 
-        while (lector.readLine() != null){
-            linea = lector.readLine();
-            linea.split("\n");
-            //Recorre cada letra de una palabra
-            for (String palabra : linea.split("\n")) {
-                // Remplaza cualquier caracter que no sea alfabetico con un espacio vacio
-                palabra = palabra.replaceAll("^[^a-zA-Z]+|[^a-zA-Z]+$", "");
-                if (!linea.isEmpty()) {
-                    lista_palabra.add(palabra);
+            while (lector.readLine() != null) {
+                linea = lector.readLine();
+                linea.split("\n");
+                //Recorre cada letra de una palabra
+                for (String palabra : linea.split("\n")) {
+                    // Remplaza cualquier caracter que no sea alfabetico con un espacio vacio
+                    palabra = palabra.replaceAll("^[^a-zA-Z]+|[^a-zA-Z]+$", "");
+                    if (!linea.isEmpty()) {
+                        lista_palabra.add(palabra);
+                    }
                 }
             }
+        } catch (FileNotFoundException e) {
+            System.out.println("Estoy dentro de la excepcion");
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                lector.close();
+            }  catch (IOException e) {
+                e.printStackTrace();
+            } catch (NullPointerException e){
+                System.out.println("Estoy dentro del finally");
+                e.printStackTrace();
+            }
         }
-
-        lector.close();
-
-        return lista_palabra;
+            return lista_palabra;
     }
 
     /**

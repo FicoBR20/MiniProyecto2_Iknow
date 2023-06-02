@@ -77,6 +77,7 @@ public class Juego {
      * @info se cuenta con 3 categorias; Ciudades, Animales, Profesiones.
      */
     private int categoria;
+    private  String ruta;
 
 
     // From here implements the Class methods ==================================================
@@ -85,6 +86,8 @@ public class Juego {
      * Constructor method.
      */
     public Juego(){
+        ruta = "";
+        categoria = 0;
         estado=1;
         setUp_Nivel(estado);// juego inicia en nivel 1
         puntaje_Logrado=0;
@@ -162,27 +165,27 @@ public class Juego {
         return categoria;
     }
 
-    public void setCategoria(int categoria) {
+    public String setCategoria(int categoria) {
 
-        String ruta="";
-        switch (categoria){
-            case 1:
-                ruta = "src/resources/animales.txt";
+        switch (categoria) {
+            case 1 -> {
                 System.out.println(" la biblioteca es anmimal");
-                break;
-            case 2:
-                ruta = "src/resources/ciudades.txt";
+                return ruta = "src/resources/animales.txt";
+            }
+            case 2 -> {
                 System.out.println(" la biblioteca es ciudades");
-                break;
-            case 3:
-                ruta = "src/resources/profecion.txt";
+                return ruta = "src/resources/ciudades.txt";
+            }
+            case 3 -> {
                 System.out.println(" la biblioteca es profesiones");
-                break;
-            default:
+                return ruta = "src/resources/profecion.txt";
+            }
+            default -> {
                 System.out.println(" solo hay 3 biliotecas por ahora");
+                return ruta = "src/resources/empty.txt";
+            }
         }
     }
-
 
 
     // Methods of Class ===============================
