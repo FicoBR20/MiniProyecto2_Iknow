@@ -20,7 +20,7 @@ public class Lanza_app {
     public Lanza_app(){
 
         System.out.println(" ..empieza tu juego..");
-//        gui = new GUI();
+        gui = new GUI();
         juego = new Juego();
         launch_App();
 
