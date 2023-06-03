@@ -1,6 +1,8 @@
 package controlador;
 import modelo.Juego;
+import vista.Front_Inicial;
 import vista.GUI;
+import vista.Front_Inicial;
 ;
 
 import java.awt.*;
@@ -10,6 +12,8 @@ public class Lanza_app {
     private GUI gui;
     private Juego juego;
 
+    private int receptor;
+
 
     /**
      * Método constructor
@@ -17,9 +21,8 @@ public class Lanza_app {
     public Lanza_app(){
 
         System.out.println(" ..empieza tu juego..");
-        //gui = new GUI();
-        juego = new Juego();
         launch_App();
+        receptor = 9999;
 
     }
 
@@ -27,27 +30,25 @@ public class Lanza_app {
 
     public void launch_App(){
 
-        if (juego.getEstado()<99){
+        System.out.println(" estamos completando los 10 niveles");
 
-            System.out.println(" estamos completando los 10 niveles");
+        juego = new Juego();
+        gui = new GUI();
 
-            GUI gui1 = new GUI();
-            gui1.frame_001_Inicio();
-            //gui1.frame_002_Reglas();
-
-
-
-
-
+        gui.lanza_frames(juego.getEstado());//estado=1
+        System.out.println(" receptor vale arriba"+receptor);
+//        receptor = (new Front_Inicial().getId_frame());
+//        System.out.println(" receptor vale abajo "+receptor);
+//        gui.lanza_frames(receptor);
 
 
-            // aquí debera ir la funcion de cierre cundo el jugados haya superado el nivel 10
-        }
+
+
+
+
+
 
     }
-
-
-
 
 
 

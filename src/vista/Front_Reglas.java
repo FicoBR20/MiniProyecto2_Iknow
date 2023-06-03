@@ -51,17 +51,17 @@ public class Front_Reglas extends JPanel {
 
         escucha = new Escucha();
 
-//        no_Juego = new JButton();
-//        imageIcon = new ImageIcon(getClass().getResource("/resources/Boton_NO.png"));
-//        imageIcon_Pressed = new ImageIcon(getClass().getResource("/resources/Boton_NO_PRESSED.png"));
-//        no_Juego.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(120,62,Image.SCALE_SMOOTH)));
-//        no_Juego.setBorder(BorderFactory.createEmptyBorder());
-//        no_Juego.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(120,62,Image.SCALE_SMOOTH)));
+        no_Juego = new JButton();
+        imageIcon = new ImageIcon(getClass().getResource("/resources/Boton_NO.png"));
+        imageIcon_Pressed = new ImageIcon(getClass().getResource("/resources/Boton_NO_PRESSED.png"));
+        no_Juego.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(120,62,Image.SCALE_SMOOTH)));
+        no_Juego.setBorder(BorderFactory.createEmptyBorder());
+        no_Juego.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(120,62,Image.SCALE_SMOOTH)));
 
 
 
-//        si_Juego.addActionListener(escucha);
-//        no_Juego.addActionListener(escucha);
+        si_Juego.addActionListener(escucha);
+        no_Juego.addActionListener(escucha);
 
 
         info_al_Jugador = new JTextArea();
@@ -97,14 +97,14 @@ public class Front_Reglas extends JPanel {
         gbc.weightx = 1.0; // no se deformara
         gbc.weighty = 1.0; // no se deformara
         this.add(si_Juego, gbc);
-//
-//        gbc.gridx=3; // columna 0
-//        gbc.gridy=3; // fila 0
-//        gbc.gridwidth=1; // ocupara 4 columnas
-//        gbc.gridheight=1; // ocupara 3 filas
-//        gbc.weightx = 1.0; // no se deformara
-//        gbc.weighty = 1.0; // no se deformara
-//        this.add(no_Juego, gbc);
+
+        gbc.gridx=3; // columna 0
+        gbc.gridy=3; // fila 0
+        gbc.gridwidth=1; // ocupara 4 columnas
+        gbc.gridheight=1; // ocupara 3 filas
+        gbc.weightx = 1.0; // no se deformara
+        gbc.weighty = 1.0; // no se deformara
+        this.add(no_Juego, gbc);
 
     }
 
@@ -117,13 +117,13 @@ public class Front_Reglas extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-//            if (e.getSource()==si_Juego){
-//
-////                System.out.println(" que empieze el juego ");
-//            }
-//            else if(e.getSource()==no_Juego){
-//                System.out.println(" aqui se termina el juego y se muestra de nuevo el ingreso");
-//            }
+            if (e.getSource()==si_Juego){
+
+                System.out.println(" se le presenta el juego en el nivel 1 ");
+            }
+            else if(e.getSource()==no_Juego){
+                System.out.println(" aqui se termina el juego y se muestra de nuevo el ingreso");
+            }
 
         }
     }

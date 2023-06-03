@@ -59,7 +59,10 @@ public class Juego {
      *   => se procede a verificar si el nivel se superó según el porcentaje de acierto exigido.
      *   => se le pregunta al jugador si desea seguir jugando (repetir nivel o siguiente nivel).
      *   => se registra el puntaje obtenido en el nivel por el jugador, el nivel que superó.
-     * 7 ->
+     *
+     *
+     * 7 -> Se le mostraran las reglas al jugador.
+     * 8 -> Se inicia el juego en el nivel 1.
      *
      *
      *

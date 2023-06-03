@@ -5,6 +5,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import modelo.Juego;
+import vista.Front_Reglas;
+import vista.GUI;
+
 public class Front_Inicial extends JPanel {
 
 
@@ -19,6 +23,7 @@ public class Front_Inicial extends JPanel {
 
 
     private Escucha escucha;
+
 
     private Color verdeClaro = new Color(188, 234, 192);
     private Color fondoLila = new Color(82, 25, 196);
@@ -107,11 +112,12 @@ public class Front_Inicial extends JPanel {
      */
     private class Escucha implements ActionListener {
 
+
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource()==si_Juego){
-
-                System.out.println(" que empieze el juego ");
+                new GUI().lanza_frames(7); // Juego.estado = 7;
+                System.out.println(" le doy las reglas ");
             }
             else if(e.getSource()==no_Juego){
                 System.out.println(" aqui se termina el juego y se muestra de nuevo el ingreso");

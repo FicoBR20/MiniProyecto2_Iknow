@@ -2,12 +2,15 @@ package vista;
 
 import javax.swing.*;
 import java.awt.*;
+import modelo.Juego;
 
 /**
  * Esta clase gestiona los recursos gráficos del juego.
  * @version v.1.0.0 date:1/06/2023
  */
 public class GUI extends JFrame {
+
+    private int selectorFrames;
 
     private Front_Inicial frontInicial;
 
@@ -37,6 +40,13 @@ public class GUI extends JFrame {
 
     private JTextField jTextField_Principal, jTextField_1_auxiliar, jTextField_2_auxiliar;
 
+    public int getSelectorFrames() {
+        return selectorFrames;
+    }
+
+    public void setSelectorFrames(int selectorFrames) {
+        this.selectorFrames = selectorFrames;
+    }
 
     private Color  colorBack = new Color(82,25,196);
     private Color colorFront = new Color(188, 234, 192);
@@ -65,6 +75,8 @@ public class GUI extends JFrame {
         //Set up JFrame Container's Layout
         //Create Listener Object and Control Object
         //Set up JComponents
+
+        selectorFrames = 888;
 
         jLabel_Central = new JLabel();
         jPanel_Principal = new JPanel();
@@ -114,6 +126,24 @@ public class GUI extends JFrame {
 
 
     }
+
+    public void lanza_frames(int estado){
+
+
+        switch (estado){
+            case 1:
+                frame_001_Inicio();
+                break;
+            case 7:
+                frame_002_Reglas();
+                break;
+            default:
+                System.out.println(" no hay mas ventanas");
+                break;
+        }
+    }
+
+
 
 
 
