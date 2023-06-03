@@ -5,11 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import modelo.Juego;
-import vista.Front_Reglas;
-import vista.GUI;
-
-public class Front_Inicial extends JPanel {
+public class Front_Reglas extends JPanel {
 
 
     private JButton si_Juego;
@@ -24,22 +20,27 @@ public class Front_Inicial extends JPanel {
 
     private Escucha escucha;
 
+    private Header encabezado;
+
 
     private Color verdeClaro = new Color(188, 234, 192);
     private Color fondoLila = new Color(82, 25, 196);
-
-
-    public Front_Inicial(){
+    /**
+     * Constructor
+     */
+    public Front_Reglas(){
         init_Panel();
+        //this.setSize(300,400);
         this.setPreferredSize(new Dimension(600,400));
         this.setBackground(fondoLila);
+
 
     }
 
     public void init_Panel(){
 
 
-        Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 24);
+        Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 20);
 
         si_Juego = new JButton();
         ImageIcon imageIcon = new ImageIcon(getClass().getResource("/resources/Boton_SI.png"));
@@ -53,9 +54,9 @@ public class Front_Inicial extends JPanel {
         no_Juego = new JButton();
         imageIcon = new ImageIcon(getClass().getResource("/resources/Boton_NO.png"));
         imageIcon_Pressed = new ImageIcon(getClass().getResource("/resources/Boton_NO_PRESSED.png"));
-        no_Juego.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(60,31,Image.SCALE_SMOOTH)));
+        no_Juego.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(120,62,Image.SCALE_SMOOTH)));
         no_Juego.setBorder(BorderFactory.createEmptyBorder());
-        no_Juego.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(60,31,Image.SCALE_SMOOTH)));
+        no_Juego.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(120,62,Image.SCALE_SMOOTH)));
 
 
 
@@ -64,14 +65,15 @@ public class Front_Inicial extends JPanel {
 
 
         info_al_Jugador = new JTextArea();
-        info_al_Jugador.append("I know that word\n" +
-                "Es un divertido juego para ejercitar su memoria \n" +
-                "Desea probar en que estado \nse encuentra su memoria Episódica ?\n");
+        info_al_Jugador.append("Aqui van las reglas del juego\n" +
+                "Informacion clara para el jugador\n" +
+                ".... exitos.\nexitos.\nexitos.\nexitos.\n y más exitos.\n");
         info_al_Jugador.setFont(font);
         info_al_Jugador.setForeground(verdeClaro);
+        info_al_Jugador.setBackground(fondoLila);
         info_al_Jugador.setEditable(false);
-        info_al_Jugador.setOpaque(false);
         info_al_Jugador.setFocusable(false);
+        info_al_Jugador.setPreferredSize(new Dimension(550,350));
 
         GridBagLayout gridBagLayout = new GridBagLayout();
 
@@ -79,23 +81,24 @@ public class Front_Inicial extends JPanel {
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        gbc.gridx=1; // columna 0
-        gbc.gridy=0; // fila 0
-        gbc.gridwidth=6; // ocupara 4 columnas
-        gbc.gridheight=2; // ocupara 3 filas
+        gbc.gridx=1; // ubicacion columna 0
+        gbc.gridy=0; // ubicacion fila 0
+        gbc.gridwidth=5; // columnoas que ocuparȧ
+        gbc.gridheight=2; // filas que ocupará
         gbc.weightx = 1.0; // no se deformara
         gbc.weighty = 1.0; // no se deformara
+
         this.add(info_al_Jugador, gbc);
 
-        gbc.gridx=1; // columna 0
-        gbc.gridy=3; // fila 0
+        gbc.gridx=2; // columna 0
+        gbc.gridy=5; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         gbc.weightx = 1.0; // no se deformara
         gbc.weighty = 1.0; // no se deformara
         this.add(si_Juego, gbc);
 
-        gbc.gridx=4; // columna 0
+        gbc.gridx=3; // columna 0
         gbc.gridy=3; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
@@ -112,12 +115,11 @@ public class Front_Inicial extends JPanel {
      */
     private class Escucha implements ActionListener {
 
-
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource()==si_Juego){
-                new GUI().lanza_frames(7); // Juego.estado = 7;
-                System.out.println(" le doy las reglas ");
+
+                System.out.println(" se le presenta el juego en el nivel 1 ");
             }
             else if(e.getSource()==no_Juego){
                 System.out.println(" aqui se termina el juego y se muestra de nuevo el ingreso");

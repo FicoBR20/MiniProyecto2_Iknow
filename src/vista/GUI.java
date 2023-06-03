@@ -2,6 +2,7 @@ package vista;
 
 import javax.swing.*;
 import java.awt.*;
+import modelo.Juego;
 
 /**
  * Esta clase gestiona los recursos gráficos del juego.
@@ -9,7 +10,12 @@ import java.awt.*;
  */
 public class GUI extends JFrame {
 
+    private int selectorFrames;
+
     private Front_Inicial frontInicial;
+
+    private Front_Reglas frontReglas;
+
 
     private Canvas canvas;
 
@@ -34,6 +40,13 @@ public class GUI extends JFrame {
 
     private JTextField jTextField_Principal, jTextField_1_auxiliar, jTextField_2_auxiliar;
 
+    public int getSelectorFrames() {
+        return selectorFrames;
+    }
+
+    public void setSelectorFrames(int selectorFrames) {
+        this.selectorFrames = selectorFrames;
+    }
 
     private Color  colorBack = new Color(82,25,196);
     private Color colorFront = new Color(188, 234, 192);
@@ -63,56 +76,77 @@ public class GUI extends JFrame {
         //Create Listener Object and Control Object
         //Set up JComponents
 
+        selectorFrames = 888;
+
         jLabel_Central = new JLabel();
-
-
-        headerProject = new Header(" ejercita tu memoria ", colorFront);
-        frontInicial = new Front_Inicial();
-        frontInicial.setBackground(colorBack);
-
-
-        canvas = new Canvas();
-;
-
         jPanel_Principal = new JPanel();
+       // headerProject = new Header(" ejercita tu memoria ", colorFront);
+
+
+
+        frontInicial = new Front_Inicial();
+        frontReglas = new Front_Reglas();
+        canvas = new Canvas();
+
+
+
 
         jBut_1_auxiliar = new JButton(" Si la recuerdo ");
         jBut_2_auxiliar = new JButton("NO la recueddo");
 
-//        jPanel_Principal.add(jBut_1_auxiliar, BorderLayout.SOUTH);
-//        jPanel_Principal.add(jBut_2_auxiliar, BorderLayout.SOUTH);
 
-      //  this.add(frontInicial, BorderLayout.CENTER);
 
-       // this.add(canvas, BorderLayout.CENTER);
+        //  this.add(frontInicial, BorderLayout.CENTER);
 
-        this.add(jPanel_Principal, BorderLayout.SOUTH);
+        // this.add(canvas, BorderLayout.CENTER);
 
-        this.add(headerProject,BorderLayout.NORTH); //Change this line if you change JFrame Container's Layout
+      //  this.add(jPanel_Principal, BorderLayout.SOUTH);
+
+       // this.add(headerProject,BorderLayout.NORTH); //Change this line if you change JFrame Container's Layout
 
     }
 
     public void frame_001_Inicio() {
-
-        jLabel_Central = new JLabel();
-
-
-        headerProject = new Header(" Bienvenido ", colorFront);
-        frontInicial = new Front_Inicial();
-        frontInicial.setBackground(colorBack);
-
-
         jPanel_Principal = new JPanel();
+        headerProject = new Header(" Bienvenido ", colorFront);
 
-
+        this.add(headerProject,BorderLayout.NORTH); //Change this line if you change JFrame Container's Layout
         this.add(frontInicial, BorderLayout.CENTER);
 
 
-        this.add(jPanel_Principal, BorderLayout.SOUTH);
+    }
+
+    public void frame_002_Reglas() {
+        jPanel_Principal = new JPanel();
+        headerProject = new Header(" Reglas del Juego ", colorFront);
+
 
         this.add(headerProject,BorderLayout.NORTH); //Change this line if you change JFrame Container's Layout
+        this.add(frontReglas, BorderLayout.CENTER);
+
 
     }
+
+    public void lanza_frames(int estado){
+
+
+        switch (estado){
+            case 1:
+                frame_001_Inicio();
+                break;
+            case 7:
+                frame_002_Reglas();
+                break;
+            default:
+                System.out.println(" no hay mas ventanas");
+                break;
+        }
+    }
+
+
+
+
+
 
 
 
