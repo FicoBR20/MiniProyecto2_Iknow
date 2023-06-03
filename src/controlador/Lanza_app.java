@@ -11,9 +11,6 @@ public class Lanza_app {
     private Juego juego;
 
 
-
-
-
     /**
      * Método constructor
      */
@@ -47,15 +44,6 @@ public class Lanza_app {
         }
 
     }
-
-
-
-
-
-
-
-
-
 
 
     public static void main(String[] args){

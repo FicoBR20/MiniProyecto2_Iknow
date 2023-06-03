@@ -66,7 +66,7 @@ public class GUI extends JFrame {
         jLabel_Central = new JLabel();
 
 
-        headerProject = new Header(" ejercita tu memoria ", colorFront);
+        headerProject = new Header(" Ejercita tu memoria ", colorFront);
         frontInicial = new Front_Inicial();
         frontInicial.setBackground(colorBack);
 
@@ -114,23 +114,4 @@ public class GUI extends JFrame {
 
     }
 
-
-
-    /**
-     * Main process of the Java program
-     * @param args Object used in order to send input data from command line when
-     *             the program is execute by console.
-     */
-//    public static void main(String[] args){
-//        EventQueue.invokeLater(() -> {
-//            GUI miProjectGUI = new GUI();
-//        });
-//    }
-
-    /**
-     * inner class that extends an Adapter Class or implements Listeners used by GUI class
-     */
-    private class Escucha {
-
-    }
 }
