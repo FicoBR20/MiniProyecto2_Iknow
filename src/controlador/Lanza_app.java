@@ -11,16 +11,13 @@ public class Lanza_app {
     private Juego juego;
 
 
-
-
-
     /**
      * Método constructor
      */
     public Lanza_app(){
 
         System.out.println(" ..empieza tu juego..");
-        gui = new GUI();
+        //gui = new GUI();
         juego = new Juego();
         launch_App();
 
@@ -36,6 +33,7 @@ public class Lanza_app {
 
             GUI gui1 = new GUI();
             gui1.frame_001_Inicio();
+            //gui1.frame_002_Reglas();
 
 
 

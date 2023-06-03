@@ -20,37 +20,37 @@ public class Front_Inicial extends JPanel {
 
     private Escucha escucha;
 
+    private Color verdeClaro = new Color(188, 234, 192);
+    private Color fondoLila = new Color(82, 25, 196);
 
 
     public Front_Inicial(){
-        initGui();
-        this.setSize(400,400);
-
+        init_Panel();
+        this.setPreferredSize(new Dimension(600,400));
+        this.setBackground(fondoLila);
 
     }
 
-    public void initGui(){
+    public void init_Panel(){
 
-        Color verdeClaro = new Color(188, 234, 192);
-        Color fondoLila = new Color(82, 25, 196);
 
-        Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 36);
+        Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 24);
 
         si_Juego = new JButton();
         ImageIcon imageIcon = new ImageIcon(getClass().getResource("/resources/Boton_SI.png"));
         ImageIcon imageIcon_Pressed = new ImageIcon(getClass().getResource("/resources/Boton_SI_PRESSED.png"));
-        si_Juego.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(120,62,Image.SCALE_SMOOTH)));
+        si_Juego.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(60,31,Image.SCALE_SMOOTH)));
         si_Juego.setBorder(BorderFactory.createEmptyBorder());
-        si_Juego.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(120,62,Image.SCALE_SMOOTH)));
+        si_Juego.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(60,31,Image.SCALE_SMOOTH)));
 
         escucha = new Escucha();
 
         no_Juego = new JButton();
         imageIcon = new ImageIcon(getClass().getResource("/resources/Boton_NO.png"));
         imageIcon_Pressed = new ImageIcon(getClass().getResource("/resources/Boton_NO_PRESSED.png"));
-        no_Juego.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(120,62,Image.SCALE_SMOOTH)));
+        no_Juego.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(60,31,Image.SCALE_SMOOTH)));
         no_Juego.setBorder(BorderFactory.createEmptyBorder());
-        no_Juego.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(120,62,Image.SCALE_SMOOTH)));
+        no_Juego.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(60,31,Image.SCALE_SMOOTH)));
 
 
 
@@ -60,12 +60,13 @@ public class Front_Inicial extends JPanel {
 
         info_al_Jugador = new JTextArea();
         info_al_Jugador.append("I know that word\n" +
-                "Ejercite su memoria episódica\n" +
-                "Desea jugar ?\n");
+                "Es un divertido juego para ejercitar su memoria \n" +
+                "Desea probar en que estado \nse encuentra su memoria Episódica ?\n");
         info_al_Jugador.setFont(font);
         info_al_Jugador.setForeground(verdeClaro);
         info_al_Jugador.setEditable(false);
         info_al_Jugador.setOpaque(false);
+        info_al_Jugador.setFocusable(false);
 
         GridBagLayout gridBagLayout = new GridBagLayout();
 
@@ -75,11 +76,10 @@ public class Front_Inicial extends JPanel {
 
         gbc.gridx=1; // columna 0
         gbc.gridy=0; // fila 0
-        gbc.gridwidth=5; // ocupara 4 columnas
+        gbc.gridwidth=6; // ocupara 4 columnas
         gbc.gridheight=2; // ocupara 3 filas
         gbc.weightx = 1.0; // no se deformara
         gbc.weighty = 1.0; // no se deformara
-        //gbc.fill = GridBagConstraints.BOTH; // se proporcionara parejo
         this.add(info_al_Jugador, gbc);
 
         gbc.gridx=1; // columna 0
@@ -88,16 +88,14 @@ public class Front_Inicial extends JPanel {
         gbc.gridheight=1; // ocupara 3 filas
         gbc.weightx = 1.0; // no se deformara
         gbc.weighty = 1.0; // no se deformara
-        //gbc.fill = GridBagConstraints.BOTH; // se proporcionara parejo
         this.add(si_Juego, gbc);
 
-        gbc.gridx=3; // columna 0
+        gbc.gridx=4; // columna 0
         gbc.gridy=3; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         gbc.weightx = 1.0; // no se deformara
         gbc.weighty = 1.0; // no se deformara
-        //gbc.fill = GridBagConstraints.BOTH; // se proporcionara parejo
         this.add(no_Juego, gbc);
 
     }
