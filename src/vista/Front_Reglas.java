@@ -12,16 +12,13 @@ public class Front_Reglas extends JPanel {
 
     private JButton no_Juego;
 
-    private JButton prueba;
+    private JLabel desea_Jugar;
 
 
     private JTextArea info_al_Jugador;
 
 
     private Escucha escucha;
-
-    private Header encabezado;
-
 
     private Color verdeClaro = new Color(188, 234, 192);
     private Color fondoLila = new Color(82, 25, 196);
@@ -40,6 +37,7 @@ public class Front_Reglas extends JPanel {
     public void init_Panel(){
 
 
+
         Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 20);
 
         si_Juego = new JButton();
@@ -54,9 +52,9 @@ public class Front_Reglas extends JPanel {
         no_Juego = new JButton();
         imageIcon = new ImageIcon(getClass().getResource("/resources/Boton_NO.png"));
         imageIcon_Pressed = new ImageIcon(getClass().getResource("/resources/Boton_NO_PRESSED.png"));
-        no_Juego.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(120,62,Image.SCALE_SMOOTH)));
+        no_Juego.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(60,31,Image.SCALE_SMOOTH)));
         no_Juego.setBorder(BorderFactory.createEmptyBorder());
-        no_Juego.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(120,62,Image.SCALE_SMOOTH)));
+        no_Juego.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(60,31,Image.SCALE_SMOOTH)));
 
 
 
@@ -81,8 +79,8 @@ public class Front_Reglas extends JPanel {
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        gbc.gridx=1; // ubicacion columna 0
-        gbc.gridy=0; // ubicacion fila 0
+        gbc.gridx=1; // ubicacion columna
+        gbc.gridy=0; // ubicacion fila
         gbc.gridwidth=5; // columnoas que ocuparȧ
         gbc.gridheight=2; // filas que ocupará
         gbc.weightx = 1.0; // no se deformara
@@ -90,8 +88,8 @@ public class Front_Reglas extends JPanel {
 
         this.add(info_al_Jugador, gbc);
 
-        gbc.gridx=2; // columna 0
-        gbc.gridy=5; // fila 0
+        gbc.gridx=1; // columna 0
+        gbc.gridy=3; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         gbc.weightx = 1.0; // no se deformara
@@ -106,6 +104,20 @@ public class Front_Reglas extends JPanel {
         gbc.weighty = 1.0; // no se deformara
         this.add(no_Juego, gbc);
 
+        desea_Jugar = new JLabel("Desea Jugar ? ");
+        desea_Jugar.setFont(font);
+        desea_Jugar.setBackground(fondoLila);
+        desea_Jugar.setForeground(verdeClaro);
+
+
+        gbc.gridx=2; // columna 0
+        gbc.gridy=2; // fila 0
+        gbc.gridwidth=1; // ocupara 4 columnas
+        gbc.gridheight=1; // ocupara 3 filas
+        gbc.weightx = 1.0; // no se deformara
+        gbc.weighty = 1.0; // no se deformara
+        this.add(desea_Jugar, gbc);
+
     }
 
 
@@ -118,10 +130,11 @@ public class Front_Reglas extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource()==si_Juego){
-
+                new GUI().lanza_frames(11); // Juego.estado = 7;
                 System.out.println(" se le presenta el juego en el nivel 1 ");
             }
             else if(e.getSource()==no_Juego){
+                new GUI().lanza_frames(99); // Juego.estado = 7;
                 System.out.println(" aqui se termina el juego y se muestra de nuevo el ingreso");
             }
 

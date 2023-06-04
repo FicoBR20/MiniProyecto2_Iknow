@@ -5,16 +5,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import modelo.Juego;
-import vista.Front_Reglas;
-import vista.GUI;
-
-public class Front_Inicial extends JPanel {
+public class Front_Final extends JPanel {
 
 
     private JButton si_Juego;
 
     private JButton no_Juego;
+
 
     private JTextArea info_al_Jugador;
 
@@ -26,7 +23,7 @@ public class Front_Inicial extends JPanel {
     private Color fondoLila = new Color(82, 25, 196);
 
 
-    public Front_Inicial(){
+    public Front_Final(){
         init_Panel();
         this.setPreferredSize(new Dimension(600,400));
         this.setBackground(fondoLila);
@@ -61,9 +58,9 @@ public class Front_Inicial extends JPanel {
 
 
         info_al_Jugador = new JTextArea();
-        info_al_Jugador.append("I know that word\n" +
-                "Es un divertido juego para ejercitar su memoria \n" +
-                "Desea probar en que estado \nse encuentra su memoria Episódica ?\n");
+        info_al_Jugador.append("....Bueno en otra ocasión será...\n" +
+                "Nunca olvides ejercitar tu memoria \n" +
+                "...te sentará muy bien...Chao?\n");
         info_al_Jugador.setFont(font);
         info_al_Jugador.setForeground(verdeClaro);
         info_al_Jugador.setEditable(false);
@@ -84,21 +81,6 @@ public class Front_Inicial extends JPanel {
         gbc.weighty = 1.0; // no se deformara
         this.add(info_al_Jugador, gbc);
 
-        gbc.gridx=1; // columna 0
-        gbc.gridy=3; // fila 0
-        gbc.gridwidth=1; // ocupara 4 columnas
-        gbc.gridheight=1; // ocupara 3 filas
-        gbc.weightx = 1.0; // no se deformara
-        gbc.weighty = 1.0; // no se deformara
-        this.add(si_Juego, gbc);
-
-        gbc.gridx=4; // columna 0
-        gbc.gridy=3; // fila 0
-        gbc.gridwidth=1; // ocupara 4 columnas
-        gbc.gridheight=1; // ocupara 3 filas
-        gbc.weightx = 1.0; // no se deformara
-        gbc.weighty = 1.0; // no se deformara
-        this.add(no_Juego, gbc);
 
     }
 
@@ -117,8 +99,7 @@ public class Front_Inicial extends JPanel {
                 System.out.println(" le doy las reglas ");
             }
             else if(e.getSource()==no_Juego){
-                new GUI().lanza_frames(99); // Juego.estado = 7;
-                System.out.println(" cierre de la app..fin");
+                System.out.println(" aqui se termina el juego y se muestra de nuevo el ingreso");
             }
 
         }

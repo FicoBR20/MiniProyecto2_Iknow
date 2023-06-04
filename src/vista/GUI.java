@@ -12,6 +12,10 @@ public class GUI extends JFrame {
 
     private int selectorFrames;
 
+    private Front_RegistroJugador frontRegistroJugador;
+
+    private  Front_Final frontFinal;
+
     private Front_Inicial frontInicial;
 
     private Front_Reglas frontReglas;
@@ -80,10 +84,11 @@ public class GUI extends JFrame {
 
         jLabel_Central = new JLabel();
         jPanel_Principal = new JPanel();
-       // headerProject = new Header(" ejercita tu memoria ", colorFront);
 
 
 
+        frontFinal = new Front_Final();
+        frontRegistroJugador = new Front_RegistroJugador();
         frontInicial = new Front_Inicial();
         frontReglas = new Front_Reglas();
         canvas = new Canvas();
@@ -127,6 +132,28 @@ public class GUI extends JFrame {
 
     }
 
+    public void frame_final_cierre() {
+        jPanel_Principal = new JPanel();
+        headerProject = new Header(" Mensaje de cierre ", colorFront);
+
+
+        this.add(headerProject,BorderLayout.NORTH); //Change this line if you change JFrame Container's Layout
+        this.add(frontFinal, BorderLayout.CENTER);
+
+
+    }
+
+    public void frame_registro_Jugador() {
+        jPanel_Principal = new JPanel();
+        headerProject = new Header(" Registro concursante ", colorFront);
+
+
+        this.add(headerProject,BorderLayout.NORTH); //Change this line if you change JFrame Container's Layout
+        this.add(frontRegistroJugador, BorderLayout.CENTER);
+
+
+    }
+
     public void lanza_frames(int estado){
 
 
@@ -136,6 +163,12 @@ public class GUI extends JFrame {
                 break;
             case 7:
                 frame_002_Reglas();
+                break;
+            case 11:
+                frame_registro_Jugador();
+                break;
+            case 99://final de la app.
+                frame_final_cierre();
                 break;
             default:
                 System.out.println(" no hay mas ventanas");

@@ -37,9 +37,6 @@ public class Lanza_app {
 
         gui.lanza_frames(juego.getEstado());//estado=1
         System.out.println(" receptor vale arriba"+receptor);
-//        receptor = (new Front_Inicial().getId_frame());
-//        System.out.println(" receptor vale abajo "+receptor);
-//        gui.lanza_frames(receptor);
 
 
 
