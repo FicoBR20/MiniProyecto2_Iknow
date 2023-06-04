@@ -1,5 +1,8 @@
 package controlador;
 
+import modelo.Juego;
+import vista.Front_RegistroJugador;
+
 import java.io.*;
 
 /**
@@ -11,6 +14,16 @@ public class Control_FileManager {
     private BufferedReader input;
     private FileWriter fileWriter;
     private BufferedWriter output;
+    private String info_Completa_Jugador = (new Front_RegistroJugador().getName_Player()) + " " + Integer.toString( new Juego().getNivel());
+
+    public String getInfo_Completa_Jugador() {
+        return info_Completa_Jugador;
+    }
+
+    public void setInfo_Completa_Jugador(String info_Completa_Jugador) {
+        this.info_Completa_Jugador = info_Completa_Jugador;
+    }
+
 
     public String reader(){
         String text = "";

@@ -46,7 +46,7 @@ public class Juego {
     /**
      * Nos indica el estado del juego en cierto momento.
      * Dependiendo de su valor se ejecutaran acciones diversas.
-     * 1 -> indica el inicio del juego, empieza en el nivel 1.
+     * 1 -> indica el inicio de la app.
      * 2 -> indica que el jugador SI acertó en su decisión
      *   => acumulará 10 puntos
      * 3 -> indica que los 5 segundos para ver e intentar memorizar cada palabra ya pasaron.
@@ -63,6 +63,8 @@ public class Juego {
      *
      * 7 -> Se le mostraran las reglas al jugador.
      * 8 -> Se inicia el juego en el nivel 1.
+     *
+     * 11 -> El juego empieza en el nivel 1
      *
      *
      *
