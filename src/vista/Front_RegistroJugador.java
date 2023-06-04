@@ -1,11 +1,11 @@
 package vista;
 
 import controlador.Control_FileManager;
+import modelo.Juego;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 public class Front_RegistroJugador extends JPanel {
 
@@ -23,6 +23,8 @@ public class Front_RegistroJugador extends JPanel {
 
 
     private Escucha escucha;
+
+    private Teclado teclado;
 
     public String getName_Player() {
         return name_Player;
@@ -80,9 +82,10 @@ public class Front_RegistroJugador extends JPanel {
 
 
         escucha = new Escucha();
+        teclado = new Teclado();
 
-        iniciar_Juego.addActionListener(escucha);
-        jTextField_NombreJugador.addActionListener(escucha);
+        iniciar_Juego.addMouseListener(escucha);
+        jTextField_NombreJugador.addKeyListener(teclado);
 
         GridBagLayout gridBagLayout = new GridBagLayout();
 
@@ -134,24 +137,47 @@ public class Front_RegistroJugador extends JPanel {
     /**
      * inner class implements Listeners used by Front_Inicial class
      */
-    private class Escucha implements ActionListener {
+    /**
+     * inner class implements Listeners used by Front_Inicial class
+     */
+
+    private class Teclado extends KeyAdapter {
 
         @Override
-        public void actionPerformed(ActionEvent e) {
-            if (e.getSource()== jTextField_NombreJugador){
-                name_Player=jTextField_NombreJugador.getText();
-                System.out.println(" registramos el nombre en el archivo de texto " + name_Player);
-                new Control_FileManager().writer(name_Player);
-                iniciar_Juego.setEnabled(true);
-            } else if (e.getSource()==iniciar_Juego) {
-                jTextField_NombreJugador.setText("");
+        public void keyPressed(KeyEvent e) {
+            super.keyPressed(e);
 
-                System.out.println(" mostramos el juego en el primer nivel");
+            if (e.getSource()==jTextField_NombreJugador && e.getKeyChar()==KeyEvent.VK_ENTER){
+
+                name_Player = jTextField_NombreJugador.getText();
+
+                new Control_FileManager().writer(name_Player);
+
+                iniciar_Juego.setEnabled(true);
+                jTextField_NombreJugador.setText(name_Player + " quedó registrado");
+                jTextField_NombreJugador.setEnabled(false);
+
+                System.out.println(" Hemos registrado sus datos " + name_Player + " nivel del juego " + 1);
             }
 
         }
     }
+    private class Escucha extends MouseAdapter {
 
+        public void mouseClicked(MouseEvent e) {
+            super.mouseClicked(e);
+
+            if (e.getSource() == iniciar_Juego) {
+                jTextField_NombreJugador.setText(" ");
+                new GUI().lanza_frames(4);
+                new Juego().setNivel(1);
+                System.out.println(" Empezamos en el primer nivel ");
+
+
+            }
+
+        }
+    }
 
 
 
