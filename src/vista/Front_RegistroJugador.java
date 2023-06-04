@@ -1,11 +1,15 @@
 package vista;
 
+import controlador.Control_FileManager;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Front_RegistroJugador extends JPanel {
+
+    private String name_Player;
 
 
 
@@ -20,7 +24,13 @@ public class Front_RegistroJugador extends JPanel {
 
     private Escucha escucha;
 
+    public String getName_Player() {
+        return name_Player;
+    }
 
+    public void setName_Player(String name_Player) {
+        this.name_Player = name_Player;
+    }
 
     private Color verdeClaro = new Color(188, 234, 192);
     private Color fondoLila = new Color(82, 25, 196);
@@ -65,12 +75,14 @@ public class Front_RegistroJugador extends JPanel {
         iniciar_Juego.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(60,31,Image.SCALE_SMOOTH)));
         iniciar_Juego.setBorder(BorderFactory.createEmptyBorder());
         iniciar_Juego.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(60,31,Image.SCALE_SMOOTH)));
+        iniciar_Juego.setEnabled(false);
 
 
 
         escucha = new Escucha();
 
         iniciar_Juego.addActionListener(escucha);
+        jTextField_NombreJugador.addActionListener(escucha);
 
         GridBagLayout gridBagLayout = new GridBagLayout();
 
@@ -115,17 +127,6 @@ public class Front_RegistroJugador extends JPanel {
 
 
 
-
-
-
-//        this.add(jLabel_NombreJugador, BorderLayout.EAST);
-//
-//
-//        this.add(jTextField_NombreJugador, BorderLayout.CENTER);
-//
-//
-//        this.add(iniciar_Juego, BorderLayout.SOUTH);
-
     }
 
 
@@ -137,12 +138,15 @@ public class Front_RegistroJugador extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (e.getSource()== iniciar_Juego){
-//                new GUI().lanza_frames(11); // Juego.estado = 7;
-                System.out.println(" se le presenta el juego en el nivel 1 ");
-            }
-            else{
-                System.out.println(" iniciaremos juego si o si");
+            if (e.getSource()== jTextField_NombreJugador){
+                name_Player=jTextField_NombreJugador.getText();
+                System.out.println(" registramos el nombre en el archivo de texto " + name_Player);
+                new Control_FileManager().writer(name_Player);
+                iniciar_Juego.setEnabled(true);
+            } else if (e.getSource()==iniciar_Juego) {
+                jTextField_NombreJugador.setText("");
+
+                System.out.println(" mostramos el juego en el primer nivel");
             }
 
         }

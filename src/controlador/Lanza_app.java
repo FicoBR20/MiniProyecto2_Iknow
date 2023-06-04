@@ -1,6 +1,7 @@
 package controlador;
 import modelo.Juego;
 import vista.Front_Inicial;
+import vista.Front_RegistroJugador;
 import vista.GUI;
 import vista.Front_Inicial;
 ;
@@ -36,6 +37,7 @@ public class Lanza_app {
         gui = new GUI();
 
         gui.lanza_frames(juego.getEstado());//estado=1
+
         System.out.println(" receptor vale arriba"+receptor);
 
 
