@@ -4,6 +4,8 @@ import modelo.Juego;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Esta clase gestiona los recursos gráficos del juego.
@@ -11,7 +13,11 @@ import java.awt.*;
  */
 public class Prueba_Frame_001_Inicial extends JFrame {
 
+    private Escucha escucha;
+
     private JButton jButton;
+
+    private JPanel padrino;
 
     private Front_Inicial frontInicial;
     private Front_Reglas frontReglas;
@@ -24,6 +30,7 @@ public class Prueba_Frame_001_Inicial extends JFrame {
 
     private Color  colorBack = new Color(82,25,196);
     private Color colorFront = new Color(188, 234, 192);
+    Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 24);
 
     /**
      * Constructor of GUI class
@@ -49,13 +56,15 @@ public class Prueba_Frame_001_Inicial extends JFrame {
         //Set up JFrame Container's Layout
         //Create Listener Object and Control Object
         //Set up JComponents
-        Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 24);
+        padrino = new JPanel();
+        escucha = new Escucha();
 
         jButton = new JButton(" el inicio ");
         jButton.setPreferredSize(new Dimension(200, 50));
         jButton.setBackground(Color.BLACK);
         jButton.setOpaque(true);
         jButton.setFont(font);
+        jButton.addActionListener(escucha);
 
         frontFinal =  new Front_Final();
 
@@ -66,50 +75,32 @@ public class Prueba_Frame_001_Inicial extends JFrame {
         frontInicial = new Front_Inicial();
 
 
-
         int selector = 9999;
         selector=new Juego().getEstado();
 
         System.out.println(" valor de selector al inicio " + selector + "\n");
 
+
+
+
+
+
+
+
+
+
+
+
+        padrino.add(frontInicial);
+
         this.add(jButton, BorderLayout.SOUTH);
 
-       // selector_Frames(1);
 
-//       switch (new Juego().getEstado()){
-//           case 1:
-//            headerProject = new Header("Bienvenidos todos", colorFront);
-//            headerProject.setFont(font);
-//            this.add(headerProject, BorderLayout.NORTH);
-//            this.add(frontInicial);
-//        System.out.println(" valor de selector al caso 1 " + selector + "\n");
-//            break;
-//           case 2:
-//            headerProject = new Header("Reglas del Juego", colorFront);
-//            headerProject.setFont(font);
-//            this.add(headerProject, BorderLayout.NORTH);
-//            this.add(frontReglas);
-//        System.out.println(" valor de selector al caso 2" + selector + "\n");
-//            break;
-//           case 3:
-//            headerProject = new Header("Registro de Concursante", colorFront);
-//            headerProject.setFont(font);
-//            this.add(headerProject, BorderLayout.NORTH);
-//            this.add(frontRegistroJugador);
-//        System.out.println(" valor de selector al caso 3" + selector + "\n");
-//            break;
-//           case 99:
-//            headerProject = new Header("Mensaje de cierrep", colorFront);
-//            headerProject.setFont(font);
-//            this.add(headerProject, BorderLayout.NORTH);
-//            this.add(frontFinal);
-//        System.out.println(" valor de selector al caso 4" + selector + "\n");
-//            break;
-//           default:
-//               System.out.println(" se terminaron las opciones..vefifique su estado");
-//
-//
-//       }
+
+        this.add(padrino);
+
+
+
 
 
 
@@ -117,50 +108,14 @@ public class Prueba_Frame_001_Inicial extends JFrame {
 
     }
 
-    public void selector_Frames(int selector){
-        Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 24);
+    public void changeLabel (){
+        padrino.remove(frontInicial);
+      padrino.add(frontReglas, BorderLayout.CENTER);
+      padrino.revalidate();
+      padrino.repaint();
+    pack();
 
-        switch (selector){
-            case 1:
-                headerProject = new Header("Bienvenidos todos", colorFront);
-                headerProject.setFont(font);
-                this.add(headerProject, BorderLayout.NORTH);
-                this.add(frontInicial);
-                System.out.println(" valor de selector al caso 1 " + selector + "\n");
-                break;
-            case 2:
-                headerProject = new Header("Reglas del Juego", colorFront);
-                headerProject.setFont(font);
-                this.add(headerProject, BorderLayout.NORTH);
-                this.add(frontReglas);
-                System.out.println(" valor de selector al caso 2" + selector + "\n");
-                break;
-            case 3:
-                headerProject = new Header("Registro de Concursante", colorFront);
-                headerProject.setFont(font);
-                this.add(headerProject, BorderLayout.NORTH);
-                this.add(frontRegistroJugador);
-                System.out.println(" valor de selector al caso 3" + selector + "\n");
-                break;
-            case 99:
-                headerProject = new Header("Mensaje de cierrep", colorFront);
-                headerProject.setFont(font);
-                this.add(headerProject, BorderLayout.NORTH);
-                this.add(frontFinal);
-                System.out.println(" valor de selector al caso 4" + selector + "\n");
-                break;
-            default:
-                System.out.println(" se terminaron las opciones..vefifique su estado");
-
-
-        }
-
-    }
-
-
-
-
-
+}
 
 
     /**
@@ -177,7 +132,25 @@ public class Prueba_Frame_001_Inicial extends JFrame {
     /**
      * inner class that extends an Adapter Class or implements Listeners used by GUI class
      */
-    private class Escucha {
+    private class Escucha implements ActionListener {
 
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (e.getSource()==jButton){
+
+                padrino.remove(frontInicial);
+                padrino.add(frontReglas);
+                padrino.revalidate();
+                padrino.repaint();
+
+                System.out.println(" se incia esto ");
+            }
+            else {
+                System.out.println(" apuntele al botom para inicial..");
+            }
+
+        }
     }
+
 }

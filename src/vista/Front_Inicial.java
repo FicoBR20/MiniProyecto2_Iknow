@@ -11,6 +11,8 @@ import vista.GUI;
 
 public class Front_Inicial extends JPanel {
 
+    private Header header;
+
 
     private JButton si_Juego;
 
@@ -43,6 +45,9 @@ public class Front_Inicial extends JPanel {
 
 
         Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 24);
+
+        header = new Header(" Bienvenido ", verdeClaro);
+        header.setPreferredSize(new Dimension(600, 30));
 
         si_Juego = new JButton();
         ImageIcon imageIcon = new ImageIcon(getClass().getResource("/resources/Boton_SI.png"));
@@ -82,25 +87,33 @@ public class Front_Inicial extends JPanel {
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        gbc.gridx=1; // columna 0
+        gbc.gridx=2; // columna 0
         gbc.gridy=0; // fila 0
-        gbc.gridwidth=6; // ocupara 4 columnas
-        gbc.gridheight=2; // ocupara 3 filas
+        gbc.gridwidth=5; // ocupara 4 columnas
+        gbc.gridheight=1; // ocupara 3 filas
+        gbc.weightx = 1.0; // no se deformara
+        gbc.weighty = 1.0; // no se deformara
+        this.add(header, gbc);
+
+        gbc.gridx=2; // columna 0
+        gbc.gridy=1; // fila 0
+        gbc.gridwidth=5; // ocupara 4 columnas
+        gbc.gridheight=1; // ocupara 3 filas
         gbc.weightx = 1.0; // no se deformara
         gbc.weighty = 1.0; // no se deformara
         this.add(info_al_Jugador, gbc);
 
         gbc.gridx=1; // columna 0
-        gbc.gridy=3; // fila 0
-        gbc.gridwidth=1; // ocupara 4 columnas
+        gbc.gridy=2; // fila 0
+        gbc.gridwidth=2; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         gbc.weightx = 1.0; // no se deformara
         gbc.weighty = 1.0; // no se deformara
         this.add(si_Juego, gbc);
 
         gbc.gridx=4; // columna 0
-        gbc.gridy=3; // fila 0
-        gbc.gridwidth=1; // ocupara 4 columnas
+        gbc.gridy=2; // fila 0
+        gbc.gridwidth=2; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         gbc.weightx = 1.0; // no se deformara
         gbc.weighty = 1.0; // no se deformara
@@ -126,13 +139,11 @@ public class Front_Inicial extends JPanel {
         public void actionPerformed(ActionEvent e) {
             if (e.getSource()==si_Juego){
                 new Juego().setEstado(2);
-                new Juego().getEstado();
-                new Prueba_Frame_001_Inicial().initGUI();
+                new Prueba_Frame_001_Inicial().changeLabel();
                 System.out.println(" le doy las reglas ");
             }
             else if(e.getSource()==no_Juego){
                 new Juego().setEstado(99);
-              //  new Prueba_Frame_001_Inicial().initGUI();
                 System.out.println(" cierre de la app..fin");
             }
 

@@ -73,7 +73,7 @@ public class Front_Reglas extends JPanel {
         info_al_Jugador.setBackground(fondoLila);
         info_al_Jugador.setEditable(false);
         info_al_Jugador.setFocusable(false);
-        info_al_Jugador.setPreferredSize(new Dimension(550,350));
+        info_al_Jugador.setPreferredSize(new Dimension(200,150));
 
         GridBagLayout gridBagLayout = new GridBagLayout();
 
