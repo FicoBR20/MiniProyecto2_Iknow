@@ -26,6 +26,9 @@ public class Front_Inicial extends JPanel {
     private Color fondoLila = new Color(82, 25, 196);
 
 
+    /**
+     * Método Constructor
+     */
     public Front_Inicial(){
         init_Panel();
         this.setPreferredSize(new Dimension(600,400));
@@ -33,6 +36,9 @@ public class Front_Inicial extends JPanel {
 
     }
 
+    /**
+     * Metodo que inicializa los componentes gráficos.
+      */
     public void init_Panel(){
 
 
@@ -117,7 +123,7 @@ public class Front_Inicial extends JPanel {
                 System.out.println(" le doy las reglas ");
             }
             else if(e.getSource()==no_Juego){
-                new GUI().lanza_frames(99); // Juego.estado = 7;
+                new GUI().lanza_frames(99);
                 System.out.println(" cierre de la app..fin");
             }
 
