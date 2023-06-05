@@ -1,5 +1,7 @@
 package vista;
 
+import modelo.Juego;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -130,12 +132,14 @@ public class Front_Reglas extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource()==si_Juego){
-                new GUI().lanza_frames(11); // Juego.estado = 7;
-                System.out.println(" se le presenta el juego en el nivel 1 ");
+                new Juego().setEstado(3);
+                new Prueba_Frame_001_Inicial().initGUI();
+                System.out.println(" se registrará al jugador ");
             }
             else if(e.getSource()==no_Juego){
-                new GUI().lanza_frames(99); // Juego.estado = 7;
-                System.out.println(" aqui se termina el juego y se muestra de nuevo el ingreso");
+                new Juego().setEstado(99);
+                new Prueba_Frame_001_Inicial().initGUI();
+                System.out.println(" aqui se le dice ...otra vez será..lo esperamos..");
             }
 
         }

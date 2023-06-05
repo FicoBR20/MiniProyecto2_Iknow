@@ -125,11 +125,6 @@ public class Front_RegistroJugador extends JPanel {
         gbc.weighty = 1.0; // no se deformara
         this.add(iniciar_Juego, gbc);
 
-
-
-
-
-
     }
 
 
@@ -151,13 +146,20 @@ public class Front_RegistroJugador extends JPanel {
 
                 name_Player = jTextField_NombreJugador.getText();
 
+                new Juego().setNivel(1);
+                new Juego().setEstado(4);//vamos al frame del juego en el Nivel 1
+
+                name_Player = name_Player + " " + Integer.toString(new Juego().getNivel());
+
                 new Control_FileManager().writer(name_Player);
 
                 iniciar_Juego.setEnabled(true);
-                jTextField_NombreJugador.setText(name_Player + " quedó registrado");
+                jTextField_NombreJugador.setText(name_Player + "registrado [nombre] [nivel]");
                 jTextField_NombreJugador.setEnabled(false);
 
-                System.out.println(" Hemos registrado sus datos " + name_Player + " nivel del juego " + 1);
+
+
+                System.out.println(" Hemos registrado sus datos " + name_Player + " nivel del juego " + Integer.toString(new Juego().getNivel()));
             }
 
         }
@@ -169,9 +171,9 @@ public class Front_RegistroJugador extends JPanel {
 
             if (e.getSource() == iniciar_Juego) {
                 jTextField_NombreJugador.setText(" ");
-                new GUI().lanza_frames(4);
                 new Juego().setNivel(1);
-                System.out.println(" Empezamos en el primer nivel ");
+                new Juego().setEstado(4);// nos lleva al frame del primer nivel del juego.
+                System.out.println(" Empezamos a jugar en el nivel = 1 ");
 
 
             }

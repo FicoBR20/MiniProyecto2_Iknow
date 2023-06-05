@@ -1,5 +1,7 @@
 package vista;
 
+import modelo.Juego;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -86,6 +88,8 @@ public class Front_Final extends JPanel {
 
 
 
+
+
     /**
      * inner class implements Listeners used by Front_Inicial class
      */
@@ -95,8 +99,8 @@ public class Front_Final extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource()==si_Juego){
-                new GUI().lanza_frames(7); // Juego.estado = 7;
-                System.out.println(" le doy las reglas ");
+
+                System.out.println(" le di al SI ");
             }
             else if(e.getSource()==no_Juego){
                 System.out.println(" aqui se termina el juego y se muestra de nuevo el ingreso");

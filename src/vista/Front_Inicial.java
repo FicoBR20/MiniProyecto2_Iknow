@@ -108,6 +108,12 @@ public class Front_Inicial extends JPanel {
 
     }
 
+    public void cierrePanel(JPanel jPanel){
+
+        this.removeAll();
+        this.add(jPanel);
+    }
+
 
 
     /**
@@ -119,11 +125,14 @@ public class Front_Inicial extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource()==si_Juego){
-                new GUI().lanza_frames(7); // Juego.estado = 7;
+                new Juego().setEstado(2);
+                new Juego().getEstado();
+                new Prueba_Frame_001_Inicial().initGUI();
                 System.out.println(" le doy las reglas ");
             }
             else if(e.getSource()==no_Juego){
-                new GUI().lanza_frames(99);
+                new Juego().setEstado(99);
+              //  new Prueba_Frame_001_Inicial().initGUI();
                 System.out.println(" cierre de la app..fin");
             }
 
