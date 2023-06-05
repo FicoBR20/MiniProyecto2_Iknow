@@ -93,7 +93,7 @@ public class Prueba_Frame_001_Inicial extends JFrame {
 
         padrino.add(frontInicial);
 
-        this.add(jButton, BorderLayout.SOUTH);
+       // this.add(jButton, BorderLayout.SOUTH);
 
 
 
