@@ -25,7 +25,7 @@ public class Control_FileManager {
     }
 
 
-    public String reader(){
+    public String reader_Jugador(){
         String text = "";
 
         try {
@@ -57,9 +57,9 @@ public class Control_FileManager {
         return text;
     }
 
-    public void writer(String line){
+    public void writer_Jugador(String line){
         try {
-            String text = reader();// recepciona el String generado en el reader.
+            String text = reader_Jugador();// recepciona el String generado en el reader.
             text += line + "\n";
             fileWriter = new FileWriter("src/resources/info_Jugador.txt");
             output = new BufferedWriter(fileWriter);

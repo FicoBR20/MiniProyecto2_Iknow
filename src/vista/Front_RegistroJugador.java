@@ -180,7 +180,7 @@ public class Front_RegistroJugador extends JPanel {
 
                 name_Player = name_Player + " " + Integer.toString(juego_Ik.getNivel());
 
-                new Control_FileManager().writer(name_Player);
+                new Control_FileManager().writer_Jugador(name_Player);
 
                 iniciar_Juego.setEnabled(true);
                 jTextField_NombreJugador.setText(name_Player + "registrado [nombre] [nivel]");

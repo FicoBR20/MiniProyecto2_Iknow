@@ -7,6 +7,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Clase que gestiona la GUI en el estado final de la app.
+ */
 public class Front_Final extends JPanel {
 
     private Header header;
@@ -27,6 +30,9 @@ public class Front_Final extends JPanel {
     private Color fondoLila = new Color(82, 25, 196);
 
 
+    /**
+     * Método constructor
+     */
     public Front_Final(){
         init_Panel();
         this.setPreferredSize(new Dimension(600,400));
@@ -34,6 +40,9 @@ public class Front_Final extends JPanel {
 
     }
 
+    /**
+     * Método que inicializa los atributos.
+     */
     public void init_Panel(){
 
 
