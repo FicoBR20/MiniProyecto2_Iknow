@@ -82,7 +82,7 @@ public class Front_Reglas extends JPanel {
         GridBagConstraints gbc = new GridBagConstraints();
 
         gbc.gridx=1; // ubicacion columna
-        gbc.gridy=0; // ubicacion fila
+        gbc.gridy=2; // ubicacion fila
         gbc.gridwidth=5; // columnoas que ocuparȧ
         gbc.gridheight=2; // filas que ocupará
         gbc.weightx = 1.0; // no se deformara
@@ -90,9 +90,9 @@ public class Front_Reglas extends JPanel {
 
         this.add(info_al_Jugador, gbc);
 
-        gbc.gridx=1; // columna 0
+        gbc.gridx=2; // columna 0
         gbc.gridy=3; // fila 0
-        gbc.gridwidth=1; // ocupara 4 columnas
+        gbc.gridwidth=3; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         gbc.weightx = 1.0; // no se deformara
         gbc.weighty = 1.0; // no se deformara

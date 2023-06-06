@@ -11,8 +11,6 @@ import vista.GUI;
 
 public class Front_Inicial extends JPanel {
 
-    private JPanel jPanel;
-
     private JLabel jLabel;
 
     private Header header;
@@ -48,26 +46,10 @@ public class Front_Inicial extends JPanel {
     public void init_Panel(){
 
 
-
-        jPanel = new JPanel();
-
-
         Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 24);
 
-
-
-        header = new Header(" Bienvenido ", verdeClaro);
+        header = new Header(" Bienvenidos", verdeClaro);
         header.setPreferredSize(new Dimension(600,20));
-
-
-
-
-
-
-
-
-
-
 
 
         si_Juego = new JButton();
@@ -115,58 +97,52 @@ public class Front_Inicial extends JPanel {
 
 
 
-        gbc.gridx=2; // columna 0
+        gbc.gridx=0; // columna 0
         gbc.gridy=0; // fila 0
         gbc.gridwidth=5; // ocupara n columnas
         gbc.gridheight=1; // ocupara n filas
         gbc.weightx = 1.0; // no se deformara
         gbc.weighty = 1.0; // no se deformara
-        gbc.ipadx=1;//relleno interno en x pixels
-        gbc.ipady=1;//relleno interno en y pixels
-        gbc.insets.set(2,2,2,2);//espacio externo para el componente.
-        gbc.anchor=GridBagConstraints.HORIZONTAL;//cuando el componente es mas pequenno que el area de visualización.tambien PAGE_START, PAGE_END, LINE_START, LINE_END, FIRST_LINE_START, FIRST_LINE_END, LAST_LINE_ENDy LAST_LINE_START.
-        gbc.fill = gbc.HORIZONTAL; // maximo width
-        gbc.fill = gbc.VERTICAL; //maximo height
-        gbc.fill = gbc.BOTH;// maximo ambos
-        gbc.RELATIVE;//es el penultimo de la fila o columna ubicar relativamente (x ó y) pero pegado con el anterior componente.
-        gbc.REMAINDER;//indica que es el ulimo de la fila o la columna.
-
+        gbc.ipady=5;//relleno interno en y pixels
+        gbc.anchor=GridBagConstraints.PAGE_START;//cuando el componente es mas pequenno que el area de visualización.tambien PAGE_START, PAGE_END, LINE_START, LINE_END, FIRST_LINE_START, FIRST_LINE_END, LAST_LINE_ENDy LAST_LINE_START.
         this.add(header, gbc);
 
-        gbc.gridx=1; // columna 0
+
+        gbc.gridx=2; // columna 0
         gbc.gridy=1; // fila 0
         gbc.gridwidth=5; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         gbc.weightx = 1.0; // no se deformara
         gbc.weighty = 1.0; // no se deformara
+       // gbc.fill = gbc.HORIZONTAL; // maximo width
         this.add(info_al_Jugador, gbc);
 
         gbc.gridx=2; // columna 0
         gbc.gridy=2; // fila 0
         gbc.gridwidth=5; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
-        gbc.weightx = 0.0; // no se deformara
-        gbc.weighty = 1.0; // no se deformara
-        gbc.fill = GridBagConstraints.HORIZONTAL; //natural height maximo width
-        gbc.ipady=40;
-        this.add(jLabel, gbc);
-
-        gbc.gridx=3; // columna 0
-        gbc.gridy=3; // fila 0
-        gbc.gridwidth=1; // ocupara 4 columnas
-        gbc.gridheight=1    ; // ocupara 3 filas
         gbc.weightx = 1.0; // no se deformara
         gbc.weighty = 1.0; // no se deformara
-        gbc.RELATIVE()=2;
+        gbc.insets.set(2,2,20,2);//espacio externo para el componente.101010
+        this.add(jLabel, gbc);
+
+        gbc.gridx=2; // columna 0
+        gbc.gridy=3; // fila 0
+        gbc.gridwidth=1; // ocupara 4 columnas
+        gbc.gridheight=2; // ocupara 3 filas
+        gbc.weightx = 1.0; // no se deformara
+        gbc.weighty = 1.0; // no se deformara
+        gbc.insets.set(2,2,40,2);//espacio externo para el componente.101010
         this.add(si_Juego, gbc);
 
         gbc.gridx=4; // columna 0
         gbc.gridy=3; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
-        gbc.gridheight=1; // ocupara 3 filas
+        gbc.gridheight=2; // ocupara 3 filas
         gbc.weightx = 1.0; // no se deformara
         gbc.weighty = 1.0; // no se deformara
-        //this.add(no_Juego, gbc);
+        gbc.insets.set(2,2,40,2);//espacio externo para el componente.101010
+        this.add(no_Juego, gbc);
 
     }
 

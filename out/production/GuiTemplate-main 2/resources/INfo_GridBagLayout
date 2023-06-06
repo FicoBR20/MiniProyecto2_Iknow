@@ -1,0 +1,24 @@
+        GridBagLayout gridBagLayout = new GridBagLayout();
+
+        this.setLayout(gridBagLayout);
+
+        GridBagConstraints gbc = new GridBagConstraints();
+
+
+
+        gbc.gridx=2; // columna 0
+        gbc.gridy=0; // fila 0
+        gbc.gridwidth=5; // ocupara n columnas
+        gbc.gridheight=1; // ocupara n filas
+        gbc.weightx = 1.0; // no se deformara
+        gbc.weighty = 1.0; // no se deformara
+        gbc.ipadx=1;//relleno interno en x pixels
+        gbc.ipady=1;//relleno interno en y pixels
+        gbc.insets.set(2,2,2,2);//espacio externo para el componente.
+        gbc.anchor=GridBagConstraints.HORIZONTAL;//cuando el componente es mas pequenno que el area de visualización.tambien PAGE_START, PAGE_END, LINE_START, LINE_END, FIRST_LINE_START, FIRST_LINE_END, LAST_LINE_ENDy LAST_LINE_START.
+        gbc.fill = gbc.HORIZONTAL; // maximo width
+        gbc.fill = gbc.VERTICAL; //maximo height
+        gbc.fill = gbc.BOTH;// maximo ambos
+        gbc.gridwidth = GridBagConstraints.RELATIVE ;//es el penultimo de la fila o columna ubicar relativamente (x ó y) pero pegado con el anterior componente.
+        gbc.gridwidth = GridBagConstraints.REMAINDER;//indica que es el ulimo de la fila o la columna.
+        this.add(header, gbc);
