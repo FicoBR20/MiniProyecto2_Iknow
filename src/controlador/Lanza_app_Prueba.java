@@ -35,9 +35,9 @@ public class Lanza_app_Prueba {
         file_estado = new File_estado();
         file_estado.writer_estado("2");
         gui = new GUI();
-        texto = file_estado.reader_estado();
-        numero = Integer.parseInt(texto);
-        seleccionar_pantalla(numero);
+//        texto = file_estado.reader_estado();
+//        numero = Integer.parseInt(texto);
+        gui.add(front_inicial);
     }
 
 
@@ -82,8 +82,7 @@ public class Lanza_app_Prueba {
 
     public static void main(String[] args){
         EventQueue.invokeLater(() -> {
-            Lanza_app_Prueba iknow = new Lanza_app_Prueba();
-            set_lans(iknow);
+            bill = new Lanza_app_Prueba();
             System.out.println(" Lectura del file "+file_estado.reader_estado());
         });
     }
@@ -106,6 +105,8 @@ public class Lanza_app_Prueba {
 
             if (Objects.equals(e.getActionCommand(), "SI")){
 
+//                bill = new Lanza_app_Prueba();
+                bill.seleccionar_pantalla(4);
                 get_lans().seleccionar_pantalla(1);
 //
 //                file_estado = new File_estado();

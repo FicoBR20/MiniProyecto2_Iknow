@@ -4,6 +4,7 @@ package modelo;
  * Esta Clase manejara la lógica del juego.
  */
 public class Juego {
+    private int limite_string_basico;
     /**
      * nivel: indica el nivel en que se desarrolla el juego
      * cada nivel define el valor de sus atributos.
@@ -79,6 +80,14 @@ public class Juego {
     private int categoria;
     private  String ruta;
 
+    public int getLimite_string_basico() {
+        return limite_string_basico;
+    }
+
+    public void setLimite_string_basico(int limite_string_basico) {
+        this.limite_string_basico = limite_string_basico;
+    }
+
 
     // From here implements the Class methods ==================================================
 
@@ -86,6 +95,10 @@ public class Juego {
      * Constructor method.
      */
     public Juego(){
+        limite_string_basico = 199;
+        total_Palabras_del_Nivel = 0;
+        cant_Palabras_a_Memorizar = 0;
+        acierto_Exigido = 1;
         ruta = "";
         categoria = 0;
         estado=1;
@@ -95,7 +108,17 @@ public class Juego {
 
     }
 
+
     // Getter and Setter ===============================
+
+
+    public String getRuta() {
+        return ruta;
+    }
+
+    public void setRuta(String ruta) {
+        this.ruta = ruta;
+    }
 
     public int getNivel() {
         return nivel;
@@ -252,7 +275,7 @@ public class Juego {
                 break;
             case 10:
                 cant_Palabras_a_Memorizar =100;
-                total_Palabras_del_Nivel =200;
+                total_Palabras_del_Nivel = 200;
                 acierto_Exigido=1;
                 break;
             default:

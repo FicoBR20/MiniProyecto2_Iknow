@@ -13,6 +13,7 @@ public class Front_Inicial extends JPanel {
     public Front_Inicial(){
 
         si_boton = new Botones();
+        si_boton.setSize(new Dimension(10000,20));
         no_boton = new Botones();
         area_de_texto = new Area_de_Texto();
 
