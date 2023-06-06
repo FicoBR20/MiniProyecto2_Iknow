@@ -13,6 +13,8 @@ import java.awt.event.ActionListener;
  */
 public class Prueba_Frame_001_Inicial extends JFrame {
 
+    private Front_Nivel_1 frontNivel1;
+
     private Juego juego_Ikn;
 
     private Escucha escucha;
@@ -34,7 +36,6 @@ public class Prueba_Frame_001_Inicial extends JFrame {
 
     private Front_Final frontFinal;
 
-    private Header headerProject;
 
     private Color  colorBack = new Color(82,25,196);
     private Color colorFront = new Color(188, 234, 192);
@@ -96,6 +97,9 @@ public class Prueba_Frame_001_Inicial extends JFrame {
         jButton_NO.setOpaque(true);
         jButton_NO.setFont(font);
         jButton_NO.addActionListener(escucha);
+
+
+        frontNivel1 = new Front_Nivel_1();
 
 
 
