@@ -121,26 +121,26 @@ public class Front_Inicial extends JPanel {
         gbc.gridheight=1; // ocupara 3 filas
         gbc.weightx = 1.0; // no se deformara
         gbc.weighty = 1.0; // no se deformara
-        gbc.insets.set(2,2,20,2);//espacio externo para el componente.101010
+        gbc.insets.set(2,2,100,2);//espacio externo para el componente.101010
         this.add(jLabel, gbc);
 
-        gbc.gridx=2; // columna 0
-        gbc.gridy=3; // fila 0
-        gbc.gridwidth=1; // ocupara 4 columnas
-        gbc.gridheight=2; // ocupara 3 filas
-        gbc.weightx = 1.0; // no se deformara
-        gbc.weighty = 1.0; // no se deformara
-        gbc.insets.set(2,2,40,2);//espacio externo para el componente.101010
-        this.add(si_Juego_Front_Inicial, gbc);
-
-        gbc.gridx=4; // columna 0
-        gbc.gridy=3; // fila 0
-        gbc.gridwidth=1; // ocupara 4 columnas
-        gbc.gridheight=2; // ocupara 3 filas
-        gbc.weightx = 1.0; // no se deformara
-        gbc.weighty = 1.0; // no se deformara
-        gbc.insets.set(2,2,40,2);//espacio externo para el componente.101010
-        this.add(no_Juego_Front_Inicial, gbc);
+//        gbc.gridx=2; // columna 0
+//        gbc.gridy=3; // fila 0
+//        gbc.gridwidth=1; // ocupara 4 columnas
+//        gbc.gridheight=2; // ocupara 3 filas
+//        gbc.weightx = 1.0; // no se deformara
+//        gbc.weighty = 1.0; // no se deformara
+//        gbc.insets.set(2,2,40,2);//espacio externo para el componente.101010
+//        this.add(si_Juego_Front_Inicial, gbc);
+//
+//        gbc.gridx=4; // columna 0
+//        gbc.gridy=3; // fila 0
+//        gbc.gridwidth=1; // ocupara 4 columnas
+//        gbc.gridheight=2; // ocupara 3 filas
+//        gbc.weightx = 1.0; // no se deformara
+//        gbc.weighty = 1.0; // no se deformara
+//        gbc.insets.set(2,2,40,2);//espacio externo para el componente.101010
+//        this.add(no_Juego_Front_Inicial, gbc);
 
     }
 
