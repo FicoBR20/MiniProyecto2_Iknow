@@ -1,7 +1,12 @@
 package vista;
 
+import controlador.Lanza_app_Prueba;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Objects;
 
 /**
  * Esta clase gestiona los recursos gráficos del juego.
@@ -10,9 +15,6 @@ import java.awt.*;
 public class GUI extends JFrame {
 
     private Front_Inicial frontInicial;
-
-    private Canvas canvas;
-
     private Header headerProject;
     /**
      * JPanels contenedores.
@@ -22,17 +24,11 @@ public class GUI extends JFrame {
      * JButtons que recibiran la decision del usuario en cada frame.
      */
     private JButton jBut_1_auxiliar, jBut_2_auxiliar, jBut_3_auxiliar, jBut_4_auxiliar ;
-
-
     private JLabel jLabel_Central, jLabel_1_auxiliar, jLabel_2_auxiliar;
-
-
     private JTextArea jTextArea_Principal, jTextArea_auxiliar;
-
     private JTextPane jTextPane_Principal, jTextPane_auxiliar;
-
-
     private JTextField jTextField_Principal, jTextField_1_auxiliar, jTextField_2_auxiliar;
+    private int estado_panel;
 
 
     private Color  colorBack = new Color(82,25,196);
@@ -43,6 +39,7 @@ public class GUI extends JFrame {
      */
     public GUI(){
         initGUI();
+        estado_panel = 0;
 
         //Default JFrame configuration
         this.setTitle("I Know that word !!");
@@ -59,6 +56,7 @@ public class GUI extends JFrame {
      * create Listener and control Objects used for the GUI class
      */
     public void initGUI() {
+        System.out.println(" ..empieza tu juego..");
         //Set up JFrame Container's Layout
         //Create Listener Object and Control Object
         //Set up JComponents
@@ -69,10 +67,6 @@ public class GUI extends JFrame {
         headerProject = new Header(" Ejercita tu memoria ", colorFront);
         frontInicial = new Front_Inicial();
         frontInicial.setBackground(colorBack);
-
-
-        canvas = new Canvas();
-;
 
         jPanel_Principal = new JPanel();
 
@@ -112,6 +106,13 @@ public class GUI extends JFrame {
 
         this.add(headerProject,BorderLayout.NORTH); //Change this line if you change JFrame Container's Layout
 
+    }
+
+    public void set_panel(int n) {
+        estado_panel = n;
+    }
+    public int get_panel() {
+        return estado_panel;
     }
 
 }

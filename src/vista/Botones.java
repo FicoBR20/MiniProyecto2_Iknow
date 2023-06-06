@@ -1,19 +1,19 @@
 package vista;
 
-import controlador.Escucha;
+import controlador.Lanza_app_Prueba;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.Objects;
 
 public class Botones {
-    private final JButton boton;
-    private final Escucha escucha;
+    private JButton boton;
+    private Lanza_app_Prueba.Escucha escucha;
     private ImageIcon imageIcon;
     private ImageIcon imageIcon_Pressed;
 
     public Botones() {
-        escucha = new Escucha();
+        escucha = new Lanza_app_Prueba.Escucha();
         boton = new JButton();
         boton.setBackground(null);
         boton.setContentAreaFilled(false);
