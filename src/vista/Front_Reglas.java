@@ -1,11 +1,15 @@
 package vista;
 
+import modelo.Juego;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Front_Reglas extends JPanel {
+
+    private Header header;
 
 
     private JButton si_Juego;
@@ -36,9 +40,11 @@ public class Front_Reglas extends JPanel {
 
     public void init_Panel(){
 
-
-
         Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 20);
+
+        header = new Header(" Reglas del Juego ", verdeClaro);
+        header.setPreferredSize(new Dimension(600,20));
+
 
         si_Juego = new JButton();
         ImageIcon imageIcon = new ImageIcon(getClass().getResource("/resources/Boton_SI.png"));
@@ -71,7 +77,6 @@ public class Front_Reglas extends JPanel {
         info_al_Jugador.setBackground(fondoLila);
         info_al_Jugador.setEditable(false);
         info_al_Jugador.setFocusable(false);
-        info_al_Jugador.setPreferredSize(new Dimension(550,350));
 
         GridBagLayout gridBagLayout = new GridBagLayout();
 
@@ -79,44 +84,46 @@ public class Front_Reglas extends JPanel {
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        gbc.gridx=1; // ubicacion columna
-        gbc.gridy=0; // ubicacion fila
-        gbc.gridwidth=5; // columnoas que ocuparȧ
-        gbc.gridheight=2; // filas que ocupará
+
+
+        gbc.gridx=0; // columna 0
+        gbc.gridy=0; // fila 0
+        gbc.gridwidth=5; // ocupara n columnas
+        gbc.gridheight=1; // ocupara n filas
         gbc.weightx = 1.0; // no se deformara
         gbc.weighty = 1.0; // no se deformara
+        gbc.ipady=5;//relleno interno en y pixels
+        gbc.anchor=GridBagConstraints.PAGE_START;//cuando el componente es mas pequenno que el area de visualización.tambien PAGE_START, PAGE_END, LINE_START, LINE_END, FIRST_LINE_START, FIRST_LINE_END, LAST_LINE_ENDy LAST_LINE_START.
+        this.add(header, gbc);
 
-        this.add(info_al_Jugador, gbc);
 
-        gbc.gridx=1; // columna 0
-        gbc.gridy=3; // fila 0
-        gbc.gridwidth=1; // ocupara 4 columnas
-        gbc.gridheight=1; // ocupara 3 filas
-        gbc.weightx = 1.0; // no se deformara
-        gbc.weighty = 1.0; // no se deformara
-        this.add(si_Juego, gbc);
-
-        gbc.gridx=3; // columna 0
-        gbc.gridy=3; // fila 0
-        gbc.gridwidth=1; // ocupara 4 columnas
-        gbc.gridheight=1; // ocupara 3 filas
-        gbc.weightx = 1.0; // no se deformara
-        gbc.weighty = 1.0; // no se deformara
-        this.add(no_Juego, gbc);
-
-        desea_Jugar = new JLabel("Desea Jugar ? ");
-        desea_Jugar.setFont(font);
-        desea_Jugar.setBackground(fondoLila);
-        desea_Jugar.setForeground(verdeClaro);
 
 
         gbc.gridx=2; // columna 0
-        gbc.gridy=2; // fila 0
-        gbc.gridwidth=1; // ocupara 4 columnas
+        gbc.gridy=1; // fila 0
+        gbc.gridwidth=5; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         gbc.weightx = 1.0; // no se deformara
         gbc.weighty = 1.0; // no se deformara
+        // gbc.fill = gbc.HORIZONTAL; // maximo width
+        this.add(info_al_Jugador, gbc);
+
+
+
+        desea_Jugar = new JLabel(" Desea Continuar ? ");
+        desea_Jugar.setFont(font);
+        desea_Jugar.setBackground(fondoLila);
+        desea_Jugar.setForeground(verdeClaro);
+        gbc.gridx=2; // columna 0
+        gbc.gridy=2; // fila 0
+        gbc.gridwidth=5; // ocupara 4 columnas
+        gbc.gridheight=1; // ocupara 3 filas
+        gbc.weightx = 1.0; // no se deformara
+        gbc.weighty = 1.0; // no se deformara
+       // gbc.insets.set(2,2,100,2);//espacio externo para el componente.101010
         this.add(desea_Jugar, gbc);
+
+
 
     }
 
@@ -130,12 +137,14 @@ public class Front_Reglas extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource()==si_Juego){
-                new GUI().lanza_frames(11); // Juego.estado = 7;
-                System.out.println(" se le presenta el juego en el nivel 1 ");
+                new Juego().setEstado(3);
+                new Prueba_Frame_001_Inicial().lanza_frames(new Juego().getEstado());
+                System.out.println(" se registrará al jugador ");
             }
             else if(e.getSource()==no_Juego){
-                new GUI().lanza_frames(99); // Juego.estado = 7;
-                System.out.println(" aqui se termina el juego y se muestra de nuevo el ingreso");
+                new Juego().setEstado(99);
+                new Prueba_Frame_001_Inicial().lanza_frames(new Juego().getEstado());
+                System.out.println(" aqui se le dice ...otra vez será..lo esperamos..");
             }
 
         }

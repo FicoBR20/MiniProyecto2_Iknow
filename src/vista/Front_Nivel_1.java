@@ -1,13 +1,13 @@
 package vista;
 
+import modelo.Juego;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import modelo.Juego;
-
-public class Front_Inicial extends JPanel {
+public class Front_Nivel_1 extends JPanel {
 
     private JLabel jLabel;
 
@@ -31,7 +31,7 @@ public class Front_Inicial extends JPanel {
     /**
      * Método Constructor
      */
-    public Front_Inicial(){
+    public Front_Nivel_1(){
         init_Panel();
         this.setPreferredSize(new Dimension(600,400));
         this.setBackground(fondoLila);
@@ -46,7 +46,7 @@ public class Front_Inicial extends JPanel {
 
         Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 24);
 
-        header = new Header(" Bienvenidos", verdeClaro);
+        header = new Header(" Juego Nivel 1", verdeClaro);
         header.setPreferredSize(new Dimension(600,20));
 
 

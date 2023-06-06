@@ -1,11 +1,15 @@
 package vista;
 
+import modelo.Juego;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Front_Final extends JPanel {
+
+    private Header header;
 
 
     private JButton si_Juego;
@@ -35,6 +39,11 @@ public class Front_Final extends JPanel {
 
         Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 24);
 
+        header = new Header(" Cierre de Aplicación ", verdeClaro);
+        header.setPreferredSize(new Dimension(600,20));
+
+
+
         si_Juego = new JButton();
         ImageIcon imageIcon = new ImageIcon(getClass().getResource("/resources/Boton_SI.png"));
         ImageIcon imageIcon_Pressed = new ImageIcon(getClass().getResource("/resources/Boton_SI_PRESSED.png"));
@@ -58,9 +67,9 @@ public class Front_Final extends JPanel {
 
 
         info_al_Jugador = new JTextArea();
-        info_al_Jugador.append("....Bueno en otra ocasión será...\n" +
-                "Nunca olvides ejercitar tu memoria \n" +
-                "...te sentará muy bien...Chao?\n");
+        info_al_Jugador.append("....Aqui se cierra el juego...\n" +
+                "Recuerda ejercitar tu memoria \n" +
+                "..hasta pronto..\n");
         info_al_Jugador.setFont(font);
         info_al_Jugador.setForeground(verdeClaro);
         info_al_Jugador.setEditable(false);
@@ -73,16 +82,31 @@ public class Front_Final extends JPanel {
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        gbc.gridx=1; // columna 0
+
+        gbc.gridx=0; // columna 0
         gbc.gridy=0; // fila 0
-        gbc.gridwidth=6; // ocupara 4 columnas
-        gbc.gridheight=2; // ocupara 3 filas
+        gbc.gridwidth=5; // ocupara n columnas
+        gbc.gridheight=1; // ocupara n filas
         gbc.weightx = 1.0; // no se deformara
         gbc.weighty = 1.0; // no se deformara
+        gbc.ipady=5;//relleno interno en y pixels
+        gbc.anchor=GridBagConstraints.PAGE_START;//cuando el componente es mas pequenno que el area de visualización.tambien PAGE_START, PAGE_END, LINE_START, LINE_END, FIRST_LINE_START, FIRST_LINE_END, LAST_LINE_ENDy LAST_LINE_START.
+        this.add(header, gbc);
+
+
+        gbc.gridx=2; // columna 0
+        gbc.gridy=1; // fila 0
+        gbc.gridwidth=5; // ocupara 4 columnas
+        gbc.gridheight=1; // ocupara 3 filas
+        gbc.weightx = 1.0; // no se deformara
+        gbc.weighty = 1.0; // no se deformara
+        // gbc.fill = gbc.HORIZONTAL; // maximo width
         this.add(info_al_Jugador, gbc);
 
 
     }
+
+
 
 
 
@@ -95,8 +119,8 @@ public class Front_Final extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource()==si_Juego){
-                new GUI().lanza_frames(7); // Juego.estado = 7;
-                System.out.println(" le doy las reglas ");
+
+                System.out.println(" le di al SI ");
             }
             else if(e.getSource()==no_Juego){
                 System.out.println(" aqui se termina el juego y se muestra de nuevo el ingreso");
