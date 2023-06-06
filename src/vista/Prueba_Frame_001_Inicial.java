@@ -98,34 +98,42 @@ public class Prueba_Frame_001_Inicial extends JFrame {
 
         frontInicial = new Front_Inicial();
 
-        // CONFIGURACION DEL LAYOUT PARA EL JPANEL PADRINO
-
-//        GridBagLayout gridBagLayout = new GridBagLayout();
-
-//        padrino.setLayout(gridBagLayout);
-
-//        GridBagConstraints gbc = new GridBagConstraints();
-//
-//        gbc.gridx=0; // columna 0
-//        gbc.gridy=0; // fila 0
-//        gbc.gridwidth=1; // ocupara 4 columnas
-//        gbc.gridheight=1; // ocupara 3 filas
-//        gbc.weightx = 1.0; // no se deformara
-//        gbc.weighty = 1.0; // no se deformara
-//        gbc.insets.set(20,20,20,20);//espacio externo para el componente.101010
-       // padrino.add(jButton, gbc);
-
-
-       // padrino.add(frontInicial);
-
-        lanza_frames(new Juego().getEstado());
-
         contiene_Botones.add(jButton_SI);
         contiene_Botones.add(jButton_NO);
 
+        // DEFINIR GRIDBAG LAYOUT PARA front INicial.
+
+
+
+
+        GridBagConstraints gbc = new GridBagConstraints();
+
+
+        gbc.gridx=2; // columna 0
+        gbc.gridy=3; // fila 0
+        gbc.gridwidth=5; // ocupara 4 columnas
+        gbc.gridheight=1; // ocupara 3 filas
+        gbc.weightx = 1.0; // no se deformara
+        gbc.weighty = 1.0; // no se deformara
+        gbc.insets.set(2,2,60,2);//espacio externo para el componente.101010
+        frontInicial.add(contiene_Botones, gbc);
+
+
+
+
+
+
+//        =============================================
+
+
+
+
+
+        lanza_frames(new Juego().getEstado());
 
         this.add(padrino, BorderLayout.NORTH);
-        this.add(contiene_Botones, BorderLayout.SOUTH);
+
+      //  this.add(contiene_Botones, BorderLayout.SOUTH); // Valida...OJO
 
 
         //+++++++++++++++++++++++++++++++++++++++++++++++++

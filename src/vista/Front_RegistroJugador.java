@@ -9,6 +9,8 @@ import java.awt.event.*;
 
 public class Front_RegistroJugador extends JPanel {
 
+    private Header header;
+
     private String name_Player;
 
 
@@ -52,8 +54,11 @@ public class Front_RegistroJugador extends JPanel {
 
         Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 24);
 
+        header = new Header(" Registro de Jugdor ", verdeClaro);
+        header.setPreferredSize(new Dimension(600,20));
 
-        jlabel_Title = new JLabel(" Registro del Jugador ");
+
+        jlabel_Title = new JLabel(" Ingrese sus datos ");
         jlabel_Title.setFont(font);
         jlabel_Title.setBackground(fondoLila);
         jlabel_Title.setForeground(verdeClaro);
@@ -92,6 +97,26 @@ public class Front_RegistroJugador extends JPanel {
         this.setLayout(gridBagLayout);
 
         GridBagConstraints gbc = new GridBagConstraints();
+
+
+
+        gbc.gridx=0; // columna 0
+        gbc.gridy=0; // fila 0
+        gbc.gridwidth=5; // ocupara n columnas
+        gbc.gridheight=1; // ocupara n filas
+        gbc.weightx = 1.0; // no se deformara
+        gbc.weighty = 1.0; // no se deformara
+        gbc.ipady=5;//relleno interno en y pixels
+        gbc.anchor=GridBagConstraints.PAGE_START;//cuando el componente es mas pequenno que el area de visualización.tambien PAGE_START, PAGE_END, LINE_START, LINE_END, FIRST_LINE_START, FIRST_LINE_END, LAST_LINE_ENDy LAST_LINE_START.
+        this.add(header, gbc);
+
+
+
+
+
+
+
+
 
         gbc.gridx=1; // columna 0
         gbc.gridy=0; // fila 0
