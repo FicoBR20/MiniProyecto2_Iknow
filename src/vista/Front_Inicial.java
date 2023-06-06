@@ -124,24 +124,6 @@ public class Front_Inicial extends JPanel {
        // gbc.insets.set(2,2,10,2);//espacio externo para el componente.101010
         this.add(jLabel, gbc);
 
-//        gbc.gridx=2; // columna 0
-//        gbc.gridy=3; // fila 0
-//        gbc.gridwidth=1; // ocupara 4 columnas
-//        gbc.gridheight=2; // ocupara 3 filas
-//        gbc.weightx = 1.0; // no se deformara
-//        gbc.weighty = 1.0; // no se deformara
-//        gbc.insets.set(2,2,40,2);//espacio externo para el componente.101010
-//        this.add(si_Juego_Front_Inicial, gbc);
-//
-//        gbc.gridx=4; // columna 0
-//        gbc.gridy=3; // fila 0
-//        gbc.gridwidth=1; // ocupara 4 columnas
-//        gbc.gridheight=2; // ocupara 3 filas
-//        gbc.weightx = 1.0; // no se deformara
-//        gbc.weighty = 1.0; // no se deformara
-//        gbc.insets.set(2,2,40,2);//espacio externo para el componente.101010
-//        this.add(no_Juego_Front_Inicial, gbc);
-
     }
 
     public void cierrePanel(JPanel jPanel){
@@ -163,7 +145,7 @@ public class Front_Inicial extends JPanel {
             if (e.getSource()== si_Juego_Front_Inicial){
                 new Juego().setEstado(2);
                 new Prueba_Frame_001_Inicial().lanza_frames(new Juego().getEstado());
-                System.out.println(" le doy las reglas ");
+                System.out.println(" le doy las reglas " + Integer.toString(new Juego().getEstado()));
             }
             else if(e.getSource()== no_Juego_Front_Inicial){
                 new Juego().setEstado(99);

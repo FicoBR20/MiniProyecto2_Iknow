@@ -87,18 +87,6 @@ public class Juego {
 
     // From here implements the Class methods ==================================================
 
-    /**
-     * Constructor method.
-     */
-    public Juego(){
-        ruta = "";
-        categoria = 0;
-        estado=1;
-        setUp_Nivel(estado);// juego inicia en nivel 1
-        puntaje_Logrado=0;
-        acierto_del_Jugador=false;
-
-    }
 
     // Getter and Setter ===============================
 
@@ -162,8 +150,8 @@ public class Juego {
         return estado;
     }
 
-    public void setEstado(int estado) {
-        this.estado = estado;
+    public void setEstado(int nuevo_estado) {
+        this.estado = nuevo_estado;
     }
 
     public int getCategoria() {
@@ -192,6 +180,19 @@ public class Juego {
         }
     }
 
+
+    /**
+     * Constructor method.
+     */
+    public Juego(){
+        ruta = "";
+        categoria = 0;
+        estado=1;
+        setUp_Nivel(estado);// juego inicia en nivel 1
+        puntaje_Logrado=0;
+        acierto_del_Jugador=false;
+
+    }
 
     // Methods of Class ===============================
 

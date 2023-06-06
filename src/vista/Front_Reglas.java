@@ -120,7 +120,7 @@ public class Front_Reglas extends JPanel {
         gbc.gridheight=1; // ocupara 3 filas
         gbc.weightx = 1.0; // no se deformara
         gbc.weighty = 1.0; // no se deformara
-        gbc.insets.set(2,2,50,2);//espacio externo para el componente.101010
+       // gbc.insets.set(2,2,100,2);//espacio externo para el componente.101010
         this.add(desea_Jugar, gbc);
 
 
