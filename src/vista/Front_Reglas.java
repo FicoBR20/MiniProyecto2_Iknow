@@ -110,7 +110,7 @@ public class Front_Reglas extends JPanel {
 
 
 
-        desea_Jugar = new JLabel("Desea Jugar ? ");
+        desea_Jugar = new JLabel(" Desea Continuar ? ");
         desea_Jugar.setFont(font);
         desea_Jugar.setBackground(fondoLila);
         desea_Jugar.setForeground(verdeClaro);

@@ -9,6 +9,8 @@ import java.awt.event.*;
 
 public class Front_RegistroJugador extends JPanel {
 
+    private Juego juego_Ik;
+
     private Header header;
 
     private String name_Player;
@@ -52,9 +54,11 @@ public class Front_RegistroJugador extends JPanel {
 
     public void init_Panel(){
 
+        juego_Ik =  new Juego();
+
         Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 24);
 
-        header = new Header(" Registro de Jugdor ", verdeClaro);
+        header = new Header(" Registro del Jugador ", verdeClaro);
         header.setPreferredSize(new Dimension(600,20));
 
 
@@ -171,10 +175,10 @@ public class Front_RegistroJugador extends JPanel {
 
                 name_Player = jTextField_NombreJugador.getText();
 
-                new Juego().setNivel(1);
-                new Juego().setEstado(4);//vamos al frame del juego en el Nivel 1
+                juego_Ik.setNivel(1);
+                juego_Ik.setEstado(4);//vamos al frame del juego en el Nivel 1
 
-                name_Player = name_Player + " " + Integer.toString(new Juego().getNivel());
+                name_Player = name_Player + " " + Integer.toString(juego_Ik.getNivel());
 
                 new Control_FileManager().writer(name_Player);
 
@@ -184,7 +188,7 @@ public class Front_RegistroJugador extends JPanel {
 
 
 
-                System.out.println(" Hemos registrado sus datos " + name_Player + " nivel del juego " + Integer.toString(new Juego().getNivel()));
+                System.out.println(" Hemos registrado sus datos " + name_Player + " nivel del juego " + Integer.toString(juego_Ik.getNivel()));
             }
 
         }
@@ -195,10 +199,10 @@ public class Front_RegistroJugador extends JPanel {
             super.mouseClicked(e);
 
             if (e.getSource() == iniciar_Juego) {
-                jTextField_NombreJugador.setText(" ");
-                new Juego().setNivel(1);
-                new Juego().setEstado(4);// nos lleva al frame del primer nivel del juego.
-                new Prueba_Frame_001_Inicial().lanza_frames(new Juego().getEstado());
+//                jTextField_NombreJugador.setText(" ");
+//                new Juego().setNivel(1);
+//                new Juego().setEstado(4);// nos lleva al frame del primer nivel del juego.
+//                new Prueba_Frame_001_Inicial().lanza_frames(new Juego().getEstado());
                 System.out.println(" Empezamos a jugar en el nivel = 1 ");
 
 

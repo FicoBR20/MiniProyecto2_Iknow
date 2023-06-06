@@ -21,6 +21,9 @@ public class Prueba_Frame_001_Inicial extends JFrame {
     private JButton jButton_NO;
 
 
+    /**
+     * Panel que contine a los Jpane externos
+     */
     private JPanel padrino;
     private JPanel jPanel_Botones_front_Inicial;
 
@@ -233,6 +236,11 @@ public class Prueba_Frame_001_Inicial extends JFrame {
         }
     }
 
+    /**
+     * Método que segun el estado del juego presenta un
+     * determinado Jpanel
+      * @param estado_real
+     */
     public void lanza_frames(int estado_real){
 
 
