@@ -6,8 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import modelo.Juego;
-import vista.Front_Reglas;
-import vista.GUI;
 
 public class Front_Inicial extends JPanel {
 
@@ -16,9 +14,9 @@ public class Front_Inicial extends JPanel {
     private Header header;
 
 
-    private JButton si_Juego;
+    private JButton si_Juego_Front_Inicial;
 
-    private JButton no_Juego;
+    private JButton no_Juego_Front_Inicial;
 
     private JTextArea info_al_Jugador;
 
@@ -52,26 +50,26 @@ public class Front_Inicial extends JPanel {
         header.setPreferredSize(new Dimension(600,20));
 
 
-        si_Juego = new JButton();
+        si_Juego_Front_Inicial = new JButton();
         ImageIcon imageIcon = new ImageIcon(getClass().getResource("/resources/Boton_SI.png"));
         ImageIcon imageIcon_Pressed = new ImageIcon(getClass().getResource("/resources/Boton_SI_PRESSED.png"));
-        si_Juego.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(60,31,Image.SCALE_SMOOTH)));
-        si_Juego.setBorder(BorderFactory.createEmptyBorder());
-        si_Juego.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(60,31,Image.SCALE_SMOOTH)));
+        si_Juego_Front_Inicial.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(60,31,Image.SCALE_SMOOTH)));
+        si_Juego_Front_Inicial.setBorder(BorderFactory.createEmptyBorder());
+        si_Juego_Front_Inicial.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(60,31,Image.SCALE_SMOOTH)));
 
         escucha = new Escucha();
 
-        no_Juego = new JButton();
+        no_Juego_Front_Inicial = new JButton();
         imageIcon = new ImageIcon(getClass().getResource("/resources/Boton_NO.png"));
         imageIcon_Pressed = new ImageIcon(getClass().getResource("/resources/Boton_NO_PRESSED.png"));
-        no_Juego.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(60,31,Image.SCALE_SMOOTH)));
-        no_Juego.setBorder(BorderFactory.createEmptyBorder());
-        no_Juego.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(60,31,Image.SCALE_SMOOTH)));
+        no_Juego_Front_Inicial.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(60,31,Image.SCALE_SMOOTH)));
+        no_Juego_Front_Inicial.setBorder(BorderFactory.createEmptyBorder());
+        no_Juego_Front_Inicial.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(60,31,Image.SCALE_SMOOTH)));
 
 
 
-        si_Juego.addActionListener(escucha);
-        no_Juego.addActionListener(escucha);
+        si_Juego_Front_Inicial.addActionListener(escucha);
+        no_Juego_Front_Inicial.addActionListener(escucha);
 
 
         info_al_Jugador = new JTextArea();
@@ -133,7 +131,7 @@ public class Front_Inicial extends JPanel {
         gbc.weightx = 1.0; // no se deformara
         gbc.weighty = 1.0; // no se deformara
         gbc.insets.set(2,2,40,2);//espacio externo para el componente.101010
-        this.add(si_Juego, gbc);
+        this.add(si_Juego_Front_Inicial, gbc);
 
         gbc.gridx=4; // columna 0
         gbc.gridy=3; // fila 0
@@ -142,7 +140,7 @@ public class Front_Inicial extends JPanel {
         gbc.weightx = 1.0; // no se deformara
         gbc.weighty = 1.0; // no se deformara
         gbc.insets.set(2,2,40,2);//espacio externo para el componente.101010
-        this.add(no_Juego, gbc);
+        this.add(no_Juego_Front_Inicial, gbc);
 
     }
 
@@ -162,12 +160,12 @@ public class Front_Inicial extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (e.getSource()==si_Juego){
+            if (e.getSource()== si_Juego_Front_Inicial){
                 new Juego().setEstado(2);
                 new Prueba_Frame_001_Inicial().lanza_frames(new Juego().getEstado());
                 System.out.println(" le doy las reglas ");
             }
-            else if(e.getSource()==no_Juego){
+            else if(e.getSource()== no_Juego_Front_Inicial){
                 new Juego().setEstado(99);
                 new Prueba_Frame_001_Inicial().lanza_frames(new Juego().getEstado());
                 System.out.println(" cierre de la app..fin");

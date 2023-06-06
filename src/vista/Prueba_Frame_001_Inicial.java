@@ -15,9 +15,12 @@ public class Prueba_Frame_001_Inicial extends JFrame {
 
     private Escucha escucha;
 
-    private JButton jButton;
+    private JButton jButton_SI;
+    private JButton jButton_NO;
+
 
     private JPanel padrino;
+    private JPanel contiene_Botones;
 
     private Front_Inicial frontInicial;
     private Front_Reglas frontReglas;
@@ -31,6 +34,7 @@ public class Prueba_Frame_001_Inicial extends JFrame {
     private Color  colorBack = new Color(82,25,196);
     private Color colorFront = new Color(188, 234, 192);
     Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 24);
+
 
     /**
      * Constructor of GUI class
@@ -56,16 +60,25 @@ public class Prueba_Frame_001_Inicial extends JFrame {
         //Set up JFrame Container's Layout
         //Create Listener Object and Control Object
         //Set up JComponents
+        contiene_Botones =  new JPanel();
         padrino = new JPanel();
         escucha = new Escucha();
 
-        jButton = new JButton(" el inicio ");
-        jButton.setPreferredSize(new Dimension(60, 31));
-        jButton.setBackground(Color.BLACK);
-        jButton.setOpaque(true);
-        jButton.setFont(font);
-//        jButton.setLocation(50, 350);
-        jButton.addActionListener(escucha);
+
+
+        jButton_SI = new JButton("SI");
+        jButton_SI.setPreferredSize(new Dimension(60, 31));
+        jButton_SI.setBackground(Color.BLACK);
+        jButton_SI.setOpaque(true);
+        jButton_SI.setFont(font);
+        jButton_SI.addActionListener(escucha);
+
+        jButton_NO = new JButton("NO");
+        jButton_NO.setPreferredSize(new Dimension(60, 31));
+        jButton_NO.setBackground(Color.BLACK);
+        jButton_NO.setOpaque(true);
+        jButton_NO.setFont(font);
+        jButton_NO.addActionListener(escucha);
 
         frontFinal =  new Front_Final();
 
@@ -77,26 +90,32 @@ public class Prueba_Frame_001_Inicial extends JFrame {
 
         // CONFIGURACION DEL LAYOUT PARA EL JPANEL PADRINO
 
-        GridBagLayout gridBagLayout = new GridBagLayout();
+//        GridBagLayout gridBagLayout = new GridBagLayout();
 
-        padrino.setLayout(gridBagLayout);
+//        padrino.setLayout(gridBagLayout);
 
-        GridBagConstraints gbc = new GridBagConstraints();
+//        GridBagConstraints gbc = new GridBagConstraints();
+//
+//        gbc.gridx=0; // columna 0
+//        gbc.gridy=0; // fila 0
+//        gbc.gridwidth=1; // ocupara 4 columnas
+//        gbc.gridheight=1; // ocupara 3 filas
+//        gbc.weightx = 1.0; // no se deformara
+//        gbc.weighty = 1.0; // no se deformara
+//        gbc.insets.set(20,20,20,20);//espacio externo para el componente.101010
+       // padrino.add(jButton, gbc);
 
-        gbc.gridx=0; // columna 0
-        gbc.gridy=0; // fila 0
-        gbc.gridwidth=1; // ocupara 4 columnas
-        gbc.gridheight=1; // ocupara 3 filas
-        gbc.weightx = 1.0; // no se deformara
-        gbc.weighty = 1.0; // no se deformara
-        gbc.insets.set(20,20,20,20);//espacio externo para el componente.101010
-        padrino.add(jButton, gbc);
 
-        GridBagConstraints gbc_1 = new GridBagConstraints();
+       // padrino.add(frontInicial);
 
-        padrino.add(frontInicial);
+        lanza_frames(new Juego().getEstado());
+
+        contiene_Botones.add(jButton_SI);
+        contiene_Botones.add(jButton_NO);
+
 
         this.add(padrino, BorderLayout.NORTH);
+        this.add(contiene_Botones, BorderLayout.SOUTH);
 
 
         //+++++++++++++++++++++++++++++++++++++++++++++++++
@@ -140,7 +159,7 @@ public class Prueba_Frame_001_Inicial extends JFrame {
         padrino.add(young, BorderLayout.CENTER);
         padrino.revalidate();
         padrino.repaint();
-        pack();
+       // pack();
 
     }
 
@@ -164,12 +183,17 @@ public class Prueba_Frame_001_Inicial extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (e.getSource()==jButton){
+            if (e.getSource()== jButton_SI){
 
-                padrino.remove(frontInicial);
-                padrino.add(frontReglas);
-                padrino.revalidate();
-                padrino.repaint();
+                renove_Panel(frontInicial, frontReglas);
+
+
+//                lanza_frames(new Juego().getEstado());
+//
+//                padrino.remove(frontInicial);
+//                padrino.add(frontReglas);
+//                padrino.revalidate();
+//                padrino.repaint();
 
                 System.out.println(" se incia esto ");
             }
@@ -185,12 +209,10 @@ public class Prueba_Frame_001_Inicial extends JFrame {
 
         switch (estado){
             case 1:
-                frontInicial.init_Panel();
+                padrino.add(frontInicial);
                 break;
             case 2:
-                renove_Panel(frontFinal,frontReglas);
-                padrino.revalidate();
-                padrino.repaint();
+                padrino.add(frontReglas);
 
                 break;
             case 3:
