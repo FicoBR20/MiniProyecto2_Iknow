@@ -20,7 +20,7 @@ public class Prueba_Frame_001_Inicial extends JFrame {
 
 
     private JPanel padrino;
-    private JPanel contiene_Botones;
+    private JPanel jPanel_Botones_front_Inicial;
 
     private Front_Inicial frontInicial;
     private Front_Reglas frontReglas;
@@ -60,8 +60,8 @@ public class Prueba_Frame_001_Inicial extends JFrame {
         //Set up JFrame Container's Layout
         //Create Listener Object and Control Object
         //Set up JComponents
-        contiene_Botones =  new JPanel();
-        contiene_Botones.setBackground(colorBack);
+        jPanel_Botones_front_Inicial =  new JPanel();
+        jPanel_Botones_front_Inicial.setBackground(colorBack);
         padrino = new JPanel();
         escucha = new Escucha();
 
@@ -98,86 +98,71 @@ public class Prueba_Frame_001_Inicial extends JFrame {
 
         frontInicial = new Front_Inicial();
 
-        contiene_Botones.add(jButton_SI);
-        contiene_Botones.add(jButton_NO);
-
-        // DEFINIR GRIDBAG LAYOUT PARA front INicial.
+        jPanel_Botones_front_Inicial.add(jButton_SI);
+        jPanel_Botones_front_Inicial.add(jButton_NO);
 
 
-
-
-        GridBagConstraints gbc = new GridBagConstraints();
-
-
-        gbc.gridx=2; // columna 0
-        gbc.gridy=3; // fila 0
-        gbc.gridwidth=5; // ocupara 4 columnas
-        gbc.gridheight=1; // ocupara 3 filas
-        gbc.weightx = 1.0; // no se deformara
-        gbc.weighty = 1.0; // no se deformara
-        gbc.insets.set(2,2,60,2);//espacio externo para el componente.101010
-        frontInicial.add(contiene_Botones, gbc);
-
-
-
-
-
-
-//        =============================================
-
-
-
+        adiciono_JPanel_Botones(new Juego().getEstado());
 
 
         lanza_frames(new Juego().getEstado());
 
         this.add(padrino, BorderLayout.NORTH);
 
-      //  this.add(contiene_Botones, BorderLayout.SOUTH); // Valida...OJO
-
-
-        //+++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-
-
-
-
-        int selector = 9999;
-        selector=new Juego().getEstado();
-
-        System.out.println(" valor de selector al inicio " + selector + "\n");
-
-
-
-
-
-        this.add(padrino);
-
-
-
-
-
-
 
 
     }
-
-    public void changeLabel (){
-        padrino.remove(frontInicial);
-      padrino.add(frontReglas, BorderLayout.CENTER);
-      padrino.revalidate();
-      padrino.repaint();
-    pack();
-
-}
 
     public void renove_Panel (JPanel old, JPanel young){
         padrino.remove(old);
         padrino.add(young, BorderLayout.CENTER);
         padrino.revalidate();
         padrino.repaint();
-       // pack();
+
+    }
+
+    /**
+     * Método que toma el JPanel de los botones y lo
+     * adiciona a otro JPanel.
+     */
+    private void adiciono_JPanel_Botones(int estado){{
+
+
+        switch (estado){
+            case 1:
+                GridBagConstraints gbc = new GridBagConstraints();
+                gbc.gridx=2; // columna 0
+                gbc.gridy=3; // fila 0
+                gbc.gridwidth=5; // ocupara 4 columnas
+                gbc.gridheight=1; // ocupara 3 filas
+                gbc.weightx = 1.0; // no se deformara
+                gbc.weighty = 1.0; // no se deformara
+                gbc.insets.set(2,2,60,2);//espacio externo para el componente.101010
+                frontInicial.add(jPanel_Botones_front_Inicial, gbc);
+                break;
+            case 2:
+                System.out.println(" .. pendiente ubicar botones en panal reglas");
+
+                break;
+            case 3:
+                System.out.println(" .. pendiente ubicar botones en panal registro");
+                break;
+            case 4:
+                System.out.println(" .. pendiente todo el frame del nivel 1");
+                break;
+            case 99://final de la app.
+                System.out.println(" este finalizo la app");
+                break;
+            default:
+                System.out.println(" no hay mas ventanas");
+                break;
+        }
+    }
+
+
+
+
+
 
     }
 
@@ -205,13 +190,6 @@ public class Prueba_Frame_001_Inicial extends JFrame {
 
                 renove_Panel(frontInicial, frontReglas);
 
-
-//                lanza_frames(new Juego().getEstado());
-//
-//                padrino.remove(frontInicial);
-//                padrino.add(frontReglas);
-//                padrino.revalidate();
-//                padrino.repaint();
 
                 System.out.println(" se incia esto ");
             }
