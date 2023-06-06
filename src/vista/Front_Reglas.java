@@ -133,12 +133,12 @@ public class Front_Reglas extends JPanel {
         public void actionPerformed(ActionEvent e) {
             if (e.getSource()==si_Juego){
                 new Juego().setEstado(3);
-                new Prueba_Frame_001_Inicial().initGUI();
+                new Prueba_Frame_001_Inicial().lanza_frames(new Juego().getEstado());
                 System.out.println(" se registrará al jugador ");
             }
             else if(e.getSource()==no_Juego){
                 new Juego().setEstado(99);
-                new Prueba_Frame_001_Inicial().initGUI();
+                new Prueba_Frame_001_Inicial().lanza_frames(new Juego().getEstado());
                 System.out.println(" aqui se le dice ...otra vez será..lo esperamos..");
             }
 

@@ -60,10 +60,11 @@ public class Prueba_Frame_001_Inicial extends JFrame {
         escucha = new Escucha();
 
         jButton = new JButton(" el inicio ");
-        jButton.setPreferredSize(new Dimension(200, 50));
+        jButton.setPreferredSize(new Dimension(60, 31));
         jButton.setBackground(Color.BLACK);
         jButton.setOpaque(true);
         jButton.setFont(font);
+//        jButton.setLocation(50, 350);
         jButton.addActionListener(escucha);
 
         frontFinal =  new Front_Final();
@@ -74,6 +75,36 @@ public class Prueba_Frame_001_Inicial extends JFrame {
 
         frontInicial = new Front_Inicial();
 
+        // CONFIGURACION DEL LAYOUT PARA EL JPANEL PADRINO
+
+        GridBagLayout gridBagLayout = new GridBagLayout();
+
+        padrino.setLayout(gridBagLayout);
+
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        gbc.gridx=0; // columna 0
+        gbc.gridy=0; // fila 0
+        gbc.gridwidth=1; // ocupara 4 columnas
+        gbc.gridheight=1; // ocupara 3 filas
+        gbc.weightx = 1.0; // no se deformara
+        gbc.weighty = 1.0; // no se deformara
+        gbc.insets.set(20,20,20,20);//espacio externo para el componente.101010
+        padrino.add(jButton, gbc);
+
+        GridBagConstraints gbc_1 = new GridBagConstraints();
+
+        padrino.add(frontInicial);
+
+        this.add(padrino, BorderLayout.NORTH);
+
+
+        //+++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
 
         int selector = 9999;
         selector=new Juego().getEstado();
@@ -81,19 +112,6 @@ public class Prueba_Frame_001_Inicial extends JFrame {
         System.out.println(" valor de selector al inicio " + selector + "\n");
 
 
-
-
-
-
-
-
-
-
-
-
-        padrino.add(frontInicial);
-
-       // this.add(jButton, BorderLayout.SOUTH);
 
 
 
@@ -116,6 +134,15 @@ public class Prueba_Frame_001_Inicial extends JFrame {
     pack();
 
 }
+
+    public void renove_Panel (JPanel old, JPanel young){
+        padrino.remove(old);
+        padrino.add(young, BorderLayout.CENTER);
+        padrino.revalidate();
+        padrino.repaint();
+        pack();
+
+    }
 
 
     /**
@@ -150,6 +177,41 @@ public class Prueba_Frame_001_Inicial extends JFrame {
                 System.out.println(" apuntele al botom para inicial..");
             }
 
+        }
+    }
+
+    public void lanza_frames(int estado){
+
+
+        switch (estado){
+            case 1:
+                frontInicial.init_Panel();
+                break;
+            case 2:
+                renove_Panel(frontFinal,frontReglas);
+                padrino.revalidate();
+                padrino.repaint();
+
+                break;
+            case 3:
+                renove_Panel(frontReglas,frontRegistroJugador);
+                padrino.revalidate();
+                padrino.repaint();
+                break;
+            case 4:
+                System.out.println(" se debe elaborar el panel del juego en el nivel 1");
+                padrino.revalidate();
+                padrino.repaint();
+                break;
+            case 99://final de la app.
+                renove_Panel(frontRegistroJugador,frontFinal);
+                padrino.revalidate();
+                padrino.repaint();
+                System.out.println(" este finalizo la app");
+                break;
+            default:
+                System.out.println(" no hay mas ventanas");
+                break;
         }
     }
 

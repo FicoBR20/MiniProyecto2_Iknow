@@ -188,11 +188,11 @@ public class GUI extends JFrame {
      * @param args Object used in order to send input data from command line when
      *             the program is execute by console.
      */
-//    public static void main(String[] args){
-//        EventQueue.invokeLater(() -> {
-//            GUI miProjectGUI = new GUI();
-//        });
-//    }
+    public static void main(String[] args){
+        EventQueue.invokeLater(() -> {
+            GUI miProjectGUI = new GUI();
+        });
+    }
 
     /**
      * inner class that extends an Adapter Class or implements Listeners used by GUI class

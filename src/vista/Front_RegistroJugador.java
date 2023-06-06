@@ -173,6 +173,7 @@ public class Front_RegistroJugador extends JPanel {
                 jTextField_NombreJugador.setText(" ");
                 new Juego().setNivel(1);
                 new Juego().setEstado(4);// nos lleva al frame del primer nivel del juego.
+                new Prueba_Frame_001_Inicial().lanza_frames(new Juego().getEstado());
                 System.out.println(" Empezamos a jugar en el nivel = 1 ");
 
 

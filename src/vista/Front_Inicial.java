@@ -164,11 +164,12 @@ public class Front_Inicial extends JPanel {
         public void actionPerformed(ActionEvent e) {
             if (e.getSource()==si_Juego){
                 new Juego().setEstado(2);
-                new Prueba_Frame_001_Inicial().changeLabel();
+                new Prueba_Frame_001_Inicial().lanza_frames(new Juego().getEstado());
                 System.out.println(" le doy las reglas ");
             }
             else if(e.getSource()==no_Juego){
                 new Juego().setEstado(99);
+                new Prueba_Frame_001_Inicial().lanza_frames(new Juego().getEstado());
                 System.out.println(" cierre de la app..fin");
             }
 
