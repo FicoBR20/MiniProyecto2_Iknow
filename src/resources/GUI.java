@@ -1,10 +1,14 @@
-package vista;
+package resources;
 
 import javax.swing.*;
 import java.awt.*;
-import modelo.Juego;
+
+import vista.*;
+import vista.Canvas;
 
 /**
+ * (DEPRECATED)...
+ *
  * Esta clase gestiona los recursos gráficos del juego.
  * @version v.1.0.0 date:1/06/2023
  */
@@ -14,14 +18,14 @@ public class GUI extends JFrame {
 
     private Front_RegistroJugador frontRegistroJugador;
 
-    private  Front_Final frontFinal;
+    private Front_Final frontFinal;
 
     private Front_Inicial frontInicial;
 
     private Front_Reglas frontReglas;
 
 
-    private Canvas canvas;
+    private vista.Canvas canvas;
 
     private Header headerProject;
     /**

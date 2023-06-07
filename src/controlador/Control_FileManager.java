@@ -25,6 +25,10 @@ public class Control_FileManager {
     }
 
 
+    /**
+     * Método que gestiona lectura y escritura de la información del jugador.
+      * @return
+     */
     public String reader_Jugador(){
         String text = "";
 

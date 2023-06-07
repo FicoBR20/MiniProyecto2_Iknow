@@ -1,17 +1,14 @@
 package vista;
 
-import modelo.Juego;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
 /**
- * Clase que gestiona la informacion de las reglas del juego
+ * Clase que gestiona la GUI en el estado final de la app.
  */
-public class Front_Reglas extends JPanel {
+public class Front_Boceto_Nivel_1 extends JPanel {
 
     private Header header;
 
@@ -20,27 +17,24 @@ public class Front_Reglas extends JPanel {
 
     private JButton no_Juego;
 
-    private JLabel desea_Jugar;
-
 
     private JTextArea info_al_Jugador;
 
 
     private Escucha escucha;
 
+
     private Color verdeClaro = new Color(188, 234, 192);
     private Color fondoLila = new Color(82, 25, 196);
 
 
     /**
-     * Constructor
+     * Método constructor
      */
-    public Front_Reglas(){
+    public Front_Boceto_Nivel_1(){
         init_Panel();
-        //this.setSize(300,400);
         this.setPreferredSize(new Dimension(600,400));
         this.setBackground(fondoLila);
-
 
     }
 
@@ -49,10 +43,12 @@ public class Front_Reglas extends JPanel {
      */
     public void init_Panel(){
 
-        Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 20);
 
-        header = new Header(" Reglas del Juego ", verdeClaro);
+        Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 24);
+
+        header = new Header(" Juego Nivel 1 ", verdeClaro);
         header.setPreferredSize(new Dimension(600,20));
+
 
 
         si_Juego = new JButton();
@@ -78,13 +74,13 @@ public class Front_Reglas extends JPanel {
 
 
         info_al_Jugador = new JTextArea();
-        info_al_Jugador.append("Aqui van las reglas del juego\n" +
-                "Informacion clara para el jugador\n" +
-                ".... exitos.\nexitos.\nexitos.\nexitos.\n y más exitos.\n");
+        info_al_Jugador.append("....Aqqi se implementará...\n" +
+                "el Frame para el juego en el nivel 1 \n" +
+                "..hasta pronto..\n");
         info_al_Jugador.setFont(font);
         info_al_Jugador.setForeground(verdeClaro);
-        info_al_Jugador.setBackground(fondoLila);
         info_al_Jugador.setEditable(false);
+        info_al_Jugador.setOpaque(false);
         info_al_Jugador.setFocusable(false);
 
         GridBagLayout gridBagLayout = new GridBagLayout();
@@ -94,45 +90,30 @@ public class Front_Reglas extends JPanel {
         GridBagConstraints gbc = new GridBagConstraints();
 
 
-
-        gbc.gridx=0;
-        gbc.gridy=0;
-        gbc.gridwidth=5;
-        gbc.gridheight=1;
-        gbc.weightx = 1.0;
-        gbc.weighty = 1.0;
-        gbc.ipady=5;
-        gbc.anchor=GridBagConstraints.PAGE_START;
+        gbc.gridx=0; // columna 0
+        gbc.gridy=0; // fila 0
+        gbc.gridwidth=5; // ocupara n columnas
+        gbc.gridheight=1; // ocupara n filas
+        gbc.weightx = 1.0; // no se deformara
+        gbc.weighty = 1.0; // no se deformara
+        gbc.ipady=5;//relleno interno en y pixels
+        gbc.anchor=GridBagConstraints.PAGE_START;//cuando el componente es mas pequenno que el area de visualización.tambien PAGE_START, PAGE_END, LINE_START, LINE_END, FIRST_LINE_START, FIRST_LINE_END, LAST_LINE_ENDy LAST_LINE_START.
         this.add(header, gbc);
 
 
-
-
-        gbc.gridx=2;
-        gbc.gridy=1;
-        gbc.gridwidth=5;
-        gbc.gridheight=1;
-        gbc.weightx = 1.0;
-        gbc.weighty = 1.0;
+        gbc.gridx=2; // columna 0
+        gbc.gridy=1; // fila 0
+        gbc.gridwidth=5; // ocupara 4 columnas
+        gbc.gridheight=1; // ocupara 3 filas
+        gbc.weightx = 1.0; // no se deformara
+        gbc.weighty = 1.0; // no se deformara
+        // gbc.fill = gbc.HORIZONTAL; // maximo width
         this.add(info_al_Jugador, gbc);
 
 
-
-        desea_Jugar = new JLabel(" Desea Continuar ? ");
-        desea_Jugar.setFont(font);
-        desea_Jugar.setBackground(fondoLila);
-        desea_Jugar.setForeground(verdeClaro);
-        gbc.gridx=2;
-        gbc.gridy=2;
-        gbc.gridwidth=5;
-        gbc.gridheight=1;
-        gbc.weightx = 1.0;
-        gbc.weighty = 1.0;
-        this.add(desea_Jugar, gbc);
-
-
-
     }
+
+
 
 
 
@@ -141,17 +122,15 @@ public class Front_Reglas extends JPanel {
      */
     private class Escucha implements ActionListener {
 
+
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource()==si_Juego){
-                new Juego().setEstado(3);
-                new Prueba_Frame_001_Inicial().lanza_frames(new Juego().getEstado());
-                System.out.println(" se registrará al jugador ");
+
+                System.out.println(" le di al SI ");
             }
             else if(e.getSource()==no_Juego){
-                new Juego().setEstado(99);
-                new Prueba_Frame_001_Inicial().lanza_frames(new Juego().getEstado());
-                System.out.println(" aqui se le dice ...otra vez será..lo esperamos..");
+                System.out.println(" aqui se termina el juego y se muestra de nuevo el ingreso");
             }
 
         }

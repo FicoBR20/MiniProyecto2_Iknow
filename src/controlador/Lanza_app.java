@@ -1,16 +1,17 @@
 package controlador;
 import modelo.Juego;
-import vista.Front_Inicial;
-import vista.Front_RegistroJugador;
-import vista.GUI;
-import vista.Front_Inicial;
+import resources.GUI;
+import vista.Prueba_Frame_001_Inicial;
 ;
 
 import java.awt.*;
 
 
+/**
+ * Clase que gestiona el lanzamiento de la app.
+ */
 public class Lanza_app {
-    private GUI gui;
+    private Prueba_Frame_001_Inicial pfi;
     private Juego juego;
 
     private int receptor;
@@ -28,31 +29,22 @@ public class Lanza_app {
     }
 
 
-
     public void launch_App(){
 
-        System.out.println(" estamos completando los 10 niveles");
+        System.out.println(" intentamos completar los 10 niveles");
 
         juego = new Juego();
-        gui = new GUI();
+        pfi = new Prueba_Frame_001_Inicial();
 
-        gui.lanza_frames(juego.getEstado());//estado=1
+        pfi.lanza_frames(juego.getEstado());
+
 
         System.out.println(" receptor vale arriba"+receptor);
 
 
 
 
-
-
-
-
     }
-
-
-
-
-
 
 
 

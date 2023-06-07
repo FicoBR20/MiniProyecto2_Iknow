@@ -98,9 +98,6 @@ public class Prueba_Frame_001_Inicial extends JFrame {
      * Método que inicializa los atributos de la clase.
      */
     public void initGUI() {
-        //Set up JFrame Container's Layout
-        //Create Listener Object and Control Object
-        //Set up JComponents
 
         juego_Ikn = new Juego();
 
@@ -146,10 +143,6 @@ public class Prueba_Frame_001_Inicial extends JFrame {
 
         frontInicial = new Front_Inicial();
 
-//        jPanel_Botones_front_Inicial.add(jButton_SI);
-//        jPanel_Botones_front_Inicial.add(jButton_NO);
-
-
 
         lanza_frames(juego_Ikn.getEstado());
 
@@ -188,27 +181,26 @@ public class Prueba_Frame_001_Inicial extends JFrame {
                 jPanel_Botones_front_Inicial.add(jButton_SI);
                 jPanel_Botones_front_Inicial.add(jButton_NO);
                 GridBagConstraints gbc = new GridBagConstraints();
-                gbc.gridx=2; // columna 0
-                gbc.gridy=3; // fila 0
-                gbc.gridwidth=5; // ocupara 4 columnas
-                gbc.gridheight=1; // ocupara 3 filas
-                gbc.weightx = 1.0; // no se deformara
-                gbc.weighty = 1.0; // no se deformara
-                gbc.insets.set(2,2,60,2);//espacio externo para el componente.101010
+                gbc.gridx=2;
+                gbc.gridy=3;
+                gbc.gridwidth=5;
+                gbc.gridheight=1;
+                gbc.weightx = 1.0;
+                gbc.weighty = 1.0;
+                gbc.insets.set(2,2,60,2);
                 frontInicial.add(jPanel_Botones_front_Inicial, gbc);
                 break;
             case 2:
-                //jPanel_Botones_front_Inicial = new JPanel();
                 jPanel_Botones_front_Inicial.add(jButton_SI);
                 jPanel_Botones_front_Inicial.add(jButton_NO);
                 GridBagConstraints gbc1 = new GridBagConstraints();
-                gbc1.gridx=2; // columna 0
-                gbc1.gridy=3; // fila 0
-                gbc1.gridwidth=5; // ocupara 4 columnas
-                gbc1.gridheight=1; // ocupara 3 filas
-                gbc1.weightx = 1.0; // no se deformara
-                gbc1.weighty = 1.0; // no se deformara
-                gbc1.insets.set(2,2,60,2);//espacio externo para el componente.101010
+                gbc1.gridx=2;
+                gbc1.gridy=3;
+                gbc1.gridwidth=5;
+                gbc1.gridheight=1;
+                gbc1.weightx = 1.0;
+                gbc1.weighty = 1.0;
+                gbc1.insets.set(2,2,60,2);
                 frontReglas.add(jPanel_Botones_front_Inicial, gbc1);
                 System.out.println(" .. pendiente ubicar botones en panal reglas");
 
@@ -219,7 +211,7 @@ public class Prueba_Frame_001_Inicial extends JFrame {
             case 4:
                 System.out.println(" .. pendiente todo el frame del nivel 1");
                 break;
-            case 99://final de la app.
+            case 99:
                 System.out.println(" este finalizo la app");
                 break;
             default:
@@ -227,10 +219,6 @@ public class Prueba_Frame_001_Inicial extends JFrame {
                 break;
         }
     }
-
-
-
-
 
 
     }
@@ -270,14 +258,16 @@ public class Prueba_Frame_001_Inicial extends JFrame {
                 juego_Ikn.setEstado(99);
                 lanza_frames(juego_Ikn.getEstado());
                 System.out.println(" en la accion inicial ..se inicio esto. vamos por ahora al fina...." + Integer.toString(juego_Ikn.getEstado()));
+            }else if (e.getSource()==jButton_NO) {
+                renove_Panel(frontInicial, frontFinal);
+                juego_Ikn.setEstado(99);
+                lanza_frames(juego_Ikn.getEstado());
+                System.out.println(" es el fin ...volveremos..." + Integer.toString(juego_Ikn.getEstado()));
             }
+
             else {
                 System.out.println(" apuntele al botom SI para INCIAR..");
             }
-
-
-
-
 
 
         }
@@ -300,11 +290,8 @@ public class Prueba_Frame_001_Inicial extends JFrame {
                 adiciono_JPanel_Botones(estado_real);
                 padrino.add(frontReglas);
                 break;
-            case 3:
-                System.out.println(" pendiete 1");
-                break;
-            case 4:
-                System.out.println(" se debe elaborar el panel del juego en el nivel 1");
+            case 8:
+                System.out.println(" se debe presenta el juego en el nivel 1");
                 padrino.revalidate();
                 padrino.repaint();
                 break;

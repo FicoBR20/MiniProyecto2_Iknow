@@ -7,6 +7,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * ...En Construccion....
+ * Clase que gestiona la GUI del primer nivel de la aplicación
+ */
 public class Front_Nivel_1 extends JPanel {
 
     private JLabel jLabel;

@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 
 
+/**
+ * Clase gue gestiona los encabezados de los Jpanel.
+ */
 public class Header extends JLabel {
     /**
      * Constructor of the Header class

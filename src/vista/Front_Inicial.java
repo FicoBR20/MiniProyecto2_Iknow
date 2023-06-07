@@ -49,7 +49,7 @@ public class Front_Inicial extends JPanel {
 
         Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 24);
 
-        header = new Header(" Bienvenidos", verdeClaro);
+        header = new Header(" Bienvenidos ", verdeClaro);
         header.setPreferredSize(new Dimension(600,20));
 
 
