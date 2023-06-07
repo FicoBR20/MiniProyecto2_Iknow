@@ -51,7 +51,7 @@ public class Front_Nivel_1 extends JPanel {
 
 
         si_Juego_Front_Inicial = new JButton();
-        ImageIcon imageIcon = new ImageIcon(getClass().getResource("/resources/Boton_SI.png"));
+        ImageIcon imageIcon = new ImageIcon(getClass().getResource("/resources/botones/Boton_SI.png"));
         ImageIcon imageIcon_Pressed = new ImageIcon(getClass().getResource("/resources/Boton_SI_PRESSED.png"));
         si_Juego_Front_Inicial.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(60,31,Image.SCALE_SMOOTH)));
         si_Juego_Front_Inicial.setBorder(BorderFactory.createEmptyBorder());

@@ -12,7 +12,6 @@ import java.awt.*;
 public class Lanza_app {
     private GUI gui;
     private Juego juego;
-
     private int receptor;
 
 
@@ -40,21 +39,7 @@ public class Lanza_app {
 
         System.out.println(" receptor vale arriba"+receptor);
 
-
-
-
-
-
-
-
     }
-
-
-
-
-
-
-
 
     public static void main(String[] args){
         EventQueue.invokeLater(() -> {

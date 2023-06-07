@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 import modelo.Juego;
 
 public class Front_Inicial extends JPanel {
@@ -51,7 +52,7 @@ public class Front_Inicial extends JPanel {
 
 
         si_Juego_Front_Inicial = new JButton();
-        ImageIcon imageIcon = new ImageIcon(getClass().getResource("/resources/Boton_SI.png"));
+        ImageIcon imageIcon = new ImageIcon(getClass().getResource("/resources/botones/Boton_SI.png"));
         ImageIcon imageIcon_Pressed = new ImageIcon(getClass().getResource("/resources/Boton_SI_PRESSED.png"));
         si_Juego_Front_Inicial.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(60,31,Image.SCALE_SMOOTH)));
         si_Juego_Front_Inicial.setBorder(BorderFactory.createEmptyBorder());
@@ -101,6 +102,7 @@ public class Front_Inicial extends JPanel {
         gbc.gridheight=1; // ocupara n filas
         gbc.weightx = 1.0; // no se deformara
         gbc.weighty = 1.0; // no se deformara
+
         gbc.ipady=5;//relleno interno en y pixels
         gbc.anchor=GridBagConstraints.PAGE_START;//cuando el componente es mas pequenno que el area de visualización.tambien PAGE_START, PAGE_END, LINE_START, LINE_END, FIRST_LINE_START, FIRST_LINE_END, LAST_LINE_ENDy LAST_LINE_START.
         this.add(header, gbc);
@@ -115,16 +117,19 @@ public class Front_Inicial extends JPanel {
        // gbc.fill = gbc.HORIZONTAL; // maximo width
         this.add(info_al_Jugador, gbc);
 
+
         gbc.gridx=2; // columna 0
         gbc.gridy=2; // fila 0
         gbc.gridwidth=5; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         gbc.weightx = 1.0; // no se deformara
         gbc.weighty = 1.0; // no se deformara
+
        // gbc.insets.set(2,2,10,2);//espacio externo para el componente.101010
         this.add(jLabel, gbc);
 
     }
+
 
     public void cierrePanel(JPanel jPanel){
 
@@ -154,10 +159,8 @@ public class Front_Inicial extends JPanel {
             }
 
         }
+
     }
-
-
-
 
 
 }

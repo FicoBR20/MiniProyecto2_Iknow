@@ -11,21 +11,35 @@ public class Palabra {
     private final List<String>  palabra_a_Memorizar;
     private final List<String> palabra_del_Nivel;
     private  String_Basico stringBasico;
+    private Juego juego;
+
+    public Juego getJuego() {
+        return juego;
+    }
+
+    public void setJuego(Juego juego) {
+        this.juego = juego;
+    }
 
     public  List<String>  getPalabra_del_nivel() {
         return palabra_del_Nivel;
     }
 
-    public void setPalabra_del_nivel(String categoria) throws IOException {
-        for (int i = 0; i < 20; i++){
-            String memoria = stringBasico.seleccionarPalabraAleatoria(stringBasico.obtenerPalabras(categoria));
+    /**
+     * Método que genera el string con la cantidad de palabras de cada nivel
+     * @throws IOException
+     */
+
+    public void setPalabra_del_nivel() throws IOException {
+        for (int i = 0; i < juego.getTotal_Palabras_del_Nivel(); i++){
+            String memoria = stringBasico.seleccionarPalabraAleatoria(stringBasico.obtenerPalabras(juego.getRuta()));
             if (!palabra_del_Nivel.contains(memoria)) {
                 palabra_del_Nivel.add(memoria);
             }
             else{
                 String aux = "";
                 while (palabra_del_Nivel.contains(memoria)){
-                    memoria = stringBasico.seleccionarPalabraAleatoria(stringBasico.obtenerPalabras(categoria));
+                    memoria = stringBasico.seleccionarPalabraAleatoria(stringBasico.obtenerPalabras(juego.getRuta()));
                     aux = memoria;
                 }
                 palabra_del_Nivel.add(aux);
@@ -39,7 +53,7 @@ public class Palabra {
     }
 
     public void setPalabra_a_Memorizar(){
-        for (int i = 0; i < 10; i++){
+        for (int i = 0; i < juego.getCant_Palabras_a_Memorizar(); i++){
             String memoria = stringBasico.seleccionarPalabraAleatoria(palabra_del_Nivel);
             if (!palabra_a_Memorizar.contains(memoria)) {
                 palabra_a_Memorizar.add(memoria);
@@ -69,6 +83,7 @@ public class Palabra {
      * Método constructor
      */
     public Palabra(){
+        juego = new Juego();
         stringBasico = new String_Basico();
         palabra_a_Memorizar = new ArrayList<>();
         palabra_del_Nivel = new ArrayList<>();

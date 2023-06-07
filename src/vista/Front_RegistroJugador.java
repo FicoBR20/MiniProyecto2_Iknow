@@ -17,7 +17,7 @@ public class Front_RegistroJugador extends JPanel {
 
 
 
-    private JButton iniciar_Juego;
+    private Botones iniciar_Juego;
 
 
     private JLabel jlabel_Title, jLabel_NombreJugador;
@@ -80,13 +80,8 @@ public class Front_RegistroJugador extends JPanel {
 
 
 
-        iniciar_Juego = new JButton();
-        ImageIcon imageIcon = new ImageIcon(getClass().getResource("/resources/Boton_Inicio.png"));
-        ImageIcon imageIcon_Pressed = new ImageIcon(getClass().getResource("/resources/Boton_Inicio_PRESSED.png"));
-        iniciar_Juego.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(60,31,Image.SCALE_SMOOTH)));
-        iniciar_Juego.setBorder(BorderFactory.createEmptyBorder());
-        iniciar_Juego.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(60,31,Image.SCALE_SMOOTH)));
-        iniciar_Juego.setEnabled(false);
+        iniciar_Juego = new Botones("START",15,70,30);
+        iniciar_Juego.desactivar();
 
 
 
@@ -172,6 +167,7 @@ public class Front_RegistroJugador extends JPanel {
             super.keyPressed(e);
 
             if (e.getSource()==jTextField_NombreJugador && e.getKeyChar()==KeyEvent.VK_ENTER){
+                iniciar_Juego.activar();
 
                 name_Player = jTextField_NombreJugador.getText();
 
@@ -182,7 +178,6 @@ public class Front_RegistroJugador extends JPanel {
 
                 new Control_FileManager().writer(name_Player);
 
-                iniciar_Juego.setEnabled(true);
                 jTextField_NombreJugador.setText(name_Player + "registrado [nombre] [nivel]");
                 jTextField_NombreJugador.setEnabled(false);
 

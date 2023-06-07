@@ -12,12 +12,14 @@ import java.util.Random;
  * y selecciona una palabra aleatoria de ella.
  */
 public class String_Basico {
+    private Juego juego;
 
     private  List<String> lista_palabra;
     private BufferedReader lector;
 
 
     public String_Basico() {
+        juego = new Juego();
         lista_palabra = new ArrayList<>();
     }
 
@@ -34,7 +36,10 @@ public class String_Basico {
             lector = new BufferedReader(new FileReader(categoria));
             String linea;
 
-            while (lector.readLine() != null) {
+
+            int limite = 0;
+            while (limite <= juego.getLimite_string_basico()) {
+                limite ++;
                 linea = lector.readLine();
                 linea.split("\n");
                 //Recorre cada letra de una palabra
@@ -44,6 +49,7 @@ public class String_Basico {
                     if (!linea.isEmpty()) {
                         lista_palabra.add(palabra);
                     }
+
                 }
             }
         } catch (FileNotFoundException e) {
@@ -61,6 +67,7 @@ public class String_Basico {
                 e.printStackTrace();
             }
         }
+
             return lista_palabra;
     }
 
@@ -72,7 +79,7 @@ public class String_Basico {
      */
     public String seleccionarPalabraAleatoria(List<String> lista_palabras) {
         Random random = new Random();
-        int indiceAleatorio = random.nextInt(lista_palabras.size());
+        int indiceAleatorio = random.nextInt(lista_palabras.size()-1);
         return lista_palabras.get(indiceAleatorio);
     }
 }

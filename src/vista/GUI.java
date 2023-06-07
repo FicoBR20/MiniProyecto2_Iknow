@@ -32,17 +32,11 @@ public class GUI extends JFrame {
      * JButtons que recibiran la decision del usuario en cada frame.
      */
     private JButton jBut_1_auxiliar, jBut_2_auxiliar, jBut_3_auxiliar, jBut_4_auxiliar ;
-
-
     private JLabel jLabel_Central, jLabel_1_auxiliar, jLabel_2_auxiliar;
-
-
     private JTextArea jTextArea_Principal, jTextArea_auxiliar;
-
     private JTextPane jTextPane_Principal, jTextPane_auxiliar;
-
-
     private JTextField jTextField_Principal, jTextField_1_auxiliar, jTextField_2_auxiliar;
+    private int estado_panel;
 
     public int getSelectorFrames() {
         return selectorFrames;
@@ -60,6 +54,7 @@ public class GUI extends JFrame {
      */
     public GUI(){
         initGUI();
+        estado_panel = 0;
 
         //Default JFrame configuration
         this.setTitle("I Know that word !!");
@@ -76,6 +71,7 @@ public class GUI extends JFrame {
      * create Listener and control Objects used for the GUI class
      */
     public void initGUI() {
+        System.out.println(" ..empieza tu juego..");
         //Set up JFrame Container's Layout
         //Create Listener Object and Control Object
         //Set up JComponents
@@ -83,6 +79,7 @@ public class GUI extends JFrame {
         selectorFrames = 888;
 
         jLabel_Central = new JLabel();
+
         jPanel_Principal = new JPanel();
 
 
@@ -200,4 +197,8 @@ public class GUI extends JFrame {
     private class Escucha {
 
     }
+    public int get_panel() {
+        return estado_panel;
+    }
+
 }

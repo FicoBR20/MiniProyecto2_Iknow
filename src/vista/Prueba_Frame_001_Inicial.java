@@ -19,8 +19,8 @@ public class Prueba_Frame_001_Inicial extends JFrame {
 
     private Escucha escucha;
 
-    private JButton jButton_SI;
-    private JButton jButton_NO;
+    private Botones jButton_SI;
+    private Botones jButton_NO;
 
 
     /**
@@ -77,25 +77,10 @@ public class Prueba_Frame_001_Inicial extends JFrame {
 
 
 
-        jButton_SI = new JButton();
-        ImageIcon imageIcon = new ImageIcon(getClass().getResource("/resources/Boton_SI.png"));
-        ImageIcon imageIcon_Pressed = new ImageIcon(getClass().getResource("/resources/Boton_SI_PRESSED.png"));
-        jButton_SI.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(60,31,Image.SCALE_SMOOTH)));
-        jButton_SI.setBorder(BorderFactory.createEmptyBorder());
-        jButton_SI.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(60,31,Image.SCALE_SMOOTH)));
-        jButton_SI.setOpaque(true);
-        jButton_SI.setFont(font);
+        jButton_SI = new Botones("YES",20,70,30);
         jButton_SI.addActionListener(escucha);
 
-
-        jButton_NO = new JButton();
-        imageIcon = new ImageIcon(getClass().getResource("/resources/Boton_NO.png"));
-        imageIcon_Pressed = new ImageIcon(getClass().getResource("/resources/Boton_NO_PRESSED.png"));
-        jButton_NO.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(60,31,Image.SCALE_SMOOTH)));
-        jButton_NO.setBorder(BorderFactory.createEmptyBorder());
-        jButton_NO.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(60,31,Image.SCALE_SMOOTH)));
-        jButton_NO.setOpaque(true);
-        jButton_NO.setFont(font);
+        jButton_NO = new Botones("NO", 20,70,30);
         jButton_NO.addActionListener(escucha);
 
 

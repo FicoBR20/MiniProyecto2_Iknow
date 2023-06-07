@@ -47,7 +47,7 @@ public class Front_Reglas extends JPanel {
 
 
         si_Juego = new JButton();
-        ImageIcon imageIcon = new ImageIcon(getClass().getResource("/resources/Boton_SI.png"));
+        ImageIcon imageIcon = new ImageIcon(getClass().getResource("/resources/botones/Boton_SI.png"));
         ImageIcon imageIcon_Pressed = new ImageIcon(getClass().getResource("/resources/Boton_SI_PRESSED.png"));
         si_Juego.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(60,31,Image.SCALE_SMOOTH)));
         si_Juego.setBorder(BorderFactory.createEmptyBorder());
@@ -149,9 +149,6 @@ public class Front_Reglas extends JPanel {
 
         }
     }
-
-
-
 
 
 }

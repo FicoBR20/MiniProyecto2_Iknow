@@ -4,6 +4,7 @@ package modelo;
  * Esta Clase manejara la lógica del juego.
  */
 public class Juego {
+    private int limite_string_basico;
     /**
      * nivel: indica el nivel en que se desarrolla el juego
      * cada nivel define el valor de sus atributos.
@@ -84,11 +85,44 @@ public class Juego {
     private int categoria;
     private  String ruta;
 
+    public int getLimite_string_basico() {
+        return limite_string_basico;
+    }
+
+    public void setLimite_string_basico(int limite_string_basico) {
+        this.limite_string_basico = limite_string_basico;
+    }
+
 
     // From here implements the Class methods ==================================================
 
+    /**
+     * Constructor method.
+     */
+    public Juego(){
+        limite_string_basico = 199;
+        total_Palabras_del_Nivel = 0;
+        cant_Palabras_a_Memorizar = 0;
+        acierto_Exigido = 1;
+        ruta = "";
+        categoria = 0;
+        estado=1;
+        setUp_Nivel(estado);// juego inicia en nivel 1
+        puntaje_Logrado=0;
+        acierto_del_Jugador=false;
+
+    }
 
     // Getter and Setter ===============================
+
+
+    public String getRuta() {
+        return ruta;
+    }
+
+    public void setRuta(String ruta) {
+        this.ruta = ruta;
+    }
 
     public int getNivel() {
         return nivel;
@@ -163,36 +197,24 @@ public class Juego {
         switch (categoria) {
             case 1 -> {
                 System.out.println(" la biblioteca es anmimal");
-                return ruta = "src/resources/animales.txt";
+                return ruta = "src/resources/file/animales.txt";
             }
             case 2 -> {
                 System.out.println(" la biblioteca es ciudades");
-                return ruta = "src/resources/ciudades.txt";
+                return ruta = "src/resources/file/ciudades.txt";
             }
             case 3 -> {
                 System.out.println(" la biblioteca es profesiones");
-                return ruta = "src/resources/profecion.txt";
+                return ruta = "src/resources/file/profecion.txt";
             }
             default -> {
                 System.out.println(" solo hay 3 biliotecas por ahora");
-                return ruta = "src/resources/empty.txt";
+                return ruta = "src/resources/file/empty.txt";
             }
         }
     }
 
 
-    /**
-     * Constructor method.
-     */
-    public Juego(){
-        ruta = "";
-        categoria = 0;
-        estado=1;
-        setUp_Nivel(estado);// juego inicia en nivel 1
-        puntaje_Logrado=0;
-        acierto_del_Jugador=false;
-
-    }
 
     // Methods of Class ===============================
 
@@ -258,7 +280,7 @@ public class Juego {
                 break;
             case 10:
                 cant_Palabras_a_Memorizar =100;
-                total_Palabras_del_Nivel =200;
+                total_Palabras_del_Nivel = 200;
                 acierto_Exigido=1;
                 break;
             default:
