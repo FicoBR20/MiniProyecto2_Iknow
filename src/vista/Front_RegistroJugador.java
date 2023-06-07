@@ -7,12 +7,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * Clase que gestiona la Gui para el registro del jugador
+ */
 public class Front_RegistroJugador extends JPanel {
 
     private Juego juego_Ik;
 
     private Header header;
 
+    /**
+     * Atributo para el nombre del jugador.
+     */
     private String name_Player;
 
 
@@ -26,8 +32,14 @@ public class Front_RegistroJugador extends JPanel {
     private JTextField jTextField_NombreJugador;
 
 
+    /**
+     * Atributo MouseAdapter
+     */
     private Escucha escucha;
 
+    /**
+     * Atributo KeyAdapter
+     */
     private Teclado teclado;
 
     public String getName_Player() {
@@ -40,6 +52,8 @@ public class Front_RegistroJugador extends JPanel {
 
     private Color verdeClaro = new Color(188, 234, 192);
     private Color fondoLila = new Color(82, 25, 196);
+
+
     /**
      * Constructor
      */
@@ -52,6 +66,9 @@ public class Front_RegistroJugador extends JPanel {
 
     }
 
+    /**
+     * Método que inicializa los atrubutos de la clase.
+      */
     public void init_Panel(){
 
         juego_Ik =  new Juego();
@@ -104,67 +121,58 @@ public class Front_RegistroJugador extends JPanel {
 
 
 
-        gbc.gridx=0; // columna 0
-        gbc.gridy=0; // fila 0
-        gbc.gridwidth=5; // ocupara n columnas
-        gbc.gridheight=1; // ocupara n filas
-        gbc.weightx = 1.0; // no se deformara
-        gbc.weighty = 1.0; // no se deformara
-        gbc.ipady=5;//relleno interno en y pixels
-        gbc.anchor=GridBagConstraints.PAGE_START;//cuando el componente es mas pequenno que el area de visualización.tambien PAGE_START, PAGE_END, LINE_START, LINE_END, FIRST_LINE_START, FIRST_LINE_END, LAST_LINE_ENDy LAST_LINE_START.
+        gbc.gridx=0;
+        gbc.gridy=0;
+        gbc.gridwidth=5;
+        gbc.gridheight=1;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
+        gbc.ipady=5;
+        gbc.anchor=GridBagConstraints.PAGE_START;
         this.add(header, gbc);
 
 
-
-
-
-
-
-
-
-        gbc.gridx=1; // columna 0
-        gbc.gridy=0; // fila 0
-        gbc.gridwidth=5; // ocupara 4 columnas
-        gbc.gridheight=1; // ocupara 3 filas
-        gbc.weightx = 1.0; // no se deformara
-        gbc.weighty = 1.0; // no se deformara
+        gbc.gridx=1;
+        gbc.gridy=0;
+        gbc.gridwidth=5;
+        gbc.gridheight=1;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
         this.add(jlabel_Title, gbc);
 
-        gbc.gridx=1; // columna 0
-        gbc.gridy=1; // fila 0
-        gbc.gridwidth=1; // ocupara 4 columnas
-        gbc.gridheight=1; // ocupara 3 filas
-        gbc.weightx = 1.0; // no se deformara
-        gbc.weighty = 1.0; // no se deformara
+        gbc.gridx=1;
+        gbc.gridy=1;
+        gbc.gridwidth=1;
+        gbc.gridheight=1;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
         this.add(jLabel_NombreJugador, gbc);
 
-        gbc.gridx=3; // columna 0
-        gbc.gridy=1; // fila 0
-        gbc.gridwidth=1; // ocupara 4 columnas
-        gbc.gridheight=1; // ocupara 3 filas
-        gbc.weightx = 1.0; // no se deformara
-        gbc.weighty = 1.0; // no se deformara
+        gbc.gridx=3;
+        gbc.gridy=1;
+        gbc.gridwidth=1;
+        gbc.gridheight=1;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
         this.add(jTextField_NombreJugador, gbc);
 
-        gbc.gridx=1; // columna 0
-        gbc.gridy=3; // fila 0
-        gbc.gridwidth=3; // ocupara 4 columnas
-        gbc.gridheight=1; // ocupara 3 filas
-        gbc.weightx = 1.0; // no se deformara
-        gbc.weighty = 1.0; // no se deformara
+        gbc.gridx=1;
+        gbc.gridy=3;
+        gbc.gridwidth=3;
+        gbc.gridheight=1;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
         this.add(iniciar_Juego, gbc);
 
     }
 
 
 
-    /**
-     * inner class implements Listeners used by Front_Inicial class
-     */
-    /**
-     * inner class implements Listeners used by Front_Inicial class
-     */
 
+
+    /**
+     * inner class extends kdyAdapter
+      */
     private class Teclado extends KeyAdapter {
 
         @Override
@@ -176,11 +184,11 @@ public class Front_RegistroJugador extends JPanel {
                 name_Player = jTextField_NombreJugador.getText();
 
                 juego_Ik.setNivel(1);
-                juego_Ik.setEstado(4);//vamos al frame del juego en el Nivel 1
+                juego_Ik.setEstado(4);
 
                 name_Player = name_Player + " " + Integer.toString(juego_Ik.getNivel());
 
-                new Control_FileManager().writer(name_Player);
+                new Control_FileManager().writer_Jugador(name_Player);
 
                 iniciar_Juego.setEnabled(true);
                 jTextField_NombreJugador.setText(name_Player + "registrado [nombre] [nivel]");
@@ -193,17 +201,21 @@ public class Front_RegistroJugador extends JPanel {
 
         }
     }
+
+
+    /**
+     * inner class extends MouseAdapter
+     */
     private class Escucha extends MouseAdapter {
 
         public void mouseClicked(MouseEvent e) {
             super.mouseClicked(e);
 
             if (e.getSource() == iniciar_Juego) {
-//                jTextField_NombreJugador.setText(" ");
-//                new Juego().setNivel(1);
-//                new Juego().setEstado(4);// nos lleva al frame del primer nivel del juego.
-//                new Prueba_Frame_001_Inicial().lanza_frames(new Juego().getEstado());
-                System.out.println(" Empezamos a jugar en el nivel = 1 ");
+
+                juego_Ik.setEstado(8);//estao =8 iniciael juego en el nivel 1
+
+                System.out.println(" ..Panel en desarrollo..prsentará el juego en el Nivel 1 ");
 
 
             }
