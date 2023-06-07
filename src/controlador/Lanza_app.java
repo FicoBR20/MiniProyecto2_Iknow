@@ -1,6 +1,6 @@
 package controlador;
 import modelo.Juego;
-import vista_.GUI;
+import vista.GUI;
 ;
 
 import java.awt.*;
