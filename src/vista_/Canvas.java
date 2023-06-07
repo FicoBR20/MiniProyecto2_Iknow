@@ -1,4 +1,4 @@
-package vista;
+package vista_;
 
 import modelo.Palabra;
 

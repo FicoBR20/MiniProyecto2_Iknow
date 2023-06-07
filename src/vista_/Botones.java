@@ -1,4 +1,4 @@
-package vista;
+package vista_;
 
 import controlador.Lanza_app_Prueba;
 
@@ -29,8 +29,8 @@ public class Botones extends  JButton{
 
 
     public JButton getBoton_style_1(String nombre) {
-        imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/Boton.png")));
-        imageIcon_Pressed = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/Boton_PRESSED.png")));
+        imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources_/botones/Boton.png")));
+        imageIcon_Pressed = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources_/botones/Boton_PRESSED.png")));
         this.setText(nombre);
         this.setForeground(Color.white);
         this.setFont(new Font(null,Font.BOLD,tamaño_fuente));
@@ -40,8 +40,8 @@ public class Botones extends  JButton{
     }
 
     public JButton getBoton_style_2(String nombre) {
-        imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/Boton_2.png")));
-        imageIcon_Pressed = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/Boton_PRESSED_2.png")));
+        imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources_/botones/Boton_2.png")));
+        imageIcon_Pressed = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources_/botones/Boton_PRESSED_2.png")));
         this.setText(nombre);
         this.setForeground(Color.white);
         this.setFont(new Font(null,Font.BOLD,tamaño_fuente));

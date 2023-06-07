@@ -2,8 +2,8 @@ package controlador;
 
 import modelo.File_estado;
 import modelo.Juego;
-import vista.*;
-import vista.Canvas;
+import vista_.*;
+import vista_.Canvas;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
