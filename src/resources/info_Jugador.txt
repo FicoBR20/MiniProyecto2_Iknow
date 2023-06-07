@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 DFSDF 1
 SFSDF 1
 asd 1
 sdas 1
 sdfs 1
 jlk 1
+=======
+dddd;; 1
+fico 1
+lfdlkflfd 1
+>>>>>>> 21029ab6cf64e075d822f57d4fde5bd9211a8cd1
+xdfsdf 1

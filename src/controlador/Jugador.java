@@ -51,6 +51,7 @@ public class Jugador {
     public Jugador(){
         name = " ";
         nivel_Superado = 0;
+        puntaje_Total = 0;
 
     }
 

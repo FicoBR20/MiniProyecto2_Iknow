@@ -13,37 +13,73 @@ import java.awt.event.ActionListener;
  */
 public class Prueba_Frame_001_Inicial extends JFrame {
 
-    private Front_Nivel_1 frontNivel1;
-
-    private Juego juego_Ikn;
-
-    private Escucha escucha;
-
-    private Botones jButton_SI;
-    private Botones jButton_NO;
-
 
     /**
-     * Panel que contine a los Jpane externos
+     * Atributo de instancia modelo.Juego
+     */
+    private Juego juego_Ikn;
+
+    /**
+     * Atributo Action listener
+     */
+    private Escucha escucha;
+
+    /**
+     * JGutton
+     */
+    private JButton jButton_SI;
+    /**
+     * JGutton
+     */
+    private JButton jButton_NO;
+
+    /**
+     * Atributo JPanel que soporta JPanel de las
+     * clases externas
      */
     private JPanel padrino;
+
+    /**
+     * Atributo JPanel soporta JButtons
+      */
     private JPanel jPanel_Botones_front_Inicial;
 
+    /**
+     * Atributo JPanel que muestra el inicio de la aplicación
+     */
     private Front_Inicial frontInicial;
+    /**
+     * Atributo JPanel que muestra las reglas del Juego
+     */
     private Front_Reglas frontReglas;
 
+    /**
+     * Atributo JPanel que presenta el formulario de
+     * registro para el jugador.
+     */
     private Front_RegistroJugador frontRegistroJugador;
 
+    /**
+     * Atributo JPanel que muestra el inicio del juego en el nivel 1
+      */
+    private Front_Nivel_1 frontNivel1;
+
+    /**
+     * Atributo JPanel que muestra el final de la app.
+     */
     private Front_Final frontFinal;
 
 
+    /**
+     * Atributos de Colores de la app
+     */
     private Color  colorBack = new Color(82,25,196);
     private Color colorFront = new Color(188, 234, 192);
     Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 24);
 
 
     /**
-     * Constructor of GUI class
+     * Constructor of class
      */
     public Prueba_Frame_001_Inicial(){
         initGUI();
@@ -59,8 +95,7 @@ public class Prueba_Frame_001_Inicial extends JFrame {
     }
 
     /**
-     * This method is used to set up the default JComponent Configuration,
-     * create Listener and control Objects used for the GUI class
+     * Método que inicializa los atributos de la clase.
      */
     public void initGUI() {
         //Set up JFrame Container's Layout
@@ -109,6 +144,12 @@ public class Prueba_Frame_001_Inicial extends JFrame {
 
     }
 
+    /**
+     * Método para actualizar los paneles soportados
+     * por el JPanel padrino.
+      * @param old
+     * @param young
+     */
     public void renove_Panel (JPanel old, JPanel young){
         padrino.remove(old);
         padrino.add(young, BorderLayout.CENTER);
@@ -118,9 +159,11 @@ public class Prueba_Frame_001_Inicial extends JFrame {
 
     }
 
+
     /**
-     * Método que toma el JPanel de los botones y lo
-     * adiciona a otro JPanel.
+     * Método que adiciona el Jpanel de los Jbutton a cada
+     * Jpanel de un front.
+     * @param estado_en_Tramite
      */
     private void adiciono_JPanel_Botones(int estado_en_Tramite){{
 
