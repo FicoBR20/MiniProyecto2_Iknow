@@ -7,16 +7,28 @@ import java.awt.*;
 import java.util.Objects;
 
 public class Botones extends  JButton{
-//    private JButton boton;
     private Lanza_app_Prueba.Escucha escucha;
     private ImageIcon imageIcon;
     private ImageIcon imageIcon_Pressed;
-    private int tamaño_fuente;
+    private int tamaño_fuente,alto,ancho;
+
+    public int getTamaño_fuente() {
+        return tamaño_fuente;
+    }
+
+    public void setTamaño_fuente(int tamaño_fuente) {
+        this.tamaño_fuente = tamaño_fuente;
+    }
+    public void setTamaño_boton(int ancho, int  alto) {
+        this.ancho = ancho;
+        this.alto = alto;
+    }
 
     public Botones() {
         tamaño_fuente = 40;
+        ancho=120;
+        alto = 62;
         escucha = new Lanza_app_Prueba.Escucha();
-//        boton = new JButton();
         this.setBackground(null);
         this.setContentAreaFilled(false);
         this.setBorderPainted(false);
@@ -34,8 +46,8 @@ public class Botones extends  JButton{
         this.setText(nombre);
         this.setForeground(Color.white);
         this.setFont(new Font(null,Font.BOLD,tamaño_fuente));
-        this.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(120,62,Image.SCALE_SMOOTH)));
-        this.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(120,62,Image.SCALE_SMOOTH)));
+        this.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(ancho,alto,Image.SCALE_SMOOTH)));
+        this.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(ancho,alto,Image.SCALE_SMOOTH)));
         return this;
     }
 
@@ -45,8 +57,8 @@ public class Botones extends  JButton{
         this.setText(nombre);
         this.setForeground(Color.white);
         this.setFont(new Font(null,Font.BOLD,tamaño_fuente));
-        this.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(120,62,Image.SCALE_SMOOTH)));
-        this.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(120,62,Image.SCALE_SMOOTH)));
+        this.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(ancho,alto,Image.SCALE_SMOOTH)));
+        this.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(ancho,alto,Image.SCALE_SMOOTH)));
         return this;
     }
 

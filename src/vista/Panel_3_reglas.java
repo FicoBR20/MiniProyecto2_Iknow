@@ -4,13 +4,13 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public class Front_Reglas extends JPanel {
+public class Panel_3_reglas extends JPanel {
 
 
     private  Botones si_boton, no_boton;
     private   Area_de_Texto area_de_texto;
 
-    public Front_Reglas(){
+    public Panel_3_reglas(){
 
         si_boton = new Botones();
         no_boton = new Botones();

@@ -4,13 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public class Front_Menu extends JPanel {
-
+public class Panel_1_Inicial extends JPanel {
 
     private  Botones si_boton, no_boton;
     private   Area_de_Texto area_de_texto;
 
-    public Front_Menu(){
+    public Panel_1_Inicial(){
 
         si_boton = new Botones();
         no_boton = new Botones();
@@ -19,7 +18,7 @@ public class Front_Menu extends JPanel {
         GridBagLayout gridBagLayout = new GridBagLayout();
         this.setLayout(gridBagLayout);
         this.setSize(400,400);
-        this.setBackground(new Color(123, 68, 13));
+        this.setBackground(new Color(13, 64, 123));
         initGui();
 
     }
@@ -35,7 +34,7 @@ public class Front_Menu extends JPanel {
         gbc.weightx = 1.0; // no se deformara
         gbc.weighty = 1.0; // no se deformara
         //gbc.fill = GridBagConstraints.BOTH; // se proporcionara parejo
-        this.add(area_de_texto.menu(), gbc);
+        this.add(area_de_texto.getInfo_al_Jugador(), gbc);
 
         gbc.gridx=1; // columna 0
         gbc.gridy=3; // fila 0

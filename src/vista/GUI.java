@@ -9,7 +9,7 @@ import java.awt.*;
  */
 public class GUI extends JFrame {
 
-    private Front_Inicial frontInicial;
+    private Panel_1_Inicial frontInicial;
     private Header headerProject;
     /**
      * JPanels contenedores.
@@ -60,7 +60,7 @@ public class GUI extends JFrame {
 
 
         headerProject = new Header(" Ejercita tu memoria ", colorFront);
-        frontInicial = new Front_Inicial();
+        frontInicial = new Panel_1_Inicial();
         frontInicial.setBackground(colorBack);
 
         jPanel_Principal = new JPanel();
@@ -87,7 +87,7 @@ public class GUI extends JFrame {
 
 
         headerProject = new Header(" Bienvenido ", colorFront);
-        frontInicial = new Front_Inicial();
+        frontInicial = new Panel_1_Inicial();
         frontInicial.setBackground(colorBack);
 
 

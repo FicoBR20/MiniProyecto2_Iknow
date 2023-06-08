@@ -3,7 +3,7 @@ package controlador;
 import modelo.File_estado;
 import modelo.Juego;
 import vista.*;
-import vista.Canvas;
+import vista.Panel_4_canvas;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -13,10 +13,10 @@ import java.util.Objects;
 
 public class Lanza_app_Prueba {
     private static GUI gui;
-    private static Canvas canvas;
-    private static Front_Inicial front_inicial;
-    private static Front_Reglas front_reglas;
-    private static Front_Menu frontMenu;
+    private static Panel_4_canvas canvas;
+    private static Panel_1_Inicial front_inicial;
+    private static Panel_3_reglas front_reglas;
+    private static Panel_2_menu frontMenu;
     private Juego juego;
     private int numero;
     private String texto;
@@ -28,16 +28,17 @@ public class Lanza_app_Prueba {
      * Método constructor
      */
     public Lanza_app_Prueba(){
-        canvas = new Canvas();
-        front_inicial = new Front_Inicial();
-        front_reglas = new Front_Reglas();
-        frontMenu = new Front_Menu();
+        canvas = new Panel_4_canvas();
+        front_inicial = new Panel_1_Inicial();
+        front_reglas = new Panel_3_reglas();
+        frontMenu = new Panel_2_menu();
         file_estado = new File_estado();
         file_estado.writer_estado("2");
         gui = new GUI();
-//        texto = file_estado.reader_estado();
-//        numero = Integer.parseInt(texto);
+        texto = file_estado.reader_estado();
+        numero = Integer.parseInt(texto);
         gui.add(front_inicial);
+        setestado();
     }
 
 
@@ -54,27 +55,27 @@ public class Lanza_app_Prueba {
 
             case 1 ->{
                 System.out.println(" Switch 1 ");
+                gui.setContentPane(canvas);
                 gui.revalidate();
                 gui.repaint();
-                gui.add(canvas);
             }
             case 2 ->{
                 System.out.println(" Switch 2 ");
+                gui.setContentPane(front_inicial);
                 gui.revalidate();
                 gui.repaint();
-                gui.add(front_inicial);
             }
             case 3 ->{
                 System.out.println(" Switch 3 ");
+                gui.setContentPane(front_reglas);
                 gui.revalidate();
                 gui.repaint();
-                gui.add(front_reglas);
             }
             case 4 ->{
                 System.out.println(" Switch 4 ");
+                gui.setContentPane(frontMenu);
                 gui.revalidate();
                 gui.repaint();
-                gui.add(frontMenu);
 
             }
         }
@@ -95,7 +96,7 @@ public class Lanza_app_Prueba {
     }
 
     /**
-     * inner class implements Listeners used by Front_Inicial class
+     * inner class implements Listeners used by Panel_1_Inicial class
      */
     public static class Escucha implements ActionListener {
         private File_estado file_estado;
@@ -104,17 +105,15 @@ public class Lanza_app_Prueba {
         public void actionPerformed(ActionEvent e) {
 
             if (Objects.equals(e.getActionCommand(), "SI")){
-
-//                bill = new Lanza_app_Prueba();
-                bill.seleccionar_pantalla(4);
+                bill.seleccionar_pantalla(3);
                 get_lans().seleccionar_pantalla(1);
-//
-//                file_estado = new File_estado();
-//                file_estado.writer_estado("4");
-//                int numero = Integer.parseInt(file_estado.reader_estado());
-//                seleccionar_pantalla(numero);
 
-//                System.out.println(" Clase escucha Lectura del file "+numero);
+                file_estado = new File_estado();
+                file_estado.writer_estado("4");
+                int numero = Integer.parseInt(file_estado.reader_estado());
+                seleccionar_pantalla(numero);
+
+                System.out.println(" Clase escucha Lectura del file "+numero);
                 System.out.println(" que empieze el juego ");
             }
             else if(Objects.equals(e.getActionCommand(), "NO")){

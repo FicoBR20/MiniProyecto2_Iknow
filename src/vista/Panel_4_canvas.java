@@ -5,7 +5,7 @@ import modelo.Palabra;
 import javax.swing.*;
 import java.awt.*;
 
-public class Canvas extends JPanel {
+public class Panel_4_canvas extends JPanel {
 
     private Palabra palabra;
 
@@ -13,7 +13,7 @@ public class Canvas extends JPanel {
 
     private Font font;
 
-    public Canvas(){
+    public Panel_4_canvas(){
 
         this.setBackground( new Color(47, 161, 30));
         infoPanel = " Fijate muy bien en las palabras presentadas\ndeberas recordarlas dentro de poco..suerte\n";
