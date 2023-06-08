@@ -13,14 +13,14 @@ import java.util.Objects;
 
 public class Lanza_app_Prueba {
     private static GUI gui;
-    private static Panel_4_canvas canvas;
-    private static Panel_1_Inicial front_inicial;
-    private static Panel_3_reglas front_reglas;
-    private static Panel_2_menu frontMenu;
+    private static Panel_1_Inicial panel_1_inicial;
+    private static Panel_2_menu panel_2_menu;
+    private static Panel_3_reglas panel_3_reglas;
+    private static Panel_4_canvas panel_4_canvas;
     private Juego juego;
-    private int numero;
+    private int numero,estado;
     private String texto;
-    private static File_estado file_estado;
+//    private static File_estado file_estado;
     private static Lanza_app_Prueba bill = null;
 
 
@@ -28,17 +28,19 @@ public class Lanza_app_Prueba {
      * Método constructor
      */
     public Lanza_app_Prueba(){
-        canvas = new Panel_4_canvas();
-        front_inicial = new Panel_1_Inicial();
-        front_reglas = new Panel_3_reglas();
-        frontMenu = new Panel_2_menu();
-        file_estado = new File_estado();
-        file_estado.writer_estado("2");
         gui = new GUI();
-        texto = file_estado.reader_estado();
-        numero = Integer.parseInt(texto);
-        gui.add(front_inicial);
-        setestado();
+        panel_4_canvas = new Panel_4_canvas();
+        panel_1_inicial = new Panel_1_Inicial();
+        panel_3_reglas = new Panel_3_reglas();
+        panel_2_menu = new Panel_2_menu();
+        estado = 1;
+//        numero = Integer.parseInt(texto);
+//        file_estado = new File_estado();
+//        file_estado.writer_estado("1");
+//        texto = file_estado.reader_estado();
+
+        seleccionar_pantalla(estado);
+//        setestado();
     }
 
 
@@ -55,27 +57,40 @@ public class Lanza_app_Prueba {
 
             case 1 ->{
                 System.out.println(" Switch 1 ");
-                gui.setContentPane(canvas);
+                gui.setContentPane(panel_1_inicial);
                 gui.revalidate();
                 gui.repaint();
+                estado = 1;
             }
             case 2 ->{
                 System.out.println(" Switch 2 ");
-                gui.setContentPane(front_inicial);
+                gui.setContentPane(panel_2_menu);
                 gui.revalidate();
                 gui.repaint();
+                estado = 1;
             }
             case 3 ->{
                 System.out.println(" Switch 3 ");
-                gui.setContentPane(front_reglas);
+                gui.setContentPane(panel_3_reglas);
                 gui.revalidate();
                 gui.repaint();
+                estado = 1;
             }
             case 4 ->{
                 System.out.println(" Switch 4 ");
-                gui.setContentPane(frontMenu);
+                gui.setContentPane(panel_4_canvas);
                 gui.revalidate();
                 gui.repaint();
+                estado = 1;
+
+            }
+
+            case 5 ->{
+                System.out.println(" Switch 5 ");
+                gui.setContentPane(panel_4_opciones);
+                gui.revalidate();
+                gui.repaint();
+                estado = 1;
 
             }
         }
@@ -84,7 +99,7 @@ public class Lanza_app_Prueba {
     public static void main(String[] args){
         EventQueue.invokeLater(() -> {
             bill = new Lanza_app_Prueba();
-            System.out.println(" Lectura del file "+file_estado.reader_estado());
+//            System.out.println(" Lectura del file "+file_estado.reader_estado());
         });
     }
 
@@ -105,21 +120,31 @@ public class Lanza_app_Prueba {
         public void actionPerformed(ActionEvent e) {
 
             if (Objects.equals(e.getActionCommand(), "SI")){
-                bill.seleccionar_pantalla(3);
-                get_lans().seleccionar_pantalla(1);
 
-                file_estado = new File_estado();
-                file_estado.writer_estado("4");
-                int numero = Integer.parseInt(file_estado.reader_estado());
-                seleccionar_pantalla(numero);
+                bill.seleccionar_pantalla(bill.estado);
 
-                System.out.println(" Clase escucha Lectura del file "+numero);
+//                file_estado = new File_estado();
+//                file_estado.writer_estado("3");
+//                int numero = Integer.parseInt(file_estado.reader_estado());
+//                get_lans().seleccionar_pantalla(numero);
+//                System.out.println(" Clase escucha Lectura del file "+numero);
+
                 System.out.println(" que empieze el juego ");
             }
+            else if(Objects.equals(e.getActionCommand(), "ATRAS")){
+                bill.seleccionar_pantalla(1);
+            }
+            else if(Objects.equals(e.getActionCommand(), "JUGAR")){
+                bill.seleccionar_pantalla(4);
+            }
+            else if(Objects.equals(e.getActionCommand(), "OPCIONES")){
+                bill.seleccionar_pantalla(2);
+            }
             else if(Objects.equals(e.getActionCommand(), "NO")){
-
-                System.out.println(" aqui se termina el juego y se muestra de nuevo el ingreso");
-                System.exit(0);
+                bill.seleccionar_pantalla(bill.estado);
+            }
+            else if(Objects.equals(e.getActionCommand(), "SALIR")){
+                bill.seleccionar_pantalla(bill.estado);
             }
 
         }

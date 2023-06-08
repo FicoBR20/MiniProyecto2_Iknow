@@ -4,17 +4,17 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public class Panel_1_Inicial extends JPanel {
+public class Panel_5_opciones extends JPanel {
 
-    private  final Botones continuar_boton, opcion_boton, jugar_boton, reglas_boton;
+    private  final Botones sonido_boton, grafico_boton, idioma_boton, atras_boton;
     private  final Area_de_Texto area_de_texto;
 
-    public Panel_1_Inicial(){
+    public Panel_5_opciones(){
 
-        continuar_boton = new Botones();
-        opcion_boton = new Botones();
-        reglas_boton = new Botones();
-        jugar_boton = new Botones();
+        sonido_boton = new Botones();
+        grafico_boton = new Botones();
+        atras_boton = new Botones();
+        idioma_boton = new Botones();
 
         area_de_texto = new Area_de_Texto();
 
@@ -44,25 +44,25 @@ public class Panel_1_Inicial extends JPanel {
         gbc.gridy=1; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
-        this.add(continuar_boton.getBoton_style_1("CONTINUAR"), gbc);
+        this.add(sonido_boton.getBoton_style_1("CONTINUAR"), gbc);
 
         gbc.gridx=1; // columna 0
         gbc.gridy=2; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
-        this.add(jugar_boton.getBoton_style_1("JUGAR"), gbc);
+        this.add(idioma_boton.getBoton_style_1("JUGAR"), gbc);
 
         gbc.gridx=1; // columna 0
         gbc.gridy=3; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
-        this.add(opcion_boton.getBoton_style_1("OPCIÓN"), gbc);
+        this.add(grafico_boton.getBoton_style_1("GRAFICO"), gbc);
 
         gbc.gridx=1; // columna 0
         gbc.gridy=4; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
-        this.add(reglas_boton.getBoton_style_1("COMO JUGAR"), gbc);
+        this.add(atras_boton.getBoton_style_1("ATRAS"), gbc);
 
     }
 

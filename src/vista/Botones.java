@@ -25,9 +25,9 @@ public class Botones extends  JButton{
     }
 
     public Botones() {
-        tamaño_fuente = 40;
+        tamaño_fuente = 15;
         ancho=120;
-        alto = 62;
+        alto = 30;
         escucha = new Lanza_app_Prueba.Escucha();
         this.setBackground(null);
         this.setContentAreaFilled(false);

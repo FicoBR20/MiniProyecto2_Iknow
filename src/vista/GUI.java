@@ -38,7 +38,7 @@ public class GUI extends JFrame {
 
         //Default JFrame configuration
         this.setTitle("I Know that word !!");
-        this.setSize(600,400);
+        this.setSize(800,500);
         //this.pack();
         this.setResizable(true);
         this.setVisible(true);
