@@ -56,7 +56,7 @@ public class Panel_1_Inicial extends JPanel {
         gbc.gridy=3; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
-        this.add(opcion_boton.getBoton_style_1("OPCIÓN"), gbc);
+        this.add(opcion_boton.getBoton_style_1("OPCIONES"), gbc);
 
         gbc.gridx=1; // columna 0
         gbc.gridy=4; // fila 0

@@ -35,7 +35,7 @@ public class Panel_5_opciones extends JPanel {
 
         gbc.gridx=1; // columna 0
         gbc.gridy=0; // fila 0
-        gbc.gridwidth=1; // ocupara 4 columnas
+        gbc.gridwidth=2; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         this.add(area_de_texto.inicial(), gbc);
 
@@ -44,22 +44,22 @@ public class Panel_5_opciones extends JPanel {
         gbc.gridy=1; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
-        this.add(sonido_boton.getBoton_style_1("CONTINUAR"), gbc);
+        this.add(sonido_boton.getBoton_style_1("SONIDO"), gbc);
+
+        gbc.gridx=2; // columna 0
+        gbc.gridy=1; // fila 0
+        gbc.gridwidth=1; // ocupara 4 columnas
+        gbc.gridheight=1; // ocupara 3 filas
+        this.add(idioma_boton.getBoton_style_1("IDIOMA"), gbc);
 
         gbc.gridx=1; // columna 0
         gbc.gridy=2; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
-        this.add(idioma_boton.getBoton_style_1("JUGAR"), gbc);
-
-        gbc.gridx=1; // columna 0
-        gbc.gridy=3; // fila 0
-        gbc.gridwidth=1; // ocupara 4 columnas
-        gbc.gridheight=1; // ocupara 3 filas
         this.add(grafico_boton.getBoton_style_1("GRAFICO"), gbc);
 
-        gbc.gridx=1; // columna 0
-        gbc.gridy=4; // fila 0
+        gbc.gridx=2; // columna 0
+        gbc.gridy=2; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         this.add(atras_boton.getBoton_style_1("ATRAS"), gbc);

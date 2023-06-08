@@ -17,6 +17,7 @@ public class Lanza_app_Prueba {
     private static Panel_2_menu panel_2_menu;
     private static Panel_3_reglas panel_3_reglas;
     private static Panel_4_canvas panel_4_canvas;
+    private static Panel_5_opciones panel_5_opciones;
     private Juego juego;
     private int numero,estado;
     private String texto;
@@ -29,10 +30,12 @@ public class Lanza_app_Prueba {
      */
     public Lanza_app_Prueba(){
         gui = new GUI();
-        panel_4_canvas = new Panel_4_canvas();
         panel_1_inicial = new Panel_1_Inicial();
         panel_3_reglas = new Panel_3_reglas();
         panel_2_menu = new Panel_2_menu();
+        panel_4_canvas = new Panel_4_canvas();
+        panel_5_opciones = new Panel_5_opciones();
+
         estado = 1;
 //        numero = Integer.parseInt(texto);
 //        file_estado = new File_estado();
@@ -87,11 +90,10 @@ public class Lanza_app_Prueba {
 
             case 5 ->{
                 System.out.println(" Switch 5 ");
-                gui.setContentPane(panel_4_opciones);
+                gui.setContentPane(panel_5_opciones);
                 gui.revalidate();
                 gui.repaint();
                 estado = 1;
-
             }
         }
     }
@@ -134,17 +136,20 @@ public class Lanza_app_Prueba {
             else if(Objects.equals(e.getActionCommand(), "ATRAS")){
                 bill.seleccionar_pantalla(1);
             }
+            else if(Objects.equals(e.getActionCommand(), "MENÚ")){
+                bill.seleccionar_pantalla(2);
+            }
+            else if(Objects.equals(e.getActionCommand(), "COMO JUGAR")){
+                bill.seleccionar_pantalla(3);
+            }
             else if(Objects.equals(e.getActionCommand(), "JUGAR")){
                 bill.seleccionar_pantalla(4);
             }
+            else if(Objects.equals(e.getActionCommand(), "CONTINUAR")) {
+                bill.seleccionar_pantalla(4);
+            }
             else if(Objects.equals(e.getActionCommand(), "OPCIONES")){
-                bill.seleccionar_pantalla(2);
-            }
-            else if(Objects.equals(e.getActionCommand(), "NO")){
-                bill.seleccionar_pantalla(bill.estado);
-            }
-            else if(Objects.equals(e.getActionCommand(), "SALIR")){
-                bill.seleccionar_pantalla(bill.estado);
+                bill.seleccionar_pantalla(5);
             }
 
         }
