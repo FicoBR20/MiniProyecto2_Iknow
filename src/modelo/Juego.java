@@ -193,19 +193,19 @@ public class Juego {
         switch (categoria) {
             case 1 -> {
                 System.out.println(" la biblioteca es anmimal");
-                return ruta = "src/resources/animales.txt";
+                return ruta = "src/resources/file/animales.txt";
             }
             case 2 -> {
                 System.out.println(" la biblioteca es ciudades");
-                return ruta = "src/resources/ciudades.txt";
+                return ruta = "src/resources/file/ciudades.txt";
             }
             case 3 -> {
                 System.out.println(" la biblioteca es profesiones");
-                return ruta = "src/resources/profecion.txt";
+                return ruta = "src/resources/file/profecion.txt";
             }
             default -> {
                 System.out.println(" solo hay 3 biliotecas por ahora");
-                return ruta = "src/resources/empty.txt";
+                return ruta = "src/resources/file/empty.txt";
             }
         }
     }

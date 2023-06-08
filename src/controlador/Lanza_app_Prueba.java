@@ -9,6 +9,7 @@ import vista.Panel_4_canvas;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -31,7 +32,7 @@ public class Lanza_app_Prueba {
     /**
      * Método constructor
      */
-    public Lanza_app_Prueba(){
+    public Lanza_app_Prueba() throws IOException {
         gui = new GUI();
         panel_1_inicial = new Panel_1_Inicial();
         panel_3_reglas = new Panel_3_reglas();
@@ -97,7 +98,11 @@ public class Lanza_app_Prueba {
 
     public static void main(String[] args){
         EventQueue.invokeLater(() -> {
-            bill = new Lanza_app_Prueba();
+            try {
+                bill = new Lanza_app_Prueba();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         });
     }
 

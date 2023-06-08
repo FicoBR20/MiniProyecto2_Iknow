@@ -45,4 +45,10 @@ public class Area_de_Texto {
                 "menu ?\n");
         return info_al_Jugador;
     }
+    public JTextArea seText(String palabra) {
+        Font font = new Font(Font.SANS_SERIF, Font.BOLD, 100);
+        info_al_Jugador.setFont(font);
+        info_al_Jugador.setText(palabra);
+        return info_al_Jugador;
+    }
 }
