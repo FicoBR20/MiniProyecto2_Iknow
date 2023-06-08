@@ -37,7 +37,7 @@ public class Panel_5_opciones extends JPanel {
         gbc.gridy=0; // fila 0
         gbc.gridwidth=2; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
-        this.add(area_de_texto.inicial(), gbc);
+        this.add(area_de_texto.opciones(), gbc);
 
         gbc.insets.set(0,0,5,5);
         gbc.gridx=1; // columna 0

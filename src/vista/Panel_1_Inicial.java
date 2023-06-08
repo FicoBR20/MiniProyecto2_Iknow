@@ -30,7 +30,7 @@ public class Panel_1_Inicial extends JPanel {
         GridBagConstraints gbc = new GridBagConstraints();
 //        gbc.weightx = 1; // no se deformara
 //        gbc.weighty = 1; // no se deformara
-        gbc.insets.set(0,0,150,5);
+//        gbc.insets.set(0,0,150,5);
 
 
         gbc.gridx=1; // columna 0

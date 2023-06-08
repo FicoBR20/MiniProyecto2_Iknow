@@ -2,6 +2,7 @@ package controlador;
 
 import modelo.File_estado;
 import modelo.Juego;
+import modelo.Palabra;
 import vista.*;
 import vista.Panel_4_canvas;
 
@@ -9,15 +10,17 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
+import java.util.Scanner;
 
 
 public class Lanza_app_Prueba {
-    private static GUI gui;
-    private static Panel_1_Inicial panel_1_inicial;
-    private static Panel_2_menu panel_2_menu;
-    private static Panel_3_reglas panel_3_reglas;
-    private static Panel_4_canvas panel_4_canvas;
-    private static Panel_5_opciones panel_5_opciones;
+    private  GUI gui;
+    private  Panel_1_Inicial panel_1_inicial;
+    private  Panel_2_menu panel_2_menu;
+    private  Panel_3_reglas panel_3_reglas;
+    private  Panel_4_canvas panel_4_canvas;
+    private  Panel_5_opciones panel_5_opciones;
+    private  Palabra palabra;
     private Juego juego;
     private int numero,estado;
     private String texto;
@@ -63,29 +66,24 @@ public class Lanza_app_Prueba {
                 gui.setContentPane(panel_1_inicial);
                 gui.revalidate();
                 gui.repaint();
-                estado = 1;
             }
             case 2 ->{
                 System.out.println(" Switch 2 ");
                 gui.setContentPane(panel_2_menu);
                 gui.revalidate();
                 gui.repaint();
-                estado = 1;
             }
             case 3 ->{
                 System.out.println(" Switch 3 ");
                 gui.setContentPane(panel_3_reglas);
                 gui.revalidate();
                 gui.repaint();
-                estado = 1;
             }
             case 4 ->{
                 System.out.println(" Switch 4 ");
                 gui.setContentPane(panel_4_canvas);
                 gui.revalidate();
                 gui.repaint();
-                estado = 1;
-
             }
 
             case 5 ->{
@@ -93,7 +91,6 @@ public class Lanza_app_Prueba {
                 gui.setContentPane(panel_5_opciones);
                 gui.revalidate();
                 gui.repaint();
-                estado = 1;
             }
         }
     }
@@ -101,15 +98,36 @@ public class Lanza_app_Prueba {
     public static void main(String[] args){
         EventQueue.invokeLater(() -> {
             bill = new Lanza_app_Prueba();
-//            System.out.println(" Lectura del file "+file_estado.reader_estado());
         });
     }
 
-    private static void set_lans(Lanza_app_Prueba iknow) {
+    private  void set_lans(Lanza_app_Prueba iknow) {
         bill = iknow;
     }
-    private static Lanza_app_Prueba get_lans() {
+    private  Lanza_app_Prueba get_lans() {
         return bill;
+    }
+
+
+    public  void ini(){
+        System.out.println("Palabras Del nivel\n");
+        for (int i = 0; i <= palabra.getPalabra_del_nivel().size()-1; i++){
+            System.out.println("Palabra = "+(i+1)+" "+palabra.getPalabra_del_nivel().get(i));
+        }
+        System.out.println("\nPalabras a memorizar\n");
+        for (int i = 0; i <= palabra.getPalabra_a_Memorizar().size()-1; i++){
+            System.out.println("Palabra = "+(i+1)+" "+palabra.getPalabra_a_Memorizar().get(i));
+        }
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("\nIngrese un número: ");
+        int numero = scanner.nextInt();
+
+        while (numero != 0){
+            palabra.comparacion(palabra.getPalabra_del_nivel().get(numero-1),palabra.getPalabra_a_Memorizar());
+            System.out.print("\nIngrese un número: ");
+            numero = scanner.nextInt();
+        }
     }
 
     /**
@@ -121,33 +139,26 @@ public class Lanza_app_Prueba {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            if (Objects.equals(e.getActionCommand(), "SI")){
-
-                bill.seleccionar_pantalla(bill.estado);
-
-//                file_estado = new File_estado();
-//                file_estado.writer_estado("3");
-//                int numero = Integer.parseInt(file_estado.reader_estado());
-//                get_lans().seleccionar_pantalla(numero);
-//                System.out.println(" Clase escucha Lectura del file "+numero);
-
-                System.out.println(" que empieze el juego ");
-            }
-            else if(Objects.equals(e.getActionCommand(), "ATRAS")){
+            if(Objects.equals(e.getActionCommand(), "ATRAS")){
                 bill.seleccionar_pantalla(1);
             }
+
             else if(Objects.equals(e.getActionCommand(), "MENÚ")){
                 bill.seleccionar_pantalla(2);
             }
+
             else if(Objects.equals(e.getActionCommand(), "COMO JUGAR")){
                 bill.seleccionar_pantalla(3);
             }
+
             else if(Objects.equals(e.getActionCommand(), "JUGAR")){
                 bill.seleccionar_pantalla(4);
             }
+
             else if(Objects.equals(e.getActionCommand(), "CONTINUAR")) {
                 bill.seleccionar_pantalla(4);
             }
+
             else if(Objects.equals(e.getActionCommand(), "OPCIONES")){
                 bill.seleccionar_pantalla(5);
             }
