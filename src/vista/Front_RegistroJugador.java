@@ -107,15 +107,7 @@ public class Front_RegistroJugador extends JPanel {
         gbc.weighty = 1.0; // no se deformara
         gbc.ipady=5;//relleno interno en y pixels
         gbc.anchor=GridBagConstraints.PAGE_START;//cuando el componente es mas pequenno que el area de visualización.tambien PAGE_START, PAGE_END, LINE_START, LINE_END, FIRST_LINE_START, FIRST_LINE_END, LAST_LINE_ENDy LAST_LINE_START.
-        this.add(header, gbc);
-
-
-
-
-
-
-
-
+//        this.add(header, gbc);
 
         gbc.gridx=1; // columna 0
         gbc.gridy=0; // fila 0
@@ -147,7 +139,7 @@ public class Front_RegistroJugador extends JPanel {
         gbc.gridheight=1; // ocupara 3 filas
         gbc.weightx = 1.0; // no se deformara
         gbc.weighty = 1.0; // no se deformara
-        this.add(iniciar_Juego, gbc);
+        this.add(iniciar_Juego.getBoton_style_1("INICIAR"), gbc);
 
     }
 

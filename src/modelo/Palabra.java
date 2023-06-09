@@ -30,7 +30,7 @@ public class Palabra {
      * @throws IOException
      */
 
-    public void setPalabra_del_nivel() throws IOException {
+    public void setPalabra_del_nivel() {
         for (int i = 0; i < juego.getTotal_Palabras_del_Nivel(); i++){
             String memoria = stringBasico.seleccionarPalabraAleatoria(stringBasico.obtenerPalabras(juego.getRuta()));
             if (!palabra_del_Nivel.contains(memoria)) {

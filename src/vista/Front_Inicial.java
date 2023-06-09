@@ -56,7 +56,7 @@ public class Front_Inicial extends JPanel {
 
         si_Juego_Front_Inicial = new JButton();
         ImageIcon imageIcon = new ImageIcon(getClass().getResource("/resources/botones/Boton_SI.png"));
-        ImageIcon imageIcon_Pressed = new ImageIcon(getClass().getResource("/resources/Boton_SI_PRESSED.png"));
+        ImageIcon imageIcon_Pressed = new ImageIcon(getClass().getResource("/resources/botones/Boton_SI_PRESSED.png"));
         si_Juego_Front_Inicial.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(60,31,Image.SCALE_SMOOTH)));
         si_Juego_Front_Inicial.setBorder(BorderFactory.createEmptyBorder());
         si_Juego_Front_Inicial.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(60,31,Image.SCALE_SMOOTH)));
@@ -64,8 +64,8 @@ public class Front_Inicial extends JPanel {
         escucha = new Escucha();
 
         no_Juego_Front_Inicial = new JButton();
-        imageIcon = new ImageIcon(getClass().getResource("/resources/Boton_NO.png"));
-        imageIcon_Pressed = new ImageIcon(getClass().getResource("/resources/Boton_NO_PRESSED.png"));
+        imageIcon = new ImageIcon(getClass().getResource("/resources/botones/Boton_NO.png"));
+        imageIcon_Pressed = new ImageIcon(getClass().getResource("/resources/botones/Boton_NO_PRESSED.png"));
         no_Juego_Front_Inicial.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(60,31,Image.SCALE_SMOOTH)));
         no_Juego_Front_Inicial.setBorder(BorderFactory.createEmptyBorder());
         no_Juego_Front_Inicial.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(60,31,Image.SCALE_SMOOTH)));
