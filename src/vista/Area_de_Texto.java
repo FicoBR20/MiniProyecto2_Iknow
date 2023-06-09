@@ -39,12 +39,14 @@ public class Area_de_Texto {
                 "menu ?\n");
         return info_al_Jugador;
     }
+
     public JTextArea opciones() {
         info_al_Jugador.append(":::OPCIONES:::\n" +
                 "Aqui van las opciones del \n" +
                 "menu ?\n");
         return info_al_Jugador;
     }
+
     public JTextArea seText(String palabra) {
         Font font = new Font(Font.SANS_SERIF, Font.BOLD, 100);
         info_al_Jugador.setFont(font);

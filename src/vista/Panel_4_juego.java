@@ -1,7 +1,5 @@
 package vista;
 
-import controlador.Lanza_app_Prueba;
-import modelo.File_estado;
 import modelo.Juego;
 import modelo.Palabra;
 
@@ -10,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Panel_4_canvas extends JPanel {
+public class Panel_4_juego extends JPanel {
 
     private Palabra palabra;
     private String infoPanel;
@@ -20,10 +18,10 @@ public class Panel_4_canvas extends JPanel {
     private Timer timer;
     private Escucha escucha;
     private  int counter;
-    private static Panel_4_canvas panel_4_canvas = null;
+    private static Panel_4_juego panel_4_canvas = null;
     private String memoriza;
 
-    public Panel_4_canvas(){
+    public Panel_4_juego(){
         ini();
     }
 
@@ -39,7 +37,7 @@ public class Panel_4_canvas extends JPanel {
 
         Juego juego1 = new Juego();
         palabra = new Palabra();
-        juego1.setUp_Nivel(1);
+        juego1.setUp_Nivel(2);
         juego1.setCategoria(2);
         palabra.setJuego(juego1);
         palabra.setPalabra_del_nivel();
@@ -68,23 +66,22 @@ public class Panel_4_canvas extends JPanel {
         timer.start();
     }
 
-    public static void main(String[] args){
-        EventQueue.invokeLater(() -> {
-            GUI miProjectGUI = new GUI();
-            panel_4_canvas = new Panel_4_canvas();
-            miProjectGUI.setContentPane(panel_4_canvas);
-        });
-    }
-
-//    protected void paintComponent(Graphics g){
-//        this.area_de_texto.seText("hshsh");
-//        super.paintComponent(g);
-//        String receptor = "";
-//      //  receptor = palabra.getPalabra_a_Memorizar();
-//        g.setFont(font);
-//        g.drawString("La palabra a memorizar es" + receptor,20,20);
-//
+//    public static void main(String[] args){
+//        EventQueue.invokeLater(() -> {
+//            GUI miProjectGUI = new GUI();
+//            panel_4_canvas = new Panel_4_juego();
+//            miProjectGUI.setContentPane(panel_4_canvas);
+//        });
 //    }
+
+    protected void paintComponent(Graphics g){
+        super.paintComponent(g);
+        String receptor = "";
+      //  receptor = palabra.getPalabra_a_Memorizar();
+        g.setFont(font);
+        g.drawString("La palabra a memorizar es" + receptor,20,20);
+
+    }
 
     /**
      * inner class implements Listeners used by Panel_1_Inicial class
@@ -95,17 +92,12 @@ public class Panel_4_canvas extends JPanel {
         public void actionPerformed(ActionEvent e) {
             System.out.println("Time "+counter+" El timer está corriendo? " + String.valueOf(timer.isRunning()));
             if(e.getSource()==timer){
-                if(counter <= palabra.getPalabra_a_Memorizar().size()-2) {
-
+                if(counter <= palabra.getPalabra_a_Memorizar().size()-1) {
                     area_de_texto.seText(palabra.getPalabra_a_Memorizar().get(counter));
-                    revalidate();
-                    repaint();
-//                    squareColor.setBackground(new Color(random.nextInt(256),
-//                            random.nextInt(256),
-//                            random.nextInt(256)));
                     counter++;
                 }else{
                     timer.stop();
+                    area_de_texto.seText("");
 //                    initTimer.setEnabled(true);
 //                    initTimer.addActionListener(escucha);
                 }

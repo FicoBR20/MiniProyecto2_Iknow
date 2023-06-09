@@ -4,7 +4,7 @@ import modelo.File_estado;
 import modelo.Juego;
 import modelo.Palabra;
 import vista.*;
-import vista.Panel_4_canvas;
+import vista.Panel_4_juego;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -19,7 +19,7 @@ public class Lanza_app_Prueba {
     private  Panel_1_Inicial panel_1_inicial;
     private  Panel_2_menu panel_2_menu;
     private  Panel_3_reglas panel_3_reglas;
-    private  Panel_4_canvas panel_4_canvas;
+    private Panel_4_juego panel_4_juego;
     private  Panel_5_opciones panel_5_opciones;
     private  Palabra palabra;
     private Juego juego;
@@ -37,7 +37,7 @@ public class Lanza_app_Prueba {
         panel_1_inicial = new Panel_1_Inicial();
         panel_3_reglas = new Panel_3_reglas();
         panel_2_menu = new Panel_2_menu();
-        panel_4_canvas = new Panel_4_canvas();
+        panel_4_juego = new Panel_4_juego();
         panel_5_opciones = new Panel_5_opciones();
 
         estado = 1;
@@ -82,7 +82,7 @@ public class Lanza_app_Prueba {
             }
             case 4 ->{
                 System.out.println(" Switch 4 ");
-                gui.setContentPane(panel_4_canvas);
+                gui.setContentPane(panel_4_juego);
                 gui.revalidate();
                 gui.repaint();
             }
