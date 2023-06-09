@@ -1,7 +1,1 @@
-dddd;; 1
-fico 1
-lfdlkflfd 1
-fffffff 1
-12222 1
-rtrtrtrtr 1
-5455455 1
+registro jugador 1
