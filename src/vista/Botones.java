@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Objects;
 
-public class Botones_ extends  JButton{
+public class Botones extends  JButton{
     private Lanza_app_Prueba.Escucha escucha;
     private ImageIcon imageIcon;
     private ImageIcon imageIcon_Pressed;
@@ -19,7 +19,7 @@ public class Botones_ extends  JButton{
     public void desactivar() {
         this.setEnabled(false);
     }
-    public Botones_() {
+    public Botones() {
         tamanho_fuente = 40;
         ancho = 70;
         alto = 30;
@@ -35,7 +35,7 @@ public class Botones_ extends  JButton{
         getBoton_style_1();
     }
 
-    public Botones_(String titulo, int tamaño, int _ancho, int _alto  ) {
+    public Botones(String titulo, int tamaño, int _ancho, int _alto  ) {
         this.setText(titulo);
         tamanho_fuente = tamaño;
         ancho = _ancho;

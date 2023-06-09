@@ -17,7 +17,7 @@ public class Front_RegistroJugador extends JPanel {
 
 
 
-    private Botones_ iniciar_Juego;
+    private Botones iniciar_Juego;
 
 
     private JLabel jlabel_Title, jLabel_NombreJugador;
@@ -80,7 +80,7 @@ public class Front_RegistroJugador extends JPanel {
 
 
 
-        iniciar_Juego = new Botones_("START",15,70,30);
+        iniciar_Juego = new Botones("START",15,70,30);
         iniciar_Juego.desactivar();
 
 

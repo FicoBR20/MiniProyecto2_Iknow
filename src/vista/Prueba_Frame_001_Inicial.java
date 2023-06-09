@@ -112,10 +112,10 @@ public class Prueba_Frame_001_Inicial extends JFrame {
 
 
 
-        jButton_SI = new Botones_("YES",20,70,30);
+        jButton_SI = new Botones("YES",20,70,30);
         jButton_SI.addActionListener(escucha);
 
-        jButton_NO = new Botones_("NO", 20,70,30);
+        jButton_NO = new Botones("NO", 20,70,30);
         jButton_NO.addActionListener(escucha);
 
 

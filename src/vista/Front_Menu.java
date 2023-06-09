@@ -7,13 +7,13 @@ import java.awt.*;
 public class Front_Menu extends JPanel {
 
 
-    private Botones_ si_boton, no_boton;
+    private Botones si_boton, no_boton;
     private   Area_de_Texto area_de_texto;
 
     public Front_Menu(){
 
-        si_boton = new Botones_("SI",40,70,30);
-        no_boton = new Botones_("NO",40,70,30);
+        si_boton = new Botones("SI",40,70,30);
+        no_boton = new Botones("NO",40,70,30);
         area_de_texto = new Area_de_Texto();
 
         GridBagLayout gridBagLayout = new GridBagLayout();
