@@ -1,201 +1,202 @@
-1. Tokio
-2. Londres
-3. París
-4. Moscú
-5. Pekín
-6. Dubái
-7. Sídney
-8. Nueva Delhi
-9. Estambul
-10. Bangkok
-11. Roma
-12. Berlín
-13. El Cairo
-14. Ciudad del Cabo
-15. Atenas
-16. Amsterdam
-17. Seúl
-18. Ciudad de México
-19. Toronto
-20. Chicago
-21. Los Ángeles
-22. Miami
-23. Houston
-24. Dallas
-25. San Francisco
-26. Las Vegas
-27. Vancouver
-28. Montreal
-29. Buenos Aires
-30. Sao Paulo
-31. Santiago
-32. Lima
-33. Bogotá
-34. Caracas
-35. La Habana
-36. Santo Domingo
-37. San Juan
-38. San José
-39. Ciudad de Panamá
-40. Tegucigalpa
-41. San Salvador
-42. Managua
-43. San Pedro Sula
-44. Guatemala
-45. Ciudad de Guatemala
-46. San Petersburgo
-47. Kiev
-48. Varsovia
-49. Budapest
-50. Praga
-51. Viena
-52. Copenhague
-53. Oslo
-54. Estocolmo
-55. Helsinki
-56. Dublín
-57. Lisboa
-58. Madrid
-59. Barcelona
-60. Roma
-61. Milán
-62. Venecia
-63. Florencia
-64. Nápoles
-65. Ámsterdam
-66. Rotterdam
-67. La Haya
-68. Bruselas
-69. Luxemburgo
-70. Berna
-71. Ginebra
-72. Zúrich
-73. Múnich
-74. Berlín
-75. Fráncfort
-76. Hamburgo
-77. Atenas
-78. Tesalónica
-79. Estambul
-80. Ankara
-81. Dubái
-82. Abu Dabi
-83. Doha
-84. Riad
-85. Jeddah
-86. Ciudad del Cabo
-87. Johannesburgo
-88. El Cairo
-89. Alejandría
-90. Casablanca
-91. Marrakech
-92. Argel
-93. Orán
-94. Túnez
-95. Beirut
-96. Ammán
-97. Tel Aviv
-98. Jerusalén
-99. Bagdad
-100. Teherán
-101. Kabul
-102. Islamabad
-103. Lahore
-104. Karachi
-105. Delhi
-106. Mumbai
-107. Calcuta
-108. Bangalore
-109. Colombo
-110. Bangkok
-111. Phuket
-112. Chiang Mai
-113. Kuala Lumpur
-114. Singapur
-115. Yakarta
-116. Manila
-117. Hanoi
-118. Ho Chi Minh
-119. Phnom Penh
-120. Vientiane
-121. Yangon
-122. Katmandú
-123. Ulaanbaatar
-124. Pionyang
-125. Seúl
-126. Tokio
-127. Osaka
-128. Kioto
-129. Sapporo
-130. Manila
-131. Yakarta
-132. Ho Chi Minh
-133. Singapur
-134. Bangkok
-135. Kuala Lumpur
-136. Seúl
-137. Taipei
-138. Hong Kong
-139. Macao
-140. Pekín
-141. Shanghái
-142. Cantón
-143. Shenzhen
-144. Chengdú
-145. Chongqing
-146. Wuhan
-147. Xi'an
-148. Hangzhou
-149. Suzhou
-150. Qingdao
-151. Nanjing
-152. Ahmedabad
-153. Bangalore
-154. Chennai
-155. Delhi
-156. Hyderabad
-157. Jaipur
-158. Calcuta
-159. Mumbai
-160. Pune
-161. Auckland
-162. Sídney
-163. Melbourne
-164. Brisbane
-165. Perth
-166. Adelaida
-167. Wellington
-168. Christchurch
-169. Queenstown
-170. Vancouver
-171. Toronto
-172. Montreal
-173. Calgary
-174. Ottawa
-175. Edmonton
-176. Quebec
-177. Winnipeg
-178. Halifax
-179. San Francisco
-180. Los Ángeles
-181. Nueva York
-182. Miami
-183. Chicago
-184. Las Vegas
-185. Orlando
-186. Seattle
-187. Dallas
-188. Houston
-189. Austin
-190. Boston
-191. Washington D.C.
-192. Atlanta
-193. Denver
-194. Phoenix
-195. Detroit
-196. Filadelfia
-197. Minneapolis
-198. Portland
-199. San Diego
-200. Honolulu
-201. Cali
+AQUÍ TIENES LA LISTA DE PALABRAS SIN ÍNDICES NI PUNTOS:
+
+TOKIO
+LONDRES
+PARÍS
+MOSCÚ
+PEKÍN
+DUBÁI
+SÍDNEY
+NUEVA DELHI
+ESTAMBUL
+BANGKOK
+ROMA
+BERLÍN
+EL CAIRO
+CIUDAD DEL CABO
+ATENAS
+AMSTERDAM
+SEÚL
+CIUDAD DE MÉXICO
+TORONTO
+CHICAGO
+LOS ÁNGELES
+MIAMI
+HOUSTON
+DALLAS
+SAN FRANCISCO
+LAS VEGAS
+VANCOUVER
+MONTREAL
+BUENOS AIRES
+SAO PAULO
+SANTIAGO
+LIMA
+BOGOTÁ
+CARACAS
+LA HABANA
+SANTO DOMINGO
+SAN JUAN
+SAN JOSÉ
+CIUDAD DE PANAMÁ
+TEGUCIGALPA
+SAN SALVADOR
+MANAGUA
+SAN PEDRO SULA
+GUATEMALA
+CIUDAD DE GUATEMALA
+SAN PETERSBURGO
+KIEV
+VARSOVIA
+BUDAPEST
+PRAGA
+VIENA
+COPENHAGUE
+OSLO
+ESTOCOLMO
+HELSINKI
+DUBLÍN
+LISBOA
+MADRID
+BARCELONA
+ROMA
+MILÁN
+VENECIA
+FLORENCIA
+NÁPOLES
+ÁMSTERDAM
+ROTTERDAM
+LA HAYA
+BRUSELAS
+LUXEMBURGO
+BERNA
+GINEBRA
+ZÚRICH
+MÚNICH
+FRÁNCFORT
+HAMBURGO
+ATENAS
+TESALÓNICA
+ESTAMBUL
+ANKARA
+DUBÁI
+ABU DABI
+DOHA
+RIAD
+JEDDAH
+CIUDAD DEL CABO
+JOHANNESBURGO
+EL CAIRO
+ALEJANDRÍA
+CASABLANCA
+MARRAKECH
+ARGEL
+ORÁN
+TÚNEZ
+BEIRUT
+AMMÁN
+TEL AVIV
+JERUSALÉN
+BAGDAD
+TEHERÁN
+KABUL
+ISLAMABAD
+LAHORE
+KARACHI
+DELHI
+MUMBAI
+CALCUTA
+BANGALORE
+COLOMBO
+BANGKOK
+PHUKET
+CHIANG MAI
+KUALA LUMPUR
+SINGAPUR
+YAKARTA
+MANILA
+HANOI
+HO CHI MINH
+PHNOM PENH
+VIENTIANE
+YANGON
+KATMANDÚ
+ULAANBAATAR
+PIONYANG
+SEÚL
+TOKIO
+OSAKA
+KIOTO
+SAPPORO
+MANILA
+YAKARTA
+HO CHI MINH
+SINGAPUR
+BANGKOK
+KUALA LUMPUR
+SEÚL
+TAIPEI
+HONG KONG
+MACAO
+PEKÍN
+SHANGHÁI
+CANTÓN
+SHENZHEN
+CHENGDÚ
+CHONGQING
+WUHAN
+XI'AN
+HANGZHOU
+SUZHOU
+QINGDAO
+NANJING
+AHMEDABAD
+BANGALORE
+CHENNAI
+DELHI
+HYDERABAD
+JAIPUR
+CALCUTA
+MUMBAI
+PUNE
+AUCKLAND
+SÍDNEY
+MELBOURNE
+BRISBANE
+PERTH
+ADELAIDA
+WELLINGTON
+CHRISTCHURCH
+QUEENSTOWN
+VANCOUVER
+TORONTO
+MONTREAL
+CALGARY
+OTTAWA
+EDMONTON
+QUEBEC
+WINNIPEG
+HALIFAX
+SAN FRANCISCO
+LOS ÁNGELES
+NUEVA YORK
+MIAMI
+CHICAGO
+LAS VEGAS
+ORLANDO
+SEATTLE
+DALLAS
+HOUSTON
+AUSTIN
+BOSTON
+WASHINGTON D.C.
+ATLANTA
+DENVER
+PHOENIX
+DETROIT
+FILADELFIA
+MINNEAPOLIS
+PORTLAND
+SAN DIEGO
+HONOLULU
+CALI
