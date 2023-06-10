@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
 
 public class Panel_4_juego extends JPanel {
 
-    private Palabra palabra;
     private String infoPanel;
     private Font font;
     private Botones atras_boton,si_boton,no_boton;
@@ -22,8 +21,15 @@ public class Panel_4_juego extends JPanel {
     private String memoriza;
     private GridBagConstraints gbc;
     private JPanel panel_botones;
+    private Palabra palabra;
+    private Juego juego,juego1;
 
+
+    /**
+     * Presenta en el nivel actual
+     */
     public Panel_4_juego(){
+        juego = new Juego();
         ini();
     }
 
@@ -49,10 +55,11 @@ public class Panel_4_juego extends JPanel {
         this.setLayout(gridBagLayout);
         this.setBackground( new Color(47, 161, 30));
 
-        Juego juego1 = new Juego();
         palabra = new Palabra();
-        juego1.setUp_Nivel(1);
-        juego1.setCategoria(2);
+        juego1 = new Juego();
+        juego1.setUp_Nivel(2);
+        juego1.setCategoria(1);
+//        palabra.setJuego(getJuego());
         palabra.setJuego(juego1);
         palabra.setPalabra_del_nivel();
         palabra.setPalabra_a_Memorizar();
@@ -111,6 +118,15 @@ public class Panel_4_juego extends JPanel {
     }
     public void start(){
         timer.start();
+    }
+
+
+    public Juego getJuego() {
+        return juego;
+    }
+
+    public void setJuego(Juego juego) {
+        this.juego = juego;
     }
 
 //    public static void main(String[] args){
@@ -172,6 +188,7 @@ public class Panel_4_juego extends JPanel {
                             +palabra.getPalabra_del_nivel().get(contador)
                             +"\nsi es una palabra memorizada"
                     );
+
                 }else {
                     area_de_texto_2.seText_2("INCORRECTO\n"
                             +palabra.getPalabra_del_nivel().get(contador)

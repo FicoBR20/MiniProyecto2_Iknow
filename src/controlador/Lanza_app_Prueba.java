@@ -20,16 +20,31 @@ public class Lanza_app_Prueba {
     private  Panel_3_reglas panel_3_reglas;
     private  Panel_4_juego panel_4_juego;
     private  Panel_5_opciones panel_5_opciones;
-    private  Front_RegistroJugador front_registroJugador;
+    private  Panel_7_niveles panel_7_niveles;
     private  Panel_6_continuar panel_6_continuar;
+    private  Front_RegistroJugador front_registroJugador;
 
     private  Palabra palabra;
     private Juego juego;
     private int numero,estado;
     private String texto;
-//    private static File_estado file_estado;
     private static Lanza_app_Prueba bill = null;
 
+//    public Juego getJuego() {
+//        return juego;
+//    }
+//
+//    public void setJuego(int nivel) {
+//        palabra = new Palabra();
+//        Juego juego1 = new Juego();
+//        juego1.setUp_Nivel(nivel);
+//        juego1.setCategoria(2);
+////        palabra.setJuego(getJuego());
+//        palabra.setJuego(juego1);
+//        palabra.setPalabra_del_nivel();
+//        palabra.setPalabra_a_Memorizar();
+//        this.juego = juego1;
+//    }
 
     /**
      * Método constructor
@@ -42,20 +57,16 @@ public class Lanza_app_Prueba {
         panel_4_juego = new Panel_4_juego();
         panel_5_opciones = new Panel_5_opciones();
         panel_6_continuar = new Panel_6_continuar();
+        panel_7_niveles = new Panel_7_niveles();
         front_registroJugador = new Front_RegistroJugador();
 
         estado = 1;
-//        numero = Integer.parseInt(texto);
-//        file_estado = new File_estado();
-//        file_estado.writer_estado("1");
-//        texto = file_estado.reader_estado();
-
         seleccionar_pantalla(estado);
-//        setestado();
+
     }
 
-    public void seleccionar_pantalla(int n){
-        switch (n) {
+    public void seleccionar_pantalla(int pantalla){
+        switch (pantalla) {
 
             case 1 ->{
                 gui.setContentPane(panel_1_inicial);
@@ -74,6 +85,8 @@ public class Lanza_app_Prueba {
             }
             case 4 ->{
                 panel_4_juego = new Panel_4_juego();
+//                setJuego(1);
+//                panel_4_juego.setJuego(getJuego());
                 panel_4_juego.start();
                 gui.setContentPane(panel_4_juego);
                 gui.revalidate();
@@ -104,21 +117,17 @@ public class Lanza_app_Prueba {
                 gui.revalidate();
                 gui.repaint();;
             }
+            case 9->{
+                gui.setContentPane(panel_7_niveles);
+                gui.revalidate();
+                gui.repaint();;
+            }
 
         }
 
 
     }
 
-    public static void main(String[] args){
-        EventQueue.invokeLater(() -> {
-            try {
-                bill = new Lanza_app_Prueba();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-    }
 
     private  void set_lanza_app(Lanza_app_Prueba iknow) {
         bill = iknow;
@@ -126,28 +135,6 @@ public class Lanza_app_Prueba {
     private  Lanza_app_Prueba get_lanza_app() {
         return bill;
     }
-
-
-//    public  void ini(){
-//        System.out.println("Palabras Del nivel\n");
-//        for (int i = 0; i <= palabra.getPalabra_del_nivel().size()-1; i++){
-//            System.out.println("Palabra = "+(i+1)+" "+palabra.getPalabra_del_nivel().get(i));
-//        }
-//        System.out.println("\nPalabras a memorizar\n");
-//        for (int i = 0; i <= palabra.getPalabra_a_Memorizar().size()-1; i++){
-//            System.out.println("Palabra = "+(i+1)+" "+palabra.getPalabra_a_Memorizar().get(i));
-//        }
-//
-//        Scanner scanner = new Scanner(System.in);
-//        System.out.print("\nIngrese un número: ");
-//        int numero = scanner.nextInt();
-//
-//        while (numero != 0){
-//            palabra.comparacion(palabra.getPalabra_del_nivel().get(numero-1),palabra.getPalabra_a_Memorizar());
-//            System.out.print("\nIngrese un número: ");
-//            numero = scanner.nextInt();
-//        }
-//    }
 
     /**
      * inner class implements Listeners used by Panel_1_Inicial class
@@ -174,9 +161,14 @@ public class Lanza_app_Prueba {
             }
 
             else if(Objects.equals(e.getActionCommand(), "CONTINUAR")) {
-                bill.seleccionar_pantalla(7);
+                bill.seleccionar_pantalla(9);
             }
+
             else if(Objects.equals(e.getActionCommand(), "SEGUIR")) {
+                bill.seleccionar_pantalla(9);
+            }
+
+            else if(Objects.equals(e.getActionCommand(), "1")) {
                 bill.seleccionar_pantalla(8);
             }
 
@@ -192,4 +184,13 @@ public class Lanza_app_Prueba {
 
     }
 
+    public static void main(String[] args){
+        EventQueue.invokeLater(() -> {
+            try {
+                bill = new Lanza_app_Prueba();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
 }

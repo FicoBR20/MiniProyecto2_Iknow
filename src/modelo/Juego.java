@@ -1,5 +1,7 @@
 package modelo;
 
+import javax.swing.*;
+
 /**
  * Esta Clase manejara la lógica del juego.
  */
@@ -316,6 +318,76 @@ public class Juego {
             return true;
         }
     }
+
+
+//    public  void validador_palabla_correcta{
+//        if(e.getSource()==timer){
+//            System.out.println("Palabra " +palabra.getPalabra_a_Memorizar().get(counter)
+//                    +" Time "+counter+" El timer está corriendo? " + String.valueOf(timer.isRunning()));
+//            if(counter <= palabra.getPalabra_a_Memorizar().size()-2) {
+//                area_de_texto.seText(palabra.getPalabra_a_Memorizar().get(counter));
+//                counter++;
+//            }else {
+//                timer.stop();
+//                area_de_texto.seText(palabra.getPalabra_del_nivel().get(0));
+//                panel_botones.setVisible(true);
+//            }
+//        }else{
+//            counter=0;
+//        }
+//
+//        if(e.getSource()==timer_acierto){
+//            System.out.println("timer 2");
+//            timer_acierto.stop();
+//            area_de_texto_2.seText_2("");
+//            area_de_texto.seText(palabra.getPalabra_del_nivel().get(contador));
+//            panel_botones.setVisible(true);
+//            timer_acierto.stop();
+//        }
+//
+//        if (e.getSource()==si_boton && contador <= palabra.getPalabra_del_nivel().size()-1){
+//            timer_acierto = new Timer(4000,escucha);
+//            timer_acierto.start();
+//            area_de_texto.seText("");
+//            panel_botones.setVisible(false);
+//
+//            if (palabra.getPalabra_a_Memorizar().contains(palabra.getPalabra_del_nivel().get(contador))){
+//                area_de_texto_2.seText_2("CORRECTO\n"
+//                        +palabra.getPalabra_del_nivel().get(contador)
+//                        +"\nsi es una palabra memorizada"
+//                );
+//            }else {
+//                area_de_texto_2.seText_2("INCORRECTO\n"
+//                        +palabra.getPalabra_del_nivel().get(contador)
+//                        +"\nno es una palabra memorizada"
+//                );
+//            }
+//            contador++;
+//        }
+//
+//        else if (e.getSource()==no_boton && contador <= palabra.getPalabra_del_nivel().size()-1){
+//            timer_acierto = new Timer(4000,escucha);
+//            timer_acierto.start();
+//            area_de_texto.seText("");
+//            panel_botones.setVisible(false);
+//
+//            if (palabra.getPalabra_a_Memorizar().contains(palabra.getPalabra_del_nivel().get(contador))){
+//                area_de_texto_2.seText_2("INCORRECTO\n"
+//                        +palabra.getPalabra_del_nivel().get(contador)
+//                        +"\nsi es una palabra memorizada"
+//                );
+//            }else {
+//                area_de_texto_2.seText_2("CORRECTO\n"
+//                        +palabra.getPalabra_del_nivel().get(contador)
+//                        +"\nno es una palabra memorizada"
+//                );
+//            }
+//            contador++;
+//        }
+//        else if(contador == palabra.getPalabra_del_nivel().size()-1){
+//
+//        }
+//    }
 
 
 }
