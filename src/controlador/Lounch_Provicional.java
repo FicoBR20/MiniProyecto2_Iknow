@@ -42,10 +42,10 @@ public class Lounch_Provicional {
 
 
     //Usa la consola para pruebas
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
         Juego juego1 = new Juego();
         palabra = new Palabra();
-        juego1.setUp_Nivel(10);
+        juego1.setUp_Nivel(1);
         juego1.setCategoria(2);
         palabra.setJuego(juego1);
         palabra.setPalabra_del_nivel();

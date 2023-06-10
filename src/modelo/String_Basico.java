@@ -30,7 +30,7 @@ public class String_Basico {
      * @return
      * @throws IOException
      */
-    public List<String> obtenerPalabras(String categoria) throws IOException {
+    public List<String> obtenerPalabras(String categoria){
 
         try {
             lector = new BufferedReader(new FileReader(categoria));

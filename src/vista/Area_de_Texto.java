@@ -11,10 +11,7 @@ public class Area_de_Texto {
         info_al_Jugador = new JTextArea();
         Color verdeClaro = new Color(188, 234, 192);
         Color fondoLila = new Color(82, 25, 196);
-        Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 25);
-        info_al_Jugador.append("I know that word\n" +
-                "Ejercite su memoria episódica\n" +
-                "Desea jugar ?\n");
+        Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 24);
         info_al_Jugador.setCaretColor(new Color(255, 255, 255, 0));
         info_al_Jugador.setFont(font);
         info_al_Jugador.setForeground(verdeClaro);
@@ -22,37 +19,52 @@ public class Area_de_Texto {
         info_al_Jugador.setBackground(null);
     }
 
-    public JTextArea Info_al_Jugador() {
+    public JTextArea inicial() {
         info_al_Jugador.append("I know that word\n" +
-                "Ejercite su memoria episódica\n" +
-                "Desea jugar ?\n");
+                "Es un divertido juego para ejercitar su memoria \n" +
+                "Desea probar en que estado \nse encuentra su memoria Episódica ?\n");
         return info_al_Jugador;
     }
+
     public JTextArea menu() {
         info_al_Jugador.append(":::MENU:::\n" +
                 "menu\n" +
                 "menu ?\n");
         return info_al_Jugador;
     }
+
     public JTextArea reglas() {
-        Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 20);
-        info_al_Jugador.setFont(font);
-        info_al_Jugador.append("Aqui van las reglas del juego\n" +
-                "Informacion clara para el jugador\n" +
-                ".... exitos.\nexitos.\nexitos.\nexitos.\n y más exitos.\n");
-        return info_al_Jugador;
-    }
-    public JTextArea final_info() {
-        info_al_Jugador.append("....Aqui se cierra el juego...\n" +
-                "Recuerda ejercitar tu memoria \n" +
-                "..hasta pronto..\n");
+        info_al_Jugador.append(":::REGLAS:::\n" +
+                "menu\n" +
+                "menu ?\n");
         return info_al_Jugador;
     }
 
-    public JTextArea nivel_1() {
-        info_al_Jugador.append("I know that word\n" +
-                "Es un divertido juego para ejercitar su memoria \n" +
-                "Desea probar en que estado \nse encuentra su memoria Episódica ?\n");
+    public JTextArea opciones() {
+        info_al_Jugador.append(":::OPCIONES:::\n" +
+                "Aqui van las opciones del \n" +
+                "menu ?\n");
+        return info_al_Jugador;
+    }
+
+    public JTextArea continuar() {
+        info_al_Jugador.append(":::CONTINUAR:::\n" +
+                "Este panel permite ingresar \n" +
+                "a una partida previa ?\n");
+        return info_al_Jugador;
+    }
+
+    public JTextArea seText(String palabra) {
+        Font font = new Font(Font.SANS_SERIF, Font.BOLD, 50);
+        info_al_Jugador.setFont(font);
+        info_al_Jugador.setText(palabra);
+        return info_al_Jugador;
+    }
+
+    public JTextArea seText_2(String palabra) {
+        Font font = new Font(Font.SANS_SERIF, Font.BOLD, 35);
+        info_al_Jugador.setFont(font);
+        info_al_Jugador.setText(palabra);
         return info_al_Jugador;
     }
 }

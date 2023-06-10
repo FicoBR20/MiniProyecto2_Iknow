@@ -10,7 +10,19 @@ public class Botones extends  JButton{
     private Lanza_app_Prueba.Escucha escucha;
     private ImageIcon imageIcon;
     private ImageIcon imageIcon_Pressed;
-    private final int tamanho_fuente,ancho,alto;
+    private int tamaño_fuente,alto,ancho;
+
+    public int getTamaño_fuente() {
+        return tamaño_fuente;
+    }
+
+    public void setTamaño_fuente(int tamaño_fuente) {
+        this.tamaño_fuente = tamaño_fuente;
+    }
+    public void setTamaño_boton(int ancho, int  alto) {
+        this.ancho = ancho;
+        this.alto = alto;
+    }
 
     public void activar() {
         this.setEnabled(true);
@@ -20,9 +32,9 @@ public class Botones extends  JButton{
         this.setEnabled(false);
     }
     public Botones() {
-        tamanho_fuente = 40;
-        ancho = 70;
-        alto = 30;
+        tamaño_fuente = 15;
+        ancho=120;
+        alto = 40;
         escucha = new Lanza_app_Prueba.Escucha();
         this.setBackground(null);
         this.setContentAreaFilled(false);
@@ -30,14 +42,22 @@ public class Botones extends  JButton{
         this.setBorder(BorderFactory.createEmptyBorder());
         this.addActionListener(escucha);
         this.setHorizontalTextPosition(SwingConstants.CENTER);
+        this.setFocusable(false); //Quita linea de los botones
         imageIcon = new ImageIcon();
         imageIcon_Pressed = new ImageIcon();
-        getBoton_style_1();
     }
+
+    /**
+     * Método de sobrecarga la clase Botones que estos parametros
+     * @param titulo
+     * @param tamaño
+     * @param _ancho
+     * @param _alto
+     */
 
     public Botones(String titulo, int tamaño, int _ancho, int _alto  ) {
         this.setText(titulo);
-        tamanho_fuente = tamaño;
+        tamaño_fuente = tamaño;
         ancho = _ancho;
         alto = _alto;
         escucha = new Lanza_app_Prueba.Escucha();
@@ -47,27 +67,40 @@ public class Botones extends  JButton{
         this.setBorder(BorderFactory.createEmptyBorder());
         this.addActionListener(escucha);
         this.setHorizontalTextPosition(SwingConstants.CENTER);
+        this.setFocusable(false);//Quita linea de los botones
         imageIcon = new ImageIcon();
         imageIcon_Pressed = new ImageIcon();
-        getBoton_style_1();
+        getBoton_style_1(titulo);
     }
 
 
-    public JButton getBoton_style_1() {
+    public JButton getBoton_style_1(String titulo ) {
         imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/botones/Boton.png")));
         imageIcon_Pressed = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/botones/Boton_PRESSED.png")));
         this.setForeground(Color.white);
-        this.setFont(new Font(null,Font.BOLD, tamanho_fuente));
+        this.setText(titulo);
+        this.setFont(new Font(null,Font.BOLD,tamaño_fuente));
         this.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(ancho,alto,Image.SCALE_SMOOTH)));
         this.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(ancho,alto,Image.SCALE_SMOOTH)));
         return this;
     }
 
-    public JButton getBoton_style_2() {
+    public JButton getBoton_style_2(String titulo) {
         imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/botones/Boton_2.png")));
         imageIcon_Pressed = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/botones/Boton_PRESSED_2.png")));
         this.setForeground(Color.white);
-        this.setFont(new Font(null,Font.BOLD, tamanho_fuente));
+        this.setText(titulo);
+        this.setFont(new Font(null,Font.BOLD,tamaño_fuente));
+        this.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(ancho,alto,Image.SCALE_SMOOTH)));
+        this.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(ancho,alto,Image.SCALE_SMOOTH)));
+        return this;
+    }
+    public JButton nivel(String titulo) {
+        imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/botones_nivel/nivel.png")));
+        imageIcon_Pressed = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/botones_nivel/nivel_pressed.png")));
+        this.setForeground(Color.white);
+        this.setText(titulo);
+        this.setFont(new Font(null,Font.BOLD,tamaño_fuente));
         this.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(ancho,alto,Image.SCALE_SMOOTH)));
         this.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(ancho,alto,Image.SCALE_SMOOTH)));
         return this;

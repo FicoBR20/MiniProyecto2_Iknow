@@ -10,19 +10,7 @@ import modelo.Juego;
  */
 public class GUI extends JFrame {
 
-    private int selectorFrames;
-
-    private Front_RegistroJugador frontRegistroJugador;
-
-    private  Front_Final frontFinal;
-
-    private Front_Inicial frontInicial;
-
-    private Front_Reglas frontReglas;
-
-
-    private Canvas canvas;
-
+    private Panel_1_Inicial frontInicial;
     private Header headerProject;
     /**
      * JPanels contenedores.
@@ -38,13 +26,13 @@ public class GUI extends JFrame {
     private JTextField jTextField_Principal, jTextField_1_auxiliar, jTextField_2_auxiliar;
     private int estado_panel;
 
-    public int getSelectorFrames() {
-        return selectorFrames;
-    }
-
-    public void setSelectorFrames(int selectorFrames) {
-        this.selectorFrames = selectorFrames;
-    }
+//    public int getSelectorFrames() {
+//        return selectorFrames;
+//    }
+//
+//    public void setSelectorFrames(int selectorFrames) {
+//        this.selectorFrames = selectorFrames;
+//    }
 
     private Color  colorBack = new Color(82,25,196);
     private Color colorFront = new Color(188, 234, 192);
@@ -58,7 +46,7 @@ public class GUI extends JFrame {
 
         //Default JFrame configuration
         this.setTitle("I Know that word !!");
-        this.setSize(600,400);
+        this.setSize(800,500);
         //this.pack();
         this.setResizable(true);
         this.setVisible(true);
@@ -76,19 +64,24 @@ public class GUI extends JFrame {
         //Create Listener Object and Control Object
         //Set up JComponents
 
-        selectorFrames = 888;
+//        selectorFrames = 888;
 
         jLabel_Central = new JLabel();
+
+
+        headerProject = new Header(" Ejercita tu memoria ", colorFront);
+        frontInicial = new Panel_1_Inicial();
+        frontInicial.setBackground(colorBack);
 
         jPanel_Principal = new JPanel();
 
 
-
-        frontFinal = new Front_Final();
-        frontRegistroJugador = new Front_RegistroJugador();
-        frontInicial = new Front_Inicial();
-        frontReglas = new Front_Reglas();
-        canvas = new Canvas();
+//
+//        frontFinal = new Front_Final();
+//        frontRegistroJugador = new Front_RegistroJugador();
+//        frontInicial = new Front_Inicial();
+//        frontReglas = new Front_Reglas();
+//        canvas = new Canvas();
 
 
 
@@ -109,6 +102,15 @@ public class GUI extends JFrame {
     }
 
     public void frame_001_Inicio() {
+
+        jLabel_Central = new JLabel();
+
+
+        headerProject = new Header(" Bienvenido ", colorFront);
+        frontInicial = new Panel_1_Inicial();
+        frontInicial.setBackground(colorBack);
+
+
         jPanel_Principal = new JPanel();
         headerProject = new Header(" Bienvenido ", colorFront);
 
@@ -124,7 +126,7 @@ public class GUI extends JFrame {
 
 
         this.add(headerProject,BorderLayout.NORTH); //Change this line if you change JFrame Container's Layout
-        this.add(frontReglas, BorderLayout.CENTER);
+//        this.add(frontReglas, BorderLayout.CENTER);
 
 
     }
@@ -135,7 +137,7 @@ public class GUI extends JFrame {
 
 
         this.add(headerProject,BorderLayout.NORTH); //Change this line if you change JFrame Container's Layout
-        this.add(frontFinal, BorderLayout.CENTER);
+//        this.add(frontFinal, BorderLayout.CENTER);
 
 
     }
@@ -146,7 +148,7 @@ public class GUI extends JFrame {
 
 
         this.add(headerProject,BorderLayout.NORTH); //Change this line if you change JFrame Container's Layout
-        this.add(frontRegistroJugador, BorderLayout.CENTER);
+//        this.add(frontRegistroJugador, BorderLayout.CENTER);
 
 
     }

@@ -7,7 +7,7 @@ import java.awt.*;
 public class Front_Menu extends JPanel {
 
 
-    private  Botones si_boton, no_boton;
+    private Botones si_boton, no_boton;
     private   Area_de_Texto area_de_texto;
 
     public Front_Menu(){
