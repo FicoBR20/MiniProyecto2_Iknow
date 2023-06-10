@@ -120,34 +120,34 @@ public class Lanza_app_Prueba {
         });
     }
 
-    private  void set_lans(Lanza_app_Prueba iknow) {
+    private  void set_lanza_app(Lanza_app_Prueba iknow) {
         bill = iknow;
     }
-    private  Lanza_app_Prueba get_lans() {
+    private  Lanza_app_Prueba get_lanza_app() {
         return bill;
     }
 
 
-    public  void ini(){
-        System.out.println("Palabras Del nivel\n");
-        for (int i = 0; i <= palabra.getPalabra_del_nivel().size()-1; i++){
-            System.out.println("Palabra = "+(i+1)+" "+palabra.getPalabra_del_nivel().get(i));
-        }
-        System.out.println("\nPalabras a memorizar\n");
-        for (int i = 0; i <= palabra.getPalabra_a_Memorizar().size()-1; i++){
-            System.out.println("Palabra = "+(i+1)+" "+palabra.getPalabra_a_Memorizar().get(i));
-        }
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("\nIngrese un número: ");
-        int numero = scanner.nextInt();
-
-        while (numero != 0){
-            palabra.comparacion(palabra.getPalabra_del_nivel().get(numero-1),palabra.getPalabra_a_Memorizar());
-            System.out.print("\nIngrese un número: ");
-            numero = scanner.nextInt();
-        }
-    }
+//    public  void ini(){
+//        System.out.println("Palabras Del nivel\n");
+//        for (int i = 0; i <= palabra.getPalabra_del_nivel().size()-1; i++){
+//            System.out.println("Palabra = "+(i+1)+" "+palabra.getPalabra_del_nivel().get(i));
+//        }
+//        System.out.println("\nPalabras a memorizar\n");
+//        for (int i = 0; i <= palabra.getPalabra_a_Memorizar().size()-1; i++){
+//            System.out.println("Palabra = "+(i+1)+" "+palabra.getPalabra_a_Memorizar().get(i));
+//        }
+//
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.print("\nIngrese un número: ");
+//        int numero = scanner.nextInt();
+//
+//        while (numero != 0){
+//            palabra.comparacion(palabra.getPalabra_del_nivel().get(numero-1),palabra.getPalabra_a_Memorizar());
+//            System.out.print("\nIngrese un número: ");
+//            numero = scanner.nextInt();
+//        }
+//    }
 
     /**
      * inner class implements Listeners used by Panel_1_Inicial class

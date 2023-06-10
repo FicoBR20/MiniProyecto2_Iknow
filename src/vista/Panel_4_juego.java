@@ -44,22 +44,16 @@ public class Panel_4_juego extends JPanel {
         palabra.setPalabra_a_Memorizar();
 
         GridBagConstraints gbc = new GridBagConstraints();
+        gbc.ipady=15;
+        gbc.ipadx=15;
 //        gbc.insets.set(0,0,20,5);
         area_de_texto =  new Area_de_Texto();
         gbc.gridx=1; // columna 0
         gbc.gridy=0; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
-        gbc.insets.set(100,0,0,0);
+        gbc.insets.set(0,0,50,0);
         this.add(area_de_texto.seText(""), gbc);
-
-        atras_boton = new Botones();
-        gbc.gridx=1; // columna 0
-        gbc.gridy=1; // fila 0
-        gbc.gridwidth=1; // ocupara 4 columnas
-        gbc.gridheight=1; // ocupara 3 filas
-//        gbc.insets.set(150,0,0,0);
-        this.add(atras_boton.getBoton_style_1("ATRAS"), gbc);
 
         escucha = new Escucha();
         timer = new Timer(1000, escucha );
@@ -100,34 +94,46 @@ public class Panel_4_juego extends JPanel {
                 }else{
                     timer.stop();
                     area_de_texto.seText("___");
-//                    initTimer.setEnabled(true);
-//                    initTimer.addActionListener(escucha);
-
                     GridBagConstraints gbc = new GridBagConstraints();
-                    atras_boton = new Botones();
+                    gbc.ipady=15;
+                    gbc.ipadx=15;
+
+                    area_de_texto =  new Area_de_Texto();
                     gbc.gridx=0; // columna 0
                     gbc.gridy=1; // fila 0
-                    gbc.gridwidth=1; // ocupara 4 columnas
+                    gbc.gridwidth=3; // ocupara 4 columnas
                     gbc.gridheight=1; // ocupara 3 filas
+                    gbc.insets.set(0,0,0,0);
+                    add(area_de_texto.seText_2("¿Es una pabra memorisada?"), gbc);
+
+                    atras_boton = new Botones();
+                    gbc.gridx=0; // columna 0
+                    gbc.gridy=2; // fila 0
+                    gbc.gridwidth=2; // ocupara 4 columnas
+                    gbc.gridheight=1; // ocupara 3 filas
+                    gbc.anchor=GridBagConstraints.LINE_START;
                     add(atras_boton.getBoton_style_1("SI"), gbc);
 
                     atras_boton = new Botones();
-                    gbc.gridx=2; // columna 0
-                    gbc.gridy=1; // fila 0
-                    gbc.gridwidth=1; // ocupara 4 columnas
+                    gbc.gridx=0; // columna 0
+                    gbc.gridy=3; // fila 0
+                    gbc.gridwidth=3; // ocupara 4 columnas
                     gbc.gridheight=1; // ocupara 3 filas
+                    gbc.anchor=GridBagConstraints.CENTER;
+                    add(atras_boton.getBoton_style_1("ATRAS"), gbc);
+
+                    atras_boton = new Botones();
+                    gbc.gridx=1; // columna 0
+                    gbc.gridy=2; // fila 0
+                    gbc.gridwidth=2; // ocupara 4 columnas
+                    gbc.gridheight=1; // ocupara 3 filas
+                    gbc.anchor=GridBagConstraints.LINE_END;
                     add(atras_boton.getBoton_style_1("NO"), gbc);
                 }
             }else {
                 counter = 0;
                 timer.start();
-//                initTimer.setEnabled(false);
-//                initTimer.removeActionListener(escucha);
             }
-
-
         }
-
     }
-
 }

@@ -60,4 +60,9 @@ public class Area_de_Texto {
         info_al_Jugador.setText(palabra);
         return info_al_Jugador;
     }
+
+    public JTextArea seText_2(String palabra) {
+        info_al_Jugador.setText(palabra);
+        return info_al_Jugador;
+    }
 }
