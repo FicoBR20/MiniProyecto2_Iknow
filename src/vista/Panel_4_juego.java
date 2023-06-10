@@ -15,7 +15,7 @@ public class Panel_4_juego extends JPanel {
     private Font font;
     private Botones atras_boton,si_boton,no_boton;
     private Area_de_Texto area_de_texto, area_de_texto_2;
-    private Timer timer;
+    private Timer timer,timer_acierto;
     private Escucha escucha;
     private  int counter,contador;
     private static Panel_4_juego panel_4_canvas = null;
@@ -28,6 +28,7 @@ public class Panel_4_juego extends JPanel {
     }
 
     private void ini(){
+        timer_acierto = new Timer(2000,escucha);
         gbc = new GridBagConstraints();
         gbc.anchor=GridBagConstraints.CENTER;
         gbc.ipady=15;
@@ -58,12 +59,20 @@ public class Panel_4_juego extends JPanel {
 
 //        gbc.insets.set(0,0,20,5);
         area_de_texto =  new Area_de_Texto();
-        gbc.gridx=1; // columna 0
+        gbc.gridx=0; // columna 0
         gbc.gridy=0; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         gbc.insets.set(0,0,0,0);
         this.add(area_de_texto.seText(""), gbc);
+
+        area_de_texto_2 =  new Area_de_Texto();
+        gbc.gridx=0; // columna 0
+        gbc.gridy=1; // fila 0
+        gbc.gridwidth=1; // ocupara 4 columnas
+        gbc.gridheight=1; // ocupara 3 filas
+        gbc.insets.set(0,0,0,0);
+        this.add(area_de_texto_2.seText_2(""), gbc);
 
         si_boton = new Botones();
         gbc.gridx=0; // columna 0
@@ -83,14 +92,14 @@ public class Panel_4_juego extends JPanel {
 
         gbc.gridx=0; // columna 0
         gbc.gridy=3; // fila 0
-        gbc.gridwidth=3; // ocupara 4 columnas
+        gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         panel_botones.setVisible(false);
         this.add(panel_botones, gbc);
 
         atras_boton = new Botones();
-        gbc.gridx=1; // columna 0
-        gbc.gridy=1; // fila 0
+        gbc.gridx=0; // columna 0
+        gbc.gridy=4; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         atras_boton.addActionListener(escucha);
@@ -98,19 +107,19 @@ public class Panel_4_juego extends JPanel {
         this.add(atras_boton.getBoton_style_1("ATRAS"), gbc);
 
         timer = new Timer(1000, escucha );
-        start();
+//        start();
     }
     public void start(){
         timer.start();
     }
 
-    public static void main(String[] args){
-        EventQueue.invokeLater(() -> {
-            GUI miProjectGUI = new GUI();
-            panel_4_canvas = new Panel_4_juego();
-            miProjectGUI.setContentPane(panel_4_canvas);
-        });
-    }
+//    public static void main(String[] args){
+//        EventQueue.invokeLater(() -> {
+//            GUI miProjectGUI = new GUI();
+//            panel_4_canvas = new Panel_4_juego();
+//            miProjectGUI.setContentPane(panel_4_canvas);
+//        });
+//    }
 
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
@@ -128,49 +137,68 @@ public class Panel_4_juego extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-//            System.out.println("Palabra " +palabra.getPalabra_a_Memorizar().get(counter)
-//                    +" Time "+counter+" El timer está corriendo? " + String.valueOf(timer.isRunning()));
             if(e.getSource()==timer){
-                    counter++;
-                if(counter <= palabra.getPalabra_a_Memorizar().size()-1) {
+                System.out.println("Palabra " +palabra.getPalabra_a_Memorizar().get(counter)
+                    +" Time "+counter+" El timer está corriendo? " + String.valueOf(timer.isRunning()));
+                if(counter <= palabra.getPalabra_a_Memorizar().size()-2) {
                     area_de_texto.seText(palabra.getPalabra_a_Memorizar().get(counter));
+                    counter++;
                 }else {
                     timer.stop();
                     area_de_texto.seText(palabra.getPalabra_del_nivel().get(0));
-
-//                    area_de_texto =  new Area_de_Texto();
-//                    gbc.gridx=0; // columna 0
-//                    gbc.gridy=1; // fila 0
-//                    gbc.gridwidth=3; // ocupara 4 columnas
-//                    gbc.gridheight=1; // ocupara 3 filas
-//                    gbc.insets.set(0,0,0,0);
-//                    no_boton.setVisible(false);
-//                    add(area_de_texto.seText_2("¿Es una pabra memorisada?"), gbc);
                     panel_botones.setVisible(true);
-
                 }
             }else{
                 counter=0;
             }
 
-            if (e.getSource()==si_boton && contador <= palabra.getPalabra_del_nivel().size()-1){
-                System.out.println("cantidad de palabras "+(palabra.getPalabra_del_nivel().size()-1));
-                contador++;
+            if(e.getSource()==timer_acierto){
+                System.out.println("timer 2");
+                timer_acierto.stop();
+                area_de_texto_2.seText_2("");
                 area_de_texto.seText(palabra.getPalabra_del_nivel().get(contador));
-                if (!palabra.getPalabra_del_nivel().contains(palabra.getPalabra_a_Memorizar().get(contador))){
-                    add(area_de_texto_2.seText_2("in_correcto"));
-                }else {
-                    add(area_de_texto_2.seText_2("correcto"));
-                }
+                panel_botones.setVisible(true);
+                timer_acierto.stop();
             }
-            else if (e.getSource()==no_boton && contador <= palabra.getPalabra_del_nivel().size()-1){
-                contador++;
-                area_de_texto.seText(palabra.getPalabra_del_nivel().get(contador));
-                if (!palabra.getPalabra_del_nivel().contains(palabra.getPalabra_a_Memorizar().get(contador))){
-                    add(area_de_texto_2.seText_2("correcto"));
+
+            if (e.getSource()==si_boton && contador <= palabra.getPalabra_del_nivel().size()-1){
+                timer_acierto = new Timer(4000,escucha);
+                timer_acierto.start();
+                area_de_texto.seText("");
+                panel_botones.setVisible(false);
+
+                if (palabra.getPalabra_a_Memorizar().contains(palabra.getPalabra_del_nivel().get(contador))){
+                    area_de_texto_2.seText_2("CORRECTO\n"
+                            +palabra.getPalabra_del_nivel().get(contador)
+                            +"\nsi es una palabra memorizada"
+                    );
                 }else {
-                    add(area_de_texto_2.seText_2("in_ correcto"));
+                    area_de_texto_2.seText_2("INCORRECTO\n"
+                            +palabra.getPalabra_del_nivel().get(contador)
+                            +"\nno es una palabra memorizada"
+                    );
                 }
+                contador++;
+            }
+
+            else if (e.getSource()==no_boton && contador <= palabra.getPalabra_del_nivel().size()-1){
+                timer_acierto = new Timer(4000,escucha);
+                timer_acierto.start();
+                area_de_texto.seText("");
+                panel_botones.setVisible(false);
+
+                if (palabra.getPalabra_a_Memorizar().contains(palabra.getPalabra_del_nivel().get(contador))){
+                    area_de_texto_2.seText_2("INCORRECTO\n"
+                            +palabra.getPalabra_del_nivel().get(contador)
+                            +"\nsi es una palabra memorizada"
+                    );
+                }else {
+                    area_de_texto_2.seText_2("CORRECTO\n"
+                            +palabra.getPalabra_del_nivel().get(contador)
+                            +"\nno es una palabra memorizada"
+                    );
+                }
+                contador++;
             }
             else if(contador == palabra.getPalabra_del_nivel().size()-1){
 

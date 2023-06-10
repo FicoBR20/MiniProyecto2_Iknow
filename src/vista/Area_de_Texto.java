@@ -55,13 +55,15 @@ public class Area_de_Texto {
     }
 
     public JTextArea seText(String palabra) {
-        Font font = new Font(Font.SANS_SERIF, Font.BOLD, 80);
+        Font font = new Font(Font.SANS_SERIF, Font.BOLD, 50);
         info_al_Jugador.setFont(font);
         info_al_Jugador.setText(palabra);
         return info_al_Jugador;
     }
 
     public JTextArea seText_2(String palabra) {
+        Font font = new Font(Font.SANS_SERIF, Font.BOLD, 35);
+        info_al_Jugador.setFont(font);
         info_al_Jugador.setText(palabra);
         return info_al_Jugador;
     }
