@@ -42,7 +42,7 @@ public class Panel_6_continuar extends JPanel {
         gbc.gridy=1; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
-        this.add(continuar_boton.getBoton_style_1("CONTINUAR"), gbc);
+        this.add(continuar_boton.getBoton_style_1("SEGUIR"), gbc);
 
         gbc.gridx=1; // columna 0
         gbc.gridy=2; // fila 0

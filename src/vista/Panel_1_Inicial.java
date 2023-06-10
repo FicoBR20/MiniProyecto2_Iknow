@@ -28,9 +28,8 @@ public class Panel_1_Inicial extends JPanel {
 
     public void initGui(){
         GridBagConstraints gbc = new GridBagConstraints();
-//        gbc.weightx = 1; // no se deformara
-//        gbc.weighty = 1; // no se deformara
-//        gbc.insets.set(0,0,150,5);
+        gbc.ipady = 10;
+        gbc.insets.set(0,0,0,0);
 
 
         gbc.gridx=1; // columna 0
@@ -39,25 +38,28 @@ public class Panel_1_Inicial extends JPanel {
         gbc.gridheight=1; // ocupara 3 filas
         this.add(area_de_texto.inicial(), gbc);
 
-        gbc.insets.set(0,0,5,5);
+        gbc.insets.set(50,0,0,0);
         gbc.gridx=1; // columna 0
         gbc.gridy=1; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         this.add(continuar_boton.getBoton_style_1("CONTINUAR"), gbc);
 
+        gbc.insets.set(0,0,0,0);
         gbc.gridx=1; // columna 0
         gbc.gridy=2; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         this.add(jugar_boton.getBoton_style_1("NUEVO JUEGO"), gbc);
 
+        gbc.insets.set(0,0,0,0);
         gbc.gridx=1; // columna 0
         gbc.gridy=3; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         this.add(opcion_boton.getBoton_style_1("OPCIONES"), gbc);
 
+        gbc.insets.set(0,0,0,0);
         gbc.gridx=1; // columna 0
         gbc.gridy=4; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas

@@ -28,36 +28,40 @@ public class Panel_5_opciones extends JPanel {
 
     public void initGui(){
         GridBagConstraints gbc = new GridBagConstraints();
-//        gbc.weightx = 1; // no se deformara
-//        gbc.weighty = 1; // no se deformara
-        gbc.insets.set(0,0,150,5);
+        gbc.ipady=15;
+        gbc.ipadx=15;
 
 
+
+        gbc.insets.set(0,0,50,5);
         gbc.gridx=1; // columna 0
         gbc.gridy=0; // fila 0
         gbc.gridwidth=2; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         this.add(area_de_texto.opciones(), gbc);
 
-        gbc.insets.set(0,0,5,5);
+        gbc.insets.set(0,0,0,0);
         gbc.gridx=1; // columna 0
         gbc.gridy=1; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         this.add(sonido_boton.getBoton_style_1("SONIDO"), gbc);
 
+        gbc.insets.set(0,0,0,0);
         gbc.gridx=2; // columna 0
         gbc.gridy=1; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         this.add(idioma_boton.getBoton_style_1("IDIOMA"), gbc);
 
+        gbc.insets.set(0,0,0,0);
         gbc.gridx=1; // columna 0
         gbc.gridy=2; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         this.add(grafico_boton.getBoton_style_1("GRAFICO"), gbc);
 
+        gbc.insets.set(0,0,0,0);
         gbc.gridx=2; // columna 0
         gbc.gridy=2; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas

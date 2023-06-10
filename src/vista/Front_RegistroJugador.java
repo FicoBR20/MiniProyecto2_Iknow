@@ -148,12 +148,12 @@ public class Front_RegistroJugador extends JPanel {
 
                 new Control_FileManager().writer_Jugador(name_Player);
 
-                jTextField_NombreJugador.setText(name_Player + "registrado [nombre] [nivel]");
+                jTextField_NombreJugador.setText(name_Player);
+//                jTextField_NombreJugador.setText(name_Player + "registrado [nombre] [nivel]");
                 jTextField_NombreJugador.setEnabled(false);
 
                 System.out.println(" Hemos registrado sus datos " + name_Player + " nivel del juego " + Integer.toString(juego_Ik.getNivel()));
             }
-
         }
     }
     private class Escucha extends MouseAdapter {

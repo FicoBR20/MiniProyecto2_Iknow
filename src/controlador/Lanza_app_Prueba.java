@@ -58,25 +58,22 @@ public class Lanza_app_Prueba {
         switch (n) {
 
             case 1 ->{
-                System.out.println(" Switch 1 ");
                 gui.setContentPane(panel_1_inicial);
                 gui.revalidate();
                 gui.repaint();
             }
             case 2 ->{
-                System.out.println(" Switch 2 ");
                 gui.setContentPane(panel_2_menu);
                 gui.revalidate();
                 gui.repaint();
             }
             case 3 ->{
-                System.out.println(" Switch 3 ");
                 gui.setContentPane(panel_3_reglas);
                 gui.revalidate();
                 gui.repaint();
             }
             case 4 ->{
-                System.out.println(" Switch 4 ");
+                panel_4_juego = new Panel_4_juego();
                 panel_4_juego.start();
                 gui.setContentPane(panel_4_juego);
                 gui.revalidate();
@@ -84,24 +81,28 @@ public class Lanza_app_Prueba {
             }
 
             case 5 ->{
-                System.out.println(" Switch 5 ");
                 gui.setContentPane(panel_5_opciones);
                 gui.revalidate();
                 gui.repaint();
             }
 
             case 6 ->{
-                System.out.println(" Switch 6 ");
+                front_registroJugador = new Front_RegistroJugador();
                 gui.setContentPane(front_registroJugador);
                 gui.revalidate();
                 gui.repaint();
             }
 
             case 7 ->{
-                System.out.println(" Switch 7 ");
                 gui.setContentPane(panel_6_continuar);
                 gui.revalidate();
                 gui.repaint();
+            }
+
+            case 8->{
+                gui.setContentPane(panel_4_juego);
+                gui.revalidate();
+                gui.repaint();;
             }
 
         }
@@ -174,6 +175,9 @@ public class Lanza_app_Prueba {
 
             else if(Objects.equals(e.getActionCommand(), "CONTINUAR")) {
                 bill.seleccionar_pantalla(7);
+            }
+            else if(Objects.equals(e.getActionCommand(), "SEGUIR")) {
+                bill.seleccionar_pantalla(8);
             }
 
             else if(Objects.equals(e.getActionCommand(), "OPCIONES")){

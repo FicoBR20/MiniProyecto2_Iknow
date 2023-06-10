@@ -102,6 +102,21 @@ public class Panel_4_juego extends JPanel {
                     area_de_texto.seText("___");
 //                    initTimer.setEnabled(true);
 //                    initTimer.addActionListener(escucha);
+
+                    GridBagConstraints gbc = new GridBagConstraints();
+                    atras_boton = new Botones();
+                    gbc.gridx=0; // columna 0
+                    gbc.gridy=1; // fila 0
+                    gbc.gridwidth=1; // ocupara 4 columnas
+                    gbc.gridheight=1; // ocupara 3 filas
+                    add(atras_boton.getBoton_style_1("SI"), gbc);
+
+                    atras_boton = new Botones();
+                    gbc.gridx=2; // columna 0
+                    gbc.gridy=1; // fila 0
+                    gbc.gridwidth=1; // ocupara 4 columnas
+                    gbc.gridheight=1; // ocupara 3 filas
+                    add(atras_boton.getBoton_style_1("NO"), gbc);
                 }
             }else {
                 counter = 0;
