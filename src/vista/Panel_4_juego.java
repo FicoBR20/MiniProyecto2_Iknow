@@ -14,7 +14,7 @@ public class Panel_4_juego extends JPanel {
     private Font font;
     private Botones atras_boton,si_boton,no_boton;
     private Area_de_Texto area_de_texto, area_de_texto_2;
-    private Timer timer,timer_acierto;
+    private Timer timer,timer_acierto,timer_acierto_2;
     private Escucha escucha;
     private  int counter,contador;
     private static Panel_4_juego panel_4_canvas = null;
@@ -22,7 +22,7 @@ public class Panel_4_juego extends JPanel {
     private GridBagConstraints gbc;
     private JPanel panel_botones;
     private Palabra palabra;
-    private Juego juego,juego1;
+    private Juego juego;
 
 
     /**
@@ -33,8 +33,14 @@ public class Panel_4_juego extends JPanel {
         ini();
     }
 
+    public Panel_4_juego(Juego juego){
+        this.juego = juego;
+        ini();
+    }
+
     private void ini(){
         timer_acierto = new Timer(2000,escucha);
+        timer_acierto_2 = new Timer(2000,escucha);
         gbc = new GridBagConstraints();
         gbc.anchor=GridBagConstraints.CENTER;
         gbc.ipady=15;
@@ -56,11 +62,11 @@ public class Panel_4_juego extends JPanel {
         this.setBackground( new Color(47, 161, 30));
 
         palabra = new Palabra();
-        juego1 = new Juego();
-        juego1.setUp_Nivel(2);
-        juego1.setCategoria(1);
+//        juego1 = new Juego();
+//        juego1.setUp_Nivel(1);
+//        juego1.setCategoria(1);
 //        palabra.setJuego(getJuego());
-        palabra.setJuego(juego1);
+        palabra.setJuego(juego);
         palabra.setPalabra_del_nivel();
         palabra.setPalabra_a_Memorizar();
 
@@ -101,7 +107,7 @@ public class Panel_4_juego extends JPanel {
         gbc.gridy=3; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
-        panel_botones.setVisible(false);
+//        panel_botones.setVisible(false);
         this.add(panel_botones, gbc);
 
         atras_boton = new Botones();
@@ -110,7 +116,7 @@ public class Panel_4_juego extends JPanel {
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         atras_boton.addActionListener(escucha);
-        atras_boton.setVisible(false);
+//        atras_boton.setVisible(false);
         this.add(atras_boton.getBoton_style_1("ATRAS"), gbc);
 
         timer = new Timer(1000, escucha );
@@ -163,23 +169,30 @@ public class Panel_4_juego extends JPanel {
                     timer.stop();
                     area_de_texto.seText(palabra.getPalabra_del_nivel().get(0));
                     panel_botones.setVisible(true);
+                    timer_acierto_2 = new Timer(7000,escucha);
+                    timer_acierto_2.start();
                 }
             }else{
                 counter=0;
             }
 
-            if(e.getSource()==timer_acierto){
-                System.out.println("timer 2");
-                timer_acierto.stop();
-                area_de_texto_2.seText_2("");
-                area_de_texto.seText(palabra.getPalabra_del_nivel().get(contador));
-                panel_botones.setVisible(true);
-                timer_acierto.stop();
+            if(e.getSource()==timer_acierto_2){
+
+                System.out.println("timer3");
+//                timer_acierto.stop();
+                area_de_texto_2.seText_2("limite de tiempo");
+//                area_de_texto.seText(palabra.getPalabra_del_nivel().get(contador++));
+                area_de_texto.seText("");
+//                panel_botones.setVisible(true);
+                timer_acierto = new Timer(1000,escucha);
+                timer_acierto.start();
+
             }
 
             if (e.getSource()==si_boton && contador <= palabra.getPalabra_del_nivel().size()-1){
                 timer_acierto = new Timer(4000,escucha);
                 timer_acierto.start();
+                timer_acierto_2.stop();
                 area_de_texto.seText("");
                 panel_botones.setVisible(false);
 
@@ -201,6 +214,7 @@ public class Panel_4_juego extends JPanel {
             else if (e.getSource()==no_boton && contador <= palabra.getPalabra_del_nivel().size()-1){
                 timer_acierto = new Timer(4000,escucha);
                 timer_acierto.start();
+                timer_acierto_2.stop();
                 area_de_texto.seText("");
                 panel_botones.setVisible(false);
 
@@ -220,6 +234,18 @@ public class Panel_4_juego extends JPanel {
             else if(contador == palabra.getPalabra_del_nivel().size()-1){
 
             }
+
+            if(e.getSource()==timer_acierto){
+                timer_acierto_2.start();
+                System.out.println("timer 2");
+                timer_acierto.stop();
+                area_de_texto_2.seText_2("");
+                area_de_texto.seText(palabra.getPalabra_del_nivel().get(contador++));
+                panel_botones.setVisible(true);
+                timer_acierto.stop();
+            }
+
+
         }
     }
 }

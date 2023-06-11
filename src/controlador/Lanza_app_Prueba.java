@@ -51,10 +51,11 @@ public class Lanza_app_Prueba {
      */
     public Lanza_app_Prueba() throws IOException {
         gui = new GUI();
+        juego = new Juego();
         panel_1_inicial = new Panel_1_Inicial();
         panel_3_reglas = new Panel_3_reglas();
         panel_2_menu = new Panel_2_menu();
-        panel_4_juego = new Panel_4_juego();
+        panel_4_juego = new Panel_4_juego(juego);
         panel_5_opciones = new Panel_5_opciones();
         panel_6_continuar = new Panel_6_continuar();
         panel_7_niveles = new Panel_7_niveles();
@@ -84,7 +85,7 @@ public class Lanza_app_Prueba {
                 gui.repaint();
             }
             case 4 ->{
-                panel_4_juego = new Panel_4_juego();
+//                panel_4_juego = new Panel_4_juego();
 //                setJuego(1);
 //                panel_4_juego.setJuego(getJuego());
                 panel_4_juego.start();

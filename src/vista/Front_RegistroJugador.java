@@ -103,6 +103,7 @@ public class Front_RegistroJugador extends JPanel {
         gbc.gridheight=1; // ocupara 3 filas
         gbc.insets.set(0,0,0,0);
         this.add(jTextField_NombreJugador, gbc);
+        jTextField_NombreJugador.requestFocus();
 
         iniciar_Juego = new Botones();
         iniciar_Juego.desactivar();

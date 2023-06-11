@@ -107,9 +107,10 @@ public class Juego {
         cant_Palabras_a_Memorizar = 0;
         acierto_Exigido = 1;
         ruta = "";
-        categoria = 0;
+        categoria = 1;
         estado=1;
         setUp_Nivel(estado);// juego inicia en nivel 1
+        setCategoria(categoria);
         puntaje_Logrado=0;
         acierto_del_Jugador=false;
 
@@ -236,8 +237,8 @@ public class Juego {
 
         switch (nivel_de_Juego){
             case 1:
-                cant_Palabras_a_Memorizar =10;
-                total_Palabras_del_Nivel =20;
+                cant_Palabras_a_Memorizar =3;
+                total_Palabras_del_Nivel =6;
                 acierto_Exigido=0.7;
                 break;
             case 2:
