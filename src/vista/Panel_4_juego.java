@@ -15,12 +15,12 @@ public class Panel_4_juego extends JPanel {
 
     private String infoPanel;
     private Font font;
-    private Botones atras_boton,si_boton,no_boton;
+    private Botones atras_boton,si_boton,no_boton, siguiente;
     private Area_de_Texto area_de_texto, area_de_texto_2;
     private Timer timer,timer_acierto;
-    private  Timer timer_acierto_2;
+//    private  Timer timer_acierto_2;
     private Escucha escucha;
-    private  int cuenta_palabras,contador;
+    private  int cuenta_memorizar, cuenta_nivel;
     private static Panel_4_juego panel_4_canvas = null;
     private String memoriza;
     private GridBagConstraints gbc;
@@ -43,6 +43,7 @@ public class Panel_4_juego extends JPanel {
     }
 
     private void ini(){
+        siguiente = new Botones();
         jugador = new Jugador();
         timer_acierto = new Timer(2000,escucha);
 //        timer_acierto_2 = new Timer(2000,escucha);
@@ -55,9 +56,8 @@ public class Panel_4_juego extends JPanel {
         panel_botones.setLayout(new GridBagLayout());
         panel_botones.setBackground(null);
         area_de_texto_2 = new Area_de_Texto();
-
-        cuenta_palabras = 0;
-        contador = 0;
+        cuenta_memorizar = 0;
+        cuenta_nivel = 0;
         memoriza = "";
         infoPanel = " Fijate muy bien en las palabras presentadas\ndeberas recordarlas dentro de poco..suerte\n";
         font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 27);
@@ -129,7 +129,7 @@ public class Panel_4_juego extends JPanel {
     }
 
     public void setJuego(Juego juego) {
-       juego = juego;
+       this.juego = juego;
     }
 
     protected void paintComponent(Graphics g){
@@ -149,50 +149,57 @@ public class Panel_4_juego extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             if(e.getSource()==timer){
-                if(cuenta_palabras <= palabra.getPalabra_a_Memorizar().size()-1) {
-                    //Esta salida generaba conflictos cuando estaba afuera del este if
-                        System.out.println("Palabra " +palabra.getPalabra_a_Memorizar().get(cuenta_palabras)
-                            +" Time "+ cuenta_palabras +" El timer está corriendo? " + String.valueOf(timer.isRunning()));
-                    area_de_texto.seText(palabra.getPalabra_a_Memorizar().get(cuenta_palabras));
-                    cuenta_palabras++;
-                }else{
+                if(cuenta_memorizar <= palabra.getPalabra_a_Memorizar().size()-1) {
+                System.out.println("Palabra " +palabra.getPalabra_a_Memorizar().get(cuenta_memorizar)
+                    +" Time "+ cuenta_memorizar +" El timer está corriendo? " + String.valueOf(timer.isRunning()));
+                    area_de_texto.seText(palabra.getPalabra_a_Memorizar().get(cuenta_memorizar));
+                    cuenta_memorizar++;
+                }else {
                     timer.stop();
-                    area_de_texto.seText(palabra.getPalabra_del_nivel().get(0));
-                    panel_botones.setVisible(true);
+                    area_de_texto.seText_2("mempriza");
+                    area_de_texto.seText(palabra.getPalabra_del_nivel().get(0));// estamos para retomar la presentacion de las palbras.
+                    panel_botones.setVisible(true); // si no visibles.... atras ya venia.
 
 //                    Inicia el temporizador para escoger la palabra memorizada
-                    timer_acierto_2 = new Timer(7000,escucha);
-                    timer_acierto_2.start();
+//                    timer_acierto_2 = new Timer(2000,escucha);
+//                    timer_acierto_2.start();
                 }
             }
             else{
-                cuenta_palabras =0;
+                cuenta_memorizar =0;
             }
-//
+
             //cambia el estado del juego se empieza la secuencia para que el jugador empieze a decidiir
             // sobre las palabras presentadas decide si o no.
 //
-            if(e.getSource()==timer_acierto_2){
+//            if(e.getSource()==timer_acierto_2){
+//
+//                System.out.println("timer3");
+//                area_de_texto_2.seText_2("limite de tiempo");
+//                area_de_texto.seText("");
+//                timer_acierto = new Timer(1000,escucha);
+//                timer_acierto.start();
+//
+//            }
 
-                System.out.println("timer3");
-                area_de_texto_2.seText_2("limite de tiempo");
-                area_de_texto.seText("");
-                timer_acierto = new Timer(1000,escucha);
-                timer_acierto.start();
-
+            if(e.getSource()==timer_acierto && cuenta_nivel <= palabra.getPalabra_del_nivel().size()-1){
+                System.out.println("timer 2");
+                timer_acierto.stop();
+                area_de_texto_2.seText_2("");
+                area_de_texto.seText(palabra.getPalabra_del_nivel().get(cuenta_nivel));
+                panel_botones.setVisible(true);
             }
 
 
-            if (e.getSource()==si_boton && contador <= palabra.getPalabra_del_nivel().size()-1){///// recorderis
-                timer_acierto = new Timer(2000,escucha);
+            if (e.getSource()==si_boton && cuenta_nivel <= palabra.getPalabra_del_nivel().size()-1){///// recorderis
+                timer_acierto = new Timer(4000,escucha);
                 timer_acierto.start();
-//                timer_acierto_2.stop();
                 area_de_texto.seText("");
                 panel_botones.setVisible(true);
 
-                if (palabra.getPalabra_a_Memorizar().contains(palabra.getPalabra_del_nivel().get(contador))){
+                if (palabra.getPalabra_a_Memorizar().contains(palabra.getPalabra_del_nivel().get(cuenta_nivel))){
                     area_de_texto_2.seText_2("CORRECTO\n"
-                            +palabra.getPalabra_del_nivel().get(contador)
+                            +palabra.getPalabra_del_nivel().get(cuenta_nivel)
                             +"\nsi es una palabra memorizada"
                     );
                     //acumular 10  puntos al jugador
@@ -200,40 +207,35 @@ public class Panel_4_juego extends JPanel {
                     jugador.setPuntaje_Total(juego);
                     System.out.println(" el puntaje ahora es" + juego.getPuntaje_Logrado() + " el jugador lleva estos puntos " +
                             jugador.getPuntaje_Total());
-                    contador++;
-                    area_de_texto.seText(palabra.getPalabra_del_nivel().get(contador));
-
+                    area_de_texto.seText(palabra.getPalabra_del_nivel().get(cuenta_nivel));
 
                 }else {
                     area_de_texto_2.seText_2("INCORRECTO\n"
-                            +palabra.getPalabra_del_nivel().get(contador)
+                            +palabra.getPalabra_del_nivel().get(cuenta_nivel)
                             +"\nno es una palabra memorizada"
 
                     );
-                    contador++;
-                    area_de_texto.seText(palabra.getPalabra_del_nivel().get(contador));
-
                 }
+                    cuenta_nivel++;
             }
 
-            else if (e.getSource()==no_boton && contador <= palabra.getPalabra_del_nivel().size()-1){ // recorderis
-                timer_acierto = new Timer(2000,escucha);
+            else if (e.getSource()==no_boton && cuenta_nivel <= palabra.getPalabra_del_nivel().size()-1){ // recorderis
+                timer_acierto = new Timer(4000,escucha);
+
                 timer_acierto.start();
                 area_de_texto.seText("");
                 panel_botones.setVisible(true);
 
 
-                if (palabra.getPalabra_a_Memorizar().contains(palabra.getPalabra_del_nivel().get(contador))){
+                if (palabra.getPalabra_a_Memorizar().contains(palabra.getPalabra_del_nivel().get(cuenta_nivel))){
                     area_de_texto_2.seText_2("INCORRECTO\n"
-                            +palabra.getPalabra_del_nivel().get(contador)
+                            +palabra.getPalabra_del_nivel().get(cuenta_nivel)
                             +"\nsi es una palabra memorizada"
                     );
-                    contador++;
-                    area_de_texto.seText(palabra.getPalabra_del_nivel().get(contador));
 
                 }else {
                     area_de_texto_2.seText_2("CORRECTO\n"
-                            +palabra.getPalabra_del_nivel().get(contador)
+                            +palabra.getPalabra_del_nivel().get(cuenta_nivel)
                             +"\nno es una palabra memorizada"
                     );
                     //acumular 10  puntos al jugador
@@ -241,22 +243,45 @@ public class Panel_4_juego extends JPanel {
                     jugador.setPuntaje_Total(juego);
                     System.out.println(" el puntaje ahora es" + juego.getPuntaje_Logrado() + " el jugador lleva estos puntos " +
                             jugador.getPuntaje_Total());
-                    contador++;
-                    area_de_texto.seText(palabra.getPalabra_del_nivel().get(contador));
 
                 }
+                    cuenta_nivel++;
             }
 
-            if(e.getSource()==timer_acierto && contador <= palabra.getPalabra_del_nivel().size()-1){
-                System.out.println("timer 2");
+            else if(cuenta_nivel > palabra.getPalabra_del_nivel().size()-1){
+
                 timer_acierto.stop();
-                area_de_texto_2.seText_2("");
-                area_de_texto.seText(palabra.getPalabra_del_nivel().get(contador++));
-                panel_botones.setVisible(true);
+                if (juego.nivel_Superado()) {
+
+                    panel_botones.setVisible(false);
+                    area_de_texto_2.seText_2("");
+                    area_de_texto.seText(" PASAS AL SIGUIENTE NIVEL ");
+                    atras_boton.setVisible(false);
+
+                    gbc.gridx = 0; // columna 0
+                    gbc.gridy = 5; // fila 0
+                    gbc.gridwidth = 1; // ocupara 4 columnas
+                    gbc.gridheight = 1; // ocupara 3 filas
+                    atras_boton.addActionListener(escucha);
+                    add(siguiente.getBoton_style_1("SIGUIENTE"), gbc);
+                }
+                else {
+
+                    panel_botones.setVisible(false);
+                    area_de_texto_2.seText_2("");
+                    area_de_texto.seText(" GAME OVER ");
+                    atras_boton.setVisible(false);
+
+                    gbc.gridx = 0; // columna 0
+                    gbc.gridy = 5; // fila 0
+                    gbc.gridwidth = 1; // ocupara 4 columnas
+                    gbc.gridheight = 1; // ocupara 3 filas
+                    atras_boton.addActionListener(escucha);
+                    add(siguiente.getBoton_style_1("REPETIR"), gbc);
+
+                }
+
             }
-
-
-
         }
     }
 }

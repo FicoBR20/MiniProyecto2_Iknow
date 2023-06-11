@@ -54,17 +54,24 @@ public class Lanza_app_Prueba {
         panel_1_inicial = new Panel_1_Inicial();
         panel_3_reglas = new Panel_3_reglas();
         panel_2_menu = new Panel_2_menu();
-        panel_4_juego = new Panel_4_juego(juego);
         panel_5_opciones = new Panel_5_opciones();
         panel_6_continuar = new Panel_6_continuar();
         panel_7_niveles = new Panel_7_niveles();
         front_registroJugador = new Front_RegistroJugador();
 
-       // navegar = 1;
         seleccionar_pantalla(4);
+//=======
+//        seleccionar_pantalla(1);
+//>>>>>>> makecontroller
 //
 //        navegar = 1;
 //        seleccionar_pantalla(navegar);
+
+    }
+
+    public void secuencia_Logica(int secuencial){
+
+        seleccionar_pantalla(secuencial);
 
     }
 
@@ -79,6 +86,7 @@ public class Lanza_app_Prueba {
                 gui.setContentPane(panel_1_inicial);
                 gui.revalidate();
                 gui.repaint();
+               // secuencia_Logica(9);
             }
             case 2 ->{
                 gui.setContentPane(panel_2_menu);
@@ -91,7 +99,7 @@ public class Lanza_app_Prueba {
                 gui.repaint();
             }
             case 4 ->{
-
+                panel_4_juego = new Panel_4_juego(juego);
                 panel_4_juego.start(); // inicializa timer
                 gui.setContentPane(panel_4_juego);
                 gui.revalidate();
@@ -127,6 +135,14 @@ public class Lanza_app_Prueba {
                 gui.setContentPane(panel_7_niveles);
                 gui.revalidate();
                 gui.repaint();;
+            }
+            case 10->{
+                // se debe preguntar si supero el nivel.
+                //....nivel +1
+                juego.setUp_Nivel(2);
+                panel_4_juego = new Panel_4_juego(juego);
+                bill.seleccionar_pantalla(4);
+
             }
             default -> {
                 System.out.println(" no hay mas pantallas");
@@ -186,6 +202,14 @@ public class Lanza_app_Prueba {
             }
 
             else if(Objects.equals(e.getActionCommand(), "INICIAR")){
+                bill.seleccionar_pantalla(4);
+            }
+
+            else if(Objects.equals(e.getActionCommand(), "SIGUIENTE")){
+                bill.seleccionar_pantalla(10);
+            }
+
+            else if(Objects.equals(e.getActionCommand(), "REPETIR")){
                 bill.seleccionar_pantalla(4);
             }
 

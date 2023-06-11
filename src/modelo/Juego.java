@@ -236,13 +236,13 @@ public class Juego {
 
         switch (nivel_de_Juego){
             case 1:
-                cant_Palabras_a_Memorizar =3;
-                total_Palabras_del_Nivel =6;
+                cant_Palabras_a_Memorizar =2;
+                total_Palabras_del_Nivel =4;
                 acierto_Exigido=0.7;
                 break;
             case 2:
-                cant_Palabras_a_Memorizar =20;
-                total_Palabras_del_Nivel =40;
+                cant_Palabras_a_Memorizar =4;
+                total_Palabras_del_Nivel =8;
                 acierto_Exigido=0.7;
                 break;
             case 3:
