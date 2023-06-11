@@ -35,7 +35,7 @@ public class Panel_6_continuar extends JPanel {
         gbc.gridy=0; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
-        this.add(area_de_texto.continuar(), gbc);
+      //  this.add(area_de_texto.continuar(), gbc);
 
         gbc.insets.set(0,0,5,5);
         gbc.gridx=1; // columna 0

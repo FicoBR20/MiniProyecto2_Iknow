@@ -21,6 +21,7 @@ public class Lanza_app_Prueba {
     private  Panel_5_opciones panel_5_opciones;
     private  Panel_7_niveles panel_7_niveles;
     private  Panel_6_continuar panel_6_continuar;
+
     private  Front_RegistroJugador front_registroJugador;
 
     private  Palabra palabra;
@@ -57,8 +58,10 @@ public class Lanza_app_Prueba {
         panel_2_menu = new Panel_2_menu();
         panel_4_juego = new Panel_4_juego(juego);
         panel_5_opciones = new Panel_5_opciones();
+
         panel_6_continuar = new Panel_6_continuar();
         panel_7_niveles = new Panel_7_niveles();
+
         front_registroJugador = new Front_RegistroJugador();
 
        // navegar = 1;
@@ -120,6 +123,7 @@ public class Lanza_app_Prueba {
                 gui.repaint();
             }
 
+
             case 7 ->{
                 gui.setContentPane(panel_6_continuar);
                 gui.revalidate();
@@ -149,8 +153,6 @@ public class Lanza_app_Prueba {
             }
 
         }
-
-
     }
 
 
@@ -186,6 +188,7 @@ public class Lanza_app_Prueba {
             }
 
             else if(Objects.equals(e.getActionCommand(), "CONTINUAR")) {
+
                 bill.seleccionar_pantalla(9);
             }
 
@@ -195,6 +198,9 @@ public class Lanza_app_Prueba {
 
             else if(Objects.equals(e.getActionCommand(), "1")) {
                 bill.seleccionar_pantalla(8);
+
+                bill.seleccionar_pantalla(4);
+
             }
 
             else if(Objects.equals(e.getActionCommand(), "OPCIONES")){

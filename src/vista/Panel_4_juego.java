@@ -158,12 +158,18 @@ public class Panel_4_juego extends JPanel {
     public class Escucha implements ActionListener {
 
         @Override
+        /**
+         * Secuencia que presenta las palabras iniciales para que el jugador las memorize
+         */
         public void actionPerformed(ActionEvent e) {
+            String auxiliar = "";
             if(e.getSource()==timer){
-                System.out.println("Palabra " +palabra.getPalabra_a_Memorizar().get(counter)
-                    +" Time "+counter+" El timer está corriendo? " + String.valueOf(timer.isRunning()));
-                if(counter <= palabra.getPalabra_a_Memorizar().size()-2) {
-                    area_de_texto.seText(palabra.getPalabra_a_Memorizar().get(counter));
+               // System.out.println("Palabra " + palabra.getPalabra_a_Memorizar().get(counter) // counter es la ubicacion en el arreglo.
+                   // +" Time "+counter+" El timer está corriendo? " + String.valueOf(timer.isRunning()));
+                if(counter <= palabra.getPalabra_a_Memorizar().size()-1) {                                      // se cambia -2 por -1
+                    auxiliar = palabra.getPalabra_a_Memorizar().get(counter);
+                    area_de_texto.seText(auxiliar);
+                    System.out.println(" presentando palabras a memorizar y counter vale " + counter + " y la palabra es " + auxiliar);
                     counter++;
                 }else {
                     timer.stop();

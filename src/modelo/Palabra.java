@@ -26,7 +26,10 @@ public class Palabra {
     }
 
     /**
-     * Método que genera el string con la cantidad de palabras de cada nivel
+     * Método que genera el arreglo string con la totalidad
+     * de las palabras de cada nivel, de aqui se tomarán algunas
+     * para generar el arreglo de las palabras a memorizar
+     * para el nivel respectivamente.
      * @throws IOException
      */
 
@@ -52,6 +55,10 @@ public class Palabra {
         return palabra_a_Memorizar;
     }
 
+    /**
+     * Método que genera el arreglo con la totalidad
+     * de palabras a memorizar en cada nivel
+      */
     public void setPalabra_a_Memorizar(){
         for (int i = 0; i < juego.getCant_Palabras_a_Memorizar(); i++){
             String memoria = stringBasico.seleccionarPalabraAleatoria(palabra_del_Nivel);
