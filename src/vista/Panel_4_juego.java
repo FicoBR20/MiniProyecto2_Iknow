@@ -15,7 +15,7 @@ public class Panel_4_juego extends JPanel {
 
     private String infoPanel;
     private Font font;
-    private Botones atras_boton,si_boton,no_boton;
+    private Botones atras_boton,si_boton,no_boton, siguiente;
     private Area_de_Texto area_de_texto, area_de_texto_2;
     private Timer timer,timer_acierto;
     private Escucha escucha;
@@ -41,6 +41,7 @@ public class Panel_4_juego extends JPanel {
     }
 
     private void ini(){
+        siguiente = new Botones();
         jugador = new Jugador();
         timer_acierto = new Timer(2000,escucha);
         gbc = new GridBagConstraints();
@@ -64,11 +65,7 @@ public class Panel_4_juego extends JPanel {
         this.setBackground( new Color(47, 161, 30));
 
         palabra = new Palabra();
-        //juego1 = new Juego();
 
-       // juego1.setUp_Nivel(1);
-        //juego1.setCategoria(1);
-//        palabra.setJuego(getJuego());
         palabra.setJuego(juego1);
         palabra.setPalabra_del_nivel();
         palabra.setPalabra_a_Memorizar();
@@ -186,13 +183,13 @@ public class Panel_4_juego extends JPanel {
                 System.out.println("timer 2");
                 timer_acierto.stop();
                 area_de_texto_2.seText_2("");
-                area_de_texto.seText(palabra.getPalabra_del_nivel().get(contador-1));
+                area_de_texto.seText(palabra.getPalabra_del_nivel().get(contador));
                 panel_botones.setVisible(true);
                 timer_acierto.stop();
             }
 
 
-            if (e.getSource()==si_boton && contador <= palabra.getPalabra_del_nivel().size()-1){///// recorderis
+            if (e.getSource()==si_boton && contador <= palabra.getPalabra_del_nivel().size()-2){///// recorderis
                 timer_acierto = new Timer(4000,escucha);
                 timer_acierto.start();
                 area_de_texto.seText("");
@@ -222,7 +219,7 @@ public class Panel_4_juego extends JPanel {
                 }
             }
 
-            else if (e.getSource()==no_boton && contador <= palabra.getPalabra_del_nivel().size()-1){ // recorderis
+            else if (e.getSource()==no_boton && contador <= palabra.getPalabra_del_nivel().size()-2){ // recorderis
                 timer_acierto = new Timer(4000,escucha);
                 timer_acierto.start();
                 area_de_texto.seText("");
@@ -250,7 +247,39 @@ public class Panel_4_juego extends JPanel {
 
                 }
             }
-            else if(contador == palabra.getPalabra_del_nivel().size()-1){
+            else if(contador == palabra.getPalabra_del_nivel().size()-2){
+
+              //  if (juego1.nivel_Superado()==true) {
+
+                    panel_botones.setVisible(false);
+                    area_de_texto.seText(" acabo el juego. ");
+                    atras_boton.setVisible(false);
+
+                    gbc.gridx = 0; // columna 0
+                    gbc.gridy = 5; // fila 0
+                    gbc.gridwidth = 1; // ocupara 4 columnas
+                    gbc.gridheight = 1; // ocupara 3 filas
+                    atras_boton.addActionListener(escucha);
+                    //   atras_boton.setVisible(false);
+                    add(siguiente.getBoton_style_1("SIGUIENTE"), gbc);
+               // }
+//                else {
+//
+//                    panel_botones.setVisible(false);
+//                    area_de_texto.seText(" acabo el juego. ");
+//                    atras_boton.setVisible(false);
+//
+//                    gbc.gridx = 0; // columna 0
+//                    gbc.gridy = 5; // fila 0
+//                    gbc.gridwidth = 1; // ocupara 4 columnas
+//                    gbc.gridheight = 1; // ocupara 3 filas
+//                    atras_boton.addActionListener(escucha);
+//                    //   atras_boton.setVisible(false);
+//                    add(siguiente.getBoton_style_1("REPETIR"), gbc);
+//
+//                }
+
+
 
             }
         }
