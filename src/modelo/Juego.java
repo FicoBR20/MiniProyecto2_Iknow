@@ -174,6 +174,13 @@ public class Juego {
 
     }
 
+    /**
+     * Vuelve el puntaje objenido a cero
+     */
+    public void reset_puntos() {
+        puntaje_Logrado=0;
+    }
+
     public boolean isAcierto_del_Jugador() {
         return acierto_del_Jugador;
     }

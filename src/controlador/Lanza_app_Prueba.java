@@ -60,13 +60,6 @@ public class Lanza_app_Prueba {
         front_registroJugador = new Front_RegistroJugador();
 
         seleccionar_pantalla(4);
-//=======
-//        seleccionar_pantalla(1);
-//>>>>>>> makecontroller
-//
-//        navegar = 1;
-//        seleccionar_pantalla(navegar);
-
     }
 
     public void secuencia_Logica(int secuencial){
