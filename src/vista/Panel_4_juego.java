@@ -18,7 +18,7 @@ public class Panel_4_juego extends JPanel {
     private Botones atras_boton,si_boton,no_boton;
     private Area_de_Texto area_de_texto, area_de_texto_2;
     private Timer timer,timer_acierto;
-//    private  Timer timer_acierto_2;
+    private  Timer timer_acierto_2;
     private Escucha escucha;
     private  int cuenta_palabras,contador;
     private static Panel_4_juego panel_4_canvas = null;
@@ -160,9 +160,9 @@ public class Panel_4_juego extends JPanel {
                     area_de_texto.seText(palabra.getPalabra_del_nivel().get(0));
                     panel_botones.setVisible(true);
 
-                    //Inicia el temporizador para escoger la palabra memorizada
-//                    timer_acierto_2 = new Timer(7000,escucha);
-//                    timer_acierto_2.start();
+//                    Inicia el temporizador para escoger la palabra memorizada
+                    timer_acierto_2 = new Timer(7000,escucha);
+                    timer_acierto_2.start();
                 }
             }
             else{
@@ -219,7 +219,6 @@ public class Panel_4_juego extends JPanel {
             else if (e.getSource()==no_boton && contador <= palabra.getPalabra_del_nivel().size()-1){ // recorderis
                 timer_acierto = new Timer(2000,escucha);
                 timer_acierto.start();
-//                timer_acierto_2.stop();
                 area_de_texto.seText("");
                 panel_botones.setVisible(true);
 
@@ -247,16 +246,7 @@ public class Panel_4_juego extends JPanel {
 
                 }
             }
-//            else if(contador == palabra.getPalabra_del_nivel().size()-1){
-//                System.out.println("final");
-//                area_de_texto_2.seText_2("");
-//                area_de_texto.seText("Fin");
-//                panel_botones.setVisible(false);
-//                atras_boton.setVisible(false);
-////                timer_acierto_2.stop();
-//                timer_acierto.stop();
-//            }
-//
+
             if(e.getSource()==timer_acierto && contador <= palabra.getPalabra_del_nivel().size()-1){
                 System.out.println("timer 2");
                 timer_acierto.stop();
@@ -268,7 +258,5 @@ public class Panel_4_juego extends JPanel {
 
 
         }
-
-        // condicicon de salida.
     }
 }
