@@ -1,9 +1,12 @@
 package controlador;
 
+import modelo.Juego;
+
 /**
  * Clase que contiene la información relacionada con el jugador.
  */
 public class Jugador {
+    private Juego juego;
     /**
      * Identificación del jugador.
      */
@@ -34,6 +37,7 @@ public class Jugador {
     }
 
     public void setNivel_Superado(int nivel_Superado) {
+        nivel_Superado=juego.getNivel();
         this.nivel_Superado = nivel_Superado;
     }
 
@@ -41,14 +45,17 @@ public class Jugador {
         return puntaje_Total;
     }
 
-    public void setPuntaje_Total(int puntaje_Total) {
-        this.puntaje_Total = puntaje_Total;
+    public void setPuntaje_Total(Juego juego) {
+
+        puntaje_Total= juego.getPuntaje_Logrado();
+
     }
 
     /**
      * Métooo constructor
      */
     public Jugador(){
+        juego = new Juego();
         name = " ";
         nivel_Superado = 0;
         puntaje_Total = 0;

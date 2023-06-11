@@ -165,14 +165,13 @@ public class Juego {
      * @return puntaje_logrado
      */
     public int getPuntaje_Logrado() {
-        if (estado==2){
-            puntaje_Logrado +=10;
-        }
         return puntaje_Logrado;
     }
 
-    public void setPuntaje_Logrado(int puntaje_Logrado) {
-        this.puntaje_Logrado = puntaje_Logrado;
+    public void setPuntaje_Logrado() {
+
+        puntaje_Logrado +=10;
+
     }
 
     public boolean isAcierto_del_Jugador() {
@@ -312,7 +311,7 @@ public class Juego {
      *          false -> si NO se logra igualar o superar el porcentaje de acierto exigido en el nivel que está.
      */
     public boolean nivel_Superado(){
-        if (puntaje_Logrado/10* total_Palabras_del_Nivel <acierto_Exigido){
+        if (puntaje_Logrado / (10 * total_Palabras_del_Nivel) <= acierto_Exigido){
             return false;
         }
         else {
