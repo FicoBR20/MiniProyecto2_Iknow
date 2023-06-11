@@ -10,7 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.Objects;
-import java.util.Scanner;
 
 
 public class Lanza_app_Prueba {
@@ -26,7 +25,7 @@ public class Lanza_app_Prueba {
 
     private  Palabra palabra;
     private Juego juego;
-    private int numero,estado;
+    private int numero, navegar;
     private String texto;
     private static Lanza_app_Prueba bill = null;
 
@@ -51,21 +50,30 @@ public class Lanza_app_Prueba {
      */
     public Lanza_app_Prueba() throws IOException {
         gui = new GUI();
+        juego =  new Juego();
+        juego.setCategoria(2);
         panel_1_inicial = new Panel_1_Inicial();
         panel_3_reglas = new Panel_3_reglas();
         panel_2_menu = new Panel_2_menu();
-        panel_4_juego = new Panel_4_juego();
+        panel_4_juego = new Panel_4_juego(juego);
         panel_5_opciones = new Panel_5_opciones();
         panel_6_continuar = new Panel_6_continuar();
         panel_7_niveles = new Panel_7_niveles();
         front_registroJugador = new Front_RegistroJugador();
 
-        estado = 1;
-        seleccionar_pantalla(estado);
+       // navegar = 1;
+        seleccionar_pantalla(juego.getEstado());
+//
+//        navegar = 1;
+//        seleccionar_pantalla(navegar);
 
     }
 
-    public void seleccionar_pantalla(int pantalla){
+    /**
+     * Este metodo selecciona y navega entre paneles.
+     * @param pantalla
+     */
+    public void seleccionar_pantalla(int pantalla){ // pantalla esqivlae a un juego.estado.
         switch (pantalla) {
 
             case 1 ->{
@@ -84,13 +92,16 @@ public class Lanza_app_Prueba {
                 gui.repaint();
             }
             case 4 ->{
-                panel_4_juego = new Panel_4_juego();
+                //panel_4_juego = new Panel_4_juego();
 //                setJuego(1);
 //                panel_4_juego.setJuego(getJuego());
-                panel_4_juego.start();
+               // juego.setCategoria(2);
+               // panel_4_juego.setJuego(juego);
+                panel_4_juego.start(); // inicializa timer
                 gui.setContentPane(panel_4_juego);
                 gui.revalidate();
                 gui.repaint();
+
             }
 
             case 5 ->{
@@ -122,6 +133,9 @@ public class Lanza_app_Prueba {
                 gui.revalidate();
                 gui.repaint();;
             }
+            default -> {
+                System.out.println(" no hay mas pantallas");
+            }
 
         }
 
@@ -144,7 +158,7 @@ public class Lanza_app_Prueba {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            if(Objects.equals(e.getActionCommand(), "ATRAS")){
+            if(e.getActionCommand()== "ATRAS"){
                 bill.seleccionar_pantalla(1);
             }
 

@@ -107,9 +107,10 @@ public class Juego {
         cant_Palabras_a_Memorizar = 0;
         acierto_Exigido = 1;
         ruta = "";
-        categoria = 0;
+        categoria = 1;
         estado=1;
         setUp_Nivel(estado);// juego inicia en nivel 1
+        setCategoria(categoria);
         puntaje_Logrado=0;
         acierto_del_Jugador=false;
 
@@ -164,14 +165,13 @@ public class Juego {
      * @return puntaje_logrado
      */
     public int getPuntaje_Logrado() {
-        if (estado==2){
-            puntaje_Logrado +=10;
-        }
         return puntaje_Logrado;
     }
 
-    public void setPuntaje_Logrado(int puntaje_Logrado) {
-        this.puntaje_Logrado = puntaje_Logrado;
+    public void setPuntaje_Logrado() {
+
+        puntaje_Logrado +=10;
+
     }
 
     public boolean isAcierto_del_Jugador() {
@@ -236,8 +236,8 @@ public class Juego {
 
         switch (nivel_de_Juego){
             case 1:
-                cant_Palabras_a_Memorizar =10;
-                total_Palabras_del_Nivel =20;
+                cant_Palabras_a_Memorizar =3;
+                total_Palabras_del_Nivel =6;
                 acierto_Exigido=0.7;
                 break;
             case 2:
@@ -311,7 +311,7 @@ public class Juego {
      *          false -> si NO se logra igualar o superar el porcentaje de acierto exigido en el nivel que está.
      */
     public boolean nivel_Superado(){
-        if (puntaje_Logrado/10* total_Palabras_del_Nivel <acierto_Exigido){
+        if (puntaje_Logrado / (10 * total_Palabras_del_Nivel) <= acierto_Exigido){
             return false;
         }
         else {

@@ -1,5 +1,6 @@
 package vista;
 
+import controlador.Jugador;
 import modelo.Juego;
 import modelo.Palabra;
 
@@ -9,6 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Panel_4_juego extends JPanel {
+
+    private Jugador jugador;
 
     private String infoPanel;
     private Font font;
@@ -22,18 +25,23 @@ public class Panel_4_juego extends JPanel {
     private GridBagConstraints gbc;
     private JPanel panel_botones;
     private Palabra palabra;
-    private Juego juego,juego1;
+    private Juego juego1;
 
 
     /**
      * Presenta en el nivel actual
      */
     public Panel_4_juego(){
-        juego = new Juego();
+        juego1 = new Juego();
+        ini();
+    }
+    public Panel_4_juego( Juego juego){
+        juego1 = juego;
         ini();
     }
 
     private void ini(){
+        jugador = new Jugador();
         timer_acierto = new Timer(2000,escucha);
         gbc = new GridBagConstraints();
         gbc.anchor=GridBagConstraints.CENTER;
@@ -56,9 +64,10 @@ public class Panel_4_juego extends JPanel {
         this.setBackground( new Color(47, 161, 30));
 
         palabra = new Palabra();
-        juego1 = new Juego();
-        juego1.setUp_Nivel(2);
-        juego1.setCategoria(1);
+        //juego1 = new Juego();
+
+       // juego1.setUp_Nivel(1);
+        //juego1.setCategoria(1);
 //        palabra.setJuego(getJuego());
         palabra.setJuego(juego1);
         palabra.setPalabra_del_nivel();
@@ -110,7 +119,7 @@ public class Panel_4_juego extends JPanel {
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         atras_boton.addActionListener(escucha);
-        atras_boton.setVisible(false);
+     //   atras_boton.setVisible(false);
         this.add(atras_boton.getBoton_style_1("ATRAS"), gbc);
 
         timer = new Timer(1000, escucha );
@@ -122,11 +131,11 @@ public class Panel_4_juego extends JPanel {
 
 
     public Juego getJuego() {
-        return juego;
+        return juego1;
     }
 
     public void setJuego(Juego juego) {
-        this.juego = juego;
+       juego1 = juego;
     }
 
 //    public static void main(String[] args){
@@ -161,23 +170,29 @@ public class Panel_4_juego extends JPanel {
                     counter++;
                 }else {
                     timer.stop();
-                    area_de_texto.seText(palabra.getPalabra_del_nivel().get(0));
-                    panel_botones.setVisible(true);
+                    area_de_texto.seText(palabra.getPalabra_del_nivel().get(0));// estamos para retomar la presentacion de las palbras.
+                    panel_botones.setVisible(true); // si no visibles.... atras ya venia.
+
                 }
-            }else{
-                counter=0;
             }
+            else{
+                counter=0;
+                }
+
+            //cambia el estado del juego se empieza la secuencia para que el jugador empieze a decidiir
+            // sobre las palabras presentadas decide si o no.
 
             if(e.getSource()==timer_acierto){
                 System.out.println("timer 2");
                 timer_acierto.stop();
                 area_de_texto_2.seText_2("");
-                area_de_texto.seText(palabra.getPalabra_del_nivel().get(contador));
+                area_de_texto.seText(palabra.getPalabra_del_nivel().get(contador-1));
                 panel_botones.setVisible(true);
                 timer_acierto.stop();
             }
 
-            if (e.getSource()==si_boton && contador <= palabra.getPalabra_del_nivel().size()-1){
+
+            if (e.getSource()==si_boton && contador <= palabra.getPalabra_del_nivel().size()-1){///// recorderis
                 timer_acierto = new Timer(4000,escucha);
                 timer_acierto.start();
                 area_de_texto.seText("");
@@ -188,17 +203,26 @@ public class Panel_4_juego extends JPanel {
                             +palabra.getPalabra_del_nivel().get(contador)
                             +"\nsi es una palabra memorizada"
                     );
+                    //acumular 10  puntos al jugador
+                   juego1.setPuntaje_Logrado(); //estado indica que acerto.
+                    jugador.setPuntaje_Total(juego1);
+                    System.out.println(" el puntaje ahora es" + juego1.getPuntaje_Logrado() + " el jugador lleva estos puntos " +
+                            jugador.getPuntaje_Total());
+                    contador++;
+
 
                 }else {
                     area_de_texto_2.seText_2("INCORRECTO\n"
                             +palabra.getPalabra_del_nivel().get(contador)
                             +"\nno es una palabra memorizada"
+
                     );
+                    contador++;
+
                 }
-                contador++;
             }
 
-            else if (e.getSource()==no_boton && contador <= palabra.getPalabra_del_nivel().size()-1){
+            else if (e.getSource()==no_boton && contador <= palabra.getPalabra_del_nivel().size()-1){ // recorderis
                 timer_acierto = new Timer(4000,escucha);
                 timer_acierto.start();
                 area_de_texto.seText("");
@@ -209,17 +233,28 @@ public class Panel_4_juego extends JPanel {
                             +palabra.getPalabra_del_nivel().get(contador)
                             +"\nsi es una palabra memorizada"
                     );
+                    contador++;
+
                 }else {
                     area_de_texto_2.seText_2("CORRECTO\n"
                             +palabra.getPalabra_del_nivel().get(contador)
                             +"\nno es una palabra memorizada"
                     );
+                    //acumular 10  puntos al jugador
+                    juego1.setPuntaje_Logrado(); //estado indica que acerto.
+                    jugador.setPuntaje_Total(juego1);
+                    System.out.println(" el puntaje ahora es" + juego1.getPuntaje_Logrado() + " el jugador lleva estos puntos " +
+                            jugador.getPuntaje_Total());
+                    contador++;
+
+
                 }
-                contador++;
             }
             else if(contador == palabra.getPalabra_del_nivel().size()-1){
 
             }
         }
+
+        // condicicon de salida.
     }
 }

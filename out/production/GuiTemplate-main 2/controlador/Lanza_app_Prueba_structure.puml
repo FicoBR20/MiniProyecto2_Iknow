@@ -1,0 +1,541 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "controlador.Lanza_app_Prueba",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_1041743289 { 
+   	label=Front_RegistroJugador
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Escucha1188199704[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Escucha</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ mouseClicked(e: MouseEvent)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Teclado1188199704[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Teclado</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ keyPressed(e: KeyEvent)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_1068799386 { 
+   	label=modelo
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Juego1068799386[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Juego</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   acierto_Exigido: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   acierto_del_Jugador: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   cant_Palabras_a_Memorizar: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   categoria: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   estado: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   limite_string_basico: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   nivel: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   puntaje_Logrado: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   ruta: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   total_Palabras_del_Nivel: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ decision_Correcta()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ nivel_Superado(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setCategoria(categoria: int): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Palabra1068799386[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Palabra</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   acierto: Boolean [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   juego: Juego [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   palabra_a_Memorizar: List&lt;String&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   palabra_del_Nivel: List&lt;String&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   stringBasico: String_Basico [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ comparacion(palabra: String, lista_de_palabras: List&lt;String&gt;): Boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+String_Basico1068799386[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)String_Basico</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   juego: Juego [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lector: BufferedReader [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lista_palabra: List&lt;String&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ obtenerPalabras(categoria: String): List&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ seleccionarPalabraAleatoria(lista_palabras: List&lt;String&gt;): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_112217741 { 
+   	label=vista
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Botones112217741[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Botones</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   alto: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   ancho: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   escucha: Escucha [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   imageIcon: ImageIcon [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   imageIcon_Pressed: ImageIcon [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   tamaño_fuente: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ activar()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ desactivar()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getBoton_style_1(titulo: String): JButton</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getBoton_style_2(titulo: String): JButton</TD></TR>
+<TR><TD ALIGN="LEFT" >+ nivel(titulo: String): JButton</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Front_RegistroJugador112217741[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Front_RegistroJugador</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   atras_boton: Botones [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   escucha: Escucha [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   fondoLila: Color [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   header: Header [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   iniciar_Juego: Botones [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   jLabel_NombreJugador: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   jTextField_NombreJugador: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   jlabel_Title: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   juego_Ik: Juego [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   name_Player: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   teclado: Teclado [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   verdeClaro: Color [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ init_Panel()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+GUI112217741[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)GUI</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   colorBack: Color [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   colorFront: Color [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   estado_panel: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   frontInicial: Panel_1_Inicial [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   getjPanel_Lateral2: JPanel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   headerProject: Header [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   jBut_1_auxiliar: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   jBut_2_auxiliar: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   jBut_3_auxiliar: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   jBut_4_auxiliar: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   jLabel_1_auxiliar: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   jLabel_2_auxiliar: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   jLabel_Central: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   jPanel_Lateral1: JPanel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   jPanel_Principal: JPanel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   jTextArea_Principal: JTextArea [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   jTextArea_auxiliar: JTextArea [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   jTextField_1_auxiliar: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   jTextField_2_auxiliar: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   jTextField_Principal: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   jTextPane_Principal: JTextPane [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   jTextPane_auxiliar: JTextPane [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ frame_001_Inicio()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ frame_002_Reglas()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ frame_final_cierre()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ frame_registro_Jugador()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ initGUI()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ lanza_frames(estado: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ main(args: String[])</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Header112217741[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Header</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ inicio()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Panel_1_Inicial112217741[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Panel_1_Inicial</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   area_de_texto: Area_de_Texto [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   boton: Botones [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ initGui()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Panel_2_menu112217741[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Panel_2_menu</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   area_de_texto: Area_de_Texto [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   atras_boton: Botones [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ initGui()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Panel_3_reglas112217741[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Panel_3_reglas</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   area_de_texto: Area_de_Texto [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   atras_boton: Botones [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ initGui()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Panel_4_juego112217741[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Panel_4_juego</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   area_de_texto: Area_de_Texto [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   area_de_texto_2: Area_de_Texto [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   atras_boton: Botones [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   contador: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   counter: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   escucha: Escucha [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   font: Font [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   gbc: GridBagConstraints [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   infoPanel: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   juego1: Juego [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   jugador: Jugador [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   memoriza: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   no_boton: Botones [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   palabra: Palabra [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   panel_botones: JPanel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   si_boton: Botones [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   timer: Timer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   timer_acierto: Timer [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- ini()</TD></TR>
+<TR><TD ALIGN="LEFT" ># paintComponent(g: Graphics)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ start()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Panel_5_opciones112217741[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Panel_5_opciones</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   area_de_texto: Area_de_Texto [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   atras_boton: Botones [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   grafico_boton: Botones [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   idioma_boton: Botones [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   sonido_boton: Botones [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ initGui()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Panel_6_continuar112217741[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Panel_6_continuar</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   area_de_texto: Area_de_Texto [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   atras_boton: Botones [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   continuar_boton: Botones [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ initGui()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Panel_7_niveles112217741[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Panel_7_niveles</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   area_de_texto: Area_de_Texto [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   atras_boton: Botones [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   nivel: ArrayList&lt;Botones&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   panel_botones: JPanel [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ initGui()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_149567730 { 
+   	label=Lanza_app_Prueba
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Escucha1031670137[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Escucha</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ actionPerformed(e: ActionEvent)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_1714877405 { 
+   	label=controlador
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Control_FileManager1714877405[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Control_FileManager</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   fileReader: FileReader [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   fileWriter: FileWriter [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   info_Completa_Jugador: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   input: BufferedReader [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   output: BufferedWriter [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ reader_Jugador(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ writer_Jugador(line: String)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Lanza_app_Prueba1714877405[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Lanza_app_Prueba</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   front_registroJugador: Front_RegistroJugador [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   gui: GUI [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   juego: Juego [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   navegar: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   numero: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   palabra: Palabra [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   panel_1_inicial: Panel_1_Inicial [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   panel_2_menu: Panel_2_menu [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   panel_3_reglas: Panel_3_reglas [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   panel_4_juego: Panel_4_juego [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   panel_5_opciones: Panel_5_opciones [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   panel_6_continuar: Panel_6_continuar [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   panel_7_niveles: Panel_7_niveles [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   texto: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ main(args: String[])</TD></TR>
+<TR><TD ALIGN="LEFT" >+ seleccionar_pantalla(pantalla: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+Botones112217741 -> Escucha1031670137[label="escucha
+[0..1]"];
+Front_RegistroJugador112217741 -> Botones112217741[label="atras_boton
+[0..1]"];
+Front_RegistroJugador112217741 -> Botones112217741[label="iniciar_Juego
+[0..1]"];
+Front_RegistroJugador112217741 -> Escucha1188199704[label="escucha
+[0..1]"];
+Front_RegistroJugador112217741 -> Header112217741[label="header
+[0..1]"];
+Front_RegistroJugador112217741 -> Juego1068799386[label="juego_Ik
+[0..1]"];
+Front_RegistroJugador112217741 -> Teclado1188199704[label="teclado
+[0..1]"];
+Lanza_app_Prueba1714877405 -> Front_RegistroJugador112217741[label="front_registroJugador
+[0..1]"];
+Lanza_app_Prueba1714877405 -> GUI112217741[label="gui
+[0..1]"];
+Lanza_app_Prueba1714877405 -> Juego1068799386[label="juego
+[0..1]"];
+Lanza_app_Prueba1714877405 -> Palabra1068799386[label="palabra
+[0..1]"];
+Lanza_app_Prueba1714877405 -> Panel_1_Inicial112217741[label="panel_1_inicial
+[0..1]"];
+Lanza_app_Prueba1714877405 -> Panel_2_menu112217741[label="panel_2_menu
+[0..1]"];
+Lanza_app_Prueba1714877405 -> Panel_3_reglas112217741[label="panel_3_reglas
+[0..1]"];
+Lanza_app_Prueba1714877405 -> Panel_4_juego112217741[label="panel_4_juego
+[0..1]"];
+Lanza_app_Prueba1714877405 -> Panel_5_opciones112217741[label="panel_5_opciones
+[0..1]"];
+Lanza_app_Prueba1714877405 -> Panel_6_continuar112217741[label="panel_6_continuar
+[0..1]"];
+Lanza_app_Prueba1714877405 -> Panel_7_niveles112217741[label="panel_7_niveles
+[0..1]"];
+Palabra1068799386 -> Juego1068799386[label="juego
+[0..1]"];
+Palabra1068799386 -> String_Basico1068799386[label="stringBasico
+[0..1]"];
+String_Basico1068799386 -> Juego1068799386[label="juego
+[0..1]"];
+Teclado1188199704 -> Botones112217741[label="keyPressed() -> activar()"];
+Teclado1188199704 -> Control_FileManager1714877405[label="keyPressed() -> writer_Jugador()"];
+    
+}
+@enduml
