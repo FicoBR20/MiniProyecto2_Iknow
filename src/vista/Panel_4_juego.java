@@ -179,7 +179,7 @@ public class Panel_4_juego extends JPanel {
             }
 
             else if(e.getSource()==timer && primer_inicio == 2){
-                area_de_texto.seText("GO");
+                area_de_texto.seText("¡GO!");
                 timer = new Timer(2000, escucha);
                 timer.start();
                 primer_inicio++;

@@ -6,6 +6,9 @@ import javax.swing.*;
  * Esta Clase manejara la lógica del juego.
  */
 public class Juego {
+    /**
+     *
+     */
     private int limite_string_basico;
     /**
      * nivel: indica el nivel en que se desarrolla el juego
@@ -85,6 +88,10 @@ public class Juego {
      * @info se cuenta con 3 categorias; Ciudades, Animales, Profesiones.
      */
     private int categoria;
+    /**
+     * String que nos indica el sitio del recurso.
+     * bien sea a escribir o a leer.
+     */
     private  String ruta;
 
     public int getLimite_string_basico() {
@@ -243,13 +250,13 @@ public class Juego {
 
         switch (nivel_de_Juego){
             case 1:
-                cant_Palabras_a_Memorizar =2;
-                total_Palabras_del_Nivel =4;
+                cant_Palabras_a_Memorizar =4;
+                total_Palabras_del_Nivel =8;
                 acierto_Exigido=0.7;
                 break;
             case 2:
-                cant_Palabras_a_Memorizar =4;
-                total_Palabras_del_Nivel =8;
+                cant_Palabras_a_Memorizar =8;
+                total_Palabras_del_Nivel =16;
                 acierto_Exigido=0.7;
                 break;
             case 3:

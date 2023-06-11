@@ -172,6 +172,7 @@ FFFF 1
 GBBBB 1
 gggg 1
 dddd 1
+<<<<<<< HEAD
 sdfsdf 1
 sdfsdf 1
 wrew 1
@@ -199,3 +200,8 @@ DFSD 1
 SASDSAD 1
 GDFGD 1
 rs 1
+=======
+ffff 1
+56 1
+pilar rondon cobo 1
+>>>>>>> 4467d031b6aa45e4e92da5c06e30a6b33f4f72ca
