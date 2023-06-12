@@ -17,12 +17,16 @@ public class Area_de_Texto {
         info_al_Jugador.setForeground(verdeClaro);
         info_al_Jugador.setEditable(false);
         info_al_Jugador.setBackground(null);
+
+
+
     }
 
     public JTextArea inicial() {
         info_al_Jugador.append("I know that word\n" +
-                "Es un divertido juego para ejercitar su memoria \n" +
-                "Desea probar en que estado \nse encuentra su memoria Episódica ?\n");
+                "Es un divertido juego para ejercitar su memoria\n" +
+                "Desea probar en que estado \nse encuentra su memoria Episódica?\n");
+
         return info_al_Jugador;
     }
 
@@ -42,10 +46,19 @@ public class Area_de_Texto {
 
     public JTextArea opciones() {
         info_al_Jugador.append(":::OPCIONES:::\n" +
-                "Aqui van las opciones del \n" +
-                "menu ?\n");
+                "Aqui van las opciones del\n" +
+                "menu?\n");
         return info_al_Jugador;
     }
+
+
+    public JTextArea continuar() {
+        info_al_Jugador.append(":::CONTINUAR:::\n" +
+                "Este panel permite ingresar\n" +
+                "a una partida previa?\n");
+        return info_al_Jugador;
+    }
+
 
     public JTextArea seText(String palabra) {
         Font font = new Font(Font.SANS_SERIF, Font.BOLD, 50);
@@ -57,7 +70,19 @@ public class Area_de_Texto {
     public JTextArea seText_2(String palabra) {
         Font font = new Font(Font.SANS_SERIF, Font.BOLD, 35);
         info_al_Jugador.setFont(font);
-        info_al_Jugador.setText(palabra);
+        int anchoTotal = 40; // Ancho total del espacio en el que se centrará el texto
+
+        String[] lineas = palabra.split("\n");
+        StringBuilder resultado = new StringBuilder();
+
+        for (String linea : lineas) {
+            int espacios = (anchoTotal - linea.length()) / 2;
+            String lineaCentrada = String.format("%" + espacios + "s%s%" + espacios + "s", "", linea, "");
+            resultado.append(lineaCentrada).append("\n");
+        }
+
+        info_al_Jugador.setText(resultado.toString());
         return info_al_Jugador;
     }
+
 }

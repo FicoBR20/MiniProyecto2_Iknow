@@ -133,7 +133,10 @@ public class Front_RegistroJugador extends JPanel {
         gbc.weighty = 1.0; // no se deformara
         this.add(jTextField_NombreJugador, gbc);
         jTextField_NombreJugador.requestFocus();
-
+//<<<<<<< HEAD
+//=======
+//
+//>>>>>>> makecontroller
 
         gbc.gridx=1; // columna 0
         gbc.gridy=3; // fila 0

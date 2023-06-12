@@ -51,12 +51,10 @@ public class Lanza_app_Prueba {
      */
     public Lanza_app_Prueba() throws IOException {
         gui = new GUI();
-        juego =  new Juego();
-        juego.setCategoria(2);
+        juego = new Juego();
         panel_1_inicial = new Panel_1_Inicial();
         panel_3_reglas = new Panel_3_reglas();
         panel_2_menu = new Panel_2_menu();
-        panel_4_juego = new Panel_4_juego(juego);
         panel_5_opciones = new Panel_5_opciones();
 
         panel_6_continuar = new Panel_6_continuar();
@@ -64,12 +62,7 @@ public class Lanza_app_Prueba {
 
         front_registroJugador = new Front_RegistroJugador();
 
-       // navegar = 1;
-        seleccionar_pantalla(1);
-//
-//        navegar = 1;
-//        seleccionar_pantalla(navegar);
-
+        seleccionar_pantalla(4);
     }
 
     public void secuencia_Logica(int secuencial){
@@ -102,7 +95,7 @@ public class Lanza_app_Prueba {
                 gui.repaint();
             }
             case 4 ->{
-
+                panel_4_juego = new Panel_4_juego(juego);
                 panel_4_juego.start(); // inicializa timer
                 gui.setContentPane(panel_4_juego);
                 gui.revalidate();
@@ -213,6 +206,10 @@ public class Lanza_app_Prueba {
 
             else if(Objects.equals(e.getActionCommand(), "SIGUIENTE")){
                 bill.seleccionar_pantalla(10);
+            }
+
+            else if(Objects.equals(e.getActionCommand(), "REPETIR")){
+                bill.seleccionar_pantalla(4);
             }
 
         }
