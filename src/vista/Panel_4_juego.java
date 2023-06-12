@@ -9,6 +9,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Clase que presenta el Panel del juego, tanto las palabras memorizar
+ * como todas las palabras del nivel para que el jugador realize su
+ * elecctión.
+ * @ genera el total de puntos logrados por el Jugador sumados todos los niveles.
+ */
 public class Panel_4_juego extends JPanel {
 
     private Jugador jugador;
@@ -29,15 +35,24 @@ public class Panel_4_juego extends JPanel {
 
 
     /**
-     * Presenta en el nivel actual
+     * Constructor sin parametros
      */
     public Panel_4_juego(){
         juego1 = new Juego();
         ini();
     }
+
+    /**
+     * Constructor con parametro
+     * @param juego
+     */
     public Panel_4_juego( Juego juego){
         juego1 = juego;
         ini();
+    }
+
+    public int getContador() {
+        return contador;
     }
 
     private void ini(){
@@ -173,8 +188,10 @@ public class Panel_4_juego extends JPanel {
                     counter++;
                 }else {
                     timer.stop();
-                    area_de_texto.seText(palabra.getPalabra_del_nivel().get(0));// estamos para retomar la presentacion de las palbras.
-                    panel_botones.setVisible(true); // si no visibles.... atras ya venia.
+                   auxiliar = " .. solo 7 segundos..";
+                   area_de_texto.seText(auxiliar + "\n" + palabra.getPalabra_del_nivel().get(0));// muestra la primera palabra del arreglo de palabras del nivel
+                    panel_botones.setVisible(true); // boton si no visibles    el boton atras ya venia.
+                    System.out.println(" contador vale en el else... " + contador);
 
                 }
             }
@@ -185,21 +202,25 @@ public class Panel_4_juego extends JPanel {
             //cambia el estado del juego se empieza la secuencia para que el jugador empieze a decidiir
             // sobre las palabras presentadas decide si o no.
 
-            if(e.getSource()==timer_acierto){
+            if(e.getSource()==timer_acierto){ // se limpia el areadetexto2 y se actualiza y prese
                 System.out.println("timer 2");
                 timer_acierto.stop();
                 area_de_texto_2.seText_2("");
-                area_de_texto.seText(palabra.getPalabra_del_nivel().get(contador));
-                panel_botones.setVisible(true);
-                timer_acierto.stop();
+                if (contador<palabra.getPalabra_del_nivel().size()) {
+                    area_de_texto.seText(palabra.getPalabra_del_nivel().get(contador));
+                    System.out.println(" en timer acierto solo aqui contador vale " + contador);
+                    panel_botones.setVisible(true);
+                    timer_acierto.stop();
+                }
             }
 
 
-            if (e.getSource()==si_boton && contador <= palabra.getPalabra_del_nivel().size()-2){///// recorderis
+            if (e.getSource()==si_boton && contador <= palabra.getPalabra_del_nivel().size()){///// recorderis-------se quito -1
                 timer_acierto = new Timer(4000,escucha);
                 timer_acierto.start();
                 area_de_texto.seText("");
-                panel_botones.setVisible(false);
+                System.out.println(" en si boton con contador comparado  vale " + contador);
+                panel_botones.setVisible(false); // botones si no
 
                 if (palabra.getPalabra_a_Memorizar().contains(palabra.getPalabra_del_nivel().get(contador))){
                     area_de_texto_2.seText_2("CORRECTO\n"
@@ -211,7 +232,6 @@ public class Panel_4_juego extends JPanel {
                     jugador.setPuntaje_Total(juego1);
                     System.out.println(" el puntaje ahora es" + juego1.getPuntaje_Logrado() + " el jugador lleva estos puntos " +
                             jugador.getPuntaje_Total());
-                    contador++;
 
 
                 }else {
@@ -220,12 +240,12 @@ public class Panel_4_juego extends JPanel {
                             +"\nno es una palabra memorizada"
 
                     );
-                    contador++;
 
                 }
+                    contador++;
             }
 
-            else if (e.getSource()==no_boton && contador <= palabra.getPalabra_del_nivel().size()-2){ // recorderis
+            else if (e.getSource()==no_boton && contador <= palabra.getPalabra_del_nivel().size()){ // recorderis+++se quito -1
                 timer_acierto = new Timer(4000,escucha);
                 timer_acierto.start();
                 area_de_texto.seText("");
@@ -236,7 +256,6 @@ public class Panel_4_juego extends JPanel {
                             +palabra.getPalabra_del_nivel().get(contador)
                             +"\nsi es una palabra memorizada"
                     );
-                    contador++;
 
                 }else {
                     area_de_texto_2.seText_2("CORRECTO\n"
@@ -248,12 +267,12 @@ public class Panel_4_juego extends JPanel {
                     jugador.setPuntaje_Total(juego1);
                     System.out.println(" el puntaje ahora es" + juego1.getPuntaje_Logrado() + " el jugador lleva estos puntos " +
                             jugador.getPuntaje_Total());
-                    contador++;
 
 
                 }
+                    contador++;
             }
-            else if(contador == palabra.getPalabra_del_nivel().size()-2){
+            else if(contador == palabra.getPalabra_del_nivel().size()){////// recorderis se quito -1
 
               //  if (juego1.nivel_Superado()==true) {
 
@@ -268,26 +287,16 @@ public class Panel_4_juego extends JPanel {
                     atras_boton.addActionListener(escucha);
                     //   atras_boton.setVisible(false);
                     add(siguiente.getBoton_style_1("SIGUIENTE"), gbc);
-               // }
-//                else {
-//
-//                    panel_botones.setVisible(false);
-//                    area_de_texto.seText(" acabo el juego. ");
-//                    atras_boton.setVisible(false);
-//
-//                    gbc.gridx = 0; // columna 0
-//                    gbc.gridy = 5; // fila 0
-//                    gbc.gridwidth = 1; // ocupara 4 columnas
-//                    gbc.gridheight = 1; // ocupara 3 filas
-//                    atras_boton.addActionListener(escucha);
-//                    //   atras_boton.setVisible(false);
-//                    add(siguiente.getBoton_style_1("REPETIR"), gbc);
-//
-//                }
+
 
 
 
             }
+
+
+
+
+
         }
 
         // condicicon de salida.

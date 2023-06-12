@@ -175,15 +175,15 @@ public class Lanza_app_Prueba {
                 bill.seleccionar_pantalla(1);
             }
 
-            else if(Objects.equals(e.getActionCommand(), "MENÚ")){
+            else if(Objects.equals(e.getActionCommand(), "MENÚ")){ // muestra un menu
                 bill.seleccionar_pantalla(2);
             }
 
-            else if(Objects.equals(e.getActionCommand(), "COMO JUGAR")){
+            else if(Objects.equals(e.getActionCommand(), "COMO JUGAR")){ // va a reglas
                 bill.seleccionar_pantalla(3);
             }
 
-            else if(Objects.equals(e.getActionCommand(), "NUEVO JUEGO")){
+            else if(Objects.equals(e.getActionCommand(), "NUEVO JUEGO")){ // va a registro jugador
                 bill.seleccionar_pantalla(6);
             }
 
@@ -207,7 +207,7 @@ public class Lanza_app_Prueba {
                 bill.seleccionar_pantalla(5);
             }
 
-            else if(Objects.equals(e.getActionCommand(), "INICIAR")){
+            else if(Objects.equals(e.getActionCommand(), "INICIAR")){ // empieza a mostrar palabras en el Nivel 1 del juego
                 bill.seleccionar_pantalla(4);
             }
 
