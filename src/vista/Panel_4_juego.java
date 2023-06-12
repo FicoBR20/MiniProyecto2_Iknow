@@ -14,7 +14,8 @@ public class Panel_4_juego extends JPanel {
 
     private String infoPanel;
     private Font font;
-    private Botones atras_boton,si_boton,no_boton, siguiente,botonX;
+    private Botones atras_boton,si_boton,no_boton, siguiente;
+    private Botones botonX;
     private Area_de_Texto mensaje,mensaje_puntos;
     private Timer timer;
     private Timer timer_acierto;
@@ -398,7 +399,7 @@ public class Panel_4_juego extends JPanel {
             }
 
             else if(e.getSource()==timer && primer_inicio == 1){
-                botonX.seText_grafico("Ready");
+                botonX.seText_grafico("3");
                 mensaje.seText("");
                 timer = new Timer(2000, escucha);
                 timer.start();
@@ -406,15 +407,15 @@ public class Panel_4_juego extends JPanel {
             }
 
             else if(e.getSource()==timer && primer_inicio == 2){
-                botonX.seText_grafico("Go");
+                botonX.seText_grafico("2");
                 mensaje.seText("");
                 timer = new Timer(2000, escucha);
                 timer.start();
                 primer_inicio++;
             }
 
-            else if(e.getSource()==timer && primer_inicio == 2){
-                botonX.seText_grafico("");
+            else if(e.getSource()==timer && primer_inicio == 3){
+                botonX.seText_grafico("1");
                 mensaje.seText("");
                 timer = new Timer(2000, escucha);
                 timer.start();

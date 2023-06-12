@@ -140,8 +140,6 @@ public class Botones extends  JButton{
 
         int cont_y = 0;
         int cont_x = 0;
-        int cont_x_2 = 0;
-        int cont_y_2 = 0;
 
         for ( String linea : palabra.split(" ")) {
             gbc.ipady = 15;
@@ -156,15 +154,10 @@ public class Botones extends  JButton{
                 panel_palabra.add(botonX.convert(letra),gbc);
                 cont_x++;
             }
-            gbc.gridx=cont_x_2; // columna
-            gbc.gridy=cont_y_2; // fila
-            gbc.anchor=GridBagConstraints.CENTER;
-            JPanel nuevo = panel_palabra;
             panel_linea.add(panel_palabra,gbc);
 
             cont_y++;
             cont_x=0;
-            cont_y_2++;
         }
         return panel_linea;
     }
