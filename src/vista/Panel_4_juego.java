@@ -11,12 +11,11 @@ import java.awt.event.ActionListener;
 
 public class Panel_4_juego extends JPanel {
 
-    private Jugador jugador;
 
     private String infoPanel;
     private Font font;
     private Botones atras_boton,si_boton,no_boton, siguiente;
-    private Area_de_Texto area_de_texto, mensaje;
+    private Area_de_Texto area_de_texto, mensaje,mensaje_puntos;
     private Timer timer;
     private Timer timer_acierto;
     private  Timer timer_acierto_2;
@@ -28,6 +27,7 @@ public class Panel_4_juego extends JPanel {
     private JPanel panel_botones;
     private Palabra palabra;
     private Juego juego;
+    private Jugador jugador;
     private int primer_inicio;
     private int cuenta_nivel_tiempo;
 
@@ -37,19 +37,48 @@ public class Panel_4_juego extends JPanel {
      */
     public Panel_4_juego(){
         juego = new Juego();
+        jugador = new Jugador();
         ini();
     }
 
+    /**
+     * Constructor que resive un objeto de la clase Juego
+     * @param juego
+     */
     public Panel_4_juego(Juego juego){
         this.juego = juego;
         ini();
     }
 
+    /**
+     * Constructor que resive un objeto de la clase Juegador
+     * @param jugador
+     */
+
+    public Panel_4_juego(Jugador jugador){
+        this.jugador = jugador;
+        ini();
+    }
+
+    public Panel_4_juego(Juego juego, Jugador jugador){
+        this.jugador = jugador;
+        this.juego = juego;
+        ini();
+    }
+
+    public Jugador getJugador() {
+        return jugador;
+    }
+
+    public void setJugador(Jugador jugador) {
+        this.jugador = jugador;
+    }
+
+    /**
+     * Este metodo inicializa las variables de la clase
+     */
     private void ini(){
         siguiente = new Botones();
-        jugador = new Jugador();
-
-
         timer_acierto_2 = new Timer(2000,escucha);
         escucha = new Escucha();
         panel_botones = new JPanel();
@@ -125,8 +154,17 @@ public class Panel_4_juego extends JPanel {
         atras_boton.setVisible(false);
         this.add(atras_boton.getBoton_style_1("ATRAS"), gbc);
 
+        mensaje_puntos =  new Area_de_Texto();
+        gbc.gridx=0; // columna 0
+        gbc.gridy=7; // fila 0
+        gbc.gridwidth=1; // ocupara 4 columnas
+        gbc.gridheight=1; // ocupara 3 filas
+        gbc.insets.set(0,0,0,0);
+        gbc.anchor=GridBagConstraints.LINE_START;
+        this.add(mensaje_puntos.seText_2("Puntos "+juego.getPuntaje_Logrado()), gbc);
+
         //Aqui se setea el temporizador para lanzar en juego
-        timer = new Timer(2,escucha);
+        timer = new Timer(2000,escucha);
     }
 
     /**
@@ -225,7 +263,8 @@ public class Panel_4_juego extends JPanel {
                 mensaje.seText_2("¿Es una palabra memorizada?");
                 area_de_texto.seText(palabra.getPalabra_del_nivel().get(cuenta_nivel));
                 panel_botones.setVisible(true);
-                timer_acierto_2 = new Timer(2000, escucha);
+                //Temporizador para encoger la palabra correcta
+                timer_acierto_2 = new Timer(5000, escucha);
                 timer_acierto_2.start();
             }
 
@@ -234,19 +273,15 @@ public class Panel_4_juego extends JPanel {
 //
             if(e.getSource()==timer_acierto_2){
                 System.out.println("timer 3");
+                panel_botones.setVisible(false);
                 timer_acierto_2.stop();
-
-                System.out.println("timer3");
-                mensaje.seText_2("limite de tiempo");
+                mensaje.seText_2("Se acabo el tiempo");
                 area_de_texto.seText("");
                 cuenta_nivel++;
                 timer = new Timer(2000,escucha);
                 timer.start();
 
             }
-
-
-
 
             if (e.getSource()==si_boton && cuenta_nivel <= palabra.getPalabra_del_nivel().size()-1){///// recorderis
                 timer_acierto_2.stop();
@@ -263,6 +298,7 @@ public class Panel_4_juego extends JPanel {
                     jugador.setPuntaje_Total(juego);
                     System.out.println(" el puntaje ahora es" + juego.getPuntaje_Logrado() + " el jugador lleva estos puntos " +
                             jugador.getPuntaje_Total());
+                    mensaje_puntos.seText_2("Puntos "+juego.getPuntaje_Logrado());
 
                 }else {
                     mensaje.seText_2("INCORRECTO\n"
@@ -297,6 +333,7 @@ public class Panel_4_juego extends JPanel {
                     jugador.setPuntaje_Total(juego);
                     System.out.println(" el puntaje ahora es" + juego.getPuntaje_Logrado() + " el jugador lleva estos puntos " +
                             jugador.getPuntaje_Total());
+                    mensaje_puntos.seText_2("Puntos "+juego.getPuntaje_Logrado());
                 }
                 cuenta_nivel++;
                 timer = new Timer(4000,escucha);
@@ -336,6 +373,10 @@ public class Panel_4_juego extends JPanel {
                     juego.reset_puntos();
 
                 }
+                cuenta_nivel = 0;
+                cuenta_memorizar = 0;
+                cuenta_nivel_tiempo =0;
+                primer_inicio = 0;
 
             }
         }

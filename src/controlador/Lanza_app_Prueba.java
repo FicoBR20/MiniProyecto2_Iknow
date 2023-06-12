@@ -25,25 +25,11 @@ public class Lanza_app_Prueba {
 
     private  Palabra palabra;
     private Juego juego;
+    private Jugador jugador;
     private int numero, navegar;
     private String texto;
     private static Lanza_app_Prueba bill = null;
 
-//    public Juego getJuego() {
-//        return juego;
-//    }
-//
-//    public void setJuego(int nivel) {
-//        palabra = new Palabra();
-//        Juego juego1 = new Juego();
-//        juego1.setUp_Nivel(nivel);
-//        juego1.setCategoria(2);
-////        palabra.setJuego(getJuego());
-//        palabra.setJuego(juego1);
-//        palabra.setPalabra_del_nivel();
-//        palabra.setPalabra_a_Memorizar();
-//        this.juego = juego1;
-//    }
 
     /**
      * Método constructor
@@ -51,6 +37,7 @@ public class Lanza_app_Prueba {
     public Lanza_app_Prueba() throws IOException {
         gui = new GUI();
         juego = new Juego();
+        jugador = new Jugador();
         panel_1_inicial = new Panel_1_Inicial();
         panel_3_reglas = new Panel_3_reglas();
         panel_2_menu = new Panel_2_menu();
@@ -92,7 +79,9 @@ public class Lanza_app_Prueba {
                 gui.repaint();
             }
             case 4 ->{
-                panel_4_juego = new Panel_4_juego(juego);
+                juego.incrementar_nivel();
+                System.out.println("Nivel "+juego.getNivel());
+                panel_4_juego = new Panel_4_juego(juego,jugador);
                 panel_4_juego.start(); // inicializa timer
                 gui.setContentPane(panel_4_juego);
                 gui.revalidate();
@@ -132,8 +121,13 @@ public class Lanza_app_Prueba {
             case 10->{
                 // se debe preguntar si supero el nivel.
                 //....nivel +1
-                juego.setUp_Nivel(2);
-                panel_4_juego = new Panel_4_juego(juego);
+                jugador = panel_4_juego.getJugador();
+
+                juego = panel_4_juego.getJuego();
+                juego.incrementar_nivel();
+                juego.setUp_Nivel(juego.getNivel());
+
+                panel_4_juego = new Panel_4_juego(juego,jugador);
                 bill.seleccionar_pantalla(4);
 
             }

@@ -142,6 +142,10 @@ public class Juego {
         this.nivel = nivel;
     }
 
+    public void incrementar_nivel() {
+        this.nivel++;
+    }
+
     public int getCant_Palabras_a_Memorizar() {
         return cant_Palabras_a_Memorizar;
     }
@@ -250,13 +254,13 @@ public class Juego {
 
         switch (nivel_de_Juego){
             case 1:
-                cant_Palabras_a_Memorizar =4;
-                total_Palabras_del_Nivel =8;
+                cant_Palabras_a_Memorizar =2;
+                total_Palabras_del_Nivel =4;
                 acierto_Exigido=0.7;
                 break;
             case 2:
-                cant_Palabras_a_Memorizar =8;
-                total_Palabras_del_Nivel =16;
+                cant_Palabras_a_Memorizar =3;
+                total_Palabras_del_Nivel =6;
                 acierto_Exigido=0.7;
                 break;
             case 3:
