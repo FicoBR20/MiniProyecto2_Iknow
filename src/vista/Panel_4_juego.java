@@ -184,7 +184,9 @@ public class Panel_4_juego extends JPanel {
                 if(counter <= palabra.getPalabra_a_Memorizar().size()-1) {                                      // se cambia -2 por -1
                     auxiliar = palabra.getPalabra_a_Memorizar().get(counter);
                     area_de_texto.seText(auxiliar);
-                    System.out.println(" presentando palabras a memorizar y counter vale " + counter + " y la palabra es " + auxiliar);
+         //           System.out.println(" presentando palabras a memorizar y counter vale " + counter + " y la palabra es " + auxiliar);
+                    System.out.println("Palabra " + palabra.getPalabra_a_Memorizar().get(counter) // counter es la ubicacion en el arreglo.
+                    +" Time "+counter+" El timer está corriendo? " + String.valueOf(timer.isRunning()));
                     counter++;
                 }else {
                     timer.stop();
