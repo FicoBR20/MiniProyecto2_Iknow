@@ -14,6 +14,9 @@ public class Control_FileManager {
     private BufferedReader input;
     private FileWriter fileWriter;
     private BufferedWriter output;
+    /**
+     * corresponde a la información que está registrada en el archivo de texto.
+     */
     private String info_Completa_Jugador = (new Front_RegistroJugador().getName_Player()) + " " + Integer.toString( new Juego().getNivel());
 
     public String getInfo_Completa_Jugador() {
@@ -21,6 +24,7 @@ public class Control_FileManager {
     }
 
     public void setInfo_Completa_Jugador(String info_Completa_Jugador) {
+
         this.info_Completa_Jugador = info_Completa_Jugador;
     }
 

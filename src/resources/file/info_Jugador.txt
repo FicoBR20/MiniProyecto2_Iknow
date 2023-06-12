@@ -1,5 +1,5 @@
-carlos 1
-Jose 2
-maria 1
-manuela 5
-matias 1
+carlos 0 0 - > nombre nivel puntajelogrado
+jose 0 0
+maria 0 0
+rosita 1 0
+

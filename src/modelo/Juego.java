@@ -109,6 +109,7 @@ public class Juego {
      * Constructor method.
      */
     public Juego(){
+        nivel=1;
         limite_string_basico = 199;
         total_Palabras_del_Nivel = 0;
         cant_Palabras_a_Memorizar = 0;

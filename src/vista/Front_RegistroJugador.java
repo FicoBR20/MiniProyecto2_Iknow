@@ -1,6 +1,7 @@
 package vista;
 
 import controlador.Control_FileManager;
+import controlador.Jugador;
 import modelo.Juego;
 
 import javax.swing.*;
@@ -8,6 +9,8 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Front_RegistroJugador extends JPanel {
+
+    private Jugador jugador;
 
     private Juego juego_Ik;
 
@@ -53,6 +56,8 @@ public class Front_RegistroJugador extends JPanel {
     }
 
     public void init_Panel(){
+
+        jugador = new Jugador();
 
         juego_Ik =  new Juego();
 
@@ -166,27 +171,42 @@ public class Front_RegistroJugador extends JPanel {
 
                 name_Player = jTextField_NombreJugador.getText();
 
-                String db = new Control_FileManager().reader_Jugador();
-                if (db.contains(name_Player)){
+                String db = new Control_FileManager().reader_Jugador(); // db es la base de datos de los ya registrados
+
+
+
+                if (name_Player ==" ") {
+                    System.out.println(" debe ingresar un nombre para registrarse ");
+                    JOptionPane.showMessageDialog(null, " Ingrese su nombre de jugador \nGracias.");
+
+                }
+                else if (db.contains(name_Player)){
                     System.out.println(" Ese nombre ya existe..use otro nombre..");
                     JOptionPane.showMessageDialog(null, " Ese nombre ya existe en la base de datos\n" +
-                            "por favor\nUse otro. Gracias.");
+                            "por favor use otro \nGracias.");
+//                    for (int i = 0; i < db.length(); i++) {
+//                        System.out.println(" posicion " + i + " " + db.g);
+//
+//                    }
                     juego_Ik.setEstado(12); // presenta de nuevo el panel de registro de jugador
-                }
-                else {
+                }else {
 
-                    juego_Ik.setNivel(1);
-                    juego_Ik.setEstado(4);//vamos al frame del juego en el Nivel 1
+                    // se registran los datos del nuevo jugador.
 
-                    name_Player = name_Player + " " + Integer.toString(juego_Ik.getNivel());
+                    jugador.setName(name_Player);
+                    jugador.setNivel_Superado(juego_Ik.getNivel()); // nivel sera 1
 
-                    new Control_FileManager().writer_Jugador(name_Player);
+                    juego_Ik.setEstado(4);//.....con estado 4 DEBEMOS PROGRAMAR IR AL JUEGO AL NIVEL 1
+
+
+                    new Control_FileManager().writer_Jugador(jugador.ToString_Jugador()); // toda la info del jugador
 
                     jTextField_NombreJugador.setText(name_Player);
                     jTextField_NombreJugador.setEnabled(false);
 
 
                     System.out.println(" Hemos registrado sus datos " + name_Player + " nivel del juego " + Integer.toString(juego_Ik.getNivel()));
+                    System.out.println(" to string es " + jugador.ToString_Jugador());
                 }
             }
         }
