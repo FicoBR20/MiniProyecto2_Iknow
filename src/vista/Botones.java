@@ -12,7 +12,9 @@ public class Botones extends  JButton{
     private ImageIcon imageIcon;
     private ImageIcon imageIcon_Pressed;
     private int tamaño_fuente,alto,ancho;
-    private JPanel jPanel;
+    private JPanel panel_palabra;
+    private JPanel panel_linea;
+
     private ArrayList<JButton> palabras_array;
 
     public int getTamaño_fuente() {
@@ -35,7 +37,8 @@ public class Botones extends  JButton{
         this.setEnabled(false);
     }
     public Botones() {
-        jPanel = new JPanel();
+        panel_palabra = new JPanel();
+        panel_linea = new JPanel();
         palabras_array = new ArrayList<>();
         tamaño_fuente = 15;
         ancho=120;
@@ -124,19 +127,45 @@ public class Botones extends  JButton{
 
 
     public JPanel seText_grafico(String palabra) {
-        jPanel.removeAll();
-        jPanel.setBackground(null);
-        imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/botones_nivel/nivel.png")));
-        imageIcon_Pressed = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/botones_nivel/nivel_pressed.png")));
-        this.setForeground(Color.white);
-        this.setFont(new Font(null,Font.BOLD,50));
-        this.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(70,70,Image.SCALE_SMOOTH)));
-        this.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(70,70,Image.SCALE_SMOOTH)));
+        GridBagConstraints gbc = new GridBagConstraints();
+        GridBagLayout gridBagLayout = new GridBagLayout();
 
-        for ( String letra : palabra.split("")) {
-            Botones botonX = new Botones();
-            jPanel.add(botonX.convert(letra));
+        panel_palabra.removeAll();
+        panel_palabra.setBackground(null);
+        panel_palabra.setLayout(gridBagLayout);
+
+        panel_linea.removeAll();
+        panel_linea.setBackground(null);
+        panel_linea.setLayout(gridBagLayout);
+
+        int cont_y = 0;
+        int cont_x = 0;
+        int cont_x_2 = 0;
+        int cont_y_2 = 0;
+
+        for ( String linea : palabra.split(" ")) {
+            gbc.ipady = 15;
+            gbc.ipadx = 15;
+            gbc.gridwidth=1; // ocupara 1 columnas
+            gbc.gridheight=1; // ocupara 1 filas
+
+            for ( String letra : linea.split("")) {
+                gbc.gridx=cont_x; // columna
+                gbc.gridy=cont_y; // fila
+                Botones botonX = new Botones();
+                panel_palabra.add(botonX.convert(letra),gbc);
+                cont_x++;
+            }
+            gbc.gridx=cont_x_2; // columna
+            gbc.gridy=cont_y_2; // fila
+            gbc.anchor=GridBagConstraints.CENTER;
+            JPanel nuevo = panel_palabra;
+            panel_linea.add(panel_palabra,gbc);
+
+            cont_y++;
+            cont_x=0;
+            cont_y_2++;
         }
-        return jPanel;
+        return panel_linea;
     }
 }
