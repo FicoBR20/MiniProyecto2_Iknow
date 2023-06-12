@@ -4,6 +4,7 @@ import controlador.Lanza_app_Prueba;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Botones extends  JButton{
@@ -11,6 +12,8 @@ public class Botones extends  JButton{
     private ImageIcon imageIcon;
     private ImageIcon imageIcon_Pressed;
     private int tamaño_fuente,alto,ancho;
+    private JPanel jPanel;
+    private ArrayList<JButton> palabras_array;
 
     public int getTamaño_fuente() {
         return tamaño_fuente;
@@ -32,6 +35,8 @@ public class Botones extends  JButton{
         this.setEnabled(false);
     }
     public Botones() {
+        jPanel = new JPanel();
+        palabras_array = new ArrayList<>();
         tamaño_fuente = 15;
         ancho=120;
         alto = 40;
@@ -106,4 +111,32 @@ public class Botones extends  JButton{
         return this;
     }
 
+    public JButton convert(String letra) {
+        imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/botones_nivel/nivel.png")));
+        imageIcon_Pressed = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/botones_nivel/nivel_pressed.png")));
+        this.setForeground(Color.white);
+        this.setFont(new Font(null,Font.BOLD,50));
+        this.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(70,70,Image.SCALE_SMOOTH)));
+        this.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(70,70,Image.SCALE_SMOOTH)));
+        this.setText(letra);
+        return this;
+    }
+
+
+    public JPanel seText_grafico(String palabra) {
+        jPanel.removeAll();
+        jPanel.setBackground(null);
+        imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/botones_nivel/nivel.png")));
+        imageIcon_Pressed = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/botones_nivel/nivel_pressed.png")));
+        this.setForeground(Color.white);
+        this.setFont(new Font(null,Font.BOLD,50));
+        this.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(70,70,Image.SCALE_SMOOTH)));
+        this.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(70,70,Image.SCALE_SMOOTH)));
+
+        for ( String letra : palabra.split("")) {
+            Botones botonX = new Botones();
+            jPanel.add(botonX.convert(letra));
+        }
+        return jPanel;
+    }
 }

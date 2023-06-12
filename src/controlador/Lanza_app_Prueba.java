@@ -127,7 +127,7 @@ public class Lanza_app_Prueba {
                 juego.incrementar_nivel();
                 juego.setUp_Nivel(juego.getNivel());
 
-                panel_4_juego = new Panel_4_juego(juego,jugador);
+                panel_4_juego = new Panel_4_juego(juego);
                 bill.seleccionar_pantalla(4);
 
             }
