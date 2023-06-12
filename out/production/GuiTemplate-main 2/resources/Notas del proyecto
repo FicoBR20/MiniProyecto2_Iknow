@@ -1,2 +1,10 @@
-1- al dar click en iniciar se esta empezando a rodar de una el nive.
-lo que se puede implementar
+Notas
+
+En clase Front registro jugador linea 169... el juego quda en estado 4 para que se presnte
+el nivel 1, es decir el jugador es primer vez que juega.
+Jugador debe contener: Nivel superado, Clave,
+cuando sea nuevo, entonces nivel=0;
+
+en registro se pone un if que pregunte por nivel superado y lanze la app en el nivel
+siguiente.
+if nivel es 10.....eres un supermemoriado.

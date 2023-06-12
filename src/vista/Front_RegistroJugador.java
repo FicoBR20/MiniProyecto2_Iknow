@@ -159,26 +159,35 @@ public class Front_RegistroJugador extends JPanel {
         @Override
         public void keyPressed(KeyEvent e) {
             super.keyPressed(e);
+// Registro Jugador por primera vez.
 
             if (e.getSource()==jTextField_NombreJugador && e.getKeyChar()==KeyEvent.VK_ENTER){
                 iniciar_Juego.activar();
 
                 name_Player = jTextField_NombreJugador.getText();
 
-                juego_Ik.setNivel(1);
-                juego_Ik.setEstado(4);//vamos al frame del juego en el Nivel 1
+                String db = new Control_FileManager().reader_Jugador();
+                if (db.contains(name_Player)){
+                    System.out.println(" Ese nombre ya existe..use otro nombre..");
+                    JOptionPane.showMessageDialog(null, " Ese nombre ya existe en la base de datos\n" +
+                            "por favor\nUse otro. Gracias.");
+                    juego_Ik.setEstado(12); // presenta de nuevo el panel de registro de jugador
+                }
+                else {
 
-                name_Player = name_Player + " " + Integer.toString(juego_Ik.getNivel());
+                    juego_Ik.setNivel(1);
+                    juego_Ik.setEstado(4);//vamos al frame del juego en el Nivel 1
 
-                new Control_FileManager().writer_Jugador(name_Player);
+                    name_Player = name_Player + " " + Integer.toString(juego_Ik.getNivel());
 
-                jTextField_NombreJugador.setText(name_Player);
-//                jTextField_NombreJugador.setText(name_Player + "registrado [nombre] [nivel]");
-                jTextField_NombreJugador.setEnabled(false);
+                    new Control_FileManager().writer_Jugador(name_Player);
+
+                    jTextField_NombreJugador.setText(name_Player);
+                    jTextField_NombreJugador.setEnabled(false);
 
 
-
-                System.out.println(" Hemos registrado sus datos " + name_Player + " nivel del juego " + Integer.toString(juego_Ik.getNivel()));
+                    System.out.println(" Hemos registrado sus datos " + name_Player + " nivel del juego " + Integer.toString(juego_Ik.getNivel()));
+                }
             }
         }
     }

@@ -29,7 +29,7 @@ public class Control_FileManager {
         String text = "";
 
         try {
-            fileReader = new FileReader("src/resources/info_Jugador.txt");
+            fileReader = new FileReader("src/resources/file/info_Jugador.txt");
             input = new BufferedReader(fileReader);
             String line = input.readLine(); // almacena lo que se escribe en el text field
 
@@ -61,7 +61,7 @@ public class Control_FileManager {
         try {
             String text = reader_Jugador();// recepciona el String generado en el reader.
             text += line + "\n";
-            fileWriter = new FileWriter("src/resources/info_Jugador.txt");
+            fileWriter = new FileWriter("src/resources/file/info_Jugador.txt");
             output = new BufferedWriter(fileWriter);
             output.write(text);
         } catch (IOException e){
