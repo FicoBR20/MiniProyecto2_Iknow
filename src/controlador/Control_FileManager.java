@@ -3,11 +3,13 @@ package controlador;
 import modelo.Juego;
 import vista.Front_RegistroJugador;
 
+import javax.swing.*;
 import java.io.*;
 
 /**
  * Clase que registrara la información del jugador
- * en un archivo de texto
+ * en un archivo de texto y la suministrará tomándola
+ * de dicho archivo de texto.
  */
 public class Control_FileManager {
     private FileReader fileReader;
@@ -15,46 +17,61 @@ public class Control_FileManager {
     private FileWriter fileWriter;
     private BufferedWriter output;
 
-//    /**
-//     * Arraylist con la info de los jugadores.
-//     */
-//    private ArrayList<String>jugadores = new ArrayList<String>();
     /**
-     * corresponde a la información que está registrada en el archivo de texto.
+     * Atributo del nombre del jugador,
+     * se obtiene mediante la lectura
+     * de un archivo de texto
      */
-    private String info_Completa_Jugador = (new Front_RegistroJugador().getName_Player()) + " " + Integer.toString( new Juego().getNivel());
+    private String nombre_Obtenido;
+    /**
+     * Atributo del último nivel de juego superado
+     * por el jugador.
+     */
+    private String nivel_Obtenido;
+    /**
+     * Atributo de los puntos acumulados que lleva
+     * el jugador hasta el último nivel superado,
+     * se obtiene mediante la lectura
+     * de un archivo de texto
+     */
+    private String puntos_Obtenido;
 
-    public String getInfo_Completa_Jugador() {
-        return info_Completa_Jugador;
+    public String getNombre_Obtenido() {
+        return nombre_Obtenido;
     }
 
-    public void setInfo_Completa_Jugador(String el_player) {
-        String nombre_Obtenido = "";
-        String nivel_Obtenido= "";
-        String puntos_Obtenido= "";
-
-        if (reader_Jugador().contains(el_player)){
-            nombre_Obtenido = el_player;
-            int puntodeinicio = reader_Jugador().indexOf(el_player);
-            nivel_Obtenido = String.valueOf(reader_Jugador().charAt(puntodeinicio+el_player.length()+2));
-            puntos_Obtenido = String.valueOf(reader_Jugador().charAt(puntodeinicio+2));
-
-            System.out.println(" en lo que va la funcion es " + nombre_Obtenido + " " + nivel_Obtenido +
-                    " " + puntos_Obtenido);
-
-
-        }
-
-
-        el_player = nivel_Obtenido + " " + nivel_Obtenido + " " + puntos_Obtenido;
-
-        this.info_Completa_Jugador = el_player;
+    public void setNombre_Obtenido(String nombre_Obtenido) {
+        this.nombre_Obtenido = nombre_Obtenido;
     }
 
+    public String getNivel_Obtenido() {
+        return nivel_Obtenido;
+    }
+
+    public void setNivel_Obtenido(String nivel_Obtenido) {
+        this.nivel_Obtenido = nivel_Obtenido;
+    }
+
+    public String getPuntos_Obtenido() {
+        return puntos_Obtenido;
+    }
+
+    public void setPuntos_Obtenido(String puntos_Obtenido) {
+        this.puntos_Obtenido = puntos_Obtenido;
+    }
 
     /**
-     * Metodo que genera un string del registro de los jugadores
-     * en el archivo de texto info_Jugador.txt.
+     * Método constructor
+     */
+    public Control_FileManager(){
+        nombre_Obtenido = "";
+        nivel_Obtenido = "";
+        puntos_Obtenido = "";
+    }
+
+    /**
+     * Método que lee el archivo de texto con la infomación
+     * de los jugadores y genera un string con dicha información.
      * @return
      */
     public String reader_Jugador(){
@@ -97,6 +114,11 @@ public class Control_FileManager {
         return text;
     }
 
+    /**
+     * Método que recibe un string con la información de los jugadores
+     * y la escribe sobre un archivo de texto.
+     * @param line
+     */
     public void writer_Jugador(String line){
         try {
             String text = reader_Jugador();// recepciona el String generado en el reader.
@@ -115,22 +137,53 @@ public class Control_FileManager {
         }
     }
 
-    public void entrega_Info_Detallada(String nombre){
+    /**
+     * Método que rebibe el nombre de un jugador,
+     * lo busca en la lista y saca la informacion
+     * para ser usada.
+     * @param nombre_buscado
+     */
+    public void entrega_Info_Detallada(String nombre_buscado){
 
-        String nombre_Obtenido;
-        String nivel_Obtenido;
-        String puntos_Obtenido;
+        String listado_Registros = reader_Jugador();
 
-        if (reader_Jugador().contains(nombre)){
-            nombre_Obtenido = nombre;
-            int puntodeinicio = reader_Jugador().indexOf(nombre);
-            nivel_Obtenido = String.valueOf(reader_Jugador().charAt(puntodeinicio+nombre.length()+2));
-            puntos_Obtenido = String.valueOf(reader_Jugador().charAt(puntodeinicio+2));
 
-            System.out.println(" en lo que va la funcion es " + nombre_Obtenido + " " + nivel_Obtenido +
-                    " " + puntos_Obtenido);
+
+        if (listado_Registros.contains(nombre_buscado)){
+            int puntodeinicio = listado_Registros.indexOf(nombre_buscado);
+            if (!(listado_Registros.substring(puntodeinicio+5, puntodeinicio+6).equals(" ") )) {
+                System.out.println(" Los datos están mal tabulados ");
+                JOptionPane.showMessageDialog(null, "los datos están mal tabulados");
+            }
+            else if (listado_Registros.substring(puntodeinicio+7, puntodeinicio+8).equals(" ") ) {// en otros niveles
+                setNombre_Obtenido(listado_Registros.substring(puntodeinicio, puntodeinicio + 5));
+                setNivel_Obtenido(String.valueOf(listado_Registros.substring(puntodeinicio + 6, puntodeinicio + 7)));
+                setPuntos_Obtenido(String.valueOf(listado_Registros.substring(puntodeinicio + 8)));
+
+                System.out.println(" en lo que va la funcion el punto de inicio es " + puntodeinicio +
+                        " el nombre es " + getNombre_Obtenido() + " el nivel es " + getNivel_Obtenido() +
+                        " el puntaje obtenido es " + getPuntos_Obtenido());
+            } else if (!(listado_Registros.substring(puntodeinicio+7, puntodeinicio+8).equals(" ") )) {// en nivel 10
+                setNombre_Obtenido(listado_Registros.substring(puntodeinicio, puntodeinicio + 5));
+                setNivel_Obtenido(String.valueOf(listado_Registros.substring(puntodeinicio + 6, puntodeinicio + 8)));
+                setPuntos_Obtenido(String.valueOf(listado_Registros.substring(puntodeinicio + 9)));
+
+                System.out.println(" en lo que va la funcion el punto de inicio es " + puntodeinicio +
+                        " el nombre es " + getNombre_Obtenido() + " el nivel es " + getNivel_Obtenido() +
+                        " el puntaje obtenido es " + getPuntos_Obtenido());
+            }
+
+            else {
+                JOptionPane.showMessageDialog(null, "los datos están mal tabulados");
+            }
 
 
         }
+        else{
+            JOptionPane.showMessageDialog(null, " Ese nombre no está en la base de datos\n" +
+                    " es un jugador nuevo.");
+        }
+
+
     }
 }

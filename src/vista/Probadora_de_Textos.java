@@ -12,7 +12,7 @@ public class Probadora_de_Textos {
     String jugadorErrado1 = "marta"  + "7" + "   " + "10000" + "\n";
     String jugadorErrado2 = "zulia" + "  " + "710" + "   " + "10000" + "\n";
 
-    String todosJuntos = datosJugador + datosJugador2 + datosJugador3 + datosJugador4;
+    String todosJuntos_Correctos = datosJugador + datosJugador2 + datosJugador3 + datosJugador4;
     String todojuntoErrores = datosJugador + datosJugador2 + datosJugador3 + datosJugador4 + jugadorErrado1 + jugadorErrado2;
 
 
