@@ -15,7 +15,7 @@ import java.util.Objects;
 
 public class Lanza_app_Prueba {
     private  GUI gui;
-    private
+    private  Panel_0_bienvenida panel_0_bienvenida;
     private  Panel_1_Inicial panel_1_inicial;
     private  Panel_2_menu panel_2_menu;
     private  Panel_3_reglas panel_3_reglas;
@@ -40,6 +40,7 @@ public class Lanza_app_Prueba {
         gui = new GUI();
         juego = new Juego();
         jugador = new Jugador();
+        panel_0_bienvenida = new Panel_0_bienvenida();
         panel_1_inicial = new Panel_1_Inicial();
         panel_3_reglas = new Panel_3_reglas();
         panel_2_menu = new Panel_2_menu();
@@ -48,7 +49,7 @@ public class Lanza_app_Prueba {
         panel_7_niveles = new Panel_7_niveles();
         front_registroJugador = new Front_RegistroJugador();
 
-        seleccionar_pantalla(3);
+        seleccionar_pantalla(0);
     }
 
     public void secuencia_Logica(int secuencial){
@@ -63,6 +64,12 @@ public class Lanza_app_Prueba {
      */
     public void seleccionar_pantalla(int pantalla){ // pantalla esqivlae a un juego.estado.
         switch (pantalla) {
+
+            case 0 ->{
+                gui.setContentPane(panel_0_bienvenida);
+                gui.revalidate();
+                gui.repaint();
+            }
 
             case 1 ->{
                 gui.setContentPane(panel_1_inicial);
@@ -196,6 +203,10 @@ public class Lanza_app_Prueba {
 
             else if(Objects.equals(e.getActionCommand(), "INICIAR")){
                 bill.seleccionar_pantalla(4);
+            }
+
+            else if(Objects.equals(e.getActionCommand(), "ENTRAR")){
+                bill.seleccionar_pantalla(3);
             }
 
             else if(Objects.equals(e.getActionCommand(), "SIGUIENTE")){

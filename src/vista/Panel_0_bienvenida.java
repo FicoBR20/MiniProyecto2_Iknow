@@ -9,12 +9,13 @@ import java.awt.event.ActionListener;
 public class Panel_0_bienvenida extends FondoPanel{
 
 
-    private Botones boton_salir, boton_sguiente, boton_atras;
+    private Botones boton_sguiente;
     private Area_de_Texto area_de_texto;
     private Escucha escucha;
     private Timer timer;
-    private FondoPanel box;
+    private FondoPanel logo;
     private  int cont;
+    private  int cont_2;
 
     public Panel_0_bienvenida(){
 
@@ -32,48 +33,20 @@ public class Panel_0_bienvenida extends FondoPanel{
         escucha = new Escucha();
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.ipady = 10;
-        cont = 6;
+        cont = 0;
+        cont_2=-99;
 
-        FondoPanel logo = new FondoPanel();
+        logo = new FondoPanel();
         logo.set_ruta_fondo("/resources/fondos/logo.png");
-        logo.setPreferredSize(new Dimension(330,100));
+        logo.setPreferredSize(new Dimension(700,178));
         gbc.gridx=0; // columna 0
         gbc.gridy=0; // fila 0
         gbc.gridwidth=2; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
-        gbc.anchor=GridBagConstraints.NORTH;
-        gbc.insets.set(0,0,260,0);
+        gbc.anchor=GridBagConstraints.CENTER;
+        gbc.insets.set(0,0,0,0);
         this.add(logo, gbc);
 
-        gbc.insets.set(30,0,0,0);
-        gbc.anchor=GridBagConstraints.CENTER;
-        gbc.gridx=0; // columna 0
-        gbc.gridy=0; // fila 0
-        gbc.gridwidth=2; // ocupara 4 columnas
-        gbc.gridheight=1; // ocupara 3 filas
-        this.add(area_de_texto.reglas(), gbc);
-
-
-        box = new FondoPanel();
-        box.set_ruta_fondo("/resources/fondos/f7.png");
-        box.setPreferredSize(new Dimension(600,250));
-        gbc.gridx=0; // columna 0
-        gbc.gridy=0; // fila 0
-        gbc.gridwidth=2; // ocupara 4 columnas
-        gbc.gridheight=1; // ocupara 3 filas
-        gbc.anchor=GridBagConstraints.CENTER;
-        gbc.insets.set(70,0,0,0);
-        this.add(box, gbc);
-
-
-        gbc.insets.set(0,0,0,0);
-        gbc.gridx=1; // columna 0
-        gbc.gridy=3; // fila 0
-        gbc.gridwidth=1; // ocupara 4 columnas
-        gbc.gridheight=1; // ocupara 3 filas
-        boton_salir = new Botones();
-        boton_salir.setVisible(false);
-        this.add(boton_salir.getBoton_style_0("SALIR"), gbc);
 
         gbc.insets.set(0,0,0,0);
         gbc.gridx=1; // columna 0
@@ -82,18 +55,9 @@ public class Panel_0_bienvenida extends FondoPanel{
         gbc.gridheight=1; // ocupara 3 filas
         boton_sguiente = new Botones();
         boton_sguiente.addActionListener(escucha);
-        this.add(boton_sguiente.getBoton_style_0(" SIGUIENTE "), gbc);
+        boton_sguiente.setVisible(false);
+        this.add(boton_sguiente.getBoton_style_0("ENTRAR"), gbc);
 
-
-        gbc.insets.set(0,0,0,0);
-        gbc.gridx=0; // columna 0
-        gbc.gridy=3; // fila 0
-        gbc.gridwidth=1; // ocupara 4 columnas
-        gbc.gridheight=1; // ocupara 3 filas
-        boton_atras = new Botones();
-        boton_atras.setVisible(false);
-        boton_atras.addActionListener(escucha);
-        this.add(boton_atras.getBoton_style_0(" ATRAS "), gbc);
 
         timer = new Timer(2000, escucha);
         timer.start();
@@ -104,33 +68,33 @@ public class Panel_0_bienvenida extends FondoPanel{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (e.getSource()==boton_sguiente){
 
-                area_de_texto.reglas_2();
-                boton_atras.setVisible(true);
-                boton_sguiente.setVisible(false);
-                boton_salir.setVisible(true);
-            }
-            else if (e.getSource()==boton_atras){
-
-                area_de_texto.reglas();
-                boton_atras.setVisible(false);
-                boton_sguiente.setVisible(true);
-                boton_salir.setVisible(false);
-            }
-
-            if (e.getSource()==timer && cont >= 0) {
+//
+            if (e.getSource()==timer && cont <= 13 && cont_2 < 0) {
                 timer.stop();
                 System.out.println("Entro "+cont);
-                box.set_ruta_fondo("/resources/fondos/f" + (cont) + ".png");
-                cont--;
-                timer = new Timer(25, escucha);
+                logo.set_ruta_fondo("/resources/animaciones/logo/"+cont+".png");
+                cont++;
+                timer = new Timer(100, escucha);
                 timer.start();
-            }else {
-                timer.stop();
-//                box.set_ruta_fondo("/resources/fondos/f" + (cont) + ".png");
-//                cont;
+            }else if (e.getSource()==timer && cont > 13 && cont_2 < 0){
+
+                logo.set_ruta_fondo("/resources/animaciones/logo/0.png");
+                cont_2 = 13;
             }
+
+            else  if (e.getSource()==timer && cont_2 > 0 && cont > 0) {
+
+                System.out.println("Entro ______ "+cont_2);
+                logo.set_ruta_fondo("/resources/animaciones/logo/"+cont_2+".png");
+                cont_2--;
+                boton_sguiente.setVisible(true);
+//                timer.stop();
+            }else if (e.getSource()==timer &&  cont > 13 && cont_2 == 0){
+                System.out.println("cao uno  ");
+                cont = 0;
+            }
+
 
         }
     }
