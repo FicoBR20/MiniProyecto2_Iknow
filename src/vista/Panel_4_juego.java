@@ -161,7 +161,7 @@ public class Panel_4_juego extends FondoPanel {
         gbc.gridy=0; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
-//        panel_botones.setVisible(false);
+        panel_botones.setVisible(false);
         this.add(panel_botones, gbc);
 
         atras_boton = new Botones();
@@ -172,7 +172,7 @@ public class Panel_4_juego extends FondoPanel {
         atras_boton.addActionListener(escucha);
         gbc.insets.set(0,0,0,0);
         gbc.anchor=GridBagConstraints.SOUTH;
-//        atras_boton.setVisible(false);
+        atras_boton.setVisible(false);
         this.add(atras_boton.getBoton_style_0("ATRAS"), gbc);
 
         //Aqui se setea el temporizador para lanzar en juego

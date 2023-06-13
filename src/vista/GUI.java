@@ -46,7 +46,7 @@ public class GUI extends JFrame {
         estado_panel = 0;
 
         //Default JFrame configuration
-        this.setTitle("I Know that word !!");
+        this.setTitle("¡ESA ME LA SE!");
         this.setSize(800,500);
         //this.pack();
         this.setResizable(true);
