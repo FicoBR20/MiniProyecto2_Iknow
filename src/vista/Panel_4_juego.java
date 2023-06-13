@@ -458,14 +458,16 @@ public class Panel_4_juego extends FondoPanel {
              * Condicion que valida las palabras a memorizar y las muestra
              */
 
-            if(e.getSource()==timer && cuenta_memorizar < palabra.getPalabra_a_Memorizar().size()){
+            else if(e.getSource()==timer && cuenta_memorizar < palabra.getPalabra_a_Memorizar().size()){
                 System.out.println("timer 1");
                 if(cuenta_memorizar <= palabra.getPalabra_a_Memorizar().size()-1) {
                 System.out.println("Palabra " +palabra.getPalabra_a_Memorizar().get(cuenta_memorizar)
                     +" Time "+ cuenta_memorizar +" El timer está corriendo? " + String.valueOf(timer.isRunning()));
 
-                    botonX.seText_grafico(palabra.getPalabra_a_Memorizar().get(cuenta_memorizar));
+                    botonX.seText_grafico(palabra.getPalabra_a_Memorizar().get(cuenta_memorizar),1);
                     cuenta_memorizar++;
+                    timer = new Timer(3000, escucha);
+                    timer.start();
                 }else {
                     timer.stop();
                     mensaje.seText_2("¿Es una palabra memorizada?");
