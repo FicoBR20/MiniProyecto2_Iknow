@@ -2,7 +2,9 @@ package vista;
 
 import javax.swing.*;
 
-public class Probadora_de_Textos {
+public class Probadora_de_Textos extends JFrame{
+
+    JTable jTable = new JTable();
 
     String datosJugador = "Carlo" + " " + "1" + " " + "10" + "\n";
     String datosJugador2 = "luisa" + " " + "3" + " " + "200" + "\n";
@@ -15,6 +17,26 @@ public class Probadora_de_Textos {
     String todosJuntos_Correctos = datosJugador + datosJugador2 + datosJugador3 + datosJugador4;
     String todojuntoErrores = datosJugador + datosJugador2 + datosJugador3 + datosJugador4 + jugadorErrado1 + jugadorErrado2;
 
+    public Probadora_de_Textos(){
+
+        //Default JFrame configuration
+        this.setTitle("Probadora de textos");
+        this.setSize(800,500);
+        //this.pack();
+        this.setResizable(true);
+        this.setVisible(true);
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+    }
+
+    public void init(){
+        jTable = new JTable();
+
+
+    }
+
 
 
 
@@ -24,24 +46,24 @@ public class Probadora_de_Textos {
         String nivel_Obtenido;
         String puntos_Obtenido;
 
-        if (todojuntoErrores.contains(nombre)){
-            int puntodeinicio = todojuntoErrores.indexOf(nombre);
-            if (!(todojuntoErrores.substring(puntodeinicio+5, puntodeinicio+6).equals(" ") )) {
+        if (todosJuntos_Correctos.contains(nombre)){
+            int puntodeinicio = todosJuntos_Correctos.indexOf(nombre);
+            if (!(todosJuntos_Correctos.substring(puntodeinicio+5, puntodeinicio+6).equals(" ") )) {
                 System.out.println(" Los datos están mal tabulados ");
                 JOptionPane.showMessageDialog(null, "los datos están mal tabulados");
             }
-            else if (todojuntoErrores.substring(puntodeinicio+7, puntodeinicio+8).equals(" ") ) {// en otros niveles
-                nombre_Obtenido = todojuntoErrores.substring(puntodeinicio, puntodeinicio + 5);
-                nivel_Obtenido = String.valueOf(todojuntoErrores.substring(puntodeinicio + 6, puntodeinicio + 7));
-                puntos_Obtenido = String.valueOf(todojuntoErrores.substring(puntodeinicio + 8));
+            else if (todosJuntos_Correctos.substring(puntodeinicio+7, puntodeinicio+8).equals(" ") ) {// en otros niveles
+                nombre_Obtenido = todosJuntos_Correctos.substring(puntodeinicio, puntodeinicio + 5);
+                nivel_Obtenido = String.valueOf(todosJuntos_Correctos.substring(puntodeinicio + 6, puntodeinicio + 7));
+                puntos_Obtenido = String.valueOf(todosJuntos_Correctos.substring(puntodeinicio + 8));
 
                 System.out.println(" en lo que va la funcion el punto de inicio es " + puntodeinicio +
                         " el nombre es " + nombre_Obtenido + " el nivel es " + nivel_Obtenido +
                         " el puntaje obtenido es " + puntos_Obtenido);
-            } else if (!(todojuntoErrores.substring(puntodeinicio+7, puntodeinicio+8).equals(" ") )) {// en nivel 10
-                nombre_Obtenido = todojuntoErrores.substring(puntodeinicio, puntodeinicio + 5);
-                nivel_Obtenido = String.valueOf(todojuntoErrores.substring(puntodeinicio + 6, puntodeinicio + 8));
-                puntos_Obtenido = String.valueOf(todojuntoErrores.substring(puntodeinicio + 9));
+            } else if (!(todosJuntos_Correctos.substring(puntodeinicio+7, puntodeinicio+8).equals(" ") )) {// en nivel 10
+                nombre_Obtenido = todosJuntos_Correctos.substring(puntodeinicio, puntodeinicio + 5);
+                nivel_Obtenido = String.valueOf(todosJuntos_Correctos.substring(puntodeinicio + 6, puntodeinicio + 8));
+                puntos_Obtenido = String.valueOf(todosJuntos_Correctos.substring(puntodeinicio + 9));
 
                 System.out.println(" en lo que va la funcion el punto de inicio es " + puntodeinicio +
                         " el nombre es " + nombre_Obtenido + " el nivel es " + nivel_Obtenido +
@@ -62,6 +84,10 @@ public class Probadora_de_Textos {
     }
 
     public static void main(String[] args) {
+
+        JTable jTable = new JTable();
+
+
         Probadora_de_Textos pt = new Probadora_de_Textos();
        // String resultado = " ";
         String nombre = "marta";
