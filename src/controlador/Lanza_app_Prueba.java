@@ -13,6 +13,8 @@ import java.util.Objects;
 
 
 public class Lanza_app_Prueba {
+
+    private Front_Jugador_Habitual frontJugadorHabitual;
     private  GUI gui;
     private  Panel_1_Inicial panel_1_inicial;
     private  Panel_2_menu panel_2_menu;
@@ -30,21 +32,7 @@ public class Lanza_app_Prueba {
     private String texto;
     private static Lanza_app_Prueba bill = null;
 
-//    public Juego getJuego() {
-//        return juego;
-//    }
-//
-//    public void setJuego(int nivel) {
-//        palabra = new Palabra();
-//        Juego juego1 = new Juego();
-//        juego1.setUp_Nivel(nivel);
-//        juego1.setCategoria(2);
-////        palabra.setJuego(getJuego());
-//        palabra.setJuego(juego1);
-//        palabra.setPalabra_del_nivel();
-//        palabra.setPalabra_a_Memorizar();
-//        this.juego = juego1;
-//    }
+
 
     /**
      * Método constructor
@@ -61,6 +49,8 @@ public class Lanza_app_Prueba {
 
         panel_6_continuar = new Panel_6_continuar();
         panel_7_niveles = new Panel_7_niveles();
+
+        frontJugadorHabitual = new Front_Jugador_Habitual();
 
         front_registroJugador = new Front_RegistroJugador();
 
@@ -146,6 +136,12 @@ public class Lanza_app_Prueba {
                 juego.setUp_Nivel(2);
                 panel_4_juego = new Panel_4_juego(juego);
                 bill.seleccionar_pantalla(4);
+
+            }
+            case 12->{ // para presentar front jugador habitual
+                gui.setContentPane(frontJugadorHabitual);
+                gui.revalidate();
+                gui.repaint();;
 
             }
             default -> {

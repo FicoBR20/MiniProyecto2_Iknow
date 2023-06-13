@@ -1,14 +1,21 @@
 package vista;
 
-import controlador.Control_FileManager;
 import controlador.Jugador;
 import modelo.Juego;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-public class Front_RegistroJugador extends JPanel {
+/**
+ * Clase que mostrará la información de un jugador habitual
+ * previamente registrado que ya ha logrado superar algunos
+ * niveles y cuenta con un registro de los puntos logrados.
+ */
+public class Front_Jugador_Habitual extends JPanel {
 
     private Jugador jugador;
 
@@ -18,18 +25,20 @@ public class Front_RegistroJugador extends JPanel {
 
     private String name_Player;
 
-
-
-    private Botones iniciar_Juego;
-
-
-    private JLabel jlabel_Title, jLabel_NombreJugador;
-
-
-    private JTextField jTextField_NombreJugador;
-
-
     private Escucha escucha;
+
+
+
+    private Botones boton_SI, boton_NO, boton_Actualizar;
+
+
+    private JLabel jlabel_Nos_Agrada_Tenerte, jLabel_NombreJugador, jLabel_PuntosLogrados, jLabel_NivelSuperado, jLabel_DeseasContinuar;
+
+
+    private JTextField jTextField_NombreJugador, jTextField_PuntosLogrados, jTextField_NivelSuperado;
+
+
+    //private
 
     private Teclado teclado;
 
@@ -46,7 +55,7 @@ public class Front_RegistroJugador extends JPanel {
     /**
      * Constructor
      */
-    public Front_RegistroJugador(){
+    public Front_Jugador_Habitual(){
         init_Panel();
         //this.setSize(300,400);
         this.setPreferredSize(new Dimension(600,400));
@@ -63,38 +72,64 @@ public class Front_RegistroJugador extends JPanel {
 
         Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 24);
 
-        header = new Header(" Registro del Jugador ", verdeClaro);
+        header = new Header(" Bienvenido de Nuevo Campeón ", verdeClaro);
         header.setPreferredSize(new Dimension(600,20));
 
 
-        jlabel_Title = new JLabel(" Ingrese sus datos ");
-        jlabel_Title.setFont(font);
-        jlabel_Title.setBackground(fondoLila);
-        jlabel_Title.setForeground(verdeClaro);
+        jlabel_Nos_Agrada_Tenerte = new JLabel(" Nos agrada tenerte de nuevo ");
+        jlabel_Nos_Agrada_Tenerte.setFont(font);
+        jlabel_Nos_Agrada_Tenerte.setBackground(fondoLila);
+        jlabel_Nos_Agrada_Tenerte.setForeground(verdeClaro);
 
 
-        jLabel_NombreJugador = new JLabel(" Nombre del jugador ");
+        jLabel_NombreJugador = new JLabel(" Nombre Jugador ");
         jLabel_NombreJugador.setFont(font);
         jLabel_NombreJugador.setBackground(fondoLila);
         jLabel_NombreJugador.setForeground(verdeClaro);
 
+        jLabel_PuntosLogrados = new JLabel(" Puntos Logrados ");
+        jLabel_PuntosLogrados.setFont(font);
+        jLabel_PuntosLogrados.setBackground(fondoLila);
+        jLabel_PuntosLogrados.setForeground(verdeClaro);
+
+        jLabel_NivelSuperado = new JLabel(" Nivel Superado ");
+        jLabel_NivelSuperado.setFont(font);
+        jLabel_NivelSuperado.setBackground(fondoLila);
+        jLabel_NivelSuperado.setForeground(verdeClaro);
+
+        jLabel_DeseasContinuar = new JLabel(" Deseas Continuar ");
+        jLabel_DeseasContinuar.setFont(font);
+        jLabel_DeseasContinuar.setBackground(fondoLila);
+        jLabel_DeseasContinuar.setForeground(verdeClaro);
+
 
         jTextField_NombreJugador = new JTextField("",20);
         jTextField_NombreJugador.setSize(new Dimension(100,60));
+        jTextField_PuntosLogrados = new JTextField("",20);
+        jTextField_PuntosLogrados.setSize(new Dimension(100,60));
+        jTextField_NivelSuperado = new JTextField("",20);
+        jTextField_NivelSuperado.setSize(new Dimension(100,60));
 
 
 
 
-        iniciar_Juego = new Botones("START",15,70,30);
-        iniciar_Juego.desactivar();
+        boton_SI = new Botones("SI",15,70,30);
+        boton_NO = new Botones("NO",15,70,30);
+        boton_Actualizar = new Botones("ACTUALIZAR",15,70,30);
 
 
 
         escucha = new Escucha();
-        teclado = new Teclado();
+       // teclado = new Teclado();
 
-        iniciar_Juego.addMouseListener(escucha);
-        jTextField_NombreJugador.addKeyListener(teclado);
+        boton_SI.addMouseListener(escucha);
+        boton_NO.addMouseListener(escucha);
+        boton_Actualizar.addMouseListener(escucha);
+
+
+       // jTextField_NombreJugador.addKeyListener(teclado);
+
+
 
         GridBagLayout gridBagLayout = new GridBagLayout();
 
@@ -112,7 +147,7 @@ public class Front_RegistroJugador extends JPanel {
         gbc.weighty = 1.0; // no se deformara
         gbc.ipady=5;//relleno interno en y pixels
         gbc.anchor=GridBagConstraints.PAGE_START;//cuando el componente es mas pequenno que el area de visualización.tambien PAGE_START, PAGE_END, LINE_START, LINE_END, FIRST_LINE_START, FIRST_LINE_END, LAST_LINE_ENDy LAST_LINE_START.
-//        this.add(header, gbc);
+        this.add(header, gbc);
 
         gbc.gridx=1; // columna 0
         gbc.gridy=0; // fila 0
@@ -120,7 +155,7 @@ public class Front_RegistroJugador extends JPanel {
         gbc.gridheight=1; // ocupara 3 filas
         gbc.weightx = 1.0; // no se deformara
         gbc.weighty = 1.0; // no se deformara
-        this.add(jlabel_Title, gbc);
+        this.add(jlabel_Nos_Agrada_Tenerte, gbc);
 
         gbc.gridx=1; // columna 0
         gbc.gridy=1; // fila 0
@@ -146,7 +181,7 @@ public class Front_RegistroJugador extends JPanel {
         gbc.gridheight=1; // ocupara 3 filas
         gbc.weightx = 1.0; // no se deformara
         gbc.weighty = 1.0; // no se deformara
-        this.add(iniciar_Juego.getBoton_style_1("INICIAR"), gbc);
+        this.add(boton_SI.getBoton_style_1("INICIAR"), gbc);
 
     }
 
@@ -164,51 +199,6 @@ public class Front_RegistroJugador extends JPanel {
         @Override
         public void keyPressed(KeyEvent e) {
             super.keyPressed(e);
-// Registro Jugador por primera vez.
-
-            if (e.getSource()==jTextField_NombreJugador && e.getKeyChar()==KeyEvent.VK_ENTER){
-                iniciar_Juego.activar();
-
-                name_Player = jTextField_NombreJugador.getText();
-
-                String db = new Control_FileManager().reader_Jugador();
-
-                if (name_Player.contains(" ") || name_Player.isEmpty()==true || name_Player.length()>5) {
-                    System.out.println(" debe ingresar un nombre sin espacios para registrarse ");
-                    JOptionPane.showMessageDialog(null, "Ingrese su nombre de jugador\nUse máximo 5 caracteres \n" +
-                            "sin espacios en blanco\nGracias.");
-
-
-                }
-                else if (db.contains(name_Player)){
-                    System.out.println(" Ese nombre ya existe..use otro nombre..");
-                    JOptionPane.showMessageDialog(null, " Ese nombre ya existe en la base de datos\n" +
-                           "por favor use otro \nGracias.");
-//                    for (int i = 0; i < db.length(); i++) {
-//                        System.out.println(" posicion " + i + " " + db.g);
-//
-//                    }
-                    juego_Ik.setEstado(12); // presenta de nuevo el panel de registro de jugador
-                }else {
-
-                    // se registran los datos del nuevo jugador.
-
-                    jugador.setName(name_Player);
-                    jugador.setNivel_Superado(juego_Ik.getNivel()); // nivel sera 1
-
-                    juego_Ik.setEstado(4);//.....con estado 4 DEBEMOS PROGRAMAR IR AL JUEGO AL NIVEL 1
-
-
-                    new Control_FileManager().writer_Jugador(jugador.ToString_Jugador()); // toda la info del jugador
-
-                    jTextField_NombreJugador.setText(name_Player);
-                    jTextField_NombreJugador.setEnabled(false);
-
-
-                    System.out.println(" Hemos registrado sus datos " + name_Player + " nivel del juego " + Integer.toString(juego_Ik.getNivel()));
-                    System.out.println(" to string es " + jugador.ToString_Jugador());
-                }
-            }
         }
     }
     private class Escucha extends MouseAdapter {
@@ -216,16 +206,19 @@ public class Front_RegistroJugador extends JPanel {
         public void mouseClicked(MouseEvent e) {
             super.mouseClicked(e);
 
-            if (e.getSource() == iniciar_Juego) {
-
-
-                System.out.println(" Empezamos a jugar en el nivel = 1 ");
-
+            if (e.getSource()==boton_SI){
+                System.out.println(" el jugador desea continuar al siguiente nivel");
+                }
+            else if (e.getSource()==boton_NO) {
+                System.out.println(" el jugador NO desea continuar al siguiente nivel");
 
             }
 
         }
+
     }
+
+
 
 
 

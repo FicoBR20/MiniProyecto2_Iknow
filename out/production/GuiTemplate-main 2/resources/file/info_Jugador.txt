@@ -7,3 +7,5 @@ juan 1 0
 nana 1 0
      1 0
 
+pilar 1 0
+

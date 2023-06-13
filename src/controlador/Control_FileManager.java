@@ -43,9 +43,14 @@ public class Control_FileManager {
             input = new BufferedReader(fileReader);
 
 
+
             String line = input.readLine(); // almacena lo que se escribe en el text field
 
-          //  System.out.println(" lo de line " + line +" \n");
+            String prueba = line;
+
+
+
+            System.out.println(" lo de line " + line +" \n");
 
             //line.charAt()
 
