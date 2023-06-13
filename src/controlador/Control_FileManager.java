@@ -4,6 +4,7 @@ import modelo.Juego;
 import vista.Front_RegistroJugador;
 
 import java.io.*;
+import java.util.ArrayList;
 
 /**
  * Clase que registrara la información del jugador
@@ -14,6 +15,11 @@ public class Control_FileManager {
     private BufferedReader input;
     private FileWriter fileWriter;
     private BufferedWriter output;
+
+    /**
+     * Arraylist con la info de los jugadores.
+     */
+    private ArrayList<String>jugadores = new ArrayList<String>();
     /**
      * corresponde a la información que está registrada en el archivo de texto.
      */
@@ -35,7 +41,14 @@ public class Control_FileManager {
         try {
             fileReader = new FileReader("src/resources/file/info_Jugador.txt");
             input = new BufferedReader(fileReader);
+
+
             String line = input.readLine(); // almacena lo que se escribe en el text field
+
+          //  System.out.println(" lo de line " + line +" \n");
+
+            //line.charAt()
+
 
             while(line != null){
                 text += line;
@@ -57,6 +70,9 @@ public class Control_FileManager {
                 e.printStackTrace();
             }
         }
+
+        System.out.println(" al final de reader entrega text " + text +" \n");
+
 
         return text;
     }

@@ -1,5 +1,9 @@
-carlos 0 0 - > nombre nivel puntajelogrado
-jose 0 0
-maria 0 0
-rosita 1 0
+Jose 1 0
+
+jose 1 0
+
+juan 1 0
+
+nana 1 0
+     1 0
 

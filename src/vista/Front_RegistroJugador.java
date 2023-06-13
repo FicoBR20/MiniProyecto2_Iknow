@@ -171,19 +171,19 @@ public class Front_RegistroJugador extends JPanel {
 
                 name_Player = jTextField_NombreJugador.getText();
 
-                String db = new Control_FileManager().reader_Jugador(); // db es la base de datos de los ya registrados
+                String db = new Control_FileManager().reader_Jugador();
 
+                if (name_Player.contains(" ") || name_Player.isEmpty()==true || name_Player.length()>5) {
+                    System.out.println(" debe ingresar un nombre sin espacios para registrarse ");
+                    JOptionPane.showMessageDialog(null, "Ingrese su nombre de jugador\nUse máximo 5 caracteres \n" +
+                            "sin espacios en blanco\nGracias.");
 
-
-                if (name_Player ==" ") {
-                    System.out.println(" debe ingresar un nombre para registrarse ");
-                    JOptionPane.showMessageDialog(null, " Ingrese su nombre de jugador \nGracias.");
 
                 }
                 else if (db.contains(name_Player)){
                     System.out.println(" Ese nombre ya existe..use otro nombre..");
                     JOptionPane.showMessageDialog(null, " Ese nombre ya existe en la base de datos\n" +
-                            "por favor use otro \nGracias.");
+                           "por favor use otro \nGracias.");
 //                    for (int i = 0; i < db.length(); i++) {
 //                        System.out.println(" posicion " + i + " " + db.g);
 //
