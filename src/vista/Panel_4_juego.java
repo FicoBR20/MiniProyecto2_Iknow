@@ -458,11 +458,12 @@ public class Panel_4_juego extends FondoPanel {
              * Condicion que valida las palabras a memorizar y las muestra
              */
 
-            else if(e.getSource()==timer && cuenta_memorizar < palabra.getPalabra_a_Memorizar().size()){
+            if(e.getSource()==timer && cuenta_memorizar < palabra.getPalabra_a_Memorizar().size()){
                 System.out.println("timer 1");
                 if(cuenta_memorizar <= palabra.getPalabra_a_Memorizar().size()-1) {
                 System.out.println("Palabra " +palabra.getPalabra_a_Memorizar().get(cuenta_memorizar)
                     +" Time "+ cuenta_memorizar +" El timer está corriendo? " + String.valueOf(timer.isRunning()));
+
                     botonX.seText_grafico(palabra.getPalabra_a_Memorizar().get(cuenta_memorizar));
                     cuenta_memorizar++;
                 }else {
@@ -484,10 +485,9 @@ public class Panel_4_juego extends FondoPanel {
             /**
              * Temporizador para encoger la palabra correcta
              */
-            else if(e.getSource()==timer && cuenta_nivel < palabra.getPalabra_del_nivel().size()){
+            else if(e.getSource()==timer && cuenta_nivel <= palabra.getPalabra_del_nivel().size()){
                 timer.stop();
                 System.out.println("timer 2");
-//                timer.stop();
                 mensaje.seText_2("¿Es una palabra memorizada?");
                 botonX.seText_grafico(palabra.getPalabra_del_nivel().get(cuenta_nivel));
                 panel_botones.setVisible(true);
@@ -601,7 +601,7 @@ public class Panel_4_juego extends FondoPanel {
 
                 }
                 cuenta_nivel = 0;
-                cuenta_memorizar = 0;
+//                cuenta_memorizar = 0;
                 cuenta_nivel_tiempo =0;
                 primer_inicio = 0;
 

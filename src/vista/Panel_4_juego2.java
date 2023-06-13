@@ -205,6 +205,15 @@ public class Panel_4_juego2 extends FondoPanel {
         g.drawString("Puntos "+jugador.getPuntaje_Total()+"  La palabra a memorizar es" + receptor,20,20);
     }
 
+
+    public static void main(String[] args){
+        EventQueue.invokeLater(() -> {
+        GUI k = new GUI();
+        Panel_4_juego2 j = new Panel_4_juego2();
+        k.add(j);
+        });
+    }
+
     /**
      * inner class implements Listeners used by Panel_1_Inicial class
      */

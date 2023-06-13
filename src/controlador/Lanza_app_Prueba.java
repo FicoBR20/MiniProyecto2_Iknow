@@ -49,7 +49,7 @@ public class Lanza_app_Prueba {
         panel_7_niveles = new Panel_7_niveles();
         front_registroJugador = new Front_RegistroJugador();
 
-        seleccionar_pantalla(4);
+        seleccionar_pantalla(0);
     }
 
     public void secuencia_Logica(int secuencial){
