@@ -406,7 +406,7 @@ public class Panel_4_juego2 extends FondoPanel {
             }
 
             else if(e.getSource()==timer && primer_inicio == 1){
-                botonX.seText_grafico_2("",3);
+                botonX.seText_grafico("",3);
                 mensaje.seText("");
                 timer = new Timer(2000, escucha);
                 timer.start();
@@ -414,7 +414,7 @@ public class Panel_4_juego2 extends FondoPanel {
             }
 
             else if(e.getSource()==timer && primer_inicio == 2){
-                botonX.seText_grafico_2("",2);
+                botonX.seText_grafico("",2);
                 mensaje.seText("");
                 timer = new Timer(2000, escucha);
                 timer.start();
@@ -422,7 +422,7 @@ public class Panel_4_juego2 extends FondoPanel {
             }
 
             else if(e.getSource()==timer && primer_inicio == 3){
-                botonX.seText_grafico_2("",1);
+                botonX.seText_grafico("",1);
                 mensaje.seText("");
                 timer = new Timer(2000, escucha);
                 timer.start();

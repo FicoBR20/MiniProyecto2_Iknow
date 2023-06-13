@@ -119,7 +119,7 @@ public class Letra_grafic extends  JLabel{
                 imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/botones_nivel/nivel.png")));
                 botonX.setForeground(Color.white);
                 botonX.setFont(new Font(null,Font.BOLD,30));
-                botonX.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(50,50,Image.SCALE_SMOOTH)));
+                botonX.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(60,60,Image.SCALE_SMOOTH)));
                 botonX.setText(letra);
 
                 panel_palabra.add(botonX,gbc);
@@ -130,11 +130,12 @@ public class Letra_grafic extends  JLabel{
             cont_y++;
             cont_x=0;
         }
+        panel_linea.setBackground(new Color(0x0000000, true));
         return panel_linea;
     }
 
 
-    public JPanel seText_grafico_2(String palabra, int num) {
+    public JPanel seText_grafico(String palabra, int num) {
         GridBagConstraints gbc = new GridBagConstraints();
         GridBagLayout gridBagLayout = new GridBagLayout();
 
@@ -174,6 +175,7 @@ public class Letra_grafic extends  JLabel{
             cont_y++;
             cont_x=0;
         }
+        panel_linea.setBackground(new Color(0x0000000, true));
         return panel_linea;
     }
 }

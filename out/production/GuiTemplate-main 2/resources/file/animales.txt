@@ -96,12 +96,10 @@ Berlín
 Atenas
 Moscú
 Sídney
-Río de Janeiro
 Pekín
 Estambul
 El Cairo
-Ciudad de México
-Buenos Aires
+México
 Toronto
 Vancouver
 Sao Paulo
@@ -181,7 +179,8 @@ Avioneta
 Caravana
 Lancha
 Yate
-Globo aerostático
+Globo
+aerostático
 Patinete
 Carrito de golf
 Trineo
@@ -208,7 +207,8 @@ Puma
 Lémur
 Aardvark
 Chimpancé
-Pájaro carpintero
+Pájaro
+carpintero
 Salamandra
 Colibrí
 Garza

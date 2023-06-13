@@ -84,7 +84,7 @@ public class Panel_4_juego extends FondoPanel {
         escucha = new Escucha();
         panel_botones = new JPanel();
         panel_botones.setLayout(new GridBagLayout());
-        panel_botones.setBackground(null);
+        panel_botones.setBackground(new Color(0x0000000, true));
         panel_palabra = new JPanel();
         panel_palabra.setLayout(new GridBagLayout());
         panel_palabra.setBackground(null);
@@ -101,8 +101,17 @@ public class Panel_4_juego extends FondoPanel {
         this.setBackground( new Color(13, 64, 123));
         gbc = new GridBagConstraints();
         gbc.anchor=GridBagConstraints.CENTER;
-        gbc.ipady=15;
-        gbc.ipadx=15;
+        gbc.ipady=5;
+        gbc.ipadx=5;
+
+        mensaje_puntos =  new Area_de_Texto();
+        gbc.gridx=0; // columna 0
+        gbc.gridy=0; // fila 0
+        gbc.gridwidth=1; // ocupara 4 columnas
+        gbc.gridheight=1; // ocupara 3 filas
+        gbc.insets.set(0,0,300,400);
+        gbc.anchor=GridBagConstraints.FIRST_LINE_START;
+        this.add(mensaje_puntos.seText_2("Puntos "+juego.getPuntaje_Logrado()), gbc);
 
         palabra = new Palabra();
         palabra.setJuego(juego);
@@ -115,15 +124,17 @@ public class Panel_4_juego extends FondoPanel {
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         gbc.insets.set(0,0,0,0);
+        gbc.anchor=GridBagConstraints.CENTER;
         this.add(botonX.seText_grafico(""), gbc);
         repaint();
 
         mensaje =  new Area_de_Texto();
         gbc.gridx=0; // columna 0
-        gbc.gridy=1; // fila 0
+        gbc.gridy=0; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
-        gbc.insets.set(0,0,0,0);
+        gbc.insets.set(0,0,150,0);
+        gbc.anchor=GridBagConstraints.CENTER;
         this.add(mensaje.seText(""), gbc);
 
         si_boton = new Botones();
@@ -132,6 +143,8 @@ public class Panel_4_juego extends FondoPanel {
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         si_boton.addActionListener(escucha);
+        gbc.insets.set(0,0,0,0);
+        gbc.anchor=GridBagConstraints.SOUTH;
         panel_botones.add(si_boton.getBoton_style_0("SI"), gbc);
 
         no_boton = new Botones();
@@ -140,32 +153,27 @@ public class Panel_4_juego extends FondoPanel {
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         no_boton.addActionListener(escucha);
+        gbc.insets.set(0,0,0,0);
+        gbc.anchor=GridBagConstraints.SOUTH;
         panel_botones.add(no_boton.getBoton_style_0("NO"), gbc);
 
         gbc.gridx=0; // columna 0
-        gbc.gridy=3; // fila 0
+        gbc.gridy=0; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
-        panel_botones.setVisible(false);
+//        panel_botones.setVisible(false);
         this.add(panel_botones, gbc);
 
         atras_boton = new Botones();
         gbc.gridx=0; // columna 0
-        gbc.gridy=4; // fila 0
+        gbc.gridy=0; // fila 00
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         atras_boton.addActionListener(escucha);
-        atras_boton.setVisible(false);
-        this.add(atras_boton.getBoton_style_0("ATRAS"), gbc);
-
-        mensaje_puntos =  new Area_de_Texto();
-        gbc.gridx=0; // columna 0
-        gbc.gridy=7; // fila 0
-        gbc.gridwidth=1; // ocupara 4 columnas
-        gbc.gridheight=1; // ocupara 3 filas
         gbc.insets.set(0,0,0,0);
-        gbc.anchor=GridBagConstraints.LINE_START;
-        this.add(mensaje_puntos.seText_2("Puntos "+juego.getPuntaje_Logrado()), gbc);
+        gbc.anchor=GridBagConstraints.SOUTH;
+//        atras_boton.setVisible(false);
+        this.add(atras_boton.getBoton_style_0("ATRAS"), gbc);
 
         //Aqui se setea el temporizador para lanzar en juego
         timer = new Timer(2000,escucha);
@@ -413,7 +421,7 @@ public class Panel_4_juego extends FondoPanel {
 
 
             if(e.getSource()==timer && primer_inicio == 0){
-                botonX.seText_grafico("BIE ENIDO");
+                botonX.seText_grafico("BIENENIDO");
                 mensaje.seText("I know that word");
                 timer = new Timer(4000, escucha);
                 timer.start();
@@ -422,26 +430,26 @@ public class Panel_4_juego extends FondoPanel {
             }
 
             else if(e.getSource()==timer && primer_inicio == 1){
-                botonX.seText_grafico_2("",3);
+                botonX.seText_grafico("",3);
                 mensaje.seText("");
-                timer = new Timer(2000, escucha);
+                timer = new Timer(1000, escucha);
                 timer.start();
                 primer_inicio++;
                 repaint();
             }
 
             else if(e.getSource()==timer && primer_inicio == 2){
-                botonX.seText_grafico_2("",2);
+                botonX.seText_grafico("",2);
                 mensaje.seText("");
-                timer = new Timer(2000, escucha);
+                timer = new Timer(1000, escucha);
                 timer.start();
                 primer_inicio++;
             }
 
             else if(e.getSource()==timer && primer_inicio == 3){
-                botonX.seText_grafico_2("",1);
+                botonX.seText_grafico("",1);
                 mensaje.seText("");
-                timer = new Timer(2000, escucha);
+                timer = new Timer(1000, escucha);
                 timer.start();
                 primer_inicio++;
             }
