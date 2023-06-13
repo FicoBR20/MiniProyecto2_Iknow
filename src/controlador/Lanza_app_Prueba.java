@@ -4,6 +4,7 @@ import modelo.Juego;
 import modelo.Palabra;
 import vista.*;
 import vista.Panel_4_juego;
+import vista.Front_RegistroJugador;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -14,6 +15,7 @@ import java.util.Objects;
 
 public class Lanza_app_Prueba {
     private  GUI gui;
+    private  Panel_0_bienvenida panel_0_bienvenida;
     private  Panel_1_Inicial panel_1_inicial;
     private  Panel_2_menu panel_2_menu;
     private  Panel_3_reglas panel_3_reglas;
@@ -21,30 +23,15 @@ public class Lanza_app_Prueba {
     private  Panel_5_opciones panel_5_opciones;
     private  Panel_7_niveles panel_7_niveles;
     private  Panel_6_continuar panel_6_continuar;
-
-    private  Front_RegistroJugador front_registroJugador;
+    private Front_RegistroJugador front_registroJugador;
 
     private  Palabra palabra;
     private Juego juego;
+    private Jugador jugador;
     private int numero, navegar;
     private String texto;
     private static Lanza_app_Prueba bill = null;
 
-//    public Juego getJuego() {
-//        return juego;
-//    }
-//
-//    public void setJuego(int nivel) {
-//        palabra = new Palabra();
-//        Juego juego1 = new Juego();
-//        juego1.setUp_Nivel(nivel);
-//        juego1.setCategoria(2);
-////        palabra.setJuego(getJuego());
-//        palabra.setJuego(juego1);
-//        palabra.setPalabra_del_nivel();
-//        palabra.setPalabra_a_Memorizar();
-//        this.juego = juego1;
-//    }
 
     /**
      * Método constructor
@@ -52,6 +39,8 @@ public class Lanza_app_Prueba {
     public Lanza_app_Prueba() throws IOException {
         gui = new GUI();
         juego = new Juego();
+        jugador = new Jugador();
+        panel_0_bienvenida = new Panel_0_bienvenida();
         panel_1_inicial = new Panel_1_Inicial();
         panel_3_reglas = new Panel_3_reglas();
         panel_2_menu = new Panel_2_menu();
@@ -78,6 +67,12 @@ public class Lanza_app_Prueba {
     public void seleccionar_pantalla(int pantalla){ // pantalla esqivlae a un juego.estado.
         switch (pantalla) {
 
+            case 0 ->{
+                gui.setContentPane(panel_0_bienvenida);
+                gui.revalidate();
+                gui.repaint();
+            }
+
             case 1 ->{
                 gui.setContentPane(panel_1_inicial);
                 gui.revalidate();
@@ -90,12 +85,15 @@ public class Lanza_app_Prueba {
                 gui.repaint();
             }
             case 3 ->{
+                panel_3_reglas = new Panel_3_reglas();
                 gui.setContentPane(panel_3_reglas);
                 gui.revalidate();
                 gui.repaint();
             }
             case 4 ->{
-                panel_4_juego = new Panel_4_juego(juego);
+                juego.incrementar_nivel();
+                System.out.println("Nivel "+juego.getNivel());
+                panel_4_juego = new Panel_4_juego(juego,jugador);
                 panel_4_juego.start(); // inicializa timer
                 gui.setContentPane(panel_4_juego);
                 gui.revalidate();
@@ -136,7 +134,12 @@ public class Lanza_app_Prueba {
             case 10->{
                 // se debe preguntar si supero el nivel.
                 //....nivel +1
-                juego.setUp_Nivel(2);
+                jugador = panel_4_juego.getJugador();
+
+                juego = panel_4_juego.getJuego();
+                juego.incrementar_nivel();
+                juego.setUp_Nivel(juego.getNivel());
+
                 panel_4_juego = new Panel_4_juego(juego);
                 bill.seleccionar_pantalla(4);
 
@@ -165,6 +168,9 @@ public class Lanza_app_Prueba {
         public void actionPerformed(ActionEvent e) {
 
             if(e.getActionCommand()== "ATRAS"){
+                bill.seleccionar_pantalla(1);
+            }
+            else if(e.getActionCommand()== "SALIR"){
                 bill.seleccionar_pantalla(1);
             }
 
@@ -202,6 +208,10 @@ public class Lanza_app_Prueba {
 
             else if(Objects.equals(e.getActionCommand(), "INICIAR")){
                 bill.seleccionar_pantalla(4);
+            }
+
+            else if(Objects.equals(e.getActionCommand(), "ENTRAR")){
+                bill.seleccionar_pantalla(3);
             }
 
             else if(Objects.equals(e.getActionCommand(), "SIGUIENTE")){

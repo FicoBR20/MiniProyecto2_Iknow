@@ -2,13 +2,26 @@ package vista;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
 public class Area_de_Texto {
 
     private final JTextArea info_al_Jugador;
+    private JLabel label_letra;
+    private JPanel jPanel;
+    private ImageIcon imageIcon;
+    private ImageIcon imageIcon_Pressed;
 
     public Area_de_Texto() {
         info_al_Jugador = new JTextArea();
+        jPanel= new JPanel();
+
+        label_letra = new JLabel();
+        imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/botones_nivel/nivel.png")));
+        imageIcon_Pressed = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/botones_nivel/nivel_pressed.png")));
+        label_letra.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(50,50,Image.SCALE_SMOOTH)));
+        label_letra.setDisabledIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(50,50,Image.SCALE_SMOOTH)));
+
         Color verdeClaro = new Color(188, 234, 192);
         Color fondoLila = new Color(82, 25, 196);
         Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 24);
@@ -16,10 +29,7 @@ public class Area_de_Texto {
         info_al_Jugador.setFont(font);
         info_al_Jugador.setForeground(verdeClaro);
         info_al_Jugador.setEditable(false);
-        info_al_Jugador.setBackground(null);
-
-
-
+        info_al_Jugador.setBackground(new Color(0x0000000, true));
     }
 
     public JTextArea inicial() {
@@ -38,7 +48,14 @@ public class Area_de_Texto {
     }
 
     public JTextArea reglas() {
-        info_al_Jugador.append(":::REGLAS:::\n" +
+        info_al_Jugador.append(":::_REGLAS 1_:::\n" +
+                "menu\n" +
+                "menu ?\n");
+        return info_al_Jugador;
+    }
+
+    public JTextArea reglas_2() {
+        info_al_Jugador.append(":::_REGLAS 2_:::\n" +
                 "menu\n" +
                 "menu ?\n");
         return info_al_Jugador;

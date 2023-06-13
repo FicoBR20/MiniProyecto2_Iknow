@@ -2,7 +2,8 @@ package vista;
 
 import javax.swing.*;
 import java.awt.*;
-import modelo.Juego;
+
+import vista.old.Header;
 
 /**
  * Esta clase gestiona los recursos gráficos del juego.
@@ -45,7 +46,7 @@ public class GUI extends JFrame {
         estado_panel = 0;
 
         //Default JFrame configuration
-        this.setTitle("I Know that word !!");
+        this.setTitle("¡ESA ME LA SE!");
         this.setSize(800,500);
         //this.pack();
         this.setResizable(true);
