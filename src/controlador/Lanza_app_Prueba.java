@@ -4,6 +4,7 @@ import modelo.Juego;
 import modelo.Palabra;
 import vista.*;
 import vista.Panel_4_juego;
+import vista.Front_RegistroJugador;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -14,6 +15,7 @@ import java.util.Objects;
 
 public class Lanza_app_Prueba {
     private  GUI gui;
+    private
     private  Panel_1_Inicial panel_1_inicial;
     private  Panel_2_menu panel_2_menu;
     private  Panel_3_reglas panel_3_reglas;
@@ -21,7 +23,7 @@ public class Lanza_app_Prueba {
     private  Panel_5_opciones panel_5_opciones;
     private  Panel_7_niveles panel_7_niveles;
     private  Panel_6_continuar panel_6_continuar;
-    private  Front_RegistroJugador front_registroJugador;
+    private Front_RegistroJugador front_registroJugador;
 
     private  Palabra palabra;
     private Juego juego;
@@ -46,7 +48,7 @@ public class Lanza_app_Prueba {
         panel_7_niveles = new Panel_7_niveles();
         front_registroJugador = new Front_RegistroJugador();
 
-        seleccionar_pantalla(4);
+        seleccionar_pantalla(3);
     }
 
     public void secuencia_Logica(int secuencial){
@@ -74,6 +76,7 @@ public class Lanza_app_Prueba {
                 gui.repaint();
             }
             case 3 ->{
+                panel_3_reglas = new Panel_3_reglas();
                 gui.setContentPane(panel_3_reglas);
                 gui.revalidate();
                 gui.repaint();
@@ -157,6 +160,9 @@ public class Lanza_app_Prueba {
         public void actionPerformed(ActionEvent e) {
 
             if(e.getActionCommand()== "ATRAS"){
+                bill.seleccionar_pantalla(1);
+            }
+            else if(e.getActionCommand()== "SALIR"){
                 bill.seleccionar_pantalla(1);
             }
 

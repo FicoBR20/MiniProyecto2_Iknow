@@ -1,10 +1,9 @@
 package vista;
 
-import javax.swing.*;
 import java.awt.*;
 
 
-public class Panel_6_continuar extends JPanel {
+public class Panel_6_continuar extends FondoPanel {
 
     private  final Botones continuar_boton, atras_boton;
     private  final Area_de_Texto area_de_texto;
@@ -42,13 +41,13 @@ public class Panel_6_continuar extends JPanel {
         gbc.gridy=1; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
-        this.add(continuar_boton.getBoton_style_1("SEGUIR"), gbc);
+        this.add(continuar_boton.getBoton_style_0("SEGUIR"), gbc);
 
         gbc.gridx=1; // columna 0
         gbc.gridy=2; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
-        this.add(atras_boton.getBoton_style_1("ATRAS"), gbc);
+        this.add(atras_boton.getBoton_style_0("ATRAS"), gbc);
     }
 
 }

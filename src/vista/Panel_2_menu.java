@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public class Panel_2_menu extends JPanel {
+public class Panel_2_menu extends FondoPanel {
 
 
     private  Botones atras_boton;

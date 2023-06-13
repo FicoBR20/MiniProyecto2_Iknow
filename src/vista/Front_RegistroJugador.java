@@ -2,12 +2,13 @@ package vista;
 
 import controlador.Control_FileManager;
 import modelo.Juego;
+import vista.old.Header;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Front_RegistroJugador extends JPanel {
+public class Front_RegistroJugador extends FondoPanel {
 
     private Juego juego_Ik;
     private Header header;
@@ -117,7 +118,7 @@ public class Front_RegistroJugador extends JPanel {
         gbc.gridwidth=2; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         gbc.insets.set(50,0,0,0);
-        this.add(iniciar_Juego.getBoton_style_1("INICIAR"), gbc);
+        this.add(iniciar_Juego.getBoton_style_0("INICIAR"), gbc);
 
         atras_boton = new Botones();
         gbc.gridx=0; // columna 0
@@ -125,7 +126,7 @@ public class Front_RegistroJugador extends JPanel {
         gbc.gridwidth=2; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         gbc.insets.set(0,0,0,0);
-        this.add(atras_boton.getBoton_style_1("ATRAS"), gbc);
+        this.add(atras_boton.getBoton_style_0("ATRAS"), gbc);
     }
 
     /**

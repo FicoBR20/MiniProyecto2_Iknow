@@ -29,11 +29,7 @@ public class Area_de_Texto {
         info_al_Jugador.setFont(font);
         info_al_Jugador.setForeground(verdeClaro);
         info_al_Jugador.setEditable(false);
-        info_al_Jugador.setBackground(null);
-
-
-
-
+        info_al_Jugador.setBackground(new Color(0x0000000, true));
     }
 
     public JTextArea inicial() {
@@ -52,7 +48,14 @@ public class Area_de_Texto {
     }
 
     public JTextArea reglas() {
-        info_al_Jugador.append(":::REGLAS:::\n" +
+        info_al_Jugador.append(":::_REGLAS 1_:::\n" +
+                "menu\n" +
+                "menu ?\n");
+        return info_al_Jugador;
+    }
+
+    public JTextArea reglas_2() {
+        info_al_Jugador.append(":::_REGLAS 2_:::\n" +
                 "menu\n" +
                 "menu ?\n");
         return info_al_Jugador;
@@ -71,6 +74,7 @@ public class Area_de_Texto {
                 "a una partida previa?\n");
         return info_al_Jugador;
     }
+
 
     public JTextArea seText(String palabra) {
         Font font = new Font(Font.SANS_SERIF, Font.BOLD, 50);

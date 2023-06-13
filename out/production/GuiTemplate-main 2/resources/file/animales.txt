@@ -1,200 +1,217 @@
-PERRO
-GATO
-ELEFANTE
-LEÓN
-TIGRE
-OSO
-CABALLO
-VACA
-CERDO
-CEBRA
-JIRAFA
-MONO
-CONEJO
-RATA
-RATÓN
-MURCIÉLAGO
-ZORRO
-ARDILLA
-NUTRIA
-LOBO
-DELFÍN
-BALLENA
-ORCA
-PINGÜINO
-PATO
-ÁGUILA
-BÚHO
-CISNE
-COLIBRÍ
-PALOMA
-CANGURO
-KOALA
-OVEJA
-CABRA
-CIERVO
-RINOCERONTE
-HIPOPÓTAMO
-GORILA
-CHIMPANCÉ
-CANGREJO
-LANGOSTA
-PULPO
-CALAMAR
-MEDUSA
-ESTRELLA DE MAR
-PEZ PAYASO
-TIBURÓN
-CABALLITO DE MAR
-TORTUGA
-COCODRILO
-SERPIENTE
-RANA
-SAPO
-SALAMANDRA
-LAGARTO
-TORTUGA MARINA
-ARAÑA
-ESCORPIÓN
-HORMIGA
-ABEJA
-MARIPOSA
-MOSCA
-MOSQUITO
-LIBÉLULA
-GRILLO
-CIGARRA
-SALTAMONTES
-CUCARACHA
-CARACOL
-AVESTRUZ
-PAVO
-GALLINA
-PATO
-PÁJARO CARPINTERO
-LORO
-FLAMENCO
-CISNE
-PAVO REAL
-CÓNDOR
-LOMBRIZ
-ESCARABAJO
-ABEJORRO
-ERIZO
-MURCIÉLAGO
-PUERCOESPÍN
-CAIMÁN
-ESCORPIÓN
-TARÁNTULA
-ABEJA REINA
-LANGOSTA
-GUSANO DE SEDA
-SAPO COMÚN
-GRILLO TOPO
-CANARIO
-GAVIOTA
-ALCE
-MURCIÉLAGO FRUGÍVORO
-BÚHO REAL
-ESCARABAJO RINOCERONTE
-MURCIÉLAGO VAMPIRO
-CIEMPIÉS
-AGUILUCHO
-COCODRILO DEL NILO
-BOA CONSTRICTORA
-SALMÓN
-MOSQUITO TIGRE
-CULEBRA DE AGUA
-HALCÓN
-CISNE NEGRO
-ORANGUTÁN
-RATA TOPO DESNUDA
-GORRIÓN
-CAMELLO
-CIEMPIÉS GIGANTE
-SURICATA
-HIPOPÓTAMO PIGMEO
-ORNITORRINCO
-AVESTRUZ EMÚ
-TARÁNTULA GIGANTE
-FAISÁN
-PETAURO DEL AZÚCAR
-OROPÉNDOLA
-AVISPA
-GORGOJO
-ESCARABAJO BOMBARDERO
-PUERCOESPÍN DE LA INDIA
-FLAMENCO ENANO
-TUCÁN
-HIPOPÓTAMO PIGMEO
-RANA TORO
-MURCIÉLAGO FRUTERO
-FOCA
-CARACOL AFRICANO
-CIEMPIÉS VENENOSO
-MEDUSA MELENA DE LEÓN
-CUCARACHA GIGANTE
-PEZ LUNA
-SALAMANDRA GIGANTE CHINA
-CANGREJO HERRADURA
-LEOPARDO DE LAS NIEVES
-OCELOTE
-GUEPARDO
-GORILA DE MONTAÑA
-ARMADILLO
-FOCA LEOPARDO
-MARIPOSA MONARCA
-MOSCA DE LA FRUTA
-ABEJA MELÍFERA
-RANA FLECHA VENENOSA
-LORO GRIS AFRICANO
-TARÁNTULA GOLIAT
-BÚFALO
-RANA VENENOSA DORADA
-ERIZO PIGMEO AFRICANO
-INSECTO PALO
-GRILLO TOPO GIGANTE
-AMEBA
-COCODRILO DEL NILO
-MOSQUITO TIGRE ASIÁTICO
-CULEBRA MARINA
-DRAGÓN DE KOMODO
-PINGÜINO EMPERADOR
-ELEFANTE AFRICANO
-SAPO COMÚN EUROPEO
-LAGARTO CORNUDO DE TEXAS
-GAVIOTA ARGÉNTEA
-CANARIO ROLLER
-CIERVO ROJO
-LOBO GRIS
-LOBO ÁRTICO
-CISNE TROMPETERO
-BÚHO MANCHADO
-MARIPOSA TIGRE
-RANA DE OJOS ROJOS
-GORGOJO DEL BANANO
-SALAMANDRA DE FUEGO
-CIGÜEÑA
-CANGREJO ERMITAÑO
-PATO MANDARÍN
-BÚHO CORNUDO
-MURCIÉLAGO NARIZ DE HOJA
-CIEMPIÉS DE LA SELVA
-CABRA MONTÉS
-HIPOPÓTAMO PIGMEO
-TORDO
-CABALLITO DE MAR PIGMEO
-SALTAMONTES GIGANTE
-ABEJA CARPINTERA
-GACELA
-ESCARABAJO CIERVO
-CALAMAR GIGANTE
-OVEJA MARINA
-CHIMPANCÉ BONOBO
-ÁGUILA CALVA
-SERPIENTE CASCABEL
-PINGÜINO DE PENACHO AMARILLO
-GORILA OCCIDENTAL DE LLANURA
-ZORRO ÁRTICO
-PÁJARO DEL PARAÍSO
-TIBURÓN BLANCO
+Perro
+Gato
+León
+Elefante
+Jirafa
+Tigre
+Zorro
+Oso
+Mono
+Cebra
+Conejo
+Vaca
+Caballo
+Lobo
+Serpiente
+Rana
+Pato
+Búho
+Águila
+Pez
+Tortuga
+Ciervo
+Murciélago
+Ratón
+Araña
+Escorpión
+Tiburón
+Canguro
+Gorila
+Hiena
+Abeja
+Cangrejo
+Cocodrilo
+Delfín
+Flamenco
+Gaviota
+Hipopótamo
+Iguana
+Koala
+Loro
+Medusa
+Nutria
+Ñu
+Oveja
+Panda
+Quetzal
+Rata
+Sapo
+Topo
+Urraca
+Víbora
+Wapití
+Xerus
+Yacaré
+Médico
+Ingeniero
+Profesor
+Abogado
+Arquitecto
+Dentista
+Psicólogo
+Escritor
+Pintor
+Actor
+Bailarín
+Músico
+Astrónomo
+Químico
+Biólogo
+Matemático
+Físico
+Geólogo
+Economista
+Programador
+Diseñador
+Fotógrafo
+Cocinero
+Veterinario
+Agricultor
+Fontanero
+Electricista
+Albañil
+Jardinero
+Bombero
+Policía
+Carpintero
+Empresario
+Taxista
+París
+Londres
+Nueva York
+Tokio
+Madrid
+Roma
+Berlín
+Atenas
+Moscú
+Sídney
+Río de Janeiro
+Pekín
+Estambul
+El Cairo
+Ciudad de México
+Buenos Aires
+Toronto
+Vancouver
+Sao Paulo
+Ámsterdam
+Praga
+Budapest
+Viena
+Varsovia
+Oslo
+Estocolmo
+Copenhague
+Helsinki
+Dublín
+Lisboa
+Edimburgo
+Ginebra
+Barcelona
+Venecia
+Florencia
+Dubái
+Singapur
+Bangkok
+Sydney
+Auckland
+Manzana
+Plátano
+Naranja
+Uva
+Sandía
+Fresa
+Piña
+Melón
+Limón
+Mango
+Pera
+Cereza
+Kiwi
+Mandarina
+Pomelo
+Melocotón
+Ciruela
+Albaricoque
+Frambuesa
+Moras
+Papaya
+Granada
+Higo
+Calabaza
+Pepino
+Zanahoria
+Lechuga
+Espinaca
+Brócoli
+Coliflor
+Patata
+Tomate
+Cebolla
+Ajo
+Pimiento
+Calabacín
+Berenjena
+Remolacha
+Arroz
+Maíz
+Avión
+Barco
+Tren
+Coche
+Bicicleta
+Helicóptero
+Moto
+Camión
+Autobús
+Tranvía
+Submarino
+Avioneta
+Caravana
+Lancha
+Yate
+Globo aerostático
+Patinete
+Carrito de golf
+Trineo
+Carroza
+Dinosaurio
+Gorrión
+Avestruz
+Ardilla
+Mariposa
+Langosta
+Mosquito
+Rinoceronte
+Caracol
+Cam
+ello
+Armadillo
+Escarabajo
+Orangután
+Narval
+Zarigüeya
+Tarántula
+Quokka
+Puma
+Lémur
+Aardvark
+Chimpancé
+Pájaro carpintero
+Salamandra
+Colibrí
+Garza
+Castor
+Gorgojo
+Yak

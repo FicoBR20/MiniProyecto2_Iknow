@@ -40,9 +40,9 @@ public class Botones extends  JButton{
         panel_palabra = new JPanel();
         panel_linea = new JPanel();
         palabras_array = new ArrayList<>();
-        tamaño_fuente = 15;
-        ancho=120;
-        alto = 40;
+        tamaño_fuente = 25;
+        ancho=240;
+        alto = 60;
         escucha = new Lanza_app_Prueba.Escucha();
         this.setBackground(null);
         this.setContentAreaFilled(false);
@@ -78,9 +78,20 @@ public class Botones extends  JButton{
         this.setFocusable(false);//Quita linea de los botones
         imageIcon = new ImageIcon();
         imageIcon_Pressed = new ImageIcon();
-        getBoton_style_1(titulo);
+        getBoton_style_0(titulo);
     }
 
+
+    public JButton getBoton_style_0(String titulo ) {
+        imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/botones/Boton_marino.png")));
+        imageIcon_Pressed = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/botones/Boton_marino_presed.png")));
+        this.setForeground(Color.white);
+        this.setText(titulo);
+        this.setFont(new Font(null,Font.BOLD,tamaño_fuente));
+        this.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(ancho,alto,Image.SCALE_SMOOTH)));
+        this.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(ancho,alto,Image.SCALE_SMOOTH)));
+        return this;
+    }
 
     public JButton getBoton_style_1(String titulo ) {
         imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/botones/Boton.png")));

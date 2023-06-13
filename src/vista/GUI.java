@@ -2,7 +2,8 @@ package vista;
 
 import javax.swing.*;
 import java.awt.*;
-import modelo.Juego;
+
+import vista.old.Header;
 
 /**
  * Esta clase gestiona los recursos gráficos del juego.
