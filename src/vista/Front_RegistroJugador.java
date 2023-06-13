@@ -10,6 +10,8 @@ import java.awt.event.*;
 
 public class Front_RegistroJugador extends JPanel {
 
+    private Control_FileManager controlFileManager;
+
     private Jugador jugador;
 
     private Juego juego_Ik;
@@ -52,10 +54,10 @@ public class Front_RegistroJugador extends JPanel {
         this.setPreferredSize(new Dimension(600,400));
         this.setBackground(fondoLila);
 
-
     }
 
     public void init_Panel(){
+
 
         jugador = new Jugador();
 
@@ -207,7 +209,11 @@ public class Front_RegistroJugador extends JPanel {
 
                     System.out.println(" Hemos registrado sus datos " + name_Player + " nivel del juego " + Integer.toString(juego_Ik.getNivel()));
                     System.out.println(" to string es " + jugador.ToString_Jugador());
+
                 }
+
+
+
             }
         }
     }

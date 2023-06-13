@@ -4,7 +4,6 @@ import modelo.Juego;
 import vista.Front_RegistroJugador;
 
 import java.io.*;
-import java.util.ArrayList;
 
 /**
  * Clase que registrara la información del jugador
@@ -16,10 +15,10 @@ public class Control_FileManager {
     private FileWriter fileWriter;
     private BufferedWriter output;
 
-    /**
-     * Arraylist con la info de los jugadores.
-     */
-    private ArrayList<String>jugadores = new ArrayList<String>();
+//    /**
+//     * Arraylist con la info de los jugadores.
+//     */
+//    private ArrayList<String>jugadores = new ArrayList<String>();
     /**
      * corresponde a la información que está registrada en el archivo de texto.
      */
@@ -29,12 +28,35 @@ public class Control_FileManager {
         return info_Completa_Jugador;
     }
 
-    public void setInfo_Completa_Jugador(String info_Completa_Jugador) {
+    public void setInfo_Completa_Jugador(String el_player) {
+        String nombre_Obtenido = "";
+        String nivel_Obtenido= "";
+        String puntos_Obtenido= "";
 
-        this.info_Completa_Jugador = info_Completa_Jugador;
+        if (reader_Jugador().contains(el_player)){
+            nombre_Obtenido = el_player;
+            int puntodeinicio = reader_Jugador().indexOf(el_player);
+            nivel_Obtenido = String.valueOf(reader_Jugador().charAt(puntodeinicio+el_player.length()+2));
+            puntos_Obtenido = String.valueOf(reader_Jugador().charAt(puntodeinicio+2));
+
+            System.out.println(" en lo que va la funcion es " + nombre_Obtenido + " " + nivel_Obtenido +
+                    " " + puntos_Obtenido);
+
+
+        }
+
+
+        el_player = nivel_Obtenido + " " + nivel_Obtenido + " " + puntos_Obtenido;
+
+        this.info_Completa_Jugador = el_player;
     }
 
 
+    /**
+     * Metodo que genera un string del registro de los jugadores
+     * en el archivo de texto info_Jugador.txt.
+     * @return
+     */
     public String reader_Jugador(){
         String text = "";
 
@@ -42,18 +64,11 @@ public class Control_FileManager {
             fileReader = new FileReader("src/resources/file/info_Jugador.txt");
             input = new BufferedReader(fileReader);
 
-
-
             String line = input.readLine(); // almacena lo que se escribe en el text field
 
             String prueba = line;
 
-
-
             System.out.println(" lo de line " + line +" \n");
-
-            //line.charAt()
-
 
             while(line != null){
                 text += line;
@@ -97,6 +112,25 @@ public class Control_FileManager {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    public void entrega_Info_Detallada(String nombre){
+
+        String nombre_Obtenido;
+        String nivel_Obtenido;
+        String puntos_Obtenido;
+
+        if (reader_Jugador().contains(nombre)){
+            nombre_Obtenido = nombre;
+            int puntodeinicio = reader_Jugador().indexOf(nombre);
+            nivel_Obtenido = String.valueOf(reader_Jugador().charAt(puntodeinicio+nombre.length()+2));
+            puntos_Obtenido = String.valueOf(reader_Jugador().charAt(puntodeinicio+2));
+
+            System.out.println(" en lo que va la funcion es " + nombre_Obtenido + " " + nivel_Obtenido +
+                    " " + puntos_Obtenido);
+
+
         }
     }
 }
