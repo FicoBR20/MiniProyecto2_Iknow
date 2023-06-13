@@ -72,26 +72,21 @@ public class Panel_0_bienvenida extends FondoPanel{
 //
             if (e.getSource()==timer && cont <= 13 && cont_2 < 0) {
                 timer.stop();
-                System.out.println("Entro "+cont);
                 logo.set_ruta_fondo("/resources/animaciones/logo/"+cont+".png");
                 cont++;
                 timer = new Timer(100, escucha);
                 timer.start();
             }else if (e.getSource()==timer && cont > 13 && cont_2 < 0){
-
                 logo.set_ruta_fondo("/resources/animaciones/logo/0.png");
                 cont_2 = 13;
             }
 
             else  if (e.getSource()==timer && cont_2 > 0 && cont > 0) {
-
-                System.out.println("Entro ______ "+cont_2);
                 logo.set_ruta_fondo("/resources/animaciones/logo/"+cont_2+".png");
                 cont_2--;
                 boton_sguiente.setVisible(true);
-//                timer.stop();
             }else if (e.getSource()==timer &&  cont > 13 && cont_2 == 0){
-                System.out.println("cao uno  ");
+                timer.stop();
                 cont = 0;
             }
 
