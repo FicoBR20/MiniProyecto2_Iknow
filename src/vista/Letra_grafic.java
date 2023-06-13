@@ -64,7 +64,7 @@ public class Letra_grafic extends  JLabel{
         ancho = _ancho;
         alto = _alto;
         escucha = new Lanza_app_Prueba.Escucha();
-        this.setBackground(null);
+        this.setBackground(new Color(0x0000000, true));
         this.setBorder(BorderFactory.createEmptyBorder());
         this.setHorizontalTextPosition(SwingConstants.CENTER);
         this.setFocusable(false);//Quita linea de los botones
