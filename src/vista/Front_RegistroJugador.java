@@ -18,7 +18,7 @@ public class Front_RegistroJugador extends FondoPanel {
 
 
 
-    private Botones iniciar_Juego;
+    private Botones iniciar_Juego, atras_boton;
 
 
     private JLabel jlabel_Title, jLabel_NombreJugador;

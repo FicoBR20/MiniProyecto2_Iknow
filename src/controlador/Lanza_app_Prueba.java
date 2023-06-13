@@ -51,7 +51,7 @@ public class Lanza_app_Prueba {
 
         front_registroJugador = new Front_RegistroJugador();
 
-        seleccionar_pantalla(4);
+        seleccionar_pantalla(0);
     }
 
     public void secuencia_Logica(int secuencial){
@@ -170,7 +170,7 @@ public class Lanza_app_Prueba {
             if(e.getActionCommand()== "ATRAS"){
                 bill.seleccionar_pantalla(1);
             }
-            else if(e.getActionCommand()== "SALIR"){
+            else if(e.getActionCommand()== "AVANZAR"){
                 bill.seleccionar_pantalla(1);
             }
 

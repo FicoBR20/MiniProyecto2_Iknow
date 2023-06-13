@@ -27,6 +27,7 @@ public class FondoPanel extends JPanel {
     }
 
     public void set_ruta_fondo(String imageIcon) {
+
         this.imageIcon = imageIcon;
     }
     public void set_ruta_fondo(int index) {

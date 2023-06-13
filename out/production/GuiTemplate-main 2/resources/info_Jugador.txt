@@ -204,19 +204,6 @@ rs 1
 ffff 1
 56 1
 pilar rondon cobo 1
-<<<<<<< HEAD
-ppppp 1
-cccc 1
-ffff 1
-tttt 1
-eee 1
-eee 1
-ddd 1
-rrr 1
-ffff 1
-dddd 1
-rrrr 1
-=======
 >>>>>>> 4467d031b6aa45e4e92da5c06e30a6b33f4f72ca
 fsdfs 1
 sdfsdf 1
@@ -235,3 +222,4 @@ gdfg 1
 dkfgñlkd 1
 kljslkdfj 1
 xzczxc 1
+YUUFUFUFKFKF 1
