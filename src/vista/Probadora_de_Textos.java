@@ -11,10 +11,14 @@ public class Probadora_de_Textos extends JFrame{
     String datosJugador3 = "maria" + " " + "10" + " " + "100" + "\n";
     String datosJugador4 = "josua" + " " + "7" + " " + "10000" + "\n";
 
+    // JUGADORES CON ERROR DE TABULACION
     String jugadorErrado1 = "marta"  + "7" + "   " + "10000" + "\n";
     String jugadorErrado2 = "zulia" + "  " + "710" + "   " + "10000" + "\n";
 
+    // STRING CON LOS JUGADORES CORRECTAMENTE TABULADOS
     String todosJuntos_Correctos = datosJugador + datosJugador2 + datosJugador3 + datosJugador4;
+
+    // STRING CON LOS JUGADORES ERRONEAMENTE TABULADOS
     String todojuntoErrores = datosJugador + datosJugador2 + datosJugador3 + datosJugador4 + jugadorErrado1 + jugadorErrado2;
 
     public Probadora_de_Textos(){
@@ -90,7 +94,7 @@ public class Probadora_de_Textos extends JFrame{
 
         Probadora_de_Textos pt = new Probadora_de_Textos();
        // String resultado = " ";
-        String nombre = "marta";
+        String nombre = "josua";
         pt.entrega_Info_Detallada(nombre);
     }
 
