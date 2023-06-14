@@ -185,9 +185,9 @@ public class Front_RegistroJugador extends FondoPanel {
 
                 String db = new Control_FileManager().reader_Jugador();
 
-                if (name_Player.contains(" ") || name_Player.isEmpty()==true || name_Player.length()>5) {
+                if (name_Player.contains(" ") || name_Player.isEmpty()==true || name_Player.length()!=5 ) {
                     System.out.println(" debe ingresar un nombre sin espacios para registrarse ");
-                    JOptionPane.showMessageDialog(null, "Ingrese su nombre de jugador\nUse máximo 5 caracteres \n" +
+                    JOptionPane.showMessageDialog(null, "Ingrese su nombre de jugador\nUse SOLO 5 caracteres \n" +
                             "sin espacios en blanco\nGracias.");
 
 
