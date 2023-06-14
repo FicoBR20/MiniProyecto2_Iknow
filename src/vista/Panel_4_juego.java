@@ -47,6 +47,7 @@ public class Panel_4_juego extends FondoPanel {
      */
     public Panel_4_juego() {
         juego = new Juego();
+        juego.setNivel(1);
         jugador = new Jugador();
         ini();
     }
@@ -103,7 +104,7 @@ public class Panel_4_juego extends FondoPanel {
         mensaje = new Area_de_Texto();
         cuenta_memorizar = 0;
         cuenta_nivel = 0;
-        primer_inicio = 0;
+        primer_inicio = 99;
         cuenta_nivel_tiempo = 0;
         memoriza = "";
         infoPanel = " Fijate muy bien en las palabras presentadas\ndeberas recordarlas dentro de poco..suerte\n";
@@ -235,6 +236,19 @@ public class Panel_4_juego extends FondoPanel {
          * Secuencia que presenta las palabras iniciales para que el jugador las memorize
          */
         public void actionPerformed(ActionEvent e) {
+
+
+            if (e.getSource()==timer && primer_inicio == 99){
+                timer.stop();
+                JOptionPane.showMessageDialog(null,
+                        "Nivel " +juego.getNivel()+
+                                "\nPntaje " +juego.getPuntaje_Logrado()+
+                                "\nPalabra a memorizar " +juego.getCant_Palabras_a_Memorizar()+
+                                "\nPalabras de nivel "+juego.getTotal_Palabras_del_Nivel());
+                primer_inicio=0;
+                timer = new Timer(100, escucha);
+                timer.start();
+            }
 
             int count = 0;
             while (e.getSource()==timer && primer_inicio < 5){

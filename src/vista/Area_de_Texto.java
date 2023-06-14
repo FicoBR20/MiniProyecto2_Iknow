@@ -76,7 +76,6 @@ public class Area_de_Texto {
         return info_al_Jugador;
     }
 
-
     public JTextArea seText(String palabra) {
         Font font = new Font(Font.SANS_SERIF, Font.BOLD, 50);
         info_al_Jugador.setFont(font);

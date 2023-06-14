@@ -265,13 +265,13 @@ public class Juego {
                 acierto_Exigido=0.7;
                 break;
             case 3:
-                cant_Palabras_a_Memorizar =25;
-                total_Palabras_del_Nivel =50;
+                cant_Palabras_a_Memorizar =4;
+                total_Palabras_del_Nivel =8;
                 acierto_Exigido=0.75;
                 break;
             case 4:
-                cant_Palabras_a_Memorizar =30;
-                total_Palabras_del_Nivel =60;
+                cant_Palabras_a_Memorizar =5;
+                total_Palabras_del_Nivel =10;
                 acierto_Exigido=0.8;
                 break;
             case 5:

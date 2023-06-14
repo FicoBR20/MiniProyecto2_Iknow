@@ -54,7 +54,7 @@ public class Lanza_app_Prueba {
 
         front_registroJugador = new Front_RegistroJugador();
 
-        seleccionar_pantalla(0);
+        seleccionar_pantalla(4);
     }
 
     public void secuencia_Logica(int secuencial){
@@ -94,7 +94,7 @@ public class Lanza_app_Prueba {
                 gui.repaint();
             }
             case 4 ->{
-                juego.incrementar_nivel();
+//                juego.incrementar_nivel();
                 System.out.println("Nivel "+juego.getNivel());
                 panel_4_juego = new Panel_4_juego(juego,jugador);
                 panel_4_juego.start(); // inicializa timer
@@ -137,7 +137,7 @@ public class Lanza_app_Prueba {
             case 10->{
                 // se debe preguntar si supero el nivel.
                 //....nivel +1
-                jugador = panel_4_juego.getJugador();
+//                jugador = panel_4_juego.getJugador();
 
                 juego = panel_4_juego.getJuego();
                 juego.incrementar_nivel();
@@ -145,8 +145,8 @@ public class Lanza_app_Prueba {
 
                 panel_4_juego = new Panel_4_juego(juego);
                 bill.seleccionar_pantalla(4);
-
             }
+
             case 12->{ // para presentar front jugador habitual
                 gui.setContentPane(frontJugadorHabitual);
                 gui.revalidate();
