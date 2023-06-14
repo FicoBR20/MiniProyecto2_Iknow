@@ -32,7 +32,7 @@ public class Lanza_app {
         juego = new Juego();
         gui = new GUI();
 
-        gui.lanza_frames(juego.getEstado());//estado=1
+        gui.lanza_frames(11);//estado=1
 
         System.out.println(" receptor vale arriba"+receptor);
 

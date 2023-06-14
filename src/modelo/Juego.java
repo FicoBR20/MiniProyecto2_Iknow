@@ -72,7 +72,7 @@ public class Juego {
      *
      * 11 -> El juego empieza en el nivel 1
      *
-     *
+     * 12 -> Se presenta " DE NUEVO" el panel de registro porque el nombre de jugador ya existe en la base de datos.
      *
      *
      * 99 -> indica un error de nivel debordado, solo existen 10 niveles.
@@ -109,6 +109,7 @@ public class Juego {
      * Constructor method.
      */
     public Juego(){
+        nivel=1;
         limite_string_basico = 199;
         total_Palabras_del_Nivel = 0;
         cant_Palabras_a_Memorizar = 0;

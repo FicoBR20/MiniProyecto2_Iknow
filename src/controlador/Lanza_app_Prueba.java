@@ -14,6 +14,8 @@ import java.util.Objects;
 
 
 public class Lanza_app_Prueba {
+
+    private Front_Jugador_Habitual frontJugadorHabitual;
     private  GUI gui;
     private  Panel_0_bienvenida panel_0_bienvenida;
     private  Panel_1_Inicial panel_1_inicial;
@@ -32,7 +34,6 @@ public class Lanza_app_Prueba {
     private String texto;
     private static Lanza_app_Prueba bill = null;
 
-
     /**
      * Método constructor
      */
@@ -48,6 +49,8 @@ public class Lanza_app_Prueba {
 
         panel_6_continuar = new Panel_6_continuar();
         panel_7_niveles = new Panel_7_niveles();
+
+        frontJugadorHabitual = new Front_Jugador_Habitual();
 
         front_registroJugador = new Front_RegistroJugador();
 
@@ -144,6 +147,12 @@ public class Lanza_app_Prueba {
                 bill.seleccionar_pantalla(4);
 
             }
+            case 12->{ // para presentar front jugador habitual
+                gui.setContentPane(frontJugadorHabitual);
+                gui.revalidate();
+                gui.repaint();;
+
+            }
             default -> {
                 System.out.println(" no hay mas pantallas");
             }
@@ -174,15 +183,15 @@ public class Lanza_app_Prueba {
                 bill.seleccionar_pantalla(1);
             }
 
-            else if(Objects.equals(e.getActionCommand(), "MENÚ")){
+            else if(Objects.equals(e.getActionCommand(), "MENÚ")){ // muestra un menu
                 bill.seleccionar_pantalla(2);
             }
 
-            else if(Objects.equals(e.getActionCommand(), "COMO JUGAR")){
+            else if(Objects.equals(e.getActionCommand(), "COMO JUGAR")){ // va a reglas
                 bill.seleccionar_pantalla(3);
             }
 
-            else if(Objects.equals(e.getActionCommand(), "NUEVO JUEGO")){
+            else if(Objects.equals(e.getActionCommand(), "NUEVO JUEGO")){ // va a registro jugador
                 bill.seleccionar_pantalla(6);
             }
 
@@ -206,7 +215,7 @@ public class Lanza_app_Prueba {
                 bill.seleccionar_pantalla(5);
             }
 
-            else if(Objects.equals(e.getActionCommand(), "INICIAR")){
+            else if(Objects.equals(e.getActionCommand(), "INICIAR")){ // empieza a mostrar palabras en el Nivel 1 del juego
                 bill.seleccionar_pantalla(4);
             }
 

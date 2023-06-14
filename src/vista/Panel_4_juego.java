@@ -9,7 +9,15 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 public class Panel_4_juego extends FondoPanel {
+
+/**
+ * Clase que presenta el Panel del juego, tanto las palabras memorizar
+ * como todas las palabras del nivel para que el jugador realize su
+ * elecctión.
+ * @ genera el total de puntos logrados por el Jugador sumados todos los niveles.
+ */
 
     private String infoPanel;
     private Font font;
@@ -35,7 +43,7 @@ public class Panel_4_juego extends FondoPanel {
 
 
     /**
-     * Presenta en el nivel actual
+     * Constructor sin parametros
      */
     public Panel_4_juego() {
         juego = new Juego();
@@ -79,6 +87,7 @@ public class Panel_4_juego extends FondoPanel {
     /**
      * Este metodo inicializa las variables de la clase
      */
+
     private void ini(){
 
         set_ruta_fondo(2);
@@ -188,6 +197,7 @@ public class Panel_4_juego extends FondoPanel {
 
 
         si_boton.setVisible(false);
+        no_boton.setVisible(false);
         botonX.setVisible(false);
         box.setVisible(false);
         box.setVisible(false);
@@ -215,37 +225,6 @@ public class Panel_4_juego extends FondoPanel {
         this.juego = juego;
     }
 
-//    protected void paintComponent(Graphics g){
-//        super.paintComponent(g);
-//        String receptor = "";
-//      //  receptor = palabra.getPalabra_a_Memorizar();
-//
-//        g.setColor(Color.WHITE);
-//        g.fillRect((800-W)/2,10 ,W,H);
-//
-//        BufferedImage image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
-//        Graphics g2 = image.getGraphics();
-//
-//        String  texto = "Puntos "+jugador.getPuntaje_Total()+"La palabra a memorizar es" + receptor;
-//        FontMetrics metrics = g.getFontMetrics();
-//        int anchoEnPixeles = metrics.stringWidth(texto);
-//
-//        g.setColor(Color.BLACK);
-//        g.setFont(new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 27));
-//
-//        g.drawString(texto,(W-anchoEnPixeles)/2,40);
-//
-////        botonX = new Letra_grafic();
-////        gbc.gridx=0; // columna 0
-////        gbc.gridy=0; // fila 0
-////        gbc.gridwidth=1; // ocupara 4 columnas
-////        gbc.gridheight=1; // ocupara 3 filas
-////        gbc.insets.set(0,0,0,0);
-////        this.add(botonX.seText_grafico(""), gbc);
-//        repaint();
-//
-//    }
-
     /**
      * inner class implements Listeners used by Panel_1_Inicial class
      */
@@ -256,196 +235,8 @@ public class Panel_4_juego extends FondoPanel {
          * Secuencia que presenta las palabras iniciales para que el jugador las memorize
          */
         public void actionPerformed(ActionEvent e) {
+
             int count = 0;
-
-
-//            if (e.getSource()==timer) {
-//                primer_inicio++;
-//            }
-
-//            switch (primer_inicio){
-//                case 1 ->{
-//                    timer.stop();
-//                    botonX.seText_grafico("BIENVENIDO");
-//                    mensaje.seText("I know that word");
-//                    timer = new Timer(4000, escucha);
-//                    timer.start();
-//                }
-//                case 2 ->{
-//                    timer.stop();
-//                    botonX.seText_grafico("Ready");
-//                    mensaje.seText("");
-//                    timer = new Timer(2000, escucha);
-//                    timer.start();
-//                }
-//                case 3 ->{
-//                    timer.stop();
-//                    botonX.seText_grafico("Go");
-//                    mensaje.seText("");
-//                    timer = new Timer(2000, escucha);
-//                    timer.start();
-//                }
-//                case 4 ->{
-//                    timer.stop();
-//                    botonX.setText("");
-//                    mensaje.seText("");
-//                    timer = new Timer(2000, escucha);
-//                    timer.start();
-//                }
-//
-//                case 5 ->{
-////                        timer.stop();
-//                        System.out.println("Palabra "
-//                                +palabra.getPalabra_a_Memorizar().get(cuenta_memorizar)
-//                                +" Time "+ cuenta_memorizar +"El timer está corriendo?"
-//                                + String.valueOf(timer.isRunning()));
-//                        botonX.seText_grafico(""+palabra.getPalabra_a_Memorizar().get(cuenta_memorizar));
-//                        cuenta_memorizar++;
-//                        primer_inicio = 5;
-//                        timer = new Timer(2000, escucha);
-//                        timer.start();
-//                }
-//
-//
-//                case 6 ->{
-//
-//
-//                        timer.stop();
-//                        mensaje.seText_2("¿Es una palabra memorizada?");
-//                        botonX.seText_grafico(palabra.getPalabra_del_nivel().get(0));// estamos para retomar la presentacion de las palbras.
-//                        panel_botones.setVisible(true); // si no visibles.... atras ya venia.
-//
-////                    Inicia el temporizador para escoger la palabra memorizada
-//                        timer_acierto_2 = new Timer(2000,escucha);
-//                        timer_acierto_2.start();
-//
-//                    //Aqui se setea el tiempo que dura cada palabra a memorizar
-//                    timer = new Timer(1000, escucha);
-//                    timer.start();
-//                }
-//
-//                case 7 ->{
-//                    timer.stop();
-//                    System.out.println("timer 2");
-//                    mensaje.seText_2("¿Es una palabra memorizada?");
-//                    botonX.seText_grafico(palabra.getPalabra_del_nivel().get(cuenta_nivel));
-//                    panel_botones.setVisible(true);
-//                    //Temporizador para encoger la palabra correcta
-//                    timer = new Timer(5000, escucha);
-//                    timer.start();
-//                }
-//
-//                case 8 ->{
-//                    timer.stop();
-//                    panel_botones.setVisible(false);
-//                    timer_acierto_2.stop();
-//                    mensaje.seText_2("Se acabo el tiempo");
-//                    botonX.seText_grafico("");
-//                    cuenta_nivel++;
-//                    timer = new Timer(2000,escucha);
-//                    timer.start();
-//                }
-//                case 9 ->{
-//
-//                    timer_acierto_2.stop();
-//                    botonX.seText_grafico("");
-//                    panel_botones.setVisible(true);
-//
-//                    if (palabra.getPalabra_a_Memorizar().contains(palabra.getPalabra_del_nivel().get(cuenta_nivel))){
-//                        mensaje.seText_2("CORRECTO\n"
-//                                +palabra.getPalabra_del_nivel().get(cuenta_nivel)
-//                                +"\nsi es una palabra memorizada"
-//                        );
-//                        //acumular 10  puntos al jugador
-//                        juego.setPuntaje_Logrado(); //estado indica que acerto.
-//                        jugador.setPuntaje_Total(juego);
-//                        System.out.println(" el puntaje ahora es" + juego.getPuntaje_Logrado() + " el jugador lleva estos puntos " +
-//                                jugador.getPuntaje_Total());
-//                        mensaje_puntos.seText_2("Puntos "+juego.getPuntaje_Logrado());
-//
-//                    }else {
-//                        mensaje.seText_2("INCORRECTO\n"
-//                                +palabra.getPalabra_del_nivel().get(cuenta_nivel)
-//                                +"\nno es una palabra memorizada"
-//
-//                        );
-//                    }
-//                    cuenta_nivel++;
-//                    timer = new Timer(4000,escucha);
-//                    timer.start();
-//                }
-//                case 10 ->{
-//                    timer_acierto_2.stop();
-//                    botonX.seText_grafico("");
-//                    panel_botones.setVisible(true);
-//
-//                    if (palabra.getPalabra_a_Memorizar().contains(palabra.getPalabra_del_nivel().get(cuenta_nivel))){
-//                        mensaje.seText_2("INCORRECTO\n"
-//                                +palabra.getPalabra_del_nivel().get(cuenta_nivel)
-//                                +"\nsi es una palabra memorizada"
-//                        );
-//
-//                    }else {
-//                        mensaje.seText_2("CORRECTO\n"
-//                                +palabra.getPalabra_del_nivel().get(cuenta_nivel)
-//                                +"\nno es una palabra memorizada"
-//                        );
-//                        //acumular 10  puntos al jugador
-//                        juego.setPuntaje_Logrado(); //estado indica que acerto.
-//                        jugador.setPuntaje_Total(juego);
-//                        System.out.println(" el puntaje ahora es" + juego.getPuntaje_Logrado() + " el jugador lleva estos puntos " +
-//                                jugador.getPuntaje_Total());
-//                        mensaje_puntos.seText_2("Puntos "+juego.getPuntaje_Logrado());
-//                    }
-//                    cuenta_nivel++;
-//                    timer = new Timer(4000,escucha);
-//                    timer.start();
-//                }
-//                case 11 ->{
-//                    timer_acierto_2.stop();
-//                    timer.stop();
-//                    if (juego.nivel_Superado()) {
-//
-//                        panel_botones.setVisible(false);
-//                        mensaje.seText_2("");
-//                        botonX.seText_grafico("PASAS AL SIGUIENTE NIVEL");
-//                        atras_boton.setVisible(false);
-//
-//                        gbc.gridx = 0; // columna 0
-//                        gbc.gridy = 5; // fila 0
-//                        gbc.gridwidth = 1; // ocupara 4 columnas
-//                        gbc.gridheight = 1; // ocupara 3 filas
-//                        atras_boton.addActionListener(escucha);
-//                        add(siguiente.getBoton_style_1("SIGUIENTE"), gbc);
-//                    }
-//                    else {
-//
-//                        panel_botones.setVisible(false);
-//                        mensaje.seText_2("");
-//                        botonX.seText_grafico("GAME OVER");
-//                        atras_boton.setVisible(false);
-//
-//                        gbc.gridx = 0; // columna 0
-//                        gbc.gridy = 5; // fila 0
-//                        gbc.gridwidth = 1; // ocupara 4 columnas
-//                        gbc.gridheight = 1; // ocupara 3 filas
-//                        atras_boton.addActionListener(escucha);
-//                        add(siguiente.getBoton_style_1("REPETIR"), gbc);
-//                        juego.reset_puntos();
-//
-//                    }
-//                    cuenta_nivel = 0;
-//                    cuenta_memorizar = 0;
-//                    cuenta_nivel_tiempo =0;
-//                    primer_inicio = 0;
-//
-//                }
-//
-//            }
-
-            // Animacion del numero 3
-
-
             while (e.getSource()==timer && primer_inicio < 5){
                 timer.stop();
                 System.out.println("Entro while #3 --->"+ count);
@@ -568,7 +359,6 @@ public class Panel_4_juego extends FondoPanel {
                     primer_inicio++;
                     timer = new Timer(3000, escucha);
                     timer.start();
-
                 }else {
                     System.out.println("Flag 2");
                     timer.stop();
@@ -634,6 +424,7 @@ public class Panel_4_juego extends FondoPanel {
                     System.out.println(" el puntaje ahora es" + juego.getPuntaje_Logrado() + " el jugador lleva estos puntos " +
                             jugador.getPuntaje_Total());
                     mensaje_puntos.seText_2("Puntos "+juego.getPuntaje_Logrado());
+
 
                 }else {
                     si_boton.setVisible(false);
@@ -720,6 +511,11 @@ public class Panel_4_juego extends FondoPanel {
                 primer_inicio = 0;
 
             }
+
+
+
+
+
         }
     }
 

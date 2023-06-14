@@ -63,13 +63,13 @@ public class Jugador {
     }
 
     /**
-     * Genera un String con la información del jugdor.
+     * Genera un String con la información del jugador.
      * @return info.
      */
-    public String ToString(){
+    public String ToString_Jugador(){
 
         String info= "";
-        info = getName() +" " +  getNivel_Superado() + " " + getPuntaje_Total();
+        info = getName() +" " +  getNivel_Superado() + " " + getPuntaje_Total() + "\n";
 
         return info;
 
