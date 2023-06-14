@@ -6,3 +6,5 @@ koko 1 0
 
 polir 1 0
 
+ff 1 0
+
