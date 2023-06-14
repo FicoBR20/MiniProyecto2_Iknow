@@ -12,6 +12,7 @@ import java.io.*;
  * de dicho archivo de texto.
  */
 public class Control_FileManager {
+    private Jugador jugador;
     private FileReader fileReader;
     private BufferedReader input;
     private FileWriter fileWriter;
@@ -67,6 +68,7 @@ public class Control_FileManager {
         nombre_Obtenido = "";
         nivel_Obtenido = "";
         puntos_Obtenido = "";
+        jugador = new Jugador();
     }
 
     /**
@@ -120,6 +122,7 @@ public class Control_FileManager {
      * @param line
      */
     public void writer_Jugador(String line){
+       String infoActualizada = jugador.ToString_Jugador();
         try {
             String text = reader_Jugador();// recepciona el String generado en el reader.
             text += line + "\n";
@@ -136,6 +139,7 @@ public class Control_FileManager {
             }
         }
     }
+
 
     /**
      * Método que rebibe el nombre de un jugador,
@@ -184,6 +188,63 @@ public class Control_FileManager {
                     " es un jugador nuevo.");
         }
 
+
+    }
+
+
+    /**
+     * Método que recibe la información de un jugador y la actualiza
+     * para ser escrita
+      * @param infoJugador_Solo
+     */
+    public void actualiza_Info_Jugador(String infoJugador_Solo){
+
+        String puntero = infoJugador_Solo.substring(0, 5);
+        System.out.println(" el puntero es " + puntero);
+
+        //todosJuntos_Correctos será el Buffer reader
+
+        String todosJuntos_Correctos = reader_Jugador();
+
+
+        if (todosJuntos_Correctos.contains(puntero)){
+            int puntodeinicio = todosJuntos_Correctos.indexOf(puntero);
+            if (todosJuntos_Correctos.substring(puntodeinicio+6, puntodeinicio+7).equals(" ") ) {// en nivel < 10
+                String dataOld = todosJuntos_Correctos.substring(puntodeinicio, puntodeinicio+ infoJugador_Solo.length());
+                char old = ' ';
+                char nueva = ' ';
+                for (int i = 0; i < infoJugador_Solo.length(); i++) {
+
+                    old = dataOld.charAt(i);
+                    nueva = infoJugador_Solo.charAt(i);
+                    todosJuntos_Correctos.replace(old,nueva);
+
+                }
+
+                System.out.println(" ya con la actualizacion queda asi " + todosJuntos_Correctos);
+
+
+                System.out.println(" data old  es " + dataOld + " tamaño de nombre es " + infoJugador_Solo.length() +
+                        " tamaño de data old es " + dataOld.length());
+
+            }
+
+            else if (!(todosJuntos_Correctos.substring(puntodeinicio+5, puntodeinicio+6).equals(" ") )) {
+                System.out.println(" Los datos están mal tabulados " + puntodeinicio);
+                JOptionPane.showMessageDialog(null, "los datos están mal tabulados");
+            }
+
+            else {
+
+                System.out.println(" hay que revisar");
+            }
+
+
+        }
+        else{
+            JOptionPane.showMessageDialog(null, " Ese nombre no está en la base de datos\n" +
+                    " es un jugador nuevo.");
+        }
 
     }
 }
