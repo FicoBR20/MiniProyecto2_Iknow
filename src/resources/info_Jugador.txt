@@ -222,7 +222,12 @@ gdfg 1
 dkfgñlkd 1
 kljslkdfj 1
 xzczxc 1
+<<<<<<< HEAD
 dfgdf 1
 sdfs 1
 zcasf 1
 Jose Erley 1
+=======
+YUUFUFUFKFKF 1
+>>>>>>> 57d3445c485159eb9c94b3a73672af696eeb0776
+ 1

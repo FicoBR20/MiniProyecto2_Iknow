@@ -37,6 +37,12 @@ public class Panel_2_menu extends FondoPanel {
         gbc.gridheight=1; // ocupara 3 filas
         this.add(area_de_texto.menu(), gbc);
 
+        gbc.gridx=1; // columna 0
+        gbc.gridy=3; // fila 0
+        gbc.gridwidth=1; // ocupara 4 columnas
+        gbc.gridheight=1; // ocupara 3 filas
+        this.add(atras_boton.getBoton_style_1("ATRAS"), gbc);
+
     }
 
 }

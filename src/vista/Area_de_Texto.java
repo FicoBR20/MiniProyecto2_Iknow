@@ -64,9 +64,10 @@ public class Area_de_Texto {
     public JTextArea opciones() {
         info_al_Jugador.append(":::OPCIONES:::\n" +
                 "Aqui van las opciones del\n" +
-                "menu?\n");
+                "menu\n...Disponibles en la próxima versión\n Gracias\n");
         return info_al_Jugador;
     }
+
 
     public JTextArea continuar() {
         info_al_Jugador.append(":::CONTINUAR:::\n" +

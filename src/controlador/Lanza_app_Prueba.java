@@ -45,11 +45,13 @@ public class Lanza_app_Prueba {
         panel_3_reglas = new Panel_3_reglas();
         panel_2_menu = new Panel_2_menu();
         panel_5_opciones = new Panel_5_opciones();
+
         panel_6_continuar = new Panel_6_continuar();
         panel_7_niveles = new Panel_7_niveles();
+
         front_registroJugador = new Front_RegistroJugador();
 
-        seleccionar_pantalla(4);
+        seleccionar_pantalla(0);
     }
 
     public void secuencia_Logica(int secuencial){
@@ -112,6 +114,7 @@ public class Lanza_app_Prueba {
                 gui.repaint();
             }
 
+
             case 7 ->{
                 gui.setContentPane(panel_6_continuar);
                 gui.revalidate();
@@ -146,8 +149,6 @@ public class Lanza_app_Prueba {
             }
 
         }
-
-
     }
 
 
@@ -169,7 +170,7 @@ public class Lanza_app_Prueba {
             if(e.getActionCommand()== "ATRAS"){
                 bill.seleccionar_pantalla(1);
             }
-            else if(e.getActionCommand()== "SALIR"){
+            else if(e.getActionCommand()== "AVANZAR"){
                 bill.seleccionar_pantalla(1);
             }
 
@@ -186,6 +187,7 @@ public class Lanza_app_Prueba {
             }
 
             else if(Objects.equals(e.getActionCommand(), "CONTINUAR")) {
+
                 bill.seleccionar_pantalla(9);
             }
 
@@ -195,6 +197,9 @@ public class Lanza_app_Prueba {
 
             else if(Objects.equals(e.getActionCommand(), "1")) {
                 bill.seleccionar_pantalla(8);
+
+                bill.seleccionar_pantalla(4);
+
             }
 
             else if(Objects.equals(e.getActionCommand(), "OPCIONES")){

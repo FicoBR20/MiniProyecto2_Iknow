@@ -19,7 +19,7 @@ public class Panel_4_juego extends FondoPanel {
     private Area_de_Texto mensaje;
     private Timer timer;
     private Timer timer_acierto;
-    private  Timer timer_acierto_2;
+    private Timer timer_acierto_2;
     private Escucha escucha;
     private  int cuenta_memorizar, cuenta_nivel;
     private String memoriza;
@@ -37,7 +37,7 @@ public class Panel_4_juego extends FondoPanel {
     /**
      * Presenta en el nivel actual
      */
-    public Panel_4_juego(){
+    public Panel_4_juego() {
         juego = new Juego();
         jugador = new Jugador();
         ini();
@@ -167,6 +167,7 @@ public class Panel_4_juego extends FondoPanel {
         this.add(si_boton.getBoton_style_0("SI"), gbc);
 
         no_boton = new Botones();
+
         gbc.gridx=2; // columna 0
         gbc.gridy=3; // fila 0
         gbc.gridwidth=2; // ocupara 4 columnas
@@ -199,10 +200,11 @@ public class Panel_4_juego extends FondoPanel {
 
     /**
      * Este métoso inicia el temporizador que muestra las palabras a memorizar
+     *
      * @nota se invoca desde la clase controladora para garantizar que
      * se inicie en el momento indicado
      */
-    public void start(){
+    public void start() {
         timer.start();
     }
 
@@ -211,7 +213,7 @@ public class Panel_4_juego extends FondoPanel {
     }
 
     public void setJuego(Juego juego) {
-       this.juego = juego;
+        this.juego = juego;
     }
 
 //    protected void paintComponent(Graphics g){
@@ -251,6 +253,9 @@ public class Panel_4_juego extends FondoPanel {
     public class Escucha implements ActionListener {
 
         @Override
+        /**
+         * Secuencia que presenta las palabras iniciales para que el jugador las memorize
+         */
         public void actionPerformed(ActionEvent e) {
             int count = 0;
 
@@ -718,4 +723,5 @@ public class Panel_4_juego extends FondoPanel {
             }
         }
     }
+
 }

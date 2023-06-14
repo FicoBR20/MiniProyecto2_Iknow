@@ -96,7 +96,7 @@ public class Panel_3_reglas extends FondoPanel{
         gbc.anchor=GridBagConstraints.LINE_END;
         boton_salir = new Botones();
         boton_salir.setVisible(false);
-        this.add(boton_salir.getBoton_style_0("SALIR"), gbc);
+        this.add(boton_salir.getBoton_style_0("AVANZAR"), gbc);
 
 
         gbc.insets.set(0,0,0,0);

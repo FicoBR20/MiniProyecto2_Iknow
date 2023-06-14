@@ -11,19 +11,34 @@ import java.awt.event.*;
 public class Front_RegistroJugador extends FondoPanel {
 
     private Juego juego_Ik;
+
     private Header header;
+
     private String name_Player;
-    private Botones iniciar_Juego,atras_boton;
+
+
+
+    private Botones iniciar_Juego, atras_boton;
+
+
     private JLabel jlabel_Title, jLabel_NombreJugador;
+
+
     private JTextField jTextField_NombreJugador;
+
+
     private Escucha escucha;
+
     private Teclado teclado;
+
     public String getName_Player() {
         return name_Player;
     }
+
     public void setName_Player(String name_Player) {
         this.name_Player = name_Player;
     }
+
     private Color verdeClaro = new Color(188, 234, 192);
     private Color fondoLila = new Color(82, 25, 196);
     /**
@@ -47,22 +62,34 @@ public class Front_RegistroJugador extends FondoPanel {
         header = new Header(" Registro del Jugador ", verdeClaro);
         header.setPreferredSize(new Dimension(600,20));
 
+
         jlabel_Title = new JLabel(" Ingrese sus datos ");
         jlabel_Title.setFont(font);
         jlabel_Title.setBackground(fondoLila);
         jlabel_Title.setForeground(verdeClaro);
+
 
         jLabel_NombreJugador = new JLabel(" Nombre del jugador ");
         jLabel_NombreJugador.setFont(font);
         jLabel_NombreJugador.setBackground(fondoLila);
         jLabel_NombreJugador.setForeground(verdeClaro);
 
+
         jTextField_NombreJugador = new JTextField("",20);
         jTextField_NombreJugador.setSize(new Dimension(100,60));
+
+
+
+
+        iniciar_Juego = new Botones("START",15,70,30);
+        iniciar_Juego.desactivar();
+
+
 
         escucha = new Escucha();
         teclado = new Teclado();
 
+        iniciar_Juego.addMouseListener(escucha);
         jTextField_NombreJugador.addKeyListener(teclado);
 
         GridBagLayout gridBagLayout = new GridBagLayout();
@@ -77,32 +104,34 @@ public class Front_RegistroJugador extends FondoPanel {
         gbc.gridy=0; // fila 0
         gbc.gridwidth=5; // ocupara n columnas
         gbc.gridheight=1; // ocupara n filas
-//        gbc.weightx = 1.0; // no se deformara
-//        gbc.weighty = 1.0; // no se deformara
-        gbc.ipadx=15;//relleno interno en x pixels
-        gbc.ipady=15;//relleno interno en y pixels
-//        gbc.anchor=GridBagConstraints.PAGE_START;//cuando el componente es mas pequenno que el area de visualización.tambien PAGE_START, PAGE_END, LINE_START, LINE_END, FIRST_LINE_START, FIRST_LINE_END, LAST_LINE_ENDy LAST_LINE_START.
+        gbc.weightx = 1.0; // no se deformara
+        gbc.weighty = 1.0; // no se deformara
+        gbc.ipady=5;//relleno interno en y pixels
+        gbc.anchor=GridBagConstraints.PAGE_START;//cuando el componente es mas pequenno que el area de visualización.tambien PAGE_START, PAGE_END, LINE_START, LINE_END, FIRST_LINE_START, FIRST_LINE_END, LAST_LINE_ENDy LAST_LINE_START.
 //        this.add(header, gbc);
 
-        gbc.gridx=0; // columna 0
+        gbc.gridx=1; // columna 0
         gbc.gridy=0; // fila 0
-        gbc.gridwidth=2; // ocupara 4 columnas
+        gbc.gridwidth=5; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
-        gbc.insets.set(0,0,50,0);
+        gbc.weightx = 1.0; // no se deformara
+        gbc.weighty = 1.0; // no se deformara
         this.add(jlabel_Title, gbc);
-
-        gbc.gridx=0; // columna 0
-        gbc.gridy=1; // fila 0
-        gbc.gridwidth=1; // ocupara 4 columnas
-        gbc.gridheight=1; // ocupara 3 filas
-        gbc.insets.set(0,0,0,0);
-        this.add(jLabel_NombreJugador, gbc);
 
         gbc.gridx=1; // columna 0
         gbc.gridy=1; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
-        gbc.insets.set(0,0,0,0);
+        gbc.weightx = 1.0; // no se deformara
+        gbc.weighty = 1.0; // no se deformara
+        this.add(jLabel_NombreJugador, gbc);
+
+        gbc.gridx=3; // columna 0
+        gbc.gridy=1; // fila 0
+        gbc.gridwidth=1; // ocupara 4 columnas
+        gbc.gridheight=1; // ocupara 3 filas
+        gbc.weightx = 1.0; // no se deformara
+        gbc.weighty = 1.0; // no se deformara
         this.add(jTextField_NombreJugador, gbc);
         jTextField_NombreJugador.requestFocus();
 //<<<<<<< HEAD
@@ -110,12 +139,9 @@ public class Front_RegistroJugador extends FondoPanel {
 //
 //>>>>>>> makecontroller
 
-        iniciar_Juego = new Botones();
-        iniciar_Juego.desactivar();
-        iniciar_Juego.addMouseListener(escucha);
-        gbc.gridx=0; // columna 0
-        gbc.gridy=2; // fila 0
-        gbc.gridwidth=2; // ocupara 4 columnas
+        gbc.gridx=1; // columna 0
+        gbc.gridy=3; // fila 0
+        gbc.gridwidth=3; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         gbc.insets.set(50,0,0,0);
         this.add(iniciar_Juego.getBoton_style_0("INICIAR"), gbc);
@@ -128,6 +154,8 @@ public class Front_RegistroJugador extends FondoPanel {
         gbc.insets.set(0,0,0,0);
         this.add(atras_boton.getBoton_style_0("ATRAS"), gbc);
     }
+
+
 
     /**
      * inner class implements Listeners used by Front_Inicial class
@@ -157,6 +185,8 @@ public class Front_RegistroJugador extends FondoPanel {
                 jTextField_NombreJugador.setText(name_Player);
 //                jTextField_NombreJugador.setText(name_Player + "registrado [nombre] [nivel]");
                 jTextField_NombreJugador.setEnabled(false);
+
+
 
                 System.out.println(" Hemos registrado sus datos " + name_Player + " nivel del juego " + Integer.toString(juego_Ik.getNivel()));
             }
