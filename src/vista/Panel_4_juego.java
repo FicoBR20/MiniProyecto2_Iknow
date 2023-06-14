@@ -167,7 +167,6 @@ public class Panel_4_juego extends FondoPanel {
         this.add(si_boton.getBoton_style_0("SI"), gbc);
 
         no_boton = new Botones();
-isOpaque()
         gbc.gridx=2; // columna 0
         gbc.gridy=3; // fila 0
         gbc.gridwidth=2; // ocupara 4 columnas
@@ -190,7 +189,8 @@ isOpaque()
 
         si_boton.setVisible(false);
         botonX.setVisible(false);
-        box.setVisible(false);.setVisible(false);
+        box.setVisible(false);
+        box.setVisible(false);
         atras_boton.setVisible(false);
 
         //Aqui se setea el temporizador para lanzar en juego
