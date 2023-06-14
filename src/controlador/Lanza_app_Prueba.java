@@ -83,7 +83,7 @@ public class Lanza_app_Prueba {
                 gui.repaint();
             }
             case 3 ->{
-                panel_3_reglas = new Panel_3_reglas();
+//                panel_3_reglas = new Panel_3_reglas();
                 gui.setContentPane(panel_3_reglas);
                 gui.revalidate();
                 gui.repaint();

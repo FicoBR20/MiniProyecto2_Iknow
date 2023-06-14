@@ -72,6 +72,13 @@ public class Letra_grafic extends  JLabel{
         getBoton_style_1(titulo);
     }
 
+    public JLabel sin_estilo(String titulo) {
+        this.setForeground(Color.white);
+        this.setText(titulo);
+        this.setFont(new Font(null,Font.BOLD,50));
+        return this;
+    }
+
 
     public JLabel getBoton_style_1(String titulo ) {
         imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/botones/Boton.png")));
