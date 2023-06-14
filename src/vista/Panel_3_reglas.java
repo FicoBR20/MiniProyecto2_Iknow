@@ -15,7 +15,11 @@ public class Panel_3_reglas extends FondoPanel{
     private Escucha escucha;
     private Timer timer;
     private FondoPanel box;
-    private  int cont,cont_1,cont_2;
+    private  int cont_1,cont_2;
+    private  int cont_box_1;
+    private  int cont_box_2;
+    private  int cont_box_3;
+    private  int contador;
     private  FondoPanel logo;
 
     public Panel_3_reglas(){
@@ -34,7 +38,12 @@ public class Panel_3_reglas extends FondoPanel{
         escucha = new Escucha();
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.ipady = 10;
-        cont = 6;
+
+        cont_box_1 = 0;
+        cont_box_2 = 0;
+        cont_box_3 = 0;
+        contador = 0;
+
         cont_1 = 0;
         cont_2 = -99;
 
@@ -111,13 +120,37 @@ public class Panel_3_reglas extends FondoPanel{
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            if (e.getSource()==timer && cont >= 0) {
+            while (e.getSource()==timer && cont_box_1 <= 7){
                 timer.stop();
-                System.out.println("Entro "+cont);
-                box.set_ruta_fondo("/resources/fondos/f" + (cont) + ".png");
-                cont--;
+                System.out.println("Entro "+ cont_box_1);
+                box.set_ruta_fondo("/resources/animaciones/box_1/f"+ cont_box_1 +".png");
+                cont_box_1++;
                 timer = new Timer(25, escucha);
                 timer.start();
+                cont_box_2 = 99;
+                cont_box_3 = 99;
+            }
+
+            while (e.getSource()==timer && cont_box_2 <= 7){
+                timer.stop();
+                System.out.println("Entro "+cont_box_2);
+                box.set_ruta_fondo("/resources/animaciones/box_2/f"+cont_box_2+".png");
+                cont_box_2++;
+                timer = new Timer(25, escucha);
+                timer.start();
+                cont_box_1 = 99;
+                cont_box_3 = 99;
+            }
+
+            while (e.getSource()==timer && cont_box_3 <= 7){
+                timer.stop();
+                System.out.println("Entro "+cont_box_3);
+                box.set_ruta_fondo("/resources/animaciones/box_3/f"+cont_box_3+".png");
+                cont_box_3++;
+                timer = new Timer(25, escucha);
+                timer.start();
+                cont_box_1 = 99;
+                cont_box_2 = 99;
             }
 
             if (e.getSource()==timer && cont_1 <= 13 && cont_2 < 0) {
@@ -134,17 +167,30 @@ public class Panel_3_reglas extends FondoPanel{
 
             if (e.getSource()==boton_sguiente){
 
-                area_de_texto.reglas_2();
-                boton_atras.setVisible(true);
-                boton_sguiente.setVisible(false);
-                boton_salir.setVisible(true);
+                if (contador == 0){
+                    cont_box_2=0;
+                    cont_2 = 99;
 
-                cont=6;
-                cont_1 = 0;
-                cont_2 = -99;
-                timer = new Timer(0, escucha);
-                timer.start();
+                    timer = new Timer(0, escucha);
+                    timer.start();
+                    contador=1;
+                }
+                else if (contador == 1){
+                    area_de_texto.reglas_2();
+                    boton_atras.setVisible(true);
+                    boton_sguiente.setVisible(false);
+                    boton_salir.setVisible(true);
+
+                    cont_box_3=0;
+                    cont_2 = 99;
+
+                    timer = new Timer(0, escucha);
+                    timer.start();
+                    contador=0;
+                }
             }
+
+
             else if (e.getSource()==boton_atras){
 
                 area_de_texto.reglas();
@@ -152,9 +198,10 @@ public class Panel_3_reglas extends FondoPanel{
                 boton_sguiente.setVisible(true);
                 boton_salir.setVisible(false);
 
-                cont=6;
+                cont_box_1 =0;
+                cont_2 = 99;
+
                 cont_1 = 0;
-                cont_2 = -99;
                 timer = new Timer(0, escucha);
                 timer.start();
             }

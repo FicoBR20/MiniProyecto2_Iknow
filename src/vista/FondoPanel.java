@@ -23,7 +23,7 @@ public class FondoPanel extends JPanel {
     }
 
     public String get_ruta_icono() {
-        return imageIcon;
+        return this.imageIcon;
     }
 
     public void set_ruta_fondo(String imageIcon) {
