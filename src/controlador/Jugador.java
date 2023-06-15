@@ -37,7 +37,7 @@ public class Jugador {
     }
 
     public void setNivel_Superado(int nivel_Superado) {
-        nivel_Superado=juego.getNivel();
+        //nivel_Superado=juego.getNivel();
         this.nivel_Superado = nivel_Superado;
     }
 
@@ -55,7 +55,7 @@ public class Jugador {
      * Métooo constructor
      */
     public Jugador(){
-        juego = new Juego();
+       // juego = new Juego();
         name = " ";
         nivel_Superado = 0;
         puntaje_Total = 0;

@@ -240,6 +240,8 @@ public class Front_RegistroJugador extends FondoPanel {
 
             if (e.getSource() == iniciar_Juego) {
 
+                jugador.setName(name_Player); // El jugador se registro y va ir a jugar
+
 
                 System.out.println(" Empezamos a jugar en el nivel = 1 ");
 

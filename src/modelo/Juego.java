@@ -9,6 +9,8 @@ import javax.swing.*;
  */
 public class Juego {
 
+    private Jugador jugador;
+
     /**
      *
      */
@@ -112,6 +114,7 @@ public class Juego {
      * Constructor method.
      */
     public Juego(){
+        jugador = new Jugador();
         nivel=1;
         limite_string_basico = 199;
         total_Palabras_del_Nivel = 0;
