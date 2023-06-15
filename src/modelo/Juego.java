@@ -37,6 +37,7 @@ public class Juego {
      * por cada acierto del jugador.
      */
     private int puntaje_Logrado;
+    private int puntaje_Logrado_total_nivel;
 
     /**
      * Una palabra se le presenta al jugador, el debe decidir en dos vías; SI Ó NO.
@@ -120,12 +121,21 @@ public class Juego {
         setUp_Nivel(estado);// juego inicia en nivel 1
         setCategoria(categoria);
         puntaje_Logrado=0;
+        puntaje_Logrado_total_nivel=0;
         acierto_del_Jugador=false;
 
     }
 
     // Getter and Setter ===============================
 
+
+    public int getPuntaje_Logrado_total_nivel() {
+        return puntaje_Logrado_total_nivel;
+    }
+
+    public void setPuntaje_Logrado_total_nivel(int puntaje_Logrado_total_nivel) {
+        this.puntaje_Logrado_total_nivel = puntaje_Logrado_total_nivel;
+    }
 
     public String getRuta() {
         return ruta;

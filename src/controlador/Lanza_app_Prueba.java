@@ -54,7 +54,7 @@ public class Lanza_app_Prueba {
 
         front_registroJugador = new Front_RegistroJugador();
 
-        seleccionar_pantalla(4);
+        seleccionar_pantalla(0);
     }
 
     public void secuencia_Logica(int secuencial){
@@ -139,11 +139,11 @@ public class Lanza_app_Prueba {
                 //....nivel +1
 //                jugador = panel_4_juego.getJugador();
 
-                juego = panel_4_juego.getJuego();
-                juego.incrementar_nivel();
-                juego.setUp_Nivel(juego.getNivel());
+//                juego = panel_4_juego.getJuego();
+//                juego.incrementar_nivel();
+//                juego.setUp_Nivel(juego.getNivel());
 
-                panel_4_juego = new Panel_4_juego(juego);
+//                panel_4_juego = new Panel_4_juego(juego);
                 bill.seleccionar_pantalla(4);
             }
 

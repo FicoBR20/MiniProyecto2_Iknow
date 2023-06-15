@@ -4,6 +4,9 @@ import controlador.Lanza_app_Prueba;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.font.TextAttribute;
+import java.io.File;
+import java.text.AttributedString;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -13,6 +16,7 @@ public class Letra_grafic extends  JLabel{
     private int tamaño_fuente,alto,ancho;
     private JPanel panel_palabra;
     private JPanel panel_linea;
+    private String rutaFuente;
 
     private ArrayList<JButton> palabras_array;
 
@@ -36,6 +40,7 @@ public class Letra_grafic extends  JLabel{
         this.setEnabled(false);
     }
     public Letra_grafic() {
+        rutaFuente = "";
         panel_palabra = new JPanel();
         panel_linea = new JPanel();
         palabras_array = new ArrayList<>();
@@ -72,10 +77,22 @@ public class Letra_grafic extends  JLabel{
         getBoton_style_1(titulo);
     }
 
+    public void set_font(String rutaFuente) {
+        this.rutaFuente = rutaFuente;
+    }
+
     public JLabel sin_estilo(String titulo) {
+        // Reemplaza con la ruta correcta de tu fuente
+
+        // Cargar la fuente desde el archivo
+        Font nuevaFuente = cargarFuente(rutaFuente, Font.PLAIN, 100); // Establece el estilo y tamaño deseado
+
+        // Crear un JLabel con la fuente cargada
+        JLabel etiqueta = new JLabel("Texto con fuente cargada");
         this.setForeground(Color.white);
         this.setText(titulo);
-        this.setFont(new Font(null,Font.BOLD,50));
+        this.setFont(nuevaFuente);
+//        this.setFont(new Font(null,Font.BOLD,50));
         return this;
     }
 
@@ -113,8 +130,8 @@ public class Letra_grafic extends  JLabel{
         int cont_x = 0;
 
         for ( String linea : palabra.split(" ")) {
-            gbc.ipady = 15;
-            gbc.ipadx = 15;
+//            gbc.ipady = 15;
+//            gbc.ipadx = 15;
             gbc.gridwidth=1; // ocupara 1 columnas
             gbc.gridheight=1; // ocupara 1 filas
 
@@ -142,7 +159,7 @@ public class Letra_grafic extends  JLabel{
     }
 
 
-    public JPanel seText_grafico(String palabra, int num) {
+    public JPanel seText_grafico(String palabra, int skim, int tamaño,int ancho,int alto) {
         GridBagConstraints gbc = new GridBagConstraints();
         GridBagLayout gridBagLayout = new GridBagLayout();
 
@@ -168,10 +185,10 @@ public class Letra_grafic extends  JLabel{
                 gbc.gridy=cont_y; // fila
 
                 Letra_grafic botonX = new Letra_grafic();
-                imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/botones/"+num+".png")));
+                imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/botones/"+skim+".png")));
                 botonX.setForeground(Color.white);
-                botonX.setFont(new Font(null,Font.BOLD,100));
-                botonX.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(116,167,Image.SCALE_SMOOTH)));
+                botonX.setFont(new Font(null,Font.BOLD,tamaño));
+                botonX.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(ancho,alto,Image.SCALE_SMOOTH)));
                 botonX.setText(letra);
 
                 panel_palabra.add(botonX,gbc);
@@ -184,5 +201,62 @@ public class Letra_grafic extends  JLabel{
         }
         panel_linea.setBackground(new Color(0x0000000, true));
         return panel_linea;
+    }
+
+
+    public JPanel seText_grafico(String palabra, int tamaño,int ancho,int alto) {
+        GridBagConstraints gbc = new GridBagConstraints();
+        GridBagLayout gridBagLayout = new GridBagLayout();
+
+        panel_palabra.removeAll();
+        panel_palabra.setBackground(null);
+        panel_palabra.setLayout(gridBagLayout);
+
+        panel_linea.removeAll();
+        panel_linea.setBackground(null);
+        panel_linea.setLayout(gridBagLayout);
+
+        int cont_y = 0;
+        int cont_x = 0;
+
+        for ( String linea : palabra.split(" ")) {
+            gbc.ipady = 15;
+            gbc.ipadx = 15;
+            gbc.gridwidth=1; // ocupara 1 columnas
+            gbc.gridheight=1; // ocupara 1 filas
+
+            for ( String letra : linea.split("")) {
+                gbc.gridx=cont_x; // columna
+                gbc.gridy=cont_y; // fila
+
+                Letra_grafic botonX = new Letra_grafic();
+                botonX.setForeground(Color.white);
+                botonX.setFont(new Font(null,Font.BOLD,tamaño));
+                botonX.setText(letra);
+
+                panel_palabra.add(botonX,gbc);
+                cont_x++;
+            }
+            panel_linea.add(panel_palabra,gbc);
+
+            cont_y++;
+            cont_x=0;
+        }
+        panel_linea.setBackground(new Color(0x0000000, true));
+        return panel_linea;
+    }
+
+
+    public Font cargarFuente(String ruta, int estilo, int tamaño) {
+        try {
+
+            Font fuente = Font.createFont(Font.TRUETYPE_FONT, new File(ruta));
+
+            return fuente.deriveFont(estilo, tamaño);
+        } catch (Exception e) {
+            e.printStackTrace();
+            // En caso de error, devolver una fuente por defecto
+            return new Font(Font.SERIF, estilo, tamaño);
+        }
     }
 }

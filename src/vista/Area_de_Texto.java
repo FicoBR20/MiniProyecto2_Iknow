@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Objects;
 
-public class Area_de_Texto {
+public class Area_de_Texto extends JPanel{
 
     private final JTextArea info_al_Jugador;
     private JLabel label_letra;
@@ -77,7 +77,7 @@ public class Area_de_Texto {
     }
 
     public JTextArea seText(String palabra) {
-        Font font = new Font(Font.SANS_SERIF, Font.BOLD, 50);
+        Font font = new Font(Font.SANS_SERIF, Font.BOLD, 25);
         info_al_Jugador.setFont(font);
         info_al_Jugador.setText(palabra);
         return info_al_Jugador;
