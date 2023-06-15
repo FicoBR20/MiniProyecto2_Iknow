@@ -47,7 +47,7 @@ public class Jugador {
 
     public void setPuntaje_Total(Juego juego) {
 
-        puntaje_Total= juego.getPuntaje_Logrado();
+        puntaje_Total= juego.getPuntaje_Logrado_total_nivel();
 
     }
 

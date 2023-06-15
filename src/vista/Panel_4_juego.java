@@ -150,10 +150,10 @@ public class Panel_4_juego extends FondoPanel {
          * Panel norte
          */
         mensaje_puntos =  new Area_de_Texto();
-        panel_norte.add(mensaje_puntos.seText("PUNTOS "+juego.getPuntaje_Logrado()),BorderLayout.WEST);
+        panel_norte.add(mensaje_puntos.seText("PUNTOS     "+juego.getPuntaje_Logrado()),BorderLayout.WEST);
 
         mensaje_nivel =  new Area_de_Texto();
-        panel_norte.add(mensaje_nivel.seText("NIVEL "+juego.getNivel()),BorderLayout.EAST);
+        panel_norte.add(mensaje_nivel.seText("     NIVEL "+juego.getNivel()),BorderLayout.EAST);
 
         /**
          * Panel centro
@@ -295,16 +295,20 @@ public class Panel_4_juego extends FondoPanel {
 
             if (e.getSource()==timer && primer_inicio == 99){
                 timer.stop();
-//                JOptionPane.showMessageDialog(null,
-//                        "Nivel " +juego.getNivel()+
-//                                "\nPntaje " +juego.getPuntaje_Logrado()+
-//                                "\nPalabras de nivel global "+juego.getPuntaje_Logrado_total_nivel()+
-//                                "\nPalabra a memorizar " +juego.getCant_Palabras_a_Memorizar()+
-//                                "\nPalabras de nivel "+juego.getTotal_Palabras_del_Nivel());
+                JOptionPane.showMessageDialog(null,
+                        "Nivel " +juego.getNivel()+
+                                "\nPuntaje " +juego.getPuntaje_Logrado()+
+                                "\nNombre " +jugador.getName()+
+                                "\nNivel total superdo " +jugador.getNivel_Superado()+
+                                "\nPuntaje global "+juego.getPuntaje_Logrado_total_nivel()+
+                                "\nPalabra a memorizar " +juego.getCant_Palabras_a_Memorizar()+
+                                "\nPalabras de nivel "+juego.getTotal_Palabras_del_Nivel());
+
+
                 primer_inicio=0;
                 info_pantalla.setVisible(true);
                 mensaje.seText("NIVEL "+juego.getNivel() );
-                timer = new Timer(3000, escucha);
+                timer = new Timer(0, escucha);
                 timer.start();
             }
 
@@ -435,10 +439,11 @@ public class Panel_4_juego extends FondoPanel {
                 palabras_memoria.seText_grafico(palabra.getPalabra_a_Memorizar().get(cuenta_memorizar));
                 mensaje.seText("");
                 cuenta_memorizar++;
-                timer = new Timer(3000, escucha);
+                timer = new Timer(5000, escucha);
                 timer.start();
 
             }
+
 
             /**
              * Temporizador
@@ -457,7 +462,7 @@ public class Panel_4_juego extends FondoPanel {
                 palabras_memoria.seText_grafico(palabra.getPalabra_del_nivel().get(cuenta_nivel));
                 si_boton.setVisible(true);
                 no_boton.setVisible(true);
-                timer_acierto_2 = new Timer(5000, escucha);
+                timer_acierto_2 = new Timer(7000, escucha);
                 timer_acierto_2.start();
             }
 //
@@ -510,11 +515,12 @@ public class Panel_4_juego extends FondoPanel {
 
                     //acumular 10  puntos al jugador
                    juego.setPuntaje_Logrado(); //estado indica que acerto.
+                   juego.setPuntaje_Logrado_nivel(); //estado indica que acerto.
                     jugador.setPuntaje_Total(juego);
                     System.out.println(" el puntaje ahora es" + juego.getPuntaje_Logrado() + " el jugador lleva estos puntos " +
                             jugador.getPuntaje_Total());
 
-                    mensaje_puntos.seText_2("Puntos "+juego.getPuntaje_Logrado());
+                    mensaje_puntos.seText("Puntos      "+juego.getPuntaje_Logrado());
 
 
                 }else {
@@ -565,11 +571,12 @@ public class Panel_4_juego extends FondoPanel {
 
                     //acumular 10  puntos al jugador
                     juego.setPuntaje_Logrado(); //estado indica que acerto.
+                    juego.setPuntaje_Logrado_nivel(); //estado indica que acerto.
                     jugador.setPuntaje_Total(juego);
                     System.out.println(" el puntaje ahora es" + juego.getPuntaje_Logrado() + " el jugador lleva estos puntos " +
                             jugador.getPuntaje_Total());
 
-                    mensaje_puntos.seText_2("Puntos "+juego.getPuntaje_Logrado());
+                    mensaje_puntos.seText("Puntos      "+juego.getPuntaje_Logrado());
                 }
                 cuenta_nivel++;
                 timer = new Timer(2000,escucha);
@@ -603,22 +610,27 @@ public class Panel_4_juego extends FondoPanel {
 
                     juego.setPuntaje_Logrado_total_nivel(juego.getPuntaje_Logrado()); //estado agrega el puntaje totala a niveles
 
+
+                    jugador.setPuntaje_Total(juego);
+
+                    jugador.getName();
+
+                    jugador.getNivel_Superado();
+
                     juego.incrementar_nivel();
+
                     juego.setUp_Nivel(juego.getNivel());
+
                     juego.reset_puntos();
+
                 }
                 else {
                     info_pantalla.setVisible(false);
                     panel_botones.setVisible(false);
                     atras_boton.setVisible(false);
-
                     mensaje.seText("");
-
                     palabras_memoria.seText_grafico("GAME OVER");
-//                    palabras_memoria.sin_estilo("GAME OVER");
-
                     atras_boton.addActionListener(escucha);
-
                     gbc.gridx = 0; // columna 0
                     gbc.gridy = 0; // fila 0
                     gbc.gridwidth = 2; // ocupara 4 columnas
