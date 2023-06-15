@@ -143,7 +143,7 @@ public class Control_FileManager {
     /**
      * Método que rebibe el nombre de un jugador,
      * lo busca en la base de datos (archivo.txt), si existe,
-     * actualiza la información de saca la informacion
+     * extrae la informacion de nivel y puntos
      * para ser usada.
      *
      * @param nombre_buscado

@@ -100,9 +100,11 @@ public class Front_RegistroJugador extends FondoPanel {
         jTextField_NombreJugador.setSize(new Dimension(100,60));
 
 
+       // this.add(atras_boton.getBoton_style_0("ATRAS"), gbc);
 
 
-        iniciar_Juego = new Botones("START",15,70,30);
+        iniciar_Juego = new Botones("START",20,210,60);
+        iniciar_Juego.getBoton_style_0("INICIAR");
         iniciar_Juego.desactivar();
 
 
@@ -137,6 +139,7 @@ public class Front_RegistroJugador extends FondoPanel {
         gbc.gridheight=1; // ocupara 3 filas
         gbc.weightx = 1.0; // no se deformara
         gbc.weighty = 1.0; // no se deformara
+        gbc.insets.set(0,150,0,0);
         this.add(jLabel_NombreJugador, gbc);
 
         gbc.gridx=2; // columna 0
@@ -145,6 +148,7 @@ public class Front_RegistroJugador extends FondoPanel {
         gbc.gridheight=1; // ocupara 3 filas
         gbc.weightx = 1.0; // no se deformara
         gbc.weighty = 1.0; // no se deformara
+        gbc.insets.set(0,0,0,150);
         this.add(jTextField_NombreJugador, gbc);
         jTextField_NombreJugador.requestFocus();
 
@@ -191,6 +195,7 @@ public class Front_RegistroJugador extends FondoPanel {
                     System.out.println(" debe ingresar un nombre sin espacios para registrarse ");
                     JOptionPane.showMessageDialog(null, "Ingrese su nombre de jugador\nUse SOLO 5 caracteres \n" +
                             "sin espacios en blanco\nGracias.");
+                    iniciar_Juego.setEnabled(false);
 
 
                 }
@@ -198,10 +203,8 @@ public class Front_RegistroJugador extends FondoPanel {
                     System.out.println(" Ese nombre ya existe..use otro nombre..");
                     JOptionPane.showMessageDialog(null, " Ese nombre ya existe en la base de datos\n" +
                            "por favor use otro \nGracias.");
-//                    for (int i = 0; i < db.length(); i++) {
-//                        System.out.println(" posicion " + i + " " + db.g);
-//
-//                    }
+                    iniciar_Juego.setEnabled(false);
+
                     juego_Ik.setEstado(12); // presenta de nuevo el panel de registro de jugador
                 }else {
 
@@ -217,6 +220,7 @@ public class Front_RegistroJugador extends FondoPanel {
 
                     jTextField_NombreJugador.setText(name_Player);
                     jTextField_NombreJugador.setEnabled(false);
+                    iniciar_Juego.setEnabled(true);
 
 
                     System.out.println(" Hemos registrado sus datos " + name_Player + " nivel del juego " + Integer.toString(juego_Ik.getNivel()));

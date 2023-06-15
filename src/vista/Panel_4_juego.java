@@ -406,12 +406,12 @@ public class Panel_4_juego extends FondoPanel {
                 timer.start();
             }
 
-            if (e.getSource()==si_boton && cuenta_nivel < palabra.getPalabra_del_nivel().size()){///// recorderis
+            if (e.getSource()==si_boton && cuenta_nivel < palabra.getPalabra_del_nivel().size()){///// r
                 timer_acierto_2.stop();
                 botonX.sin_estilo("");
                 panel_botones.setVisible(true);
 
-                if (palabra.getPalabra_a_Memorizar().contains(palabra.getPalabra_del_nivel().get(cuenta_nivel))){
+                if (palabra.getPalabra_a_Memorizar().contains(palabra.getPalabra_del_nivel().get(cuenta_nivel))){ // acierto entonces puntos
                     si_boton.setVisible(false);
                     no_boton.setVisible(false);
                     mensaje.seText_2("CORRECTO\n"
@@ -476,6 +476,9 @@ public class Panel_4_juego extends FondoPanel {
                 timer_acierto_2.stop();
                 timer.stop();
                 if (juego.nivel_Superado()) {
+                    System.out.println(" el puntaje obtenido en el nivel es" + juego.getPuntaje_Logrado() );
+                    jugador.setNivel_Superado(juego.getNivel()); // se recoge el puntaje
+
 
                     panel_botones.setVisible(false);
                     mensaje.seText_2("");
@@ -489,6 +492,7 @@ public class Panel_4_juego extends FondoPanel {
                     gbc.anchor=GridBagConstraints.CENTER;
                     atras_boton.addActionListener(escucha);
                     add(siguiente.getBoton_style_0("SIGUIENTE"), gbc);
+                    juego.setUp_Nivel(juego.getNivel()+1);///===========================linea salvavidas ?
                 }
                 else {
 
@@ -515,8 +519,14 @@ public class Panel_4_juego extends FondoPanel {
 
 
 
+    System.out.println(" el puntaje total es es" + juego.getPuntaje_Logrado() + " el nivel\n" +
+            "superado es " + jugador.getNivel_Superado() + " el jugador logro " + jugador.getPuntaje_Total() + "el jugador es"+
+            jugador.getName());
 
         }
+
+        // tiene los totales ?
     }
+
 
 }
