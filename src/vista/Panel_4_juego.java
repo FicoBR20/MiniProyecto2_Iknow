@@ -13,6 +13,8 @@ import java.awt.event.ActionListener;
 
 public class Panel_4_juego extends FondoPanel {
 
+    private Control_FileManager cfm;
+
 /**
  * Clase que presenta el Panel del juego, tanto las palabras memorizar
  * como todas las palabras del nivel para que el jugador realize su
@@ -53,6 +55,7 @@ public class Panel_4_juego extends FondoPanel {
      * Constructor sin parametros
      */
     public Panel_4_juego() {
+        cfm = new Control_FileManager();
         juego = new Juego();
         juego.setNivel(1);
         jugador = new Jugador();
@@ -64,6 +67,7 @@ public class Panel_4_juego extends FondoPanel {
      * @param juego
      */
     public Panel_4_juego(Juego juego){
+        cfm = new Control_FileManager();
         this.juego = juego;
         ini();
     }
@@ -74,11 +78,13 @@ public class Panel_4_juego extends FondoPanel {
      */
 
     public Panel_4_juego(Jugador jugador){
+        cfm = new Control_FileManager();
         this.jugador = jugador;
         ini();
     }
 
     public Panel_4_juego(Juego juego, Jugador jugador){
+        cfm = new Control_FileManager();
         this.jugador = jugador;
         this.juego = juego;
         ini();
@@ -286,6 +292,8 @@ public class Panel_4_juego extends FondoPanel {
      * inner class implements Listeners used by Panel_1_Inicial class
      */
     public class Escucha implements ActionListener {
+
+
 
         @Override
         /**
@@ -595,6 +603,13 @@ public class Panel_4_juego extends FondoPanel {
                 timer_acierto_2.stop();
                 timer.stop();
                 if (juego.nivel_Superado()) {
+
+
+
+
+
+
+
                     info_pantalla.setVisible(false);
                     panel_botones.setVisible(false);
                     atras_boton.setVisible(false);
@@ -603,14 +618,6 @@ public class Panel_4_juego extends FondoPanel {
 
                     palabras_memoria.seText_grafico("PASAS AL SIGUIENTE NIVEL");
 //                    palabras_memoria.sin_estilo("PASAS AL SIGUIENTE NIVEL");
-
-                    gbc.gridx = 0; // columna 0
-                    gbc.gridy = 0; // fila 0
-                    gbc.gridwidth = 2; // ocupara 4 columnas
-                    gbc.gridheight = 1; // ocupara 3 filas
-                    gbc.anchor=GridBagConstraints.CENTER;
-                    atras_boton.addActionListener(escucha);
-                    panel_sur.add(siguiente.getBoton_style_0("SIGUIENTE"), gbc);
 
 //                    juego.setPuntaje_Logrado_total_nivel(juego.getPuntaje_Logrado()); //estado agrega el puntaje totala a niveles
 
@@ -631,17 +638,27 @@ public class Panel_4_juego extends FondoPanel {
 
                     juego.setPuntaje_Logrado_total_nivel(puntaje);// acumulal lo del nivel
 
-                    String resumenDatos = jugador.getName() + "  "+ juego.getNivel() + " " + juego.getPuntaje_Logrado()+ " \n" +
-                            "soy el acumulador "+ acumulador + juego.getPuntaje_Logrado_total_nivel();
+                    /// escritura de los datos .....reemplazando la linea que no existan muchas lineas del mismo.
 
-                    JOptionPane.showMessageDialog(  null, "los valores son " + resumenDatos);
+                    String resumenDatos = jugador.getName() + "  "+ juego.getNivel() + " " + juego.getPuntaje_Logrado() + "\n";
 
+                   cfm.reader_Jugador_reemplaza(resumenDatos);
+
+                   // JOptionPane.showMessageDialog(  null, "los valores son " + resumenDatos);
+
+                   // System.out.println(" imprime los datos" + resumenDatos);
 
                     // escribirlas en el archivo de texto
 
 
-                    Control_FileManager cfm = new Control_FileManager();
-                    cfm.writer_Jugador(resumenDatos);
+                    gbc.gridx = 0; // columna 0
+                    gbc.gridy = 0; // fila 0
+                    gbc.gridwidth = 2; // ocupara 4 columnas
+                    gbc.gridheight = 1; // ocupara 3 filas
+                    gbc.anchor=GridBagConstraints.CENTER;
+                    atras_boton.addActionListener(escucha);
+                    panel_sur.add(siguiente.getBoton_style_0("SIGUIENTE"), gbc);
+
 
                     juego.reset_puntos_local();
 

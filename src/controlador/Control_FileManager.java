@@ -64,6 +64,8 @@ public class Control_FileManager {
      * Método constructor
      */
     public Control_FileManager() {
+//        String inicio = "Carlos" + " " + "1" + " " + "10";
+//        reader_Jugador()="";
         nombre_Obtenido = "";
         ultimo_nivel_Obtenido = "";
         total_puntos_Obtenido = "";
@@ -123,11 +125,10 @@ public class Control_FileManager {
      * @param line
      */
     public void writer_Jugador(String line) {
-//        String infoActualizada = jugador.ToString_Jugador();
         try {
             String text = reader_Jugador();// recepciona el String generado en el reader.
             text += line + "\n";
-            fileWriter = new FileWriter("src/resources/file/info_Jugador.txt");
+            fileWriter = new FileWriter("src/resources/info_Jugador.txtt");
             output = new BufferedWriter(fileWriter);
             output.write(text);
         } catch (IOException e) {
@@ -215,6 +216,53 @@ public class Control_FileManager {
             JOptionPane.showMessageDialog(null, " Ese nombre no está en la base de datos\n" +
                     " es un jugador nuevo.");
         }
+
+    }
+
+    /**
+     * Método que reemplaza la información de un jugador
+     * previamente registrado, dejando solo un registro de
+     * dicho jugador en el archivo de texto
+     * @param infoNueva
+     */
+    public void reader_Jugador_reemplaza(String infoNueva) {
+        String text = infoNueva.substring(0,5);//obtiene el nombre
+
+        try {
+            fileReader = new FileReader("src/resources/info_Jugador.txt");
+            input = new BufferedReader(fileReader);
+
+            String line = input.readLine(); // almacena lo que se escribe en el text field
+
+            String nombre_Previo = line.substring(0,5);
+
+
+
+            while (line != null) {
+
+                if (text==nombre_Previo){
+                    line=infoNueva;
+                    line = input.readLine();
+                }
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Estoy dentro de la excepcion");
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                input.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (NullPointerException e) {
+                System.out.println("Estoy dentro del finally");
+                e.printStackTrace();
+            }
+        }
+
+        System.out.println(" Jugadores actualizados en nivel y puntos  " + reader_Jugador());
+
 
     }
 

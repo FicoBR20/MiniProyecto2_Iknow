@@ -94,6 +94,8 @@ public class Lanza_app_Prueba {
                 gui.repaint();
             }
             case 4 ->{
+
+
 //                juego.incrementar_nivel();
                 System.out.println("Nivel "+juego.getNivel());
                 panel_4_juego = new Panel_4_juego(juego,jugador);
@@ -135,15 +137,7 @@ public class Lanza_app_Prueba {
                 gui.repaint();;
             }
             case 10->{
-                // se debe preguntar si supero el nivel.
-                //....nivel +1
-//                jugador = panel_4_juego.getJugador();
 
-//                juego = panel_4_juego.getJuego();
-//                juego.incrementar_nivel();
-//                juego.setUp_Nivel(juego.getNivel());
-
-//                panel_4_juego = new Panel_4_juego(juego);
                 bill.seleccionar_pantalla(4);
             }
 
