@@ -1,11 +1,14 @@
 package modelo;
 
+import controlador.Jugador;
+
 import javax.swing.*;
 
 /**
  * Esta Clase manejara la lógica del juego.
  */
 public class Juego {
+
     /**
      *
      */
@@ -265,13 +268,15 @@ public class Juego {
 
         switch (nivel_de_Juego){
             case 1:
-                cant_Palabras_a_Memorizar =2;
-                total_Palabras_del_Nivel =4;
+                System.out.println(" Juego ===== level 1 ");
+                cant_Palabras_a_Memorizar =3; //10
+                total_Palabras_del_Nivel =5; //20
                 acierto_Exigido=0.7;
                 break;
             case 2:
-                cant_Palabras_a_Memorizar =3;
-                total_Palabras_del_Nivel =6;
+                System.out.println(" Juego ===== level 2 ");
+                cant_Palabras_a_Memorizar =3; //20
+                total_Palabras_del_Nivel =5; //40
                 acierto_Exigido=0.7;
                 break;
             case 3:
