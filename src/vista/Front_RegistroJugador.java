@@ -11,6 +11,8 @@ import java.awt.event.*;
 
 public class Front_RegistroJugador extends FondoPanel {
 
+    private JTextArea jTextArea;
+
     private Control_FileManager controlFileManager;
 
     private Jugador jugador;
@@ -52,31 +54,43 @@ public class Front_RegistroJugador extends FondoPanel {
     public Front_RegistroJugador(){
         init_Panel();
         //this.setSize(300,400);
-        this.setPreferredSize(new Dimension(600,400));
+        this.setPreferredSize(new Dimension(800,500));
         this.setBackground(fondoLila);
 
     }
 
     public void init_Panel(){
+        Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 24);
+        String info_Registro= "Ingrese su nombre de jugador\n" +
+                "Generamos la info de los niveles superados y puntos logrados\n" +
+                "Acumula 10 puntos por acierto\n";
+        jTextArea = new JTextArea();
+        jTextArea.setFont(font);
+        jTextArea.setColumns(8);
+        jTextArea.setRows(5);
+        jTextArea.setForeground(verdeClaro);
+        jTextArea.setText(info_Registro);
+        jTextArea.setOpaque(false);
 
 
         jugador = new Jugador();
 
         juego_Ik =  new Juego();
 
-        Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 24);
 
         header = new Header(" Registro del Jugador ", verdeClaro);
         header.setPreferredSize(new Dimension(600,20));
 
 
-        jlabel_Title = new JLabel(" Ingrese sus datos ");
+        jlabel_Title = new JLabel(" \nIngrese su nombre de jugador\n" +
+                "generaremos un registro de los niveles que logra superar y\n" +
+                "el puntaje obtenido\n Sumará 10 puntos por cada acierto.\n");
         jlabel_Title.setFont(font);
         jlabel_Title.setBackground(fondoLila);
         jlabel_Title.setForeground(verdeClaro);
 
 
-        jLabel_NombreJugador = new JLabel(" Nombre del jugador ");
+        jLabel_NombreJugador = new JLabel("Nombre de Jugador");
         jLabel_NombreJugador.setFont(font);
         jLabel_NombreJugador.setBackground(fondoLila);
         jLabel_NombreJugador.setForeground(verdeClaro);
@@ -107,56 +121,44 @@ public class Front_RegistroJugador extends FondoPanel {
 
 
 
-        gbc.gridx=0; // columna 0
-        gbc.gridy=0; // fila 0
-        gbc.gridwidth=5; // ocupara n columnas
-        gbc.gridheight=1; // ocupara n filas
-        gbc.weightx = 1.0; // no se deformara
-        gbc.weighty = 1.0; // no se deformara
-        gbc.ipady=5;//relleno interno en y pixels
-        gbc.anchor=GridBagConstraints.PAGE_START;//cuando el componente es mas pequenno que el area de visualización.tambien PAGE_START, PAGE_END, LINE_START, LINE_END, FIRST_LINE_START, FIRST_LINE_END, LAST_LINE_ENDy LAST_LINE_START.
-//        this.add(header, gbc);
 
         gbc.gridx=1; // columna 0
         gbc.gridy=0; // fila 0
-        gbc.gridwidth=5; // ocupara 4 columnas
-        gbc.gridheight=1; // ocupara 3 filas
+        gbc.gridwidth=8; // ocupara 4 columnas
+        gbc.gridheight=5; // ocupara 3 filas
         gbc.weightx = 1.0; // no se deformara
         gbc.weighty = 1.0; // no se deformara
-        this.add(jlabel_Title, gbc);
+        gbc.insets.set(5,0,0,0);
+        this.add(jTextArea, gbc);
 
         gbc.gridx=1; // columna 0
-        gbc.gridy=1; // fila 0
+        gbc.gridy=7; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         gbc.weightx = 1.0; // no se deformara
         gbc.weighty = 1.0; // no se deformara
         this.add(jLabel_NombreJugador, gbc);
 
-        gbc.gridx=3; // columna 0
-        gbc.gridy=1; // fila 0
+        gbc.gridx=2; // columna 0
+        gbc.gridy=7; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         gbc.weightx = 1.0; // no se deformara
         gbc.weighty = 1.0; // no se deformara
         this.add(jTextField_NombreJugador, gbc);
         jTextField_NombreJugador.requestFocus();
-//<<<<<<< HEAD
-//=======
-//
-//>>>>>>> makecontroller
 
         gbc.gridx=1; // columna 0
-        gbc.gridy=3; // fila 0
+        gbc.gridy=8; // fila 0
         gbc.gridwidth=3; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         gbc.insets.set(50,0,0,0);
         this.add(iniciar_Juego.getBoton_style_0("INICIAR"), gbc);
 
         atras_boton = new Botones();
-        gbc.gridx=0; // columna 0
-        gbc.gridy=3; // fila 0
-        gbc.gridwidth=2; // ocupara 4 columnas
+        gbc.gridx=1; // columna 0
+        gbc.gridy=9; // fila 0
+        gbc.gridwidth=3; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         gbc.insets.set(0,0,0,0);
         this.add(atras_boton.getBoton_style_0("ATRAS"), gbc);
