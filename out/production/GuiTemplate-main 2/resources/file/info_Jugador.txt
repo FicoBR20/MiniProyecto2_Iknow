@@ -1,1 +1,68 @@
+juann 1 0
 
+xxxxx 1 0
+
+ramon 1 0
+
+assas 1 0
+
+julio 1 0
+
+kamii 1 0
+
+kamii  0 40 
+
+leoon 1 0
+
+leoon  0 40 
+
+lukas 1 0
+
+lukas  0 40 
+
+kannn 1 0
+
+kannn  0 40 
+
+kannn  0 40 
+
+12345 1 0
+
+12345  2 40 
+
+12345  3 40 
+
+12345  4 60 
+
+dfghh 1 0
+
+dfghh  2 40 
+40
+40  3 40 
+40
+12314 1 0
+
+12314  2 40 
+40
+40  3 80 
+80
+tulio 1 0
+
+tulio  2 40 
+40
+40  3 40 
+40
+nuevo 1 0
+
+nuevo  2 40 
+40
+40  3 40 
+40
+vbcvb 1 0
+
+vbcvb  2 40 
+0
+trtyl 1 0
+
+trtyl  2 40 
+0

@@ -2,10 +2,13 @@ package controlador;
 
 import modelo.Juego;
 
+import javax.swing.*;
+
 /**
  * Clase que contiene la información relacionada con el jugador.
  */
 public class Jugador {
+    private  Control_FileManager lector_nombre;
     private Juego juego;
     /**
      * Identificación del jugador.
@@ -28,6 +31,12 @@ public class Jugador {
         return name;
     }
 
+    public void setName() {
+        this.name = lector_nombre.leer_ultimo_jugador();
+        JOptionPane.showMessageDialog(null, "llego "+name);
+    }
+
+
     public void setName(String name) {
         this.name = name;
     }
@@ -37,7 +46,7 @@ public class Jugador {
     }
 
     public void setNivel_Superado(int nivel_Superado) {
-        nivel_Superado=juego.getNivel();
+//        nivel_Superado=juego.getNivel();
         this.nivel_Superado = nivel_Superado;
     }
 
@@ -55,7 +64,8 @@ public class Jugador {
      * Métooo constructor
      */
     public Jugador(){
-        juego = new Juego();
+        lector_nombre = new Control_FileManager();
+      //  juego = new Juego();
         name = " ";
         nivel_Superado = 0;
         puntaje_Total = 0;

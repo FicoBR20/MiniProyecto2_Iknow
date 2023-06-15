@@ -2,14 +2,18 @@ package modelo;
 
 import controlador.Jugador;
 
-import javax.swing.*;
-
 /**
  * Esta Clase manejara la lógica del juego.
  */
 public class Juego {
 
-   // private Jugador jugador;
+    /**
+     * Metodo que obtiene el nombre del jugador que esta
+     * jugando.
+     */
+//    private String name_adictoPlayer;
+
+    private Jugador jugador;
 
     /**
      *
@@ -110,12 +114,20 @@ public class Juego {
 
 
     // From here implements the Class methods ==================================================
+//
+//    public String getName_adictoPlayer() {
+//        return name_adictoPlayer;
+//    }
+//
+//    public void setName_adictoPlayer(String name_adictoPlayer) {
+//        this.name_adictoPlayer =jugador.getName();
+//    }
 
     /**
      * Constructor method.
      */
     public Juego(){
-       // jugador = new Jugador();
+        jugador = new Jugador();
         nivel=1;
         limite_string_basico = 199;
         total_Palabras_del_Nivel = 0;
@@ -211,7 +223,7 @@ public class Juego {
     /**
      * Vuelve el puntaje objenido a cero
      */
-    public void reset_puntos() {
+    public void reset_puntos_local() {
         puntaje_Logrado=0;
     }
 
@@ -356,6 +368,13 @@ public class Juego {
             return false;
         }
         else {
+            if (getNivel()<10){
+                setNivel(getNivel()+1);
+            }
+            else {
+                System.out.println(" eres un triunfador llegaste al nivel 10");
+            }
+
             return true;
         }
     }

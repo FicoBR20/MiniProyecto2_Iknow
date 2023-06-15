@@ -2,6 +2,8 @@ package controlador;
 
 import javax.swing.*;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Clase que registrara la información del jugador
@@ -65,7 +67,7 @@ public class Control_FileManager {
         nombre_Obtenido = "";
         ultimo_nivel_Obtenido = "";
         total_puntos_Obtenido = "";
-        jugador = new Jugador();
+//        jugador = new Jugador();
     }
 
     /**
@@ -121,7 +123,7 @@ public class Control_FileManager {
      * @param line
      */
     public void writer_Jugador(String line) {
-        String infoActualizada = jugador.ToString_Jugador();
+//        String infoActualizada = jugador.ToString_Jugador();
         try {
             String text = reader_Jugador();// recepciona el String generado en el reader.
             text += line + "\n";
@@ -138,6 +140,8 @@ public class Control_FileManager {
             }
         }
     }
+
+
 
 
     /**
@@ -212,6 +216,15 @@ public class Control_FileManager {
                     " es un jugador nuevo.");
         }
 
+    }
+
+    public String leer_ultimo_jugador() {
+        String text = "";
+        for (String linea : reader_Jugador().split("\n")){
+            text = linea;
+        }
+        String[] paso = text.split(" ");
+        return paso[0];
     }
 
 

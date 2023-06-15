@@ -1,5 +1,6 @@
 package vista;
 
+import controlador.Control_FileManager;
 import controlador.Jugador;
 import modelo.Juego;
 import modelo.Palabra;
@@ -292,9 +293,12 @@ public class Panel_4_juego extends FondoPanel {
          */
         public void actionPerformed(ActionEvent e) {
 
+            int acumulador=0;
+
 
             if (e.getSource()==timer && primer_inicio == 99){
                 timer.stop();
+                jugador.setName();
                 JOptionPane.showMessageDialog(null,
                         "Nivel " +juego.getNivel()+
                                 "\nPuntaje " +juego.getPuntaje_Logrado()+
@@ -515,7 +519,7 @@ public class Panel_4_juego extends FondoPanel {
 
                     //acumular 10  puntos al jugador
                    juego.setPuntaje_Logrado(); //estado indica que acerto.
-                   juego.setPuntaje_Logrado_nivel(); //estado indica que acerto.
+                 //  juego.setPuntaje_Logrado_nivel(); //estado indica que acerto.
                     jugador.setPuntaje_Total(juego);
                     System.out.println(" el puntaje ahora es" + juego.getPuntaje_Logrado() + " el jugador lleva estos puntos " +
                             jugador.getPuntaje_Total());
@@ -571,7 +575,7 @@ public class Panel_4_juego extends FondoPanel {
 
                     //acumular 10  puntos al jugador
                     juego.setPuntaje_Logrado(); //estado indica que acerto.
-                    juego.setPuntaje_Logrado_nivel(); //estado indica que acerto.
+                   // juego.setPuntaje_Logrado_nivel(); //estado indica que acerto.
                     jugador.setPuntaje_Total(juego);
                     System.out.println(" el puntaje ahora es" + juego.getPuntaje_Logrado() + " el jugador lleva estos puntos " +
                             jugador.getPuntaje_Total());
@@ -608,20 +612,40 @@ public class Panel_4_juego extends FondoPanel {
                     atras_boton.addActionListener(escucha);
                     panel_sur.add(siguiente.getBoton_style_0("SIGUIENTE"), gbc);
 
-                    juego.setPuntaje_Logrado_total_nivel(juego.getPuntaje_Logrado()); //estado agrega el puntaje totala a niveles
+//                    juego.setPuntaje_Logrado_total_nivel(juego.getPuntaje_Logrado()); //estado agrega el puntaje totala a niveles
 
 
-                    jugador.setPuntaje_Total(juego);
+//                    jugador.setPuntaje_Total(juego);
 
                     jugador.getName();
 
                     jugador.getNivel_Superado();
 
-                    juego.incrementar_nivel();
+                  //  juego.incrementar_nivel();
 
                     juego.setUp_Nivel(juego.getNivel());
 
-                    juego.reset_puntos();
+                    acumulador = acumulador + juego.getPuntaje_Logrado();
+
+                    int puntaje = juego.getPuntaje_Logrado();
+
+                    juego.setPuntaje_Logrado_total_nivel(puntaje);// acumulal lo del nivel
+
+                    String resumenDatos = jugador.getName() + "  "+ juego.getNivel() + " " + juego.getPuntaje_Logrado()+ " \n" +
+                            "soy el acumulador "+ acumulador + juego.getPuntaje_Logrado_total_nivel();
+
+                    JOptionPane.showMessageDialog(  null, "los valores son " + resumenDatos);
+
+
+                    // escribirlas en el archivo de texto
+
+
+                    Control_FileManager cfm = new Control_FileManager();
+                    cfm.writer_Jugador(resumenDatos);
+
+                    juego.reset_puntos_local();
+
+
 
                 }
                 else {
@@ -636,7 +660,7 @@ public class Panel_4_juego extends FondoPanel {
                     gbc.gridwidth = 2; // ocupara 4 columnas
                     gbc.gridheight = 1; // ocupara 3 filas
                     panel_sur.add(siguiente.getBoton_style_0("REPETIR"), gbc);
-                    juego.reset_puntos();
+                    juego.reset_puntos_local();
 
                 }
                 cuenta_nivel = 0;
