@@ -127,7 +127,6 @@ public class Juego {
      * Constructor method.
      */
     public Juego(){
-        jugador = new Jugador();
         nivel=1;
         limite_string_basico = 199;
         total_Palabras_del_Nivel = 0;
@@ -290,13 +289,13 @@ public class Juego {
                 System.out.println(" Juego ===== level 1 ");
                 cant_Palabras_a_Memorizar =2; //10
                 total_Palabras_del_Nivel =4; //20
-                acierto_Exigido=0.2;//07
+                acierto_Exigido=0.1;//07
                 break;
             case 2:
                 System.out.println(" Juego ===== level 2 ");
                 cant_Palabras_a_Memorizar =3; //20
                 total_Palabras_del_Nivel =4; //40
-                acierto_Exigido=0.2;//0.7
+                acierto_Exigido=0.1;//0.7
                 break;
             case 3:
                 cant_Palabras_a_Memorizar =4;
