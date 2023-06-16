@@ -306,7 +306,11 @@ public class Panel_4_juego extends FondoPanel {
 
             if (e.getSource()==timer && primer_inicio == 99){
                 timer.stop();
+<<<<<<< HEAD
                // jugador.setName();
+=======
+                jugador.getName();
+>>>>>>> 3448a9a90e38b2b5ad9103052996cbae741441de
                 JOptionPane.showMessageDialog(null,
                         "Nivel " +juego.getNivel()+
                                 "\nPuntaje " +juego.getPuntaje_Logrado()+
@@ -561,7 +565,7 @@ public class Panel_4_juego extends FondoPanel {
                 palabras_memoria.seText_grafico("",1,1,1);
                 panel_botones.setVisible(true);
 
-                if (palabra.getPalabra_a_Memorizar().contains(palabra.getPalabra_del_nivel().get(cuenta_nivel))){
+                if (palabra.getPalabra_a_Memorizar().contains(palabra.getPalabra_del_nivel().get(cuenta_nivel))){   //dijo no y si lo contenia
                     si_boton.setVisible(false);
                     no_boton.setVisible(false);
                     mensaje.setVisible(false);
@@ -571,10 +575,12 @@ public class Panel_4_juego extends FondoPanel {
 
                     mensaje.seText("");
 
-                }else {
-                    si_boton.setVisible(false);
-                    no_boton.setVisible(false);
+                }else { /// aqui es el bug.......
+
+                    si_boton.setVisible(true);
+                    no_boton.setVisible(true);
                     mensaje.setVisible(false);
+
 
                     info_pantalla.setVisible(true);
                     info_pantalla.set_ruta_fondo("/resources/info/bien.png");

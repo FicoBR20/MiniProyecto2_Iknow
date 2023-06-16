@@ -14,5 +14,3 @@ dffdc 1 0
 
 fghds 1 0
 
-reyui 1 0
-

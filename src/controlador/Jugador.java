@@ -31,10 +31,19 @@ public class Jugador extends Juego{
         return name;
     }
 
+<<<<<<< HEAD
 //    public void setName() {
 //       // this.name = lector_nombre.leer_ultimo_jugador();
 //        this.name = lector_nombre.getNombre_Obtenido();
 //       // JOptionPane.showMessageDialog(null, "llego "+name);
+=======
+
+
+//    public void setName() {
+//       // this.name = lector_nombre.leer_ultimo_jugador();
+//        this.name = lector_nombre.getNombre_Obtenido();
+//      //  JOptionPane.showMessageDialog(null, "llego "+name);
+>>>>>>> 3448a9a90e38b2b5ad9103052996cbae741441de
 //    }
 
 
@@ -65,7 +74,11 @@ public class Jugador extends Juego{
      * Métooo constructor
      */
     public Jugador(){
+<<<<<<< HEAD
         //lector_nombre = new Control_FileManager();
+=======
+       // lector_nombre = new Control_FileManager();
+>>>>>>> 3448a9a90e38b2b5ad9103052996cbae741441de
         name = " ";
         nivel_Superado = 0;
         puntaje_Total = 0;
