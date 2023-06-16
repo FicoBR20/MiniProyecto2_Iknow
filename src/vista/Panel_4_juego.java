@@ -306,7 +306,7 @@ public class Panel_4_juego extends FondoPanel {
 
             if (e.getSource()==timer && primer_inicio == 99){
                 timer.stop();
-                jugador.setName();
+               // jugador.setName();
                 JOptionPane.showMessageDialog(null,
                         "Nivel " +juego.getNivel()+
                                 "\nPuntaje " +juego.getPuntaje_Logrado()+

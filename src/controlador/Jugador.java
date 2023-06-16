@@ -31,11 +31,11 @@ public class Jugador extends Juego{
         return name;
     }
 
-    public void setName() {
-       // this.name = lector_nombre.leer_ultimo_jugador();
-        this.name = lector_nombre.getNombre_Obtenido();
-        JOptionPane.showMessageDialog(null, "llego "+name);
-    }
+//    public void setName() {
+//       // this.name = lector_nombre.leer_ultimo_jugador();
+//        this.name = lector_nombre.getNombre_Obtenido();
+//       // JOptionPane.showMessageDialog(null, "llego "+name);
+//    }
 
 
     public void setName(String name) {
@@ -65,7 +65,7 @@ public class Jugador extends Juego{
      * Métooo constructor
      */
     public Jugador(){
-        lector_nombre = new Control_FileManager();
+        //lector_nombre = new Control_FileManager();
         name = " ";
         nivel_Superado = 0;
         puntaje_Total = 0;
