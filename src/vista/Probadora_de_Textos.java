@@ -1,8 +1,20 @@
 package vista;
 
+import controlador.Jugador;
+
 import javax.swing.*;
+import java.io.*;
 
 public class Probadora_de_Textos extends JFrame {
+
+    private Jugador jugador;
+
+    private FileReader fileReader;
+    private BufferedReader input;
+    private FileWriter fileWriter;
+    private BufferedWriter output;
+
+
 
     JTable jTable = new JTable();
 
@@ -22,6 +34,8 @@ public class Probadora_de_Textos extends JFrame {
     String todojuntoErrores = datosJugador + datosJugador2 + datosJugador3 + datosJugador4 + jugadorErrado1 + jugadorErrado2;
 
     public Probadora_de_Textos() {
+
+        jugador = new Jugador();
 
         //Default JFrame configuration
 //        this.setTitle("Probadora de textos");
@@ -83,7 +97,7 @@ public class Probadora_de_Textos extends JFrame {
 
     /**
      * Método que registra la información actualizada de un
-     * jugador previamente inscrito en la base de datos (archivo de texto)
+     * jugador previamente inscrito en la base de datos (archivo de texto)     NO REEMPLAZA
      * @param infoJugador_Solo
      */
     public void actualiza_Info_Jugador(String infoJugador_Solo) {
@@ -106,7 +120,90 @@ public class Probadora_de_Textos extends JFrame {
 
 }
 
+
+    /**
+     * Método que reemplaza la información de un jugador
+     * previamente registrado, dejando solo un registro de
+     * dicho jugador en el archivo de texto------------------>>>> SI REEMPLAZA
+     *
+     */
+    public String reader_Jugador_1() {
+
+
+
+        String text = jugador.getName();//obtiene el nombre
+        String receptor ="";
+
+        try {
+            fileReader = new FileReader("src/resources/file/info_Jugador_1.txt");
+            input = new BufferedReader(fileReader);
+
+            String line = input.readLine(); // almacena lo que se escribe en el text field
+
+            String nombre_Previo = line.substring(0,5);
+
+
+
+            while (line != null) {
+
+                if (text==nombre_Previo){
+                    line=jugador.ToString_Jugador();
+                    receptor+=line;
+
+
+
+        System.out.println(" la linea actualizada es" + line);// se imprime la linea actualizada que NO se repitio
+
+                    line = input.readLine();
+                }
+                else {
+                    receptor+=line;
+                }
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Estoy dentro de la excepcion");
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                input.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (NullPointerException e) {
+                System.out.println("Estoy dentro del finally");
+                e.printStackTrace();
+            }
+        }
+
+    return receptor;
+
+    }
+
+    public void writer_Jugador_1(String line) {
+        try {
+            String text = reader_Jugador_1();// recepciona el String generado en el reader.
+            text += line + "\n";
+            fileWriter = new FileWriter("src/resources/file/info_Jugador_1.txt");
+            output = new BufferedWriter(fileWriter);
+            output.write(text);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                output.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+
+
     public static void main(String[] args) {
+
+
 
         JTable jTable = new JTable();
 

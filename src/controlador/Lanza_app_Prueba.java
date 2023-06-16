@@ -94,8 +94,10 @@ public class Lanza_app_Prueba {
                 gui.repaint();
             }
             case 4 ->{
+
+
 //                juego.incrementar_nivel();
-//                System.out.println("Nivel "+juego.getNivel());
+                System.out.println("Nivel "+juego.getNivel());
                 panel_4_juego = new Panel_4_juego(juego,jugador);
                 panel_4_juego.start(); // inicializa timer
                 gui.setContentPane(panel_4_juego);
@@ -135,18 +137,10 @@ public class Lanza_app_Prueba {
                 gui.repaint();;
             }
             case 10->{
-                // se debe preguntar si supero el nivel.
-                //....nivel +1
-              //  jugador = panel_4_juego.getJugador();///////////////////
 
-               // juego = panel_4_juego.getJuego();/////////////
-               // juego.incrementar_nivel();
-                juego.setUp_Nivel(juego.getNivel()+1);
-
-              //  panel_4_juego = new Panel_4_juego(juego);
                 bill.seleccionar_pantalla(4);
-
             }
+
             case 12->{ // para presentar front jugador habitual
                 gui.setContentPane(frontJugadorHabitual);
                 gui.revalidate();

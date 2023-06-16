@@ -2,14 +2,19 @@ package modelo;
 
 import controlador.Jugador;
 
-import javax.swing.*;
-
 /**
  * Esta Clase manejara la lógica del juego.
  */
 public class Juego {
 
     private Jugador jugador;
+
+    /**
+     * Metodo que obtiene el nombre del jugador que esta
+     * jugando.
+     */
+//    private String name_adictoPlayer;
+
 
     /**
      *
@@ -42,6 +47,7 @@ public class Juego {
      * por cada acierto del jugador.
      */
     private int puntaje_Logrado;
+    private int puntaje_Logrado_total_nivel;
 
     /**
      * Una palabra se le presenta al jugador, el debe decidir en dos vías; SI Ó NO.
@@ -109,12 +115,20 @@ public class Juego {
 
 
     // From here implements the Class methods ==================================================
+//
+//    public String getName_adictoPlayer() {
+//        return name_adictoPlayer;
+//    }
+//
+//    public void setName_adictoPlayer(String name_adictoPlayer) {
+//        this.name_adictoPlayer =jugador.getName();
+//    }
 
     /**
      * Constructor method.
      */
     public Juego(){
-        jugador = new Jugador();
+
         nivel=1;
         limite_string_basico = 199;
         total_Palabras_del_Nivel = 0;
@@ -126,12 +140,21 @@ public class Juego {
         setUp_Nivel(estado);// juego inicia en nivel 1
         setCategoria(categoria);
         puntaje_Logrado=0;
+        puntaje_Logrado_total_nivel=0;
         acierto_del_Jugador=false;
 
     }
 
     // Getter and Setter ===============================
 
+
+    public int getPuntaje_Logrado_total_nivel() {
+        return puntaje_Logrado_total_nivel;
+    }
+
+    public void setPuntaje_Logrado_total_nivel(int puntaje_Logrado_total_nivel) {
+        this.puntaje_Logrado_total_nivel = puntaje_Logrado_total_nivel;
+    }
 
     public String getRuta() {
         return ruta;
@@ -192,10 +215,16 @@ public class Juego {
 
     }
 
+    public void setPuntaje_Logrado_nivel() {
+
+        puntaje_Logrado_total_nivel +=10;
+
+    }
+
     /**
      * Vuelve el puntaje objenido a cero
      */
-    public void reset_puntos() {
+    public void reset_puntos_local() {
         puntaje_Logrado=0;
     }
 
@@ -241,8 +270,6 @@ public class Juego {
         }
     }
 
-
-
     // Methods of Class ===============================
 
     /**
@@ -262,26 +289,24 @@ public class Juego {
         switch (nivel_de_Juego){
             case 1:
                 System.out.println(" Juego ===== level 1 ");
-                cant_Palabras_a_Memorizar =3; //10
-                total_Palabras_del_Nivel =5; //20
-                acierto_Exigido=0.7;
+                cant_Palabras_a_Memorizar =2; //10
+                total_Palabras_del_Nivel =4; //20
+                acierto_Exigido=0.2;//07
                 break;
             case 2:
                 System.out.println(" Juego ===== level 2 ");
                 cant_Palabras_a_Memorizar =3; //20
-                total_Palabras_del_Nivel =5; //40
-                acierto_Exigido=0.7;
+                total_Palabras_del_Nivel =4; //40
+                acierto_Exigido=0.2;//0.7
                 break;
             case 3:
-                System.out.println(" Juego ===== level 3 ");
-                cant_Palabras_a_Memorizar =3;//25
-                total_Palabras_del_Nivel =6;//50
+                cant_Palabras_a_Memorizar =4;
+                total_Palabras_del_Nivel =6;
                 acierto_Exigido=0.75;
                 break;
             case 4:
-                System.out.println(" Juego ===== level 4 ");
-                cant_Palabras_a_Memorizar =3;//30
-                total_Palabras_del_Nivel =6;//60
+                cant_Palabras_a_Memorizar =30;
+                total_Palabras_del_Nivel =60;
                 acierto_Exigido=0.8;
                 break;
             case 5:
@@ -344,79 +369,15 @@ public class Juego {
             return false;
         }
         else {
+            if (getNivel()<10){
+                setNivel(getNivel()+1);
+            }
+            else {
+                System.out.println(" eres un triunfador llegaste al nivel 10");
+            }
+
             return true;
         }
     }
-
-
-//    public  void validador_palabla_correcta{
-//        if(e.getSource()==timer){
-//            System.out.println("Palabra " +palabra.getPalabra_a_Memorizar().get(counter)
-//                    +" Time "+counter+" El timer está corriendo? " + String.valueOf(timer.isRunning()));
-//            if(counter <= palabra.getPalabra_a_Memorizar().size()-2) {
-//                area_de_texto.seText(palabra.getPalabra_a_Memorizar().get(counter));
-//                counter++;
-//            }else {
-//                timer.stop();
-//                area_de_texto.seText(palabra.getPalabra_del_nivel().get(0));
-//                panel_botones.setVisible(true);
-//            }
-//        }else{
-//            counter=0;
-//        }
-//
-//        if(e.getSource()==timer_acierto){
-//            System.out.println("timer 2");
-//            timer_acierto.stop();
-//            area_de_texto_2.seText_2("");
-//            area_de_texto.seText(palabra.getPalabra_del_nivel().get(contador));
-//            panel_botones.setVisible(true);
-//            timer_acierto.stop();
-//        }
-//
-//        if (e.getSource()==si_boton && contador <= palabra.getPalabra_del_nivel().size()-1){
-//            timer_acierto = new Timer(4000,escucha);
-//            timer_acierto.start();
-//            area_de_texto.seText("");
-//            panel_botones.setVisible(false);
-//
-//            if (palabra.getPalabra_a_Memorizar().contains(palabra.getPalabra_del_nivel().get(contador))){
-//                area_de_texto_2.seText_2("CORRECTO\n"
-//                        +palabra.getPalabra_del_nivel().get(contador)
-//                        +"\nsi es una palabra memorizada"
-//                );
-//            }else {
-//                area_de_texto_2.seText_2("INCORRECTO\n"
-//                        +palabra.getPalabra_del_nivel().get(contador)
-//                        +"\nno es una palabra memorizada"
-//                );
-//            }
-//            contador++;
-//        }
-//
-//        else if (e.getSource()==no_boton && contador <= palabra.getPalabra_del_nivel().size()-1){
-//            timer_acierto = new Timer(4000,escucha);
-//            timer_acierto.start();
-//            area_de_texto.seText("");
-//            panel_botones.setVisible(false);
-//
-//            if (palabra.getPalabra_a_Memorizar().contains(palabra.getPalabra_del_nivel().get(contador))){
-//                area_de_texto_2.seText_2("INCORRECTO\n"
-//                        +palabra.getPalabra_del_nivel().get(contador)
-//                        +"\nsi es una palabra memorizada"
-//                );
-//            }else {
-//                area_de_texto_2.seText_2("CORRECTO\n"
-//                        +palabra.getPalabra_del_nivel().get(contador)
-//                        +"\nno es una palabra memorizada"
-//                );
-//            }
-//            contador++;
-//        }
-//        else if(contador == palabra.getPalabra_del_nivel().size()-1){
-//
-//        }
-//    }
-
 
 }

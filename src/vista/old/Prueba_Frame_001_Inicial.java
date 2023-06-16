@@ -223,7 +223,7 @@ public class Prueba_Frame_001_Inicial extends JFrame {
 
 
     /**
-     * Main process of the Java program
+     * g process of the Java program
      * @param args Object used in order to send input data from command line when
      *             the program is execute by console.
      */
