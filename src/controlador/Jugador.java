@@ -34,7 +34,10 @@ public class Jugador extends Juego{
     public void setName() {
        // this.name = lector_nombre.leer_ultimo_jugador();
         this.name = lector_nombre.getNombre_Obtenido();
-        JOptionPane.showMessageDialog(null, "llego "+name);
+
+
+        JOptionPane.showMessageDialog(null,"..Linea 39.. ::Class Jugador::\n\n" +
+                "llego "+name);
     }
 
 
@@ -57,7 +60,7 @@ public class Jugador extends Juego{
 
     public void setPuntaje_Total(Juego juego) {
 
-        puntaje_Total= juego.getPuntaje_Logrado_total_nivel();
+        puntaje_Total= juego.getPuntaje_global();
 
     }
 

@@ -1,19 +1,11 @@
 package modelo;
 
-import controlador.Jugador;
+import javax.swing.*;
 
 /**
  * Esta Clase manejara la lógica del juego.
  */
 public class Juego {
-
-    /**
-     * Metodo que obtiene el nombre del jugador que esta
-     * jugando.
-     */
-//    private String name_adictoPlayer;
-
-    private Jugador jugador;
 
     /**
      *
@@ -45,8 +37,8 @@ public class Juego {
      * Acumulador que suma de a 10 puntos
      * por cada acierto del jugador.
      */
-    private int puntaje_Logrado;
-    private int puntaje_Logrado_total_nivel;
+    private int puntaje_Local;
+    private int puntaje_global;
 
     /**
      * Una palabra se le presenta al jugador, el debe decidir en dos vías; SI Ó NO.
@@ -114,46 +106,31 @@ public class Juego {
 
 
     // From here implements the Class methods ==================================================
-//
-//    public String getName_adictoPlayer() {
-//        return name_adictoPlayer;
-//    }
-//
-//    public void setName_adictoPlayer(String name_adictoPlayer) {
-//        this.name_adictoPlayer =jugador.getName();
-//    }
-
     /**
      * Constructor method.
      */
     public Juego(){
-        jugador = new Jugador();
         nivel=1;
+        categoria = 1;
+        ruta = "";
+        estado=1;
+
         limite_string_basico = 199;
+
         total_Palabras_del_Nivel = 0;
         cant_Palabras_a_Memorizar = 0;
+
+        puntaje_Local =0;
+        puntaje_global =0;
+
         acierto_Exigido = 1;
-        ruta = "";
-        categoria = 1;
-        estado=1;
-        setUp_Nivel(estado);// juego inicia en nivel 1
+        cambiar_Nivel(estado);// juego inicia en nivel 1
         setCategoria(categoria);
-        puntaje_Logrado=0;
-        puntaje_Logrado_total_nivel=0;
         acierto_del_Jugador=false;
 
     }
 
     // Getter and Setter ===============================
-
-
-    public int getPuntaje_Logrado_total_nivel() {
-        return puntaje_Logrado_total_nivel;
-    }
-
-    public void setPuntaje_Logrado_total_nivel(int puntaje_Logrado_total_nivel) {
-        this.puntaje_Logrado_total_nivel = puntaje_Logrado_total_nivel;
-    }
 
     public String getRuta() {
         return ruta;
@@ -200,32 +177,34 @@ public class Juego {
     }
 
     /**
-     * Acumula de a 10 puntos por cada
-     * acierto del jugador.
+     * Control del puntaje local
      * @return puntaje_logrado
      */
-    public int getPuntaje_Logrado() {
-        return puntaje_Logrado;
+    public int getPuntaje_Local() {
+        return puntaje_Local;
     }
 
-    public void setPuntaje_Logrado() {
+    public void incrementar_puntaje_local() {
 
-        puntaje_Logrado +=10;
+        puntaje_Local +=10;
 
     }
-
-    public void setPuntaje_Logrado_nivel() {
-
-        puntaje_Logrado_total_nivel +=10;
-
+    public void reset_puntos_local() {
+        puntaje_Local =0;
     }
 
     /**
-     * Vuelve el puntaje objenido a cero
+     * control del puntaje global
      */
-    public void reset_puntos_local() {
-        puntaje_Logrado=0;
+
+    public int getPuntaje_global() {
+        return puntaje_global;
     }
+
+    public void incrementar_puntaje_global(int puntaje_local) {
+        this.puntaje_global += puntaje_local;
+    }
+
 
     public boolean isAcierto_del_Jugador() {
         return acierto_del_Jugador;
@@ -283,24 +262,24 @@ public class Juego {
      * Método que configura el juego según el nivel.
      * @param nivel_de_Juego
      */
-    public void setUp_Nivel(int nivel_de_Juego){
+    public void cambiar_Nivel(int nivel_de_Juego){
 
         switch (nivel_de_Juego){
             case 1:
                 System.out.println(" Juego ===== level 1 ");
-                cant_Palabras_a_Memorizar =2; //10
-                total_Palabras_del_Nivel =4; //20
+                cant_Palabras_a_Memorizar =1; //10
+                total_Palabras_del_Nivel =2; //20
                 acierto_Exigido=0.2;//07
                 break;
             case 2:
                 System.out.println(" Juego ===== level 2 ");
-                cant_Palabras_a_Memorizar =3; //20
-                total_Palabras_del_Nivel =4; //40
+                cant_Palabras_a_Memorizar =2; //20
+                total_Palabras_del_Nivel =3; //40
                 acierto_Exigido=0.2;//0.7
                 break;
             case 3:
-                cant_Palabras_a_Memorizar =4;
-                total_Palabras_del_Nivel =6;
+                cant_Palabras_a_Memorizar =3;
+                total_Palabras_del_Nivel =4;
                 acierto_Exigido=0.75;
                 break;
             case 4:
@@ -364,12 +343,31 @@ public class Juego {
      *          false -> si NO se logra igualar o superar el porcentaje de acierto exigido en el nivel que está.
      */
     public boolean nivel_Superado(){
-        if (puntaje_Logrado / (10 * total_Palabras_del_Nivel) <= acierto_Exigido){
+        if (puntaje_Local / (10 * total_Palabras_del_Nivel) <= acierto_Exigido){
+
+            reset_puntos_local();
+            JOptionPane.showMessageDialog(null,"..Linea 347.. ::Class Juego::\n\n" +
+                    "Nivel " +getNivel()+
+                    "\nPuntaje_local " +getPuntaje_Local()+
+                    "\nPuntaje_global "+getPuntaje_global()+
+                    "\nPalabra a memorizar " +getCant_Palabras_a_Memorizar()+
+                    "\nPalabras de nivel "+getTotal_Palabras_del_Nivel());
+
             return false;
         }
         else {
             if (getNivel()<10){
                 setNivel(getNivel()+1);
+                cambiar_Nivel(getNivel());
+                incrementar_puntaje_global(getPuntaje_Local());
+                reset_puntos_local();
+
+                JOptionPane.showMessageDialog(null,"..Linea 362.. ::Class Juego::\n\n" +
+                        "Nivel " +getNivel()+
+                        "\nPuntaje_local " +getPuntaje_Local()+
+                        "\nPuntaje_global "+getPuntaje_global()+
+                        "\nPalabra a memorizar " +getCant_Palabras_a_Memorizar()+
+                        "\nPalabras de nivel "+getTotal_Palabras_del_Nivel());
             }
             else {
                 System.out.println(" eres un triunfador llegaste al nivel 10");

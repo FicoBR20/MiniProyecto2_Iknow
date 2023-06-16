@@ -23,17 +23,15 @@ public class Panel_4_juego extends FondoPanel {
  */
 
     private Timer timer;
-    private Timer timer_acierto;
     private Timer timer_acierto_2;
     private Area_de_Texto mensaje_puntos;
     private Area_de_Texto mensaje_nivel;
     private Area_de_Texto mensaje;
-    private String infoPanel;
-    private String memoriza;
-    private Font font;
-    private FondoPanel cnteo_321;
+    private FondoPanel conteo_321;
     private FondoPanel info_pantalla;
-    private Botones atras_boton,si_boton,no_boton, siguiente;
+    private Botones boton_siguiente;
+    private Botones boton_repetir;
+    private Botones si_boton,no_boton;
     private Letra_grafic palabras_memoria;
     private Escucha escucha;
     private GridBagConstraints gbc;
@@ -44,7 +42,6 @@ public class Panel_4_juego extends FondoPanel {
     private Jugador jugador;
     private int cuenta_memorizar, cuenta_nivel;
     private int primer_inicio;
-    private int cuenta_nivel_tiempo;
 
     private JPanel panel_norte;
     private JPanel panel_centro;
@@ -59,7 +56,7 @@ public class Panel_4_juego extends FondoPanel {
         juego = new Juego();
         juego.setNivel(1);
         jugador = new Jugador();
-        ini();
+        iniciar();
     }
 
     /**
@@ -67,9 +64,10 @@ public class Panel_4_juego extends FondoPanel {
      * @param juego
      */
     public Panel_4_juego(Juego juego){
-        cfm = new Control_FileManager();
-        this.juego = juego;
-        ini();
+            cfm = new Control_FileManager();
+            this.juego = juego;
+            jugador = new Jugador();
+            iniciar();
     }
 
     /**
@@ -79,15 +77,16 @@ public class Panel_4_juego extends FondoPanel {
 
     public Panel_4_juego(Jugador jugador){
         cfm = new Control_FileManager();
+        this.juego = new Juego();
         this.jugador = jugador;
-        ini();
+        iniciar();
     }
 
-    public Panel_4_juego(Juego juego, Jugador jugador){
-        cfm = new Control_FileManager();
-        this.jugador = jugador;
-        this.juego = juego;
-        ini();
+    public Panel_4_juego(Juego juego, Jugador jugador) {
+            cfm = new Control_FileManager();
+            this.jugador = jugador;
+            this.juego = juego;
+            iniciar();
     }
 
     public Jugador getJugador() {
@@ -102,7 +101,7 @@ public class Panel_4_juego extends FondoPanel {
      * Este metodo inicializa las variables de la clase
      */
 
-    private void ini(){
+    private void iniciar(){
 
         set_ruta_fondo(2);
 
@@ -127,9 +126,9 @@ public class Panel_4_juego extends FondoPanel {
 
         this.setBackground( new Color(13, 64, 123));
         gbc = new GridBagConstraints();
+//        gbc.ipady=10;
+//        gbc.ipadx=10;
 
-        siguiente = new Botones();
-        timer_acierto_2 = new Timer(2000,escucha);
         escucha = new Escucha();
         panel_botones = new JPanel();
         panel_botones.setLayout(new GridBagLayout());
@@ -141,26 +140,20 @@ public class Panel_4_juego extends FondoPanel {
         cuenta_memorizar = 0;
         cuenta_nivel = 0;
         primer_inicio = 99;
-        cuenta_nivel_tiempo = 0;
-        memoriza = "";
-        infoPanel = " Fijate muy bien en las palabras presentadas\ndeberas recordarlas dentro de poco..suerte\n";
 
         palabra = new Palabra();
-        palabra.setJuego(juego);
+        palabra.setJuego(getJuego());
         palabra.setPalabra_del_nivel();
         palabra.setPalabra_a_Memorizar();
-
-//        gbc.ipady=10;
-//        gbc.ipadx=10;
 
         /**
          * Panel norte
          */
         mensaje_puntos =  new Area_de_Texto();
-        panel_norte.add(mensaje_puntos.seText("PUNTOS     "+juego.getPuntaje_Logrado()),BorderLayout.WEST);
+        panel_norte.add(mensaje_puntos.seText("PUNTOS "+getJuego().getPuntaje_Local()),BorderLayout.WEST+"     ");
 
         mensaje_nivel =  new Area_de_Texto();
-        panel_norte.add(mensaje_nivel.seText("     NIVEL "+juego.getNivel()),BorderLayout.EAST);
+        panel_norte.add(mensaje_nivel.seText("     NIVEL "+getJuego().getNivel()),BorderLayout.EAST);
 
         /**
          * Panel centro
@@ -191,25 +184,25 @@ public class Panel_4_juego extends FondoPanel {
 
 
         //3.. 2.. 1.. contador
-        cnteo_321 = new FondoPanel();
-        cnteo_321.set_ruta_fondo("/resources/animaciones/conteo/32.png");
-        cnteo_321.setPreferredSize(new Dimension(116,167));
+        conteo_321 = new FondoPanel();
+        conteo_321.set_ruta_fondo("/resources/animaciones/conteo/32.png");
+        conteo_321.setPreferredSize(new Dimension(116,167));
         gbc.gridx=0; // columna 0
         gbc.gridy=0; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         gbc.insets.set(0,0,0,0);
         gbc.anchor=GridBagConstraints.CENTER;
-        panel_centro.add(cnteo_321, gbc);
+        panel_centro.add(conteo_321, gbc);
 
         mensaje =  new Area_de_Texto();
         gbc.gridx=0; // columna 0
-        gbc.gridy=1; // fila 0
-        gbc.gridwidth=1; // ocupara 4 columnas
+        gbc.gridy=0; // fila 0
+        gbc.gridwidth=2; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         gbc.insets.set(0,0,0,0);
-        gbc.anchor=GridBagConstraints.SOUTH;
-        panel_centro.add(mensaje.seText(""), gbc);
+        gbc.anchor=GridBagConstraints.NORTH;
+        panel_sur.add(mensaje.seText(""), gbc);
 
         /**
          * Panel sur
@@ -217,7 +210,7 @@ public class Panel_4_juego extends FondoPanel {
         //Boton si
         si_boton = new Botones();
         gbc.gridx=0; // columna 0
-        gbc.gridy=0; // fila 0
+        gbc.gridy=1; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         si_boton.addActionListener(escucha);
@@ -228,7 +221,7 @@ public class Panel_4_juego extends FondoPanel {
         //botn no
         no_boton = new Botones();
         gbc.gridx=1; // columna 0
-        gbc.gridy=0; // fila 0
+        gbc.gridy=1; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
         no_boton.addActionListener(escucha);
@@ -236,38 +229,49 @@ public class Panel_4_juego extends FondoPanel {
         gbc.anchor=GridBagConstraints.LAST_LINE_END;
         panel_sur.add(no_boton.getBoton_style_0("NO"), gbc);
 
-        //botn atras
-        atras_boton = new Botones();
+        //botn siguiente
+        boton_siguiente = new Botones();
         gbc.gridx=0; // columna 0
-        gbc.gridy=0; // fila 00
+        gbc.gridy=1; // fila 00
         gbc.gridwidth=2; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
-        atras_boton.addActionListener(escucha);
+//        boton_siguiente.addActionListener(escucha);
         gbc.insets.set(0,0,0,0);
         gbc.anchor=GridBagConstraints.PAGE_END;
-        panel_sur.add(atras_boton.getBoton_style_0("ATRAS"), gbc);
+        panel_sur.add(boton_siguiente.getBoton_style_0("SIGUIENTE"), gbc);
 
+        //botn repetir
+        boton_repetir = new Botones();
+        gbc.gridx = 0; // columna 0
+        gbc.gridy = 1; // fila 0
+        gbc.gridwidth = 2; // ocupara 4 columnas
+        gbc.gridheight = 1; // ocupara 3 filas
+//        boton_repetir.addActionListener(escucha);
+        gbc.insets.set(0,0,0,0);
+        gbc.anchor=GridBagConstraints.PAGE_END;
+        panel_sur.add(boton_repetir.getBoton_style_0("REPETIR"), gbc);
+
+        this.add(panel_norte);
+        this.add(panel_centro);
+        this.add(panel_sur);
 
         //se ocultan los elementos
         si_boton.setVisible(false);
         no_boton.setVisible(false);
         palabras_memoria.setVisible(false);
-        cnteo_321.setVisible(false);
-        cnteo_321.setVisible(false);
-        atras_boton.setVisible(false);
+        conteo_321.setVisible(false);
+        conteo_321.setVisible(false);
+        boton_siguiente.setVisible(false);
         info_pantalla.setVisible(false);
         palabras_memoria.setVisible(false);
         mensaje.setVisible(false);
-
-        this.add(panel_norte);
-        this.add(panel_centro);
-        this.add(panel_sur);
-//        this.add(panel_norte,BorderLayout.NORTH);
-//        this.add(panel_centro,BorderLayout.CENTER);
-//        this.add(panel_sur,BorderLayout.SOUTH);
+        boton_repetir.setVisible(false);
+        info_pantalla.setVisible(false);
+        conteo_321.setVisible(false);
 
         //Aqui se setea el temporizador para lanzar en juego
         timer = new Timer(1000,escucha);
+        timer_acierto_2 = new Timer(2000,escucha);
     }
 
     /**
@@ -281,7 +285,7 @@ public class Panel_4_juego extends FondoPanel {
     }
 
     public Juego getJuego() {
-        return juego;
+            return juego;
     }
 
     public void setJuego(Juego juego) {
@@ -301,26 +305,37 @@ public class Panel_4_juego extends FondoPanel {
          */
         public void actionPerformed(ActionEvent e) {
 
-            int acumulador=0;
-
-
             if (e.getSource()==timer && primer_inicio == 99){
                 timer.stop();
+
+                //se ocultan los elementos
+                si_boton.setVisible(false);
+                no_boton.setVisible(false);
+                palabras_memoria.setVisible(false);
+                conteo_321.setVisible(false);
+                conteo_321.setVisible(false);
+                boton_siguiente.setVisible(false);
+                info_pantalla.setVisible(false);
+                palabras_memoria.setVisible(false);
+                mensaje.setVisible(false);
+                boton_repetir.setVisible(false);
+                info_pantalla.setVisible(false);
+                conteo_321.setVisible(false);
+
                 jugador.setName();
-                JOptionPane.showMessageDialog(null,
-                        "Nivel " +juego.getNivel()+
-                                "\nPuntaje " +juego.getPuntaje_Logrado()+
-                                "\nNombre " +jugador.getName()+
-                                "\nNivel total superdo " +jugador.getNivel_Superado()+
-                                "\nPuntaje global "+juego.getPuntaje_Logrado_total_nivel()+
-                                "\nPalabra a memorizar " +juego.getCant_Palabras_a_Memorizar()+
-                                "\nPalabras de nivel "+juego.getTotal_Palabras_del_Nivel());
 
-
+                JOptionPane.showMessageDialog(null,"..Linea 327.. ::Class Panel_4::\n\n" +
+                        "Nivel " +getJuego().getNivel()+
+                        "\nPuntaje_local " +getJuego().getPuntaje_Local()+
+                        "\nNombre " +jugador.getName()+
+                        "\nNiveles superdos " +jugador.getNivel_Superado()+
+                        "\nPuntaje_global "+getJuego().getPuntaje_global()+
+                        "\nPalabra a memorizar " +getJuego().getCant_Palabras_a_Memorizar()+
+                        "\nPalabras de nivel "+getJuego().getTotal_Palabras_del_Nivel());
                 primer_inicio=0;
                 info_pantalla.setVisible(true);
-                mensaje.seText("NIVEL "+juego.getNivel() );
-                timer = new Timer(0, escucha);
+                mensaje.seText("NIVEL "+getJuego().getNivel() );
+                timer = new Timer(1000, escucha);
                 timer.start();
             }
 
@@ -332,9 +347,9 @@ public class Panel_4_juego extends FondoPanel {
                 timer.stop();
                 mensaje.seText("");
                 System.out.println("Entro while #3 --->"+ count);
-                cnteo_321.setVisible(true);
+                conteo_321.setVisible(true);
                 info_pantalla.setVisible(false);
-                cnteo_321.set_ruta_fondo("/resources/animaciones/conteo/3"+primer_inicio+".png");
+                conteo_321.set_ruta_fondo("/resources/animaciones/conteo/3"+primer_inicio+".png");
                 primer_inicio++;
                 timer = new Timer(100, escucha);
                 timer.start();
@@ -345,8 +360,8 @@ public class Panel_4_juego extends FondoPanel {
                 count = 5 - count;
                 timer.stop();
                 System.out.println("Entro while #3 <---"+ count);
-                cnteo_321.setVisible(true);
-                cnteo_321.set_ruta_fondo("/resources/animaciones/conteo/3"+count+".png");
+                conteo_321.setVisible(true);
+                conteo_321.set_ruta_fondo("/resources/animaciones/conteo/3"+count+".png");
                 primer_inicio++;
                 timer = new Timer(100, escucha);
                 timer.start();
@@ -357,7 +372,7 @@ public class Panel_4_juego extends FondoPanel {
              */
             while (e.getSource()==timer && primer_inicio >= 10 && primer_inicio < 15){
                 timer.stop();
-                cnteo_321.setVisible(false);
+                conteo_321.setVisible(false);
                 primer_inicio++;
                 timer = new Timer(100, escucha);
                 timer.start();
@@ -370,8 +385,8 @@ public class Panel_4_juego extends FondoPanel {
             while (e.getSource()==timer && primer_inicio >= 15 && primer_inicio < 20){
                 timer.stop();
                 System.out.println("Entro while #2 --->"+ count);
-                cnteo_321.setVisible(true);
-                cnteo_321.set_ruta_fondo("/resources/animaciones/conteo/2"+count+".png");
+                conteo_321.setVisible(true);
+                conteo_321.set_ruta_fondo("/resources/animaciones/conteo/2"+count+".png");
                 primer_inicio++;
                 timer = new Timer(100, escucha);
                 timer.start();
@@ -381,8 +396,8 @@ public class Panel_4_juego extends FondoPanel {
                 count = 5 - count;
                 timer.stop();
                 System.out.println("Entro while #2 <---"+ count);
-                cnteo_321.setVisible(true);
-                cnteo_321.set_ruta_fondo("/resources/animaciones/conteo/2"+count+".png");
+                conteo_321.setVisible(true);
+                conteo_321.set_ruta_fondo("/resources/animaciones/conteo/2"+count+".png");
                 primer_inicio++;
                 timer = new Timer(100, escucha);
                 timer.start();
@@ -394,7 +409,7 @@ public class Panel_4_juego extends FondoPanel {
              */
             while (e.getSource()==timer && primer_inicio >= 25 && primer_inicio < 30){
                 timer.stop();
-                cnteo_321.setVisible(false);
+                conteo_321.setVisible(false);
                 primer_inicio++;
                 timer = new Timer(100, escucha);
                 timer.start();
@@ -408,8 +423,8 @@ public class Panel_4_juego extends FondoPanel {
             while (e.getSource()==timer && primer_inicio >= 30 && primer_inicio < 35){
                 timer.stop();
                 System.out.println("Entro while #1 --->"+ count);
-                cnteo_321.setVisible(true);
-                cnteo_321.set_ruta_fondo("/resources/animaciones/conteo/1"+count+".png");
+                conteo_321.setVisible(true);
+                conteo_321.set_ruta_fondo("/resources/animaciones/conteo/1"+count+".png");
                 primer_inicio++;
                 timer = new Timer(100, escucha);
                 timer.start();
@@ -419,8 +434,8 @@ public class Panel_4_juego extends FondoPanel {
                 count = 5 - count;
                 timer.stop();
                 System.out.println("Entro while #1 <---"+ count);
-                cnteo_321.setVisible(true);
-                cnteo_321.set_ruta_fondo("/resources/animaciones/conteo/1"+count+".png");
+                conteo_321.setVisible(true);
+                conteo_321.set_ruta_fondo("/resources/animaciones/conteo/1"+count+".png");
                 primer_inicio++;
                 timer = new Timer(100, escucha);
                 timer.start();
@@ -433,7 +448,7 @@ public class Panel_4_juego extends FondoPanel {
              */
             if (primer_inicio == 40){
                 timer.stop();
-                cnteo_321.setVisible(false);
+                conteo_321.setVisible(false);
                 palabras_memoria.setVisible(true);
                 primer_inicio++;
                 cuenta_memorizar = 0;
@@ -451,7 +466,7 @@ public class Panel_4_juego extends FondoPanel {
                 palabras_memoria.seText_grafico(palabra.getPalabra_a_Memorizar().get(cuenta_memorizar));
                 mensaje.seText("");
                 cuenta_memorizar++;
-                timer = new Timer(5000, escucha);
+                timer = new Timer(2000, escucha);
                 timer.start();
 
             }
@@ -474,7 +489,7 @@ public class Panel_4_juego extends FondoPanel {
                 palabras_memoria.seText_grafico(palabra.getPalabra_del_nivel().get(cuenta_nivel));
                 si_boton.setVisible(true);
                 no_boton.setVisible(true);
-                timer_acierto_2 = new Timer(7000, escucha);
+                timer_acierto_2 = new Timer(2000, escucha);
                 timer_acierto_2.start();
             }
 //
@@ -526,13 +541,13 @@ public class Panel_4_juego extends FondoPanel {
                     mensaje.seText("");
 
                     //acumular 10  puntos al jugador
-                   juego.setPuntaje_Logrado(); //estado indica que acerto.
+                    getJuego().incrementar_puntaje_local(); //estado indica que acerto.
                  //  juego.setPuntaje_Logrado_nivel(); //estado indica que acerto.
-                    jugador.setPuntaje_Total(juego);
-                    System.out.println(" el puntaje ahora es" + juego.getPuntaje_Logrado() + " el jugador lleva estos puntos " +
+                    jugador.setPuntaje_Total(getJuego());
+                    System.out.println(" el puntaje ahora es" + getJuego().getPuntaje_Local() + " el jugador lleva estos puntos " +
                             jugador.getPuntaje_Total());
 
-                    mensaje_puntos.seText("Puntos      "+juego.getPuntaje_Logrado());
+                    mensaje_puntos.seText("Puntos      "+getJuego().getPuntaje_Local());
 
 
                 }else {
@@ -557,7 +572,6 @@ public class Panel_4_juego extends FondoPanel {
             if (e.getSource()==no_boton && cuenta_nivel < palabra.getPalabra_del_nivel().size()){ // recorderis
                 timer_acierto_2.stop();
 
-//                palabras_memoria.seText_grafico("");
                 palabras_memoria.seText_grafico("",1,1,1);
                 panel_botones.setVisible(true);
 
@@ -582,13 +596,13 @@ public class Panel_4_juego extends FondoPanel {
                     mensaje.seText("");
 
                     //acumular 10  puntos al jugador
-                    juego.setPuntaje_Logrado(); //estado indica que acerto.
+                    getJuego().incrementar_puntaje_local(); //estado indica que acerto.
                    // juego.setPuntaje_Logrado_nivel(); //estado indica que acerto.
-                    jugador.setPuntaje_Total(juego);
-                    System.out.println(" el puntaje ahora es" + juego.getPuntaje_Logrado() + " el jugador lleva estos puntos " +
+                    jugador.setPuntaje_Total(getJuego());
+                    System.out.println(" el puntaje ahora es" + getJuego().getPuntaje_Local() + " el jugador lleva estos puntos " +
                             jugador.getPuntaje_Total());
 
-                    mensaje_puntos.seText("Puntos      "+juego.getPuntaje_Logrado());
+                    mensaje_puntos.seText("Puntos      "+getJuego().getPuntaje_Local());
                 }
                 cuenta_nivel++;
                 timer = new Timer(2000,escucha);
@@ -602,91 +616,22 @@ public class Panel_4_juego extends FondoPanel {
             if(cuenta_nivel > palabra.getPalabra_del_nivel().size()-1){
                 timer_acierto_2.stop();
                 timer.stop();
-                if (juego.nivel_Superado()) {
 
+                info_pantalla.setVisible(false);
+                panel_botones.setVisible(false);
+                mensaje.seText("");
 
-
-
-
-
-
-                    info_pantalla.setVisible(false);
-                    panel_botones.setVisible(false);
-                    atras_boton.setVisible(false);
-
-                    mensaje.seText("");
-
+                if (getJuego().nivel_Superado()) {
                     palabras_memoria.seText_grafico("PASAS AL SIGUIENTE NIVEL");
-//                    palabras_memoria.sin_estilo("PASAS AL SIGUIENTE NIVEL");
-
-//                    juego.setPuntaje_Logrado_total_nivel(juego.getPuntaje_Logrado()); //estado agrega el puntaje totala a niveles
-
-
-//                    jugador.setPuntaje_Total(juego);
-
-                    jugador.getName();
-
-                    jugador.getNivel_Superado();
-
-                  //  juego.incrementar_nivel();
-
-                    juego.setUp_Nivel(juego.getNivel());
-
-                    acumulador = acumulador + juego.getPuntaje_Logrado();
-
-                    int puntaje = juego.getPuntaje_Logrado();
-
-                    juego.setPuntaje_Logrado_total_nivel(puntaje);// acumulal lo del nivel
-
-                    /// escritura de los datos .....reemplazando la linea que no existan muchas lineas del mismo.
-
-                    String resumenDatos = jugador.getName() + "  "+ juego.getNivel() + " " + juego.getPuntaje_Logrado() + "\n";
-
-                   cfm.reader_Jugador_reemplaza(resumenDatos);
-
-                   // JOptionPane.showMessageDialog(  null, "los valores son " + resumenDatos);
-
-                   // System.out.println(" imprime los datos" + resumenDatos);
-
-                    // escribirlas en el archivo de texto
-
-
-                    gbc.gridx = 0; // columna 0
-                    gbc.gridy = 0; // fila 0
-                    gbc.gridwidth = 2; // ocupara 4 columnas
-                    gbc.gridheight = 1; // ocupara 3 filas
-                    gbc.anchor=GridBagConstraints.CENTER;
-                    atras_boton.addActionListener(escucha);
-                    panel_sur.add(siguiente.getBoton_style_0("SIGUIENTE"), gbc);
-
-
-                    juego.reset_puntos_local();
-
-
-
+                    boton_siguiente.setVisible(true);
                 }
                 else {
-                    info_pantalla.setVisible(false);
-                    panel_botones.setVisible(false);
-                    atras_boton.setVisible(false);
                     mensaje.seText("");
                     palabras_memoria.seText_grafico("GAME OVER");
-                    atras_boton.addActionListener(escucha);
-                    gbc.gridx = 0; // columna 0
-                    gbc.gridy = 0; // fila 0
-                    gbc.gridwidth = 2; // ocupara 4 columnas
-                    gbc.gridheight = 1; // ocupara 3 filas
-                    panel_sur.add(siguiente.getBoton_style_0("REPETIR"), gbc);
-                    juego.reset_puntos_local();
-
+                    boton_repetir.setVisible(true);
                 }
-                cuenta_nivel = 0;
-                cuenta_nivel_tiempo =0;
-                primer_inicio = 0;
-
             }
         }
-
         // tiene los totales ?
     }
 }

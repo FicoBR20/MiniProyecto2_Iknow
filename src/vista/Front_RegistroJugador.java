@@ -193,7 +193,10 @@ public class Front_RegistroJugador extends FondoPanel {
 
                 if (name_Player.contains(" ") || name_Player.isEmpty()==true || name_Player.length()!=5 ) {
                     System.out.println(" debe ingresar un nombre sin espacios para registrarse ");
-                    JOptionPane.showMessageDialog(null, "Ingrese su nombre de jugador\nUse SOLO 5 caracteres \n" +
+
+                    JOptionPane.showMessageDialog(null,"..Linea 197.. ::Class Registro::\n\n" +
+
+                            "Ingrese su nombre de jugador\nUse SOLO 5 caracteres \n" +
                             "sin espacios en blanco\nGracias.");
                     iniciar_Juego.setEnabled(false);
 
@@ -201,8 +204,12 @@ public class Front_RegistroJugador extends FondoPanel {
                 }
                 else if (db.contains(name_Player)){
                     System.out.println(" Ese nombre ya existe..use otro nombre..");
-                    JOptionPane.showMessageDialog(null, " Ese nombre ya existe en la base de datos\n" +
-                           "por favor use otro \nGracias.");
+
+                    JOptionPane.showMessageDialog(null,"..Linea 205.. ::Class Registro::\n\n" +
+
+                            " Ese nombre ya existe en la base de datos\n" +
+                            "por favor use otro \nGracias.");
+
                     iniciar_Juego.setEnabled(false);
 
                     juego_Ik.setEstado(12); // presenta de nuevo el panel de registro de jugador
