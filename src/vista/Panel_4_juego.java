@@ -42,6 +42,7 @@ public class Panel_4_juego extends FondoPanel {
     private Jugador jugador;
     private int cuenta_memorizar, cuenta_nivel;
     private int primer_inicio;
+    private int pausa;
 
     private JPanel panel_norte;
     private JPanel panel_centro;
@@ -138,6 +139,7 @@ public class Panel_4_juego extends FondoPanel {
         panel_palabra.setBackground(null);
         mensaje = new Area_de_Texto();
         cuenta_memorizar = 0;
+        pausa = 0;
         cuenta_nivel = 0;
         primer_inicio = 99;
 
@@ -461,15 +463,30 @@ public class Panel_4_juego extends FondoPanel {
              * y las muestra a memorizar
              */
 
-            while (e.getSource()==timer && primer_inicio == 41 && cuenta_memorizar <= palabra.getPalabra_a_Memorizar().size()-1 ){
-                timer.stop();
-                palabras_memoria.seText_grafico(palabra.getPalabra_a_Memorizar().get(cuenta_memorizar));
-                mensaje.seText("");
-                cuenta_memorizar++;
-                timer = new Timer(2000, escucha);
-                timer.start();
+            while (e.getSource()==timer
+                    && pausa < palabra.getPalabra_a_Memorizar().size()
+                    && cuenta_memorizar <= palabra.getPalabra_a_Memorizar().size() ){
 
+                if (cuenta_memorizar <= pausa){
+                    timer.stop();
+                    palabras_memoria.seText_grafico(palabra.getPalabra_a_Memorizar().get(cuenta_memorizar));
+                    mensaje.seText("");
+                    cuenta_memorizar++;
+                    timer = new Timer(2000, escucha);
+                    timer.start();
+                }else {
+                    timer.stop();
+                    palabras_memoria.seText_grafico("",1,1,1);
+                    pausa++;
+                    timer = new Timer(100, escucha);
+                    timer.start();
+                }
             }
+
+
+            /**
+             * esoacio
+             */
 
 
             /**
