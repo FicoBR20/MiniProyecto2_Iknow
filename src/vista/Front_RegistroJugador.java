@@ -226,6 +226,8 @@ public class Front_RegistroJugador extends FondoPanel {
 
                     jugador.setPuntaje_Total(juego_Ik.getPuntaje_juego());
 
+                    juego_Ik = new Juego(name_Player);
+
                   //  juego_Ik.setEstado(4);//.....con estado 4 DEBEMOS PROGRAMAR IR AL JUEGO AL NIVEL 1
 
 

@@ -12,7 +12,7 @@ public class Juego extends Jugador {
     /**
      * 
      */
-    private String nombre_Leido;
+    private String nombre_del_Aficionado;
 
     /**
      *
@@ -111,6 +111,14 @@ public class Juego extends Jugador {
         this.limite_string_basico = limite_string_basico;
     }
 
+    public String getNombre_del_Aficionado() {
+        return nombre_del_Aficionado;
+    }
+
+    public void setNombre_del_Aficionado(String nombre_del_Aficionado) {
+
+        this.nombre_del_Aficionado = this.getName();
+    }
 
     // From here implements the Class methods ==================================================
     /**
@@ -118,6 +126,7 @@ public class Juego extends Jugador {
      */
     public Juego( String jugadorActivo){
         super(jugadorActivo);
+        nombre_del_Aficionado = " ";
         nivel=1;
         categoria = 1;
         ruta = "";

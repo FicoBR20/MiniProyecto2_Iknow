@@ -328,7 +328,7 @@ public class Panel_4_juego extends FondoPanel {
                 JOptionPane.showMessageDialog(null,"..Linea 327.. ::Class Panel_4::\n\n" +
                         "Nivel " +juego.getNivel()+
                         "\nPuntaje_local " +juego.getPuntaje_nivel()+
-                        "\nNombre " +juego.getName()+
+                        "\nNombre " +juego.getNombre_del_Aficionado()+
                         "\nNiveles superdos " +juego.getNivel_Superado()+
                         "\nPuntaje_global "+juego.getPuntaje_juego()+
                         "\nPalabra a memorizar " +juego.getCant_Palabras_a_Memorizar()+
@@ -605,6 +605,8 @@ public class Panel_4_juego extends FondoPanel {
                             juego.getPuntaje_Total());
 
                     mensaje_puntos.seText("Puntos      "+juego.getPuntaje_nivel());
+                    //TODO se ubica un Joption pane mas abajito en la clase panel 4
+                    JOptionPane.showMessageDialog(null, " el nombe del jugador es " + juego.getNombre_del_Aficionado());
                 }
                 cuenta_nivel++;
                 timer = new Timer(2000,escucha);
