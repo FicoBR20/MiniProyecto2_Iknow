@@ -170,7 +170,6 @@ public class Panel_4_juego extends FondoPanel {
         panel_centro.add(palabras_memoria.seText_grafico("",1,1,1), gbc);
 //        panel_centro.add(palabras_memoria.sin_estilo(""), gbc);
 
-
         //mensaje informacion
         info_pantalla = new FondoPanel();
         info_pantalla.set_ruta_fondo("/resources/info/listo.png");
@@ -182,7 +181,6 @@ public class Panel_4_juego extends FondoPanel {
         gbc.insets.set(0,0,0,0);
         gbc.anchor=GridBagConstraints.SOUTH;
         panel_centro.add(info_pantalla, gbc);
-
 
         //3.. 2.. 1.. contador
         conteo_321 = new FondoPanel();
@@ -501,7 +499,7 @@ public class Panel_4_juego extends FondoPanel {
                 palabras_memoria.seText_grafico(palabra.getPalabra_del_nivel().get(cuenta_nivel),3,35,60,60);
                 si_boton.setVisible(true);
                 no_boton.setVisible(true);
-                timer_acierto_2 = new Timer(2000, escucha);
+                timer_acierto_2 = new Timer(7000, escucha);
                 timer_acierto_2.start();
             }
 //

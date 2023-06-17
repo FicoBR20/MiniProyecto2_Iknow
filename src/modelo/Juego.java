@@ -1,5 +1,7 @@
 package modelo;
 
+import controlador.Control_FileManager;
+
 import javax.swing.*;
 
 /**
@@ -283,8 +285,8 @@ public class Juego {
                 acierto_Exigido=0.75;
                 break;
             case 4:
-                cant_Palabras_a_Memorizar =30;
-                total_Palabras_del_Nivel =60;
+                cant_Palabras_a_Memorizar =4;
+                total_Palabras_del_Nivel =5;
                 acierto_Exigido=0.8;
                 break;
             case 5:
@@ -356,10 +358,16 @@ public class Juego {
             return false;
         }
         else {
-            if (getNivel()<10){
+            if (getNivel()<=3){
                 setNivel(getNivel()+1);
                 cambiar_Nivel(getNivel());
                 incrementar_puntaje_global(getPuntaje_Local());
+
+                //TODO Hacer registro a base de datos para que persistan los datos del jugador
+
+//                new Control_FileManager().reescribir_Datos(
+//                        "");
+
                 reset_puntos_local();
 
                 JOptionPane.showMessageDialog(null,"..Linea 362.. ::Class Juego::\n\n" +
@@ -370,7 +378,10 @@ public class Juego {
                         "\nPalabras de nivel "+getTotal_Palabras_del_Nivel());
             }
             else {
-                System.out.println(" eres un triunfador llegaste al nivel 10");
+                JOptionPane.showMessageDialog(null,"..Linea 373.. ::Class Juego::\n\n" +
+                        "\nEres un triunfador superaste el nivel 4 "+getTotal_Palabras_del_Nivel());
+
+                System.out.println(" eres un triunfador llegaste al nivel 01");
             }
 
             return true;

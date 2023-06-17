@@ -33,11 +33,11 @@ public class Jugador extends Juego{
 
     public void setName() {
        // this.name = lector_nombre.leer_ultimo_jugador();
-        this.name = lector_nombre.getNombre_Obtenido();
+        this.name = lector_nombre.leer_Datos_ultimo_jugador()[0];
 
-
-        JOptionPane.showMessageDialog(null,"..Linea 39.. ::Class Jugador::\n\n" +
-                "llego "+name);
+//
+//        JOptionPane.showMessageDialog(null,"..Linea 39.. ::Class Jugador::\n\n" +
+//                "llego "+name);
     }
 
 
@@ -74,6 +74,7 @@ public class Jugador extends Juego{
         puntaje_Total = 0;
 
     }
+
 
     /**
      * Genera un String con la información del jugador.

@@ -28,11 +28,7 @@ public class Lanza_app_Prueba {
     private  Panel_6_continuar panel_6_continuar;
     private Front_RegistroJugador front_registroJugador;
 
-    private  Palabra palabra;
-    private Juego juego;
     private Jugador jugador;
-    private int numero, navegar;
-    private String texto;
     private static Lanza_app_Prueba bill = null;
 
     /**
@@ -40,7 +36,6 @@ public class Lanza_app_Prueba {
      */
     public Lanza_app_Prueba() throws IOException {
         gui = new GUI();
-        juego = new Juego();
         jugador = new Jugador();
         panel_0_bienvenida = new Panel_0_bienvenida();
         panel_1_inicial = new Panel_1_Inicial();
@@ -56,7 +51,7 @@ public class Lanza_app_Prueba {
 
         front_registroJugador = new Front_RegistroJugador();
 
-        seleccionar_pantalla(4);
+        seleccionar_pantalla(0);
     }
 
     public void secuencia_Logica(int secuencial){
@@ -103,9 +98,6 @@ public class Lanza_app_Prueba {
                         "Nivel "+panel_4_juego.getJuego().getNivel());
 
                 //Obtiene los valores del ultimio nivel jugado
-
-//                juego = panel_4_juego.getJuego();
-
                 panel_4_juego = new Panel_4_juego(panel_4_juego.getJuego(),jugador);
                 panel_4_juego.start(); // inicializa timer
                 gui.setContentPane(panel_4_juego);
@@ -223,16 +215,10 @@ public class Lanza_app_Prueba {
             }
 
             else if(Objects.equals(e.getActionCommand(), "SIGUIENTE")){
-
-                JOptionPane.showMessageDialog(null,"..Linea 227.. ::Class Lanza_app_Prueba::\n\n" +
-                        "Siguiente nivel");
                 bill.seleccionar_pantalla(4);
             }
 
             else if(Objects.equals(e.getActionCommand(), "REPETIR")){
-
-                JOptionPane.showMessageDialog(null,"..Linea 232.. ::Class Lanza_app_Prueba::\n\n" +
-                        "Repite nivel");
                 bill.seleccionar_pantalla(4);
             }
 
