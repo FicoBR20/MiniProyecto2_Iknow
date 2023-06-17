@@ -105,7 +105,6 @@ public class Panel_4_juego extends FondoPanel {
     private void iniciar(){
 
         set_ruta_fondo(2);
-
         GridBagLayout gridBagLayout = new GridBagLayout();
 
         panel_norte = new JPanel();
@@ -498,11 +497,7 @@ public class Panel_4_juego extends FondoPanel {
                 timer.stop();
                 info_pantalla.setVisible(true);
                 info_pantalla.setVisible(false);
-//                info_pantalla.set_ruta_fondo("/resources/info/es.png");
-                
                 mensaje.seText("¿Es esta una palbra memorizada?");
-
-//                palabras_memoria.seText_grafico(palabra.getPalabra_del_nivel().get(cuenta_nivel));
                 palabras_memoria.seText_grafico(palabra.getPalabra_del_nivel().get(cuenta_nivel),3,35,60,60);
                 si_boton.setVisible(true);
                 no_boton.setVisible(true);
@@ -522,14 +517,9 @@ public class Panel_4_juego extends FondoPanel {
                 System.out.println("timer 3");
                 si_boton.setVisible(false);
                 no_boton.setVisible(false);
-
                 mensaje.seText("");
-
                 info_pantalla.setVisible(true);
                 info_pantalla.set_ruta_fondo("/resources/info/tiempo.png");
-//                mensaje.seText_2("Se acabo el tiempo");
-
-//                palabras_memoria.seText_grafico("");
                 palabras_memoria.seText_grafico("",1,1,1);
                 cuenta_nivel++;
                 timer = new Timer(2000,escucha);
@@ -542,8 +532,6 @@ public class Panel_4_juego extends FondoPanel {
              */
             if (e.getSource()==si_boton && cuenta_nivel < palabra.getPalabra_del_nivel().size()){///// recorderis
                 timer_acierto_2.stop();
-
-//                palabras_memoria.seText_grafico("");
                 palabras_memoria.seText_grafico("",1,1,1);
                 panel_botones.setVisible(true);
 
@@ -559,7 +547,7 @@ public class Panel_4_juego extends FondoPanel {
 
                     //acumular 10  puntos al jugador
                     getJuego().incrementar_puntaje_local(); //estado indica que acerto.
-                 //  juego.setPuntaje_Logrado_nivel(); //estado indica que acerto.
+                    //juego.setPuntaje_Logrado_nivel(); //estado indica que acerto.
                     jugador.setPuntaje_Total(getJuego());
                     System.out.println(" el puntaje ahora es" + getJuego().getPuntaje_Local() + " el jugador lleva estos puntos " +
                             jugador.getPuntaje_Total());
@@ -596,20 +584,16 @@ public class Panel_4_juego extends FondoPanel {
                     si_boton.setVisible(false);
                     no_boton.setVisible(false);
                     mensaje.setVisible(false);
-
                     info_pantalla.setVisible(true);
                     info_pantalla.set_ruta_fondo("/resources/info/mal.png");
-
                     mensaje.seText("");
 
                 }else {
                     si_boton.setVisible(false);
                     no_boton.setVisible(false);
                     mensaje.setVisible(false);
-
                     info_pantalla.setVisible(true);
                     info_pantalla.set_ruta_fondo("/resources/info/bien.png");
-
                     mensaje.seText("");
 
                     //acumular 10  puntos al jugador
