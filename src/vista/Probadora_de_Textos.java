@@ -35,7 +35,7 @@ public class Probadora_de_Textos extends JFrame {
 
     public Probadora_de_Textos() {
 
-        jugador = new Jugador();
+        jugador = new Jugador(getName());
 
         //Default JFrame configuration
 //        this.setTitle("Probadora de textos");
@@ -129,19 +129,26 @@ public class Probadora_de_Textos extends JFrame {
      */
     public String reader_Jugador_1() {
 
+        String jug_NuevoRegistro = "rosos 1 0" ; // como está en el Doc
+
+        jugador.setName(jug_NuevoRegistro);
 
 
         String text = jugador.getName();//obtiene el nombre
         String receptor ="";
 
+        System.out.println(" este es text " + text);
+
+
         try {
-            fileReader = new FileReader("src/resources/file/info_Jugador_1.txt");
+            fileReader = new FileReader("src/resources/info_Jugador_1.txt");
             input = new BufferedReader(fileReader);
 
             String line = input.readLine(); // almacena lo que se escribe en el text field
 
             String nombre_Previo = line.substring(0,5);
 
+            System.out.println(" este es nombrePrevio " + nombre_Previo);
 
 
             while (line != null) {
@@ -176,6 +183,8 @@ public class Probadora_de_Textos extends JFrame {
             }
         }
 
+        writer_Jugador_1(receptor);
+
     return receptor;
 
     }
@@ -184,7 +193,7 @@ public class Probadora_de_Textos extends JFrame {
         try {
             String text = reader_Jugador_1();// recepciona el String generado en el reader.
             text += line + "\n";
-            fileWriter = new FileWriter("src/resources/file/info_Jugador_1.txt");
+            fileWriter = new FileWriter("src/resources/info_Jugador_1.txt");
             output = new BufferedWriter(fileWriter);
             output.write(text);
         } catch (IOException e) {
@@ -204,6 +213,10 @@ public class Probadora_de_Textos extends JFrame {
     public static void main(String[] args) {
 
 
+//        String jug_OLdRegistro = "thtgf" +" "+ "1" + " " + "0" + "\n"; // como está en el Doc
+//
+//        String jug_NuevoRegistro = "thtgf" +" "+ "7" + " " + "80" + "\n"; // como está en el Doc
+
 
         JTable jTable = new JTable();
 
@@ -218,6 +231,8 @@ public class Probadora_de_Textos extends JFrame {
        // pt.entrega_Info_Detallada(nombre);
 
        pt.actualiza_Info_Jugador(newInformation);
+
+       pt.reader_Jugador_1();
     }
 
 

@@ -128,7 +128,7 @@ public class Control_FileManager {
         try {
             String text = reader_Jugador();// recepciona el String generado en el reader.
             text += line + "\n";
-            fileWriter = new FileWriter("src/resources/info_Jugador.txt");
+            fileWriter = new FileWriter("src/resources/file/info_Jugador.txt");
             output = new BufferedWriter(fileWriter);
             output.write(text);
         } catch (IOException e) {
@@ -272,8 +272,59 @@ public class Control_FileManager {
             text = linea;
         }
         String[] paso = text.split(" ");
+        System.out.println(" funciona " + paso[0]);
         return paso[0];
     }
 
+    public String[] leer_Datos_ultimo_jugador() {
+        String text = "";
+        for (String linea : reader_Jugador().split("\n")){
+            text = linea;
+        }
+        String[] paso = text.split(" ");
+        return paso;
+    }
 
+    public void reescribir_Datos(String line) {
+        try {
+            String text = reader_Jugador();// recepciona el String generado en el reader.
+            text = line;
+            fileWriter = new FileWriter("src/resources/file/info_Jugador.txt");
+            output = new BufferedWriter(fileWriter);
+            output.write(text);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                output.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void writer_Jugador_con_indice(String line) {
+        try {
+            String[] linea = reader_Jugador().split(" ,");
+            int total_jugadores = linea.length;
+            String texto = reader_Jugador();
+
+            texto += total_jugadores + " " + line + " ,";
+            fileWriter = new FileWriter("src/resources/file/info_Jugador.txt");
+            output = new BufferedWriter(fileWriter);
+            output.write(texto);
+        }
+
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        finally {
+            try {
+                output.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

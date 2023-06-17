@@ -145,13 +145,13 @@ public class Front_Nivel_1 extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource()== si_Juego_Front_Inicial){
-                new Juego().setEstado(2);
-                new Prueba_Frame_001_Inicial().lanza_frames(new Juego().getEstado());
-                System.out.println(" le doy las reglas " + Integer.toString(new Juego().getEstado()));
+                new Juego(getName()).setEstado(2);
+                new Prueba_Frame_001_Inicial().lanza_frames(new Juego(getName()).getEstado());
+                System.out.println(" le doy las reglas " + Integer.toString(new Juego(getName()).getEstado()));
             }
             else if(e.getSource()== no_Juego_Front_Inicial){
-                new Juego().setEstado(99);
-                new Prueba_Frame_001_Inicial().lanza_frames(new Juego().getEstado());
+                new Juego(getName()).setEstado(99);
+                new Prueba_Frame_001_Inicial().lanza_frames(new Juego(getName()).getEstado());
                 System.out.println(" cierre de la app..fin");
             }
 

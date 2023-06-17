@@ -6,6 +6,7 @@ import vista.*;
 import vista.Panel_4_juego;
 import vista.Front_RegistroJugador;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,11 +28,7 @@ public class Lanza_app_Prueba {
     private  Panel_6_continuar panel_6_continuar;
     private Front_RegistroJugador front_registroJugador;
 
-    private  Palabra palabra;
-    private Juego juego;
     private Jugador jugador;
-    private int numero, navegar;
-    private String texto;
     private static Lanza_app_Prueba bill = null;
 
     /**
@@ -39,12 +36,12 @@ public class Lanza_app_Prueba {
      */
     public Lanza_app_Prueba() throws IOException {
         gui = new GUI();
-        juego = new Juego();
-        jugador = new Jugador();
+        jugador = new Jugador("Juanito");
         panel_0_bienvenida = new Panel_0_bienvenida();
         panel_1_inicial = new Panel_1_Inicial();
-        panel_3_reglas = new Panel_3_reglas();
         panel_2_menu = new Panel_2_menu();
+        panel_3_reglas = new Panel_3_reglas();
+        panel_4_juego = new Panel_4_juego();
         panel_5_opciones = new Panel_5_opciones();
 
         panel_6_continuar = new Panel_6_continuar();
@@ -93,17 +90,19 @@ public class Lanza_app_Prueba {
                 gui.revalidate();
                 gui.repaint();
             }
+
+            //Inicia un juego nuevo
             case 4 ->{
 
+                JOptionPane.showMessageDialog(null,"..Linea 102.. ::Class Lanza_app_Prueba::\n\n" +
+                        "Nivel "+panel_4_juego.getJuego().getNivel());
 
-//                juego.incrementar_nivel();
-                System.out.println("Nivel "+juego.getNivel());
-                panel_4_juego = new Panel_4_juego(juego,jugador);
+                //Obtiene los valores del ultimio nivel jugado
+                panel_4_juego = new Panel_4_juego(panel_4_juego.getJuego(),jugador);
                 panel_4_juego.start(); // inicializa timer
                 gui.setContentPane(panel_4_juego);
                 gui.revalidate();
                 gui.repaint();
-
             }
 
             case 5 ->{
@@ -126,6 +125,7 @@ public class Lanza_app_Prueba {
                 gui.repaint();
             }
 
+            // Ingresa al juego y lo reanuda donde queda
             case 8->{
                 gui.setContentPane(panel_4_juego);
                 gui.revalidate();
@@ -136,9 +136,9 @@ public class Lanza_app_Prueba {
                 gui.revalidate();
                 gui.repaint();;
             }
-            case 10->{
 
-                bill.seleccionar_pantalla(4);
+            case 10->{
+                bill.seleccionar_pantalla(8);
             }
 
             case 12->{ // para presentar front jugador habitual
@@ -173,6 +173,7 @@ public class Lanza_app_Prueba {
             if(e.getActionCommand()== "ATRAS"){
                 bill.seleccionar_pantalla(1);
             }
+
             else if(e.getActionCommand()== "AVANZAR"){
                 bill.seleccionar_pantalla(1);
             }
@@ -190,7 +191,6 @@ public class Lanza_app_Prueba {
             }
 
             else if(Objects.equals(e.getActionCommand(), "CONTINUAR")) {
-
                 bill.seleccionar_pantalla(9);
             }
 
@@ -200,9 +200,6 @@ public class Lanza_app_Prueba {
 
             else if(Objects.equals(e.getActionCommand(), "1")) {
                 bill.seleccionar_pantalla(8);
-
-                bill.seleccionar_pantalla(4);
-
             }
 
             else if(Objects.equals(e.getActionCommand(), "OPCIONES")){
@@ -218,7 +215,7 @@ public class Lanza_app_Prueba {
             }
 
             else if(Objects.equals(e.getActionCommand(), "SIGUIENTE")){
-                bill.seleccionar_pantalla(10);
+                bill.seleccionar_pantalla(4);
             }
 
             else if(Objects.equals(e.getActionCommand(), "REPETIR")){

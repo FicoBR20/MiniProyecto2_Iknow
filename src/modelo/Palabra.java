@@ -90,7 +90,9 @@ public class Palabra {
      * Método constructor
      */
     public Palabra(){
-        juego = new Juego();
+
+        //TODO inivia sin dueño
+        juego = new Juego("");
         stringBasico = new String_Basico();
         palabra_a_Memorizar = new ArrayList<>();
         palabra_del_Nivel = new ArrayList<>();
