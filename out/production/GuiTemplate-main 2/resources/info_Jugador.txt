@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+erdfc 1 0
+=======
 rosos 1 0
 
 lucho 1 0
@@ -15,4 +18,7 @@ dffdc 1 0
 fghds 1 0
 
 reyui 1 0
+
+pilar 1 0
+>>>>>>> 3448a9a90e38b2b5ad9103052996cbae741441de
 
