@@ -65,9 +65,9 @@ public class Front_Jugador_Habitual extends JPanel {
 
     public void init_Panel(){
 
-        jugador = new Jugador();
+        jugador = new Jugador(getName());
 
-        juego_Ik =  new Juego();
+        juego_Ik =  new Juego(getName());
 
         Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 24);
         jlabel_Nos_Agrada_Tenerte = new JLabel(" Nos agrada tenerte de nuevo ");

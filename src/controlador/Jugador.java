@@ -7,7 +7,8 @@ import javax.swing.*;
 /**
  * Clase que contiene la información relacionada con el jugador.
  */
-public class Jugador extends Juego{
+public class Jugador{
+
     private  Control_FileManager lector_nombre;
    // private Juego juego;
     /**
@@ -46,10 +47,12 @@ public class Jugador extends Juego{
     }
 
     public int getNivel_Superado() {
+
         return nivel_Superado;
     }
 
     public void setNivel_Superado(int nivel_Superado) {
+
 //        nivel_Superado=juego.getNivel();
         this.nivel_Superado = nivel_Superado;
     }
@@ -58,18 +61,20 @@ public class Jugador extends Juego{
         return puntaje_Total;
     }
 
-    public void setPuntaje_Total(Juego juego) {
+    public void setPuntaje_Total(int total) {
+//        total=get
 
-        puntaje_Total= juego.getPuntaje_global();
+//        puntaje_Total = juego.getPuntaje_juego();
+        puntaje_Total = total;
 
     }
 
     /**
      * Métooo constructor
      */
-    public Jugador(){
+    public Jugador( String nombreJugador){
         lector_nombre = new Control_FileManager();
-        name = " ";
+        name = nombreJugador;
         nivel_Superado = 0;
         puntaje_Total = 0;
 

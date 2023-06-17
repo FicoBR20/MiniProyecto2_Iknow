@@ -103,7 +103,7 @@ public class Prueba_Frame_001_Inicial extends JFrame {
         //Create Listener Object and Control Object
         //Set up JComponents
 
-        juego_Ikn = new Juego();
+        juego_Ikn = new Juego(getName());
 
 
         jPanel_Botones_front_Inicial =  new JPanel();

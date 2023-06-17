@@ -35,7 +35,7 @@ public class Probadora_de_Textos extends JFrame {
 
     public Probadora_de_Textos() {
 
-        jugador = new Jugador();
+        jugador = new Jugador(getName());
 
         //Default JFrame configuration
 //        this.setTitle("Probadora de textos");

@@ -73,9 +73,9 @@ public class Front_RegistroJugador extends FondoPanel {
         jTextArea.setOpaque(false);
 
 
-        jugador = new Jugador();
+        jugador = new Jugador(getName());
 
-        juego_Ik =  new Juego();
+        juego_Ik =  new Juego(getName());
 
 
         header = new Header(" Registro del Jugador ", verdeClaro);
@@ -217,15 +217,21 @@ public class Front_RegistroJugador extends FondoPanel {
 
                     // se registran los datos del nuevo jugador.
 
+                   //TODO aqui debemos tomar el dato del jtext y hacer algo
+                    // TODO ..pueder ser usando leer_ultimo_jugador();
+
                     jugador.setName(name_Player);
+
                     jugador.setNivel_Superado(juego_Ik.getNivel()); // nivel sera 1
 
-                    juego_Ik.setEstado(4);//.....con estado 4 DEBEMOS PROGRAMAR IR AL JUEGO AL NIVEL 1
+                    jugador.setPuntaje_Total(juego_Ik.getPuntaje_juego());
+
+                  //  juego_Ik.setEstado(4);//.....con estado 4 DEBEMOS PROGRAMAR IR AL JUEGO AL NIVEL 1
 
 
                     new Control_FileManager().writer_Jugador(jugador.ToString_Jugador()); // toda la info del jugador
 
-                    jTextField_NombreJugador.setText(name_Player);
+                    jTextField_NombreJugador.setText("");
                     jTextField_NombreJugador.setEnabled(false);
                     iniciar_Juego.setEnabled(true);
 

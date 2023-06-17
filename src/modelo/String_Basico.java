@@ -19,7 +19,7 @@ public class String_Basico {
 
 
     public String_Basico() {
-        juego = new Juego();
+        juego = new Juego("");
         lista_palabra = new ArrayList<>();
     }
 

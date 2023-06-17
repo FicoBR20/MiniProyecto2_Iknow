@@ -1,13 +1,18 @@
 package modelo;
 
-import controlador.Control_FileManager;
+import controlador.Jugador;
 
 import javax.swing.*;
+
 
 /**
  * Esta Clase manejara la lógica del juego.
  */
-public class Juego {
+public class Juego extends Jugador {
+    /**
+     * 
+     */
+    private String nombre_Leido;
 
     /**
      *
@@ -39,8 +44,8 @@ public class Juego {
      * Acumulador que suma de a 10 puntos
      * por cada acierto del jugador.
      */
-    private int puntaje_Local;
-    private int puntaje_global;
+    private int puntaje_nivel;
+    private int puntaje_juego;
 
     /**
      * Una palabra se le presenta al jugador, el debe decidir en dos vías; SI Ó NO.
@@ -111,7 +116,8 @@ public class Juego {
     /**
      * Constructor method.
      */
-    public Juego(){
+    public Juego( String jugadorActivo){
+        super(jugadorActivo);
         nivel=1;
         categoria = 1;
         ruta = "";
@@ -122,13 +128,15 @@ public class Juego {
         total_Palabras_del_Nivel = 0;
         cant_Palabras_a_Memorizar = 0;
 
-        puntaje_Local =0;
-        puntaje_global =0;
+        puntaje_nivel =0;
+        puntaje_juego =0;
 
         acierto_Exigido = 1;
         cambiar_Nivel(estado);// juego inicia en nivel 1
         setCategoria(categoria);
         acierto_del_Jugador=false;
+
+        System.out.println(" en constructor nombre jugador es" + jugadorActivo );
 
     }
 
@@ -182,29 +190,29 @@ public class Juego {
      * Control del puntaje local
      * @return puntaje_logrado
      */
-    public int getPuntaje_Local() {
-        return puntaje_Local;
+    public int getPuntaje_nivel() {
+        return puntaje_nivel;
     }
 
     public void incrementar_puntaje_local() {
 
-        puntaje_Local +=10;
+        puntaje_nivel +=10;
 
     }
     public void reset_puntos_local() {
-        puntaje_Local =0;
+        puntaje_nivel =0;
     }
 
     /**
      * control del puntaje global
      */
 
-    public int getPuntaje_global() {
-        return puntaje_global;
+    public int getPuntaje_juego() {
+        return puntaje_juego;
     }
 
     public void incrementar_puntaje_global(int puntaje_local) {
-        this.puntaje_global += puntaje_local;
+        this.puntaje_juego += puntaje_local;
     }
 
 
@@ -345,13 +353,13 @@ public class Juego {
      *          false -> si NO se logra igualar o superar el porcentaje de acierto exigido en el nivel que está.
      */
     public boolean nivel_Superado(){
-        if (puntaje_Local / (10 * total_Palabras_del_Nivel) <= acierto_Exigido){
+        if (puntaje_nivel / (10 * total_Palabras_del_Nivel) <= acierto_Exigido){
 
             reset_puntos_local();
             JOptionPane.showMessageDialog(null,"..Linea 347.. ::Class Juego::\n\n" +
                     "Nivel " +getNivel()+
-                    "\nPuntaje_local " +getPuntaje_Local()+
-                    "\nPuntaje_global "+getPuntaje_global()+
+                    "\nPuntaje_local " + getPuntaje_nivel()+
+                    "\nPuntaje_global "+ getPuntaje_juego()+
                     "\nPalabra a memorizar " +getCant_Palabras_a_Memorizar()+
                     "\nPalabras de nivel "+getTotal_Palabras_del_Nivel());
 
@@ -359,9 +367,14 @@ public class Juego {
         }
         else {
             if (getNivel()<=3){
+                setNivel_Superado(getNivel());
                 setNivel(getNivel()+1);
                 cambiar_Nivel(getNivel());
-                incrementar_puntaje_global(getPuntaje_Local());
+                incrementar_puntaje_global(getPuntaje_nivel());
+
+                //TODO puntaje total
+                setPuntaje_Total(getPuntaje_juego());
+
 
                 //TODO Hacer registro a base de datos para que persistan los datos del jugador
 
@@ -372,8 +385,8 @@ public class Juego {
 
                 JOptionPane.showMessageDialog(null,"..Linea 362.. ::Class Juego::\n\n" +
                         "Nivel " +getNivel()+
-                        "\nPuntaje_local " +getPuntaje_Local()+
-                        "\nPuntaje_global "+getPuntaje_global()+
+                        "\nPuntaje_local " + getPuntaje_nivel()+
+                        "\nPuntaje_global "+ getPuntaje_juego()+
                         "\nPalabra a memorizar " +getCant_Palabras_a_Memorizar()+
                         "\nPalabras de nivel "+getTotal_Palabras_del_Nivel());
             }

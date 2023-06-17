@@ -272,6 +272,7 @@ public class Control_FileManager {
             text = linea;
         }
         String[] paso = text.split(" ");
+        System.out.println(" funciona " + paso[0]);
         return paso[0];
     }
 
