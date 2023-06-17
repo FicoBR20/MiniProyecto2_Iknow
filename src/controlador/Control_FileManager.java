@@ -82,7 +82,7 @@ public class Control_FileManager {
         String text = "";
 
         try {
-            fileReader = new FileReader("src/resources/file/info_Jugador.txt");
+            fileReader = new FileReader("src/resources/info_Jugador.txt");
             input = new BufferedReader(fileReader);
 
             String line = input.readLine(); // almacena lo que se escribe en el text field

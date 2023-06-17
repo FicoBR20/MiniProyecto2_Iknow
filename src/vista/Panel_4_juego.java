@@ -580,7 +580,7 @@ public class Panel_4_juego extends FondoPanel {
                 palabras_memoria.seText_grafico("",1,1,1);
                 panel_botones.setVisible(true);
 
-                if (palabra.getPalabra_a_Memorizar().contains(palabra.getPalabra_del_nivel().get(cuenta_nivel))){
+                if (palabra.getPalabra_a_Memorizar().contains(palabra.getPalabra_del_nivel().get(cuenta_nivel))){   //dijo no y si lo contenia
                     si_boton.setVisible(false);
                     no_boton.setVisible(false);
                     mensaje.setVisible(false);
@@ -588,9 +588,10 @@ public class Panel_4_juego extends FondoPanel {
                     info_pantalla.set_ruta_fondo("/resources/info/mal.png");
                     mensaje.seText("");
 
-                }else {
-                    si_boton.setVisible(false);
-                    no_boton.setVisible(false);
+                }else { /// aqui es el bug.......
+
+                    si_boton.setVisible(true);
+                    no_boton.setVisible(true);
                     mensaje.setVisible(false);
                     info_pantalla.setVisible(true);
                     info_pantalla.set_ruta_fondo("/resources/info/bien.png");
