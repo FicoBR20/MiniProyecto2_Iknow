@@ -4,13 +4,11 @@ import controlador.Lanza_app_Prueba;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.font.TextAttribute;
 import java.io.File;
-import java.text.AttributedString;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Letra_grafic extends  JLabel{
+public class Letra_Skim extends  JLabel{
     private Lanza_app_Prueba.Escucha escucha;
     private ImageIcon imageIcon;
     private int tamaño_fuente,alto,ancho;
@@ -39,7 +37,7 @@ public class Letra_grafic extends  JLabel{
     public void desactivar() {
         this.setEnabled(false);
     }
-    public Letra_grafic() {
+    public Letra_Skim() {
         rutaFuente = "";
         panel_palabra = new JPanel();
         panel_linea = new JPanel();
@@ -63,7 +61,7 @@ public class Letra_grafic extends  JLabel{
      * @param _alto
      */
 
-    public Letra_grafic(String titulo, int tamaño, int _ancho, int _alto  ) {
+    public Letra_Skim(String titulo, int tamaño, int _ancho, int _alto  ) {
         this.setText(titulo);
         tamaño_fuente = tamaño;
         ancho = _ancho;
@@ -131,7 +129,7 @@ public class Letra_grafic extends  JLabel{
 
         for ( String linea : palabra.split(" ")) {
 //            gbc.ipady = 15;
-//            gbc.ipadx = 15;
+//            gbc.ipadx = 5;
             gbc.gridwidth=1; // ocupara 1 columnas
             gbc.gridheight=1; // ocupara 1 filas
 
@@ -139,7 +137,7 @@ public class Letra_grafic extends  JLabel{
                 gbc.gridx=cont_x; // columna
                 gbc.gridy=cont_y; // fila
 
-                Letra_grafic botonX = new Letra_grafic();
+                Letra_Skim botonX = new Letra_Skim();
                 imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/botones_nivel/nivel.png")));
                 botonX.setForeground(Color.white);
                 botonX.setFont(new Font(null,Font.BOLD,30));
@@ -175,8 +173,8 @@ public class Letra_grafic extends  JLabel{
         int cont_x = 0;
 
         for ( String linea : palabra.split(" ")) {
-            gbc.ipady = 15;
-            gbc.ipadx = 15;
+//            gbc.ipady = 15;
+//            gbc.ipadx = 15;
             gbc.gridwidth=1; // ocupara 1 columnas
             gbc.gridheight=1; // ocupara 1 filas
 
@@ -184,7 +182,7 @@ public class Letra_grafic extends  JLabel{
                 gbc.gridx=cont_x; // columna
                 gbc.gridy=cont_y; // fila
 
-                Letra_grafic botonX = new Letra_grafic();
+                Letra_Skim botonX = new Letra_Skim();
                 imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/botones/"+skim+".png")));
                 botonX.setForeground(Color.white);
                 botonX.setFont(new Font(null,Font.BOLD,tamaño));
@@ -229,7 +227,7 @@ public class Letra_grafic extends  JLabel{
                 gbc.gridx=cont_x; // columna
                 gbc.gridy=cont_y; // fila
 
-                Letra_grafic botonX = new Letra_grafic();
+                Letra_Skim botonX = new Letra_Skim();
                 botonX.setForeground(Color.white);
                 botonX.setFont(new Font(null,Font.BOLD,tamaño));
                 botonX.setText(letra);

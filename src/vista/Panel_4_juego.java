@@ -32,7 +32,7 @@ public class Panel_4_juego extends FondoPanel {
     private Botones boton_siguiente;
     private Botones boton_repetir;
     private Botones si_boton,no_boton;
-    private Letra_grafic palabras_memoria;
+    private Letra_Skim palabras_memoria;
     private Escucha escucha;
     private GridBagConstraints gbc;
     private JPanel panel_botones;
@@ -161,7 +161,7 @@ public class Panel_4_juego extends FondoPanel {
          * Panel centro
          */
         //Palabra
-        palabras_memoria = new Letra_grafic();
+        palabras_memoria = new Letra_Skim();
         gbc.gridx=0; // columna 0
         gbc.gridy=0; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
@@ -469,7 +469,7 @@ public class Panel_4_juego extends FondoPanel {
 
                 if (cuenta_memorizar <= pausa){
                     timer.stop();
-                    palabras_memoria.seText_grafico(palabra.getPalabra_a_Memorizar().get(cuenta_memorizar));
+                    palabras_memoria.seText_grafico(palabra.getPalabra_a_Memorizar().get(cuenta_memorizar),3,35,60,60);
                     mensaje.seText("");
                     cuenta_memorizar++;
                     timer = new Timer(2000, escucha);
@@ -503,7 +503,7 @@ public class Panel_4_juego extends FondoPanel {
                 mensaje.seText("¿Es esta una palbra memorizada?");
 
 //                palabras_memoria.seText_grafico(palabra.getPalabra_del_nivel().get(cuenta_nivel));
-                palabras_memoria.seText_grafico(palabra.getPalabra_del_nivel().get(cuenta_nivel));
+                palabras_memoria.seText_grafico(palabra.getPalabra_del_nivel().get(cuenta_nivel),3,35,60,60);
                 si_boton.setVisible(true);
                 no_boton.setVisible(true);
                 timer_acierto_2 = new Timer(2000, escucha);
@@ -639,10 +639,12 @@ public class Panel_4_juego extends FondoPanel {
                 mensaje.seText("");
 
                 if (getJuego().nivel_Superado()) {
+                    set_ruta_fondo(4);
                     palabras_memoria.seText_grafico("PASAS AL SIGUIENTE NIVEL");
                     boton_siguiente.setVisible(true);
                 }
                 else {
+                    set_ruta_fondo(5);
                     mensaje.seText("");
                     palabras_memoria.seText_grafico("GAME OVER");
                     boton_repetir.setVisible(true);

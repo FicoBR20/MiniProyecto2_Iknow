@@ -267,8 +267,8 @@ public class Juego {
         switch (nivel_de_Juego){
             case 1:
                 System.out.println(" Juego ===== level 1 ");
-                cant_Palabras_a_Memorizar =3; //10
-                total_Palabras_del_Nivel =4; //20
+                cant_Palabras_a_Memorizar =1; //10
+                total_Palabras_del_Nivel =2; //20
                 acierto_Exigido=0.2;//07
                 break;
             case 2:
