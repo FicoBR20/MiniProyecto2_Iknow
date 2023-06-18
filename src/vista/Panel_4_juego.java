@@ -143,7 +143,7 @@ public class Panel_4_juego extends FondoPanel {
         primer_inicio = 99;
 
         palabra = new Palabra();
-        palabra.setJuego(getJuego());
+        palabra.setJuego(juego);
         palabra.setPalabra_del_nivel();
         palabra.setPalabra_a_Memorizar();
 
@@ -151,10 +151,10 @@ public class Panel_4_juego extends FondoPanel {
          * Panel norte
          */
         mensaje_puntos =  new Area_de_Texto();
-        panel_norte.add(mensaje_puntos.seText("PUNTOS "+getJuego().getPuntaje_Local()),BorderLayout.WEST+"     ");
+        panel_norte.add(mensaje_puntos.seText("PUNTOS "+juego.getPuntaje_Local()),BorderLayout.WEST+"     ");
 
         mensaje_nivel =  new Area_de_Texto();
-        panel_norte.add(mensaje_nivel.seText("     NIVEL "+getJuego().getNivel()),BorderLayout.EAST);
+        panel_norte.add(mensaje_nivel.seText("     NIVEL "+juego.getNivel()),BorderLayout.EAST);
 
         /**
          * Panel centro
@@ -324,16 +324,18 @@ public class Panel_4_juego extends FondoPanel {
                 jugador.setName();
 
                 JOptionPane.showMessageDialog(null,"..Linea 327.. ::Class Panel_4::\n\n" +
-                        "Nivel " +getJuego().getNivel()+
-                        "\nPuntaje_local " +getJuego().getPuntaje_Local()+
-                        "\nNombre " +jugador.getName()+
-                        "\nNiveles superdos " +jugador.getNivel_Superado()+
-                        "\nPuntaje_global "+getJuego().getPuntaje_global()+
-                        "\nPalabra a memorizar " +getJuego().getCant_Palabras_a_Memorizar()+
-                        "\nPalabras de nivel "+getJuego().getTotal_Palabras_del_Nivel());
+                        "Nivel " +juego.getNivel()+
+                        "\nPuntaje_local " +juego.getPuntaje_Local()+
+                        //todo revisarar despues getname
+                        "\nNombre " +getName()+
+                        //todo esto es de jugador
+                        "\nNiveles superdos " +juego.getNivel_Superado()+
+                        "\nPuntaje_global "+juego.getPuntaje_global()+
+                        "\nPalabra a memorizar " +juego.getCant_Palabras_a_Memorizar()+
+                        "\nPalabras de nivel "+juego.getTotal_Palabras_del_Nivel());
                 primer_inicio=0;
                 info_pantalla.setVisible(true);
-                mensaje.seText("NIVEL "+getJuego().getNivel() );
+                mensaje.seText("NIVEL "+juego.getNivel() );
                 timer = new Timer(1000, escucha);
                 timer.start();
             }
@@ -544,13 +546,13 @@ public class Panel_4_juego extends FondoPanel {
                     mensaje.seText("");
 
                     //acumular 10  puntos al jugador
-                    getJuego().incrementar_puntaje_local(); //estado indica que acerto.
+                    juego.incrementar_puntaje_local(); //estado indica que acerto.
                     //juego.setPuntaje_Logrado_nivel(); //estado indica que acerto.
-                    jugador.setPuntaje_Total(getJuego());
-                    System.out.println(" el puntaje ahora es" + getJuego().getPuntaje_Local() + " el jugador lleva estos puntos " +
+                    jugador.setPuntaje_Total(juego);
+                    System.out.println(" el puntaje ahora es" + juego.getPuntaje_Local() + " el jugador lleva estos puntos " +
                             jugador.getPuntaje_Total());
 
-                    mensaje_puntos.seText("Puntos      "+getJuego().getPuntaje_Local());
+                    mensaje_puntos.seText("Puntos      "+juego.getPuntaje_Local());
 
 
                 }else {
@@ -595,13 +597,13 @@ public class Panel_4_juego extends FondoPanel {
                     mensaje.seText("");
 
                     //acumular 10  puntos al jugador
-                    getJuego().incrementar_puntaje_local(); //estado indica que acerto.
+                    juego.incrementar_puntaje_local(); //estado indica que acerto.
                    // juego.setPuntaje_Logrado_nivel(); //estado indica que acerto.
-                    jugador.setPuntaje_Total(getJuego());
-                    System.out.println(" el puntaje ahora es" + getJuego().getPuntaje_Local() + " el jugador lleva estos puntos " +
+                    jugador.setPuntaje_Total(juego);
+                    System.out.println(" el puntaje ahora es" + juego.getPuntaje_Local() + " el jugador lleva estos puntos " +
                             jugador.getPuntaje_Total());
 
-                    mensaje_puntos.seText("Puntos      "+getJuego().getPuntaje_Local());
+                    mensaje_puntos.seText("Puntos      "+juego.getPuntaje_Local());
                 }
                 cuenta_nivel++;
                 timer = new Timer(2000,escucha);
@@ -620,7 +622,7 @@ public class Panel_4_juego extends FondoPanel {
                 panel_botones.setVisible(false);
                 mensaje.seText("");
 
-                if (getJuego().nivel_Superado()) {
+                if (juego.nivel_Superado()) {
                     set_ruta_fondo(4);
                     palabras_memoria.seText_grafico("PASAS AL SIGUIENTE NIVEL");
                     boton_siguiente.setVisible(true);

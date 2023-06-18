@@ -7,9 +7,8 @@ import javax.swing.*;
 /**
  * Clase que contiene la información relacionada con el jugador.
  */
-public class Jugador extends Juego{
+public class Jugador{
     private  Control_FileManager lector_nombre;
-   // private Juego juego;
     /**
      * Identificación del jugador.
      */
@@ -32,11 +31,11 @@ public class Jugador extends Juego{
     }
 
     public void setName() {
-       // this.name = lector_nombre.leer_ultimo_jugador();
+       // Se lee nombre desde archivo
         this.name = lector_nombre.leer_Datos_ultimo_jugador()[0];
 
-//
-//        JOptionPane.showMessageDialog(null,"..Linea 39.. ::Class Jugador::\n\n" +
+        //JOptionPane
+//       JOptionPane.showMessageDialog(null,"..Linea 39.. ::Class Jugador::\n\n" +
 //                "llego "+name);
     }
 
@@ -49,9 +48,9 @@ public class Jugador extends Juego{
         return nivel_Superado;
     }
 
+    //todo revisar no nivel superado
     public void setNivel_Superado(int nivel_Superado) {
-//        nivel_Superado=juego.getNivel();
-        this.nivel_Superado = nivel_Superado;
+        this.nivel_Superado += nivel_Superado;
     }
 
     public int getPuntaje_Total() {

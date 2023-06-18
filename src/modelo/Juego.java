@@ -1,13 +1,13 @@
 package modelo;
 
-import controlador.Control_FileManager;
+import controlador.Jugador;
 
 import javax.swing.*;
 
 /**
  * Esta Clase manejara la lógica del juego.
  */
-public class Juego {
+public class Juego extends Jugador {
 
     /**
      *
@@ -112,6 +112,7 @@ public class Juego {
      * Constructor method.
      */
     public Juego(){
+        super();
         nivel=1;
         categoria = 1;
         ruta = "";
