@@ -43,6 +43,7 @@ public class Front_RegistroJugador extends FondoPanel {
     }
 
     public void setName_Player(String name_Player) {
+
         this.name_Player = name_Player;
     }
 
@@ -220,11 +221,14 @@ public class Front_RegistroJugador extends FondoPanel {
                    //TODO aqui debemos tomar el dato del jtext y hacer algo
                     // TODO ..pueder ser usando leer_ultimo_jugador();
 
+
                     jugador.setName(name_Player);
 
                     jugador.setNivel_Superado(juego_Ik.getNivel()); // nivel sera 1
 
                     jugador.setPuntaje_Total(juego_Ik.getPuntaje_juego());
+
+                    juego_Ik.setNombre_Leido(name_Player);
 
                   //  juego_Ik.setEstado(4);//.....con estado 4 DEBEMOS PROGRAMAR IR AL JUEGO AL NIVEL 1
 
@@ -236,7 +240,7 @@ public class Front_RegistroJugador extends FondoPanel {
                     iniciar_Juego.setEnabled(true);
 
 
-                    System.out.println(" Hemos registrado sus datos " + name_Player + " nivel del juego " + Integer.toString(juego_Ik.getNivel()));
+                    System.out.println(" Hemos registrado sus datos " + jugador.getName() + " nivel del juego " + Integer.toString(juego_Ik.getNivel()));
                     System.out.println(" to string es " + jugador.ToString_Jugador());
 
                 }
@@ -253,7 +257,7 @@ public class Front_RegistroJugador extends FondoPanel {
 
             if (e.getSource() == iniciar_Juego) {
 
-               // jugador.setName();
+                juego_Ik.setName(name_Player);
                 System.out.println(" Empezamos a jugar en el nivel = 1 ");
 
 

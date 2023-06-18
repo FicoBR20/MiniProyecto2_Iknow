@@ -78,7 +78,7 @@ public class Panel_4_juego extends FondoPanel {
 
     public Panel_4_juego(Jugador jugador){
         cfm = new Control_FileManager();
-        this.juego = new Juego(getName());
+        this.juego = new Juego(jugador.getName());
 //        this.jugador = jugador;
         iniciar();
     }
@@ -89,6 +89,19 @@ public class Panel_4_juego extends FondoPanel {
             this.juego = juego;
             iniciar();
     }
+
+    /**
+     * Constructor con parametros
+     * @param juego
+     * @param nombreJuga
+     */
+    public Panel_4_juego(Juego juego, String nombreJuga) {
+            cfm = new Control_FileManager();
+            this.juego = new Juego(nombreJuga);
+            iniciar();
+    }
+
+
 //
 //    public Jugador getJugador() {
 //        return jugador;

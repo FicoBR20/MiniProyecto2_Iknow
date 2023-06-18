@@ -16,6 +16,8 @@ import java.util.Objects;
 
 public class Lanza_app_Prueba {
 
+    private Juego juego;
+
     private Front_Jugador_Habitual frontJugadorHabitual;
     private  GUI gui;
     private  Panel_0_bienvenida panel_0_bienvenida;
@@ -35,6 +37,7 @@ public class Lanza_app_Prueba {
      * Método constructor
      */
     public Lanza_app_Prueba() throws IOException {
+        juego = new Juego("desolado");
         gui = new GUI();
         jugador = new Jugador("Juanito");
         panel_0_bienvenida = new Panel_0_bienvenida();
@@ -97,12 +100,19 @@ public class Lanza_app_Prueba {
                 JOptionPane.showMessageDialog(null,"..Linea 102.. ::Class Lanza_app_Prueba::\n\n" +
                         "Nivel "+panel_4_juego.getJuego().getNivel());
 
+
+
                 //Obtiene los valores del ultimio nivel jugado
-                panel_4_juego = new Panel_4_juego(panel_4_juego.getJuego(),jugador);
+                //TODO se crea otro constructor en panel 4 con parametros [juego, String]
+                panel_4_juego = new Panel_4_juego(panel_4_juego.getJuego(),
+                        front_registroJugador.getName_Player());
                 panel_4_juego.start(); // inicializa timer
                 gui.setContentPane(panel_4_juego);
                 gui.revalidate();
                 gui.repaint();
+
+                JOptionPane.showMessageDialog(null," el probable nombre es \n" +
+                        panel_4_juego.getJuego().getName());
             }
 
             case 5 ->{

@@ -1,5 +1,6 @@
 package modelo;
 
+import controlador.Control_FileManager;
 import controlador.Jugador;
 
 import javax.swing.*;
@@ -9,8 +10,13 @@ import javax.swing.*;
  * Esta Clase manejara la lógica del juego.
  */
 public class Juego extends Jugador {
+
     /**
-     * 
+     * Atributo que nos permitira invocar un metodo de lectura
+     */
+    private Control_FileManager cfm;
+    /**
+     * Atributo que se tomará de el archivo de texto.
      */
     private String nombre_Leido;
 
@@ -118,6 +124,8 @@ public class Juego extends Jugador {
      */
     public Juego( String jugadorActivo){
         super(jugadorActivo);
+        cfm = new Control_FileManager();
+        nombre_Leido=" ";
         nivel=1;
         categoria = 1;
         ruta = "";
@@ -140,6 +148,31 @@ public class Juego extends Jugador {
 
     }
 
+    /**
+     * Método que entrega el nombre leido de un archivo de texto.
+      * @return
+     */
+    public String getNombre_Leido() {
+        return nombre_Leido;
+    }
+
+    /**
+     * Metodo que toma el primer campo y lo asigna a nombreleido
+     * @param nombre_Leido
+     */
+    public void setNombre_Leido(String nombre_Leido) {
+        nombre_Leido = cfm.leer_Datos_ultimo_jugador()[0];
+
+        this.nombre_Leido = nombre_Leido;
+    }
+
+    public void setPuntaje_nivel(int puntaje_nivel) {
+        this.puntaje_nivel = puntaje_nivel;
+    }
+
+    public void setPuntaje_juego(int puntaje_juego) {
+        this.puntaje_juego = puntaje_juego;
+    }
     // Getter and Setter ===============================
 
     public String getRuta() {
