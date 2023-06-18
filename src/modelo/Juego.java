@@ -163,6 +163,7 @@ public class Juego extends Jugador {
     public void setNombre_Leido(String nombre_Leido) {
         nombre_Leido = cfm.leer_Datos_ultimo_jugador()[0];
 
+
         this.nombre_Leido = nombre_Leido;
     }
 
@@ -388,6 +389,8 @@ public class Juego extends Jugador {
     public boolean nivel_Superado(){
         if (puntaje_nivel / (10 * total_Palabras_del_Nivel) <= acierto_Exigido){
 
+
+
             reset_puntos_local();
             JOptionPane.showMessageDialog(null,"..Linea 347.. ::Class Juego::\n\n" +
                     "Nivel " +getNivel()+
@@ -400,6 +403,14 @@ public class Juego extends Jugador {
         }
         else {
             if (getNivel()<=3){
+
+               // cfm.writer_Jugador(ToString_Jugador());
+
+                cfm.reader_Jugador_reemplaza(getName());
+
+
+
+
                 setNivel_Superado(getNivel());
                 setNivel(getNivel()+1);
                 cambiar_Nivel(getNivel());

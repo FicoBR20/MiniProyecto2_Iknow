@@ -65,10 +65,11 @@ public class Panel_4_juego extends FondoPanel {
      * @param juego
      */
     public Panel_4_juego(Juego juego){
+        juego.cambiar_Nivel(juego.getNivel()+1);
             cfm = new Control_FileManager();
             this.juego = juego;
 //            jugador = new Jugador();
-            iniciar();
+           // iniciar();
     }
 
     /**
@@ -510,7 +511,7 @@ public class Panel_4_juego extends FondoPanel {
                 timer.stop();
                 info_pantalla.setVisible(true);
                 info_pantalla.setVisible(false);
-                mensaje.seText("¿Es esta una palbra memorizada?");
+                mensaje.seText("¿Es esta una palabra memorizada?");
                 palabras_memoria.seText_grafico(palabra.getPalabra_del_nivel().get(cuenta_nivel),3,35,60,60);
                 si_boton.setVisible(true);
                 no_boton.setVisible(true);
@@ -640,6 +641,11 @@ public class Panel_4_juego extends FondoPanel {
                     set_ruta_fondo(4);
                     palabras_memoria.seText_grafico("PASAS AL SIGUIENTE NIVEL");
                     boton_siguiente.setVisible(true);
+                    //TODO esconder si no
+                    si_boton.setVisible(false);
+                    no_boton.setVisible(false);
+                    juego.setNivel(juego.getNivel()+1);//se aumenta 1 nivel
+                    juego.cambiar_Nivel(juego.getNivel());// se setean los nuevo valores del nivel siguiente.
                 }
                 else {
                     set_ruta_fondo(5);

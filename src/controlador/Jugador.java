@@ -43,6 +43,8 @@ public class Jugador{
 
 
     public void setName(String name) {
+        //para observar esto es un
+
         this.name = name;
     }
 
@@ -52,8 +54,9 @@ public class Jugador{
     }
 
     public void setNivel_Superado(int nivel_Superado) {
+        nivel_Superado = Integer.parseInt(lector_nombre.leer_Datos_ultimo_jugador()[1]);
 
-//        nivel_Superado=juego.getNivel();
+
         this.nivel_Superado = nivel_Superado;
     }
 
@@ -62,12 +65,43 @@ public class Jugador{
     }
 
     public void setPuntaje_Total(int total) {
-//        total=get
 
-//        puntaje_Total = juego.getPuntaje_juego();
+        total = Integer.parseInt(lector_nombre.leer_Datos_ultimo_jugador()[2]);
+
         puntaje_Total = total;
 
+
     }
+
+
+    /**
+     * Método que entrega el nombre leido de un archivo de texto.
+     * @return
+     */
+    public String getNombre_Leido() {
+        return name;
+    }
+
+    /**
+     * Metodo que toma el primer campo y lo asigna a name
+     * @param nombre_Leido
+     */
+    public void setNombre_Leido(String nombre_Leido) {
+
+        nombre_Leido = lector_nombre.leer_Datos_ultimo_jugador()[0];
+
+        this.name = nombre_Leido;
+    }
+
+
+
+
+
+
+
+
+
+
 
     /**
      * Métooo constructor

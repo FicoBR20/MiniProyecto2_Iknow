@@ -97,8 +97,10 @@ public class Lanza_app_Prueba {
             //Inicia un juego nuevo
             case 4 ->{
 
-                JOptionPane.showMessageDialog(null,"..Linea 102.. ::Class Lanza_app_Prueba::\n\n" +
-                        "Nivel "+panel_4_juego.getJuego().getNivel());
+                if (juego.getNivel()<2){
+
+                //JOptionPane.showMessageDialog(null,"..Linea 102.. ::Class Lanza_app_Prueba::\n\n" +
+                  //      "Nivel "+panel_4_juego.getJuego().getNivel());
 
 
 
@@ -111,8 +113,21 @@ public class Lanza_app_Prueba {
                 gui.revalidate();
                 gui.repaint();
 
-                JOptionPane.showMessageDialog(null," el probable nombre es \n" +
-                        panel_4_juego.getJuego().getName());
+                //JOptionPane.showMessageDialog(null," el nombre del nuevo jugador es \n" +
+                  //      panel_4_juego.getJuego().getName());
+                }
+                else {
+                    panel_4_juego.getJuego().cambiar_Nivel(juego.getNivel()+1);
+                    panel_4_juego= new Panel_4_juego();
+                    panel_4_juego.start(); // inicializa timer
+                    gui.setContentPane(panel_4_juego);
+                    gui.revalidate();
+                    gui.repaint();
+
+                    JOptionPane.showMessageDialog(null," Desde el nivel anterior el nombre es  \n" +
+                            panel_4_juego.getJuego().getName());
+
+                }
             }
 
             case 5 ->{

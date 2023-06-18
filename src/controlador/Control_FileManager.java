@@ -82,7 +82,7 @@ public class Control_FileManager {
         String text = "";
 
         try {
-            fileReader = new FileReader("src/resources/info_Jugador.txt");
+            fileReader = new FileReader("src/resources/file/info_Jugador.txt");
             input = new BufferedReader(fileReader);
 
             String line = input.readLine(); // almacena lo que se escribe en el text field
@@ -127,6 +127,7 @@ public class Control_FileManager {
     public void writer_Jugador(String line) {
         try {
             String text = reader_Jugador();// recepciona el String generado en el reader.
+
             text += line + "\n";
             fileWriter = new FileWriter("src/resources/file/info_Jugador.txt");
             output = new BufferedWriter(fileWriter);
@@ -229,7 +230,7 @@ public class Control_FileManager {
         String text = infoNueva.substring(0,5);//obtiene el nombre
 
         try {
-            fileReader = new FileReader("src/resources/info_Jugador.txt");
+            fileReader = new FileReader("src/resources/file/info_Jugador.txt");
             input = new BufferedReader(fileReader);
 
             String line = input.readLine(); // almacena lo que se escribe en el text field
@@ -279,6 +280,7 @@ public class Control_FileManager {
     public String[] leer_Datos_ultimo_jugador() {
         String text = "";
         for (String linea : reader_Jugador().split("\n")){
+
             text = linea;
         }
         String[] paso = text.split(" ");
