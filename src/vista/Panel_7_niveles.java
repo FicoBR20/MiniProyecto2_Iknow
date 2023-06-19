@@ -64,7 +64,7 @@ public class Panel_7_niveles extends FondoPanel {
             nivel.get(i).nivel(""+(i+1)).setEnabled(false);
         }
 
-        int niveles = Integer.parseInt(new Control_FileManager().leer_ultimo_jugador()[1]);
+        int niveles = Integer.parseInt(new Control_FileManager().leer_Datos_ultimo_jugador()[1]);
         for (int i=0;i<niveles;i++){
             nivel.get(i).nivel(""+(i+1)).setEnabled(true);
         }

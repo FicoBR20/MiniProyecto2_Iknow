@@ -27,14 +27,10 @@ public class Jugador{
         return nombre;
     }
 
-
-    /**
-     * Método que sobrecarga el setNombre, tomando el dato
-     * de la base de datos en el campo [0] del ultimo jugador.
-      */
+    //comentario Esto no es adecuado se debe hacer en el constructor
     public void setNombre() {
-        // Se lee nombre desde archivo
-        this.nombre = lector_nombre.leer_ultimo_jugador()[0];
+       // Se lee nombre desde archivo
+        this.nombre = lector_nombre.leer_Datos_ultimo_jugador()[0];
     }
 
 
@@ -59,7 +55,7 @@ public class Jugador{
         this.puntaje_Total += puntaje_Total;
     }
     public void setPuntaje_Total() {
-        this.puntaje_Total = Integer.parseInt(lector_nombre.leer_ultimo_jugador()[2]);
+        this.puntaje_Total = Integer.parseInt(lector_nombre.leer_Datos_ultimo_jugador()[2]);
     }
 
     /**
@@ -74,9 +70,9 @@ public class Jugador{
     }
 
     public void iniciar_datos(){
-        nombre = lector_nombre.leer_ultimo_jugador()[0];
-        nivel_Superado = Integer.parseInt(lector_nombre.leer_ultimo_jugador()[1]);
-        puntaje_Total = Integer.parseInt(lector_nombre.leer_ultimo_jugador()[2]);
+        nombre = lector_nombre.leer_Datos_ultimo_jugador()[0];
+        nivel_Superado = Integer.parseInt(lector_nombre.leer_Datos_ultimo_jugador()[1]);
+        puntaje_Total = Integer.parseInt(lector_nombre.leer_Datos_ultimo_jugador()[2]);
     }
 
     /**

@@ -34,7 +34,6 @@ public class Lanza_app_Prueba {
      */
     public Lanza_app_Prueba() throws IOException {
         gui = new GUI();
-
         panel_0_bienvenida = new Panel_0_bienvenida();
         panel_1_inicial = new Panel_1_Inicial();
         panel_2_menu = new Panel_2_menu();

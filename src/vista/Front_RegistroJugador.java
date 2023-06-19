@@ -8,7 +8,6 @@ import vista.old.Header;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 
 public class Front_RegistroJugador extends FondoPanel {
 
@@ -185,7 +184,7 @@ public class Front_RegistroJugador extends FondoPanel {
 
                 name_Player = jTextField_NombreJugador.getText();
 
-                ArrayList<String> db = new Control_FileManager().reader_Jugador();
+                String db = new Control_FileManager().reader_Jugador();
 
                 if (name_Player.contains(" ") || name_Player.isEmpty()==true || name_Player.length()!=5 ) {
                     System.out.println(" debe ingresar un nombre sin espacios para registrarse ");
