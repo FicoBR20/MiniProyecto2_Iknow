@@ -1,8 +1,5 @@
 package controlador;
 
-import modelo.Juego;
-
-import javax.swing.*;
 
 /**
  * Clase que contiene la información relacionada con el jugador.
@@ -12,7 +9,7 @@ public class Jugador{
     /**
      * Identificación del jugador.
      */
-    private String name;
+    private String nombre;
     /**
      * Nivel del juego que el jugador ya superó.
      * Su proximo juego iniciará en el nivel (nivel_Superado + 1)
@@ -26,63 +23,67 @@ public class Jugador{
      */
     private  int puntaje_Total;
 
-    public String getName() {
-        return name;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setName() {
+    //comentario Esto no es adecuado se debe hacer en el constructor
+    public void setNombre() {
        // Se lee nombre desde archivo
-        this.name = lector_nombre.leer_Datos_ultimo_jugador()[0];
-
-        //JOptionPane
-//       JOptionPane.showMessageDialog(null,"..Linea 39.. ::Class Jugador::\n\n" +
-//                "llego "+name);
+        this.nombre = lector_nombre.leer_Datos_ultimo_jugador()[0];
     }
 
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public int getNivel_Superado() {
         return nivel_Superado;
     }
 
-    //todo revisar no nivel superado
+    //TODO revisar no nivel superado
     public void setNivel_Superado(int nivel_Superado) {
-        this.nivel_Superado += nivel_Superado;
+        this.nivel_Superado = nivel_Superado;
     }
 
     public int getPuntaje_Total() {
         return puntaje_Total;
     }
 
-    public void setPuntaje_Total(Juego juego) {
-
-        puntaje_Total= juego.getPuntaje_global();
-
+    public void setPuntaje_Total(int puntaje_Total) {
+        this.puntaje_Total += puntaje_Total;
+    }
+    public void setPuntaje_Total() {
+        this.puntaje_Total = Integer.parseInt(lector_nombre.leer_Datos_ultimo_jugador()[2]);
     }
 
     /**
      * Métooo constructor
      */
+    //NOTA Cambié los iniciadores de juego
     public Jugador(){
         lector_nombre = new Control_FileManager();
-        name = " ";
+        nombre = "___";
         nivel_Superado = 0;
         puntaje_Total = 0;
-
     }
 
+    public void iniciar_datos(){
+        nombre = lector_nombre.leer_Datos_ultimo_jugador()[0];
+        nivel_Superado = Integer.parseInt(lector_nombre.leer_Datos_ultimo_jugador()[1]);
+        puntaje_Total = Integer.parseInt(lector_nombre.leer_Datos_ultimo_jugador()[2]);
+    }
 
     /**
      * Genera un String con la información del jugador.
      * @return info.
      */
+    //NOTA esto enter "\n" no va ya esta en el metodo write de controlfilemanager
     public String ToString_Jugador(){
 
         String info= "";
-        info = getName() +" " +  getNivel_Superado() + " " + getPuntaje_Total() + "\n";
+        info = getNombre() +" " +  getNivel_Superado() + " " + getPuntaje_Total();
 
         return info;
 

@@ -131,7 +131,7 @@ public class Probadora_de_Textos extends JFrame {
 
 
 
-        String text = jugador.getName();//obtiene el nombre
+        String text = jugador.getNombre();//obtiene el nombre
         String receptor ="";
 
         try {

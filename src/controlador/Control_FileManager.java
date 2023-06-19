@@ -2,8 +2,6 @@ package controlador;
 
 import javax.swing.*;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Clase que registrara la información del jugador
@@ -284,10 +282,33 @@ public class Control_FileManager {
         return paso;
     }
 
+    public void escribir_Datos(String line) {
+        try {
+            String text = reader_Jugador();// recepciona el String generado en el reader.
+            text = line + "\n" + text;
+            fileWriter = new FileWriter("src/resources/file/info_Jugador.txt");
+            output = new BufferedWriter(fileWriter);
+            output.write(text);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                output.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public void reescribir_Datos(String line) {
         try {
             String text = reader_Jugador();// recepciona el String generado en el reader.
-            text = line;
+//            text += line + "\n";
+//            text = line  + text.replace("a","");
+//            text = line  + text.replaceFirst("^a", "_");
+//            text = line  + text.replace("^[^a-zA-Z]+|[^a-zA-Z]+$", "");
+
+
             fileWriter = new FileWriter("src/resources/file/info_Jugador.txt");
             output = new BufferedWriter(fileWriter);
             output.write(text);

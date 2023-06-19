@@ -1,5 +1,7 @@
 package vista;
 
+import controlador.Control_FileManager;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -14,6 +16,7 @@ public class Panel_7_niveles extends FondoPanel {
 
     public Panel_7_niveles(){
 
+        set_ruta_fondo(4);
         nivel = new ArrayList<>();
         for (int i=0;i<=9;i++){
             nivel.add(new Botones(""+(i+1),50,80,80));
@@ -36,7 +39,7 @@ public class Panel_7_niveles extends FondoPanel {
         gbc.insets.set(0,0,0,0);
 
         panel_botones = new JPanel();
-        panel_botones.setBackground(null);
+        panel_botones.setBackground(new Color(0x0000000, true));
         panel_botones.setLayout(new GridBagLayout());
 
         // Botones
@@ -55,6 +58,15 @@ public class Panel_7_niveles extends FondoPanel {
             gbc.gridwidth=1; // ocupara 4 columnas
             gbc.gridheight=1; // ocupara 3 filas
             panel_botones.add(nivel.get(i+5).nivel(""+(i+6)), gbc);
+        }
+
+        for (int i=0;i<10;i++){
+            nivel.get(i).nivel(""+(i+1)).setEnabled(false);
+        }
+
+        int niveles = Integer.parseInt(new Control_FileManager().leer_Datos_ultimo_jugador()[1]);
+        for (int i=0;i<niveles;i++){
+            nivel.get(i).nivel(""+(i+1)).setEnabled(true);
         }
 
         gbc.insets.set(0,0,0,0);

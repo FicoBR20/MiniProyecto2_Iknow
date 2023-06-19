@@ -9,7 +9,6 @@ public class Panel_6_continuar extends FondoPanel {
     private  final Area_de_Texto area_de_texto;
 
     public Panel_6_continuar(){
-
         continuar_boton = new Botones();
         atras_boton = new Botones();
 

@@ -53,7 +53,7 @@ public class Panel_1_Inicial extends FondoPanel{
         gbc.gridy=1; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
-//        this.add(boton.getBoton_style_0("CONTINUAR"), gbc);
+        this.add(boton.getBoton_style_0("CONTINUAR"), gbc);
 
         gbc.insets.set(0,0,0,0);
         gbc.gridx=1; // columna 0

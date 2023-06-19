@@ -173,7 +173,7 @@ public class Letra_Skim extends  JLabel{
         int cont_x = 0;
 
         for ( String linea : palabra.split(" ")) {
-//            gbc.ipady = 15;
+            gbc.ipady = 15;
 //            gbc.ipadx = 15;
             gbc.gridwidth=1; // ocupara 1 columnas
             gbc.gridheight=1; // ocupara 1 filas
@@ -192,6 +192,7 @@ public class Letra_Skim extends  JLabel{
                 panel_palabra.add(botonX,gbc);
                 cont_x++;
             }
+            gbc.anchor=GridBagConstraints.CENTER;
             panel_linea.add(panel_palabra,gbc);
 
             cont_y++;
@@ -233,12 +234,12 @@ public class Letra_Skim extends  JLabel{
                 botonX.setText(letra);
 
                 panel_palabra.add(botonX,gbc);
-                cont_x++;
+                cont_y++;
             }
             panel_linea.add(panel_palabra,gbc);
 
-            cont_y++;
-            cont_x=0;
+//            cont_y++;
+//            cont_x=0;
         }
         panel_linea.setBackground(new Color(0x0000000, true));
         return panel_linea;

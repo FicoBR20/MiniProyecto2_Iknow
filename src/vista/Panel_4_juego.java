@@ -1,7 +1,6 @@
 package vista;
 
 import controlador.Control_FileManager;
-import controlador.Jugador;
 import modelo.Juego;
 import modelo.Palabra;
 
@@ -31,6 +30,8 @@ public class Panel_4_juego extends FondoPanel {
     private FondoPanel info_pantalla;
     private Botones boton_siguiente;
     private Botones boton_repetir;
+    private Botones boton_salir;
+    private Botones boton_salir_1;
     private Botones si_boton,no_boton;
     private Letra_Skim palabras_memoria;
     private Escucha escucha;
@@ -39,7 +40,6 @@ public class Panel_4_juego extends FondoPanel {
     private JPanel panel_palabra;
     private Palabra palabra;
     private Juego juego;
-    private Jugador jugador;
     private int cuenta_memorizar, cuenta_nivel;
     private int primer_inicio;
     private int pausa;
@@ -53,10 +53,10 @@ public class Panel_4_juego extends FondoPanel {
      * Constructor sin parametros
      */
     public Panel_4_juego() {
-        cfm = new Control_FileManager();
-        juego = new Juego();
-        juego.setNivel(1);
-        jugador = new Jugador();
+
+        this.cfm = new Control_FileManager();
+        this.juego = new Juego();
+        this.juego.setNivel(1);
         iniciar();
     }
 
@@ -65,38 +65,11 @@ public class Panel_4_juego extends FondoPanel {
      * @param juego
      */
     public Panel_4_juego(Juego juego){
-            cfm = new Control_FileManager();
-            this.juego = juego;
-            jugador = new Jugador();
-            iniciar();
-    }
-
-    /**
-     * Constructor que resive un objeto de la clase Juegador
-     * @param jugador
-     */
-
-    public Panel_4_juego(Jugador jugador){
-        cfm = new Control_FileManager();
-        this.juego = new Juego();
-        this.jugador = jugador;
+        this.cfm = new Control_FileManager();
+        this.juego = juego;;
         iniciar();
     }
 
-    public Panel_4_juego(Juego juego, Jugador jugador) {
-            cfm = new Control_FileManager();
-            this.jugador = jugador;
-            this.juego = juego;
-            iniciar();
-    }
-
-    public Jugador getJugador() {
-        return jugador;
-    }
-
-    public void setJugador(Jugador jugador) {
-        this.jugador = jugador;
-    }
 
     /**
      * Este metodo inicializa las variables de la clase
@@ -104,30 +77,28 @@ public class Panel_4_juego extends FondoPanel {
 
     private void iniciar(){
 
+//        juego.setNivel();
+        juego.setNombre();
         set_ruta_fondo(2);
         GridBagLayout gridBagLayout = new GridBagLayout();
 
         panel_norte = new JPanel();
         panel_norte.setPreferredSize(new Dimension(700,50));
         panel_norte.setBackground(new Color(0x0000000, true));
-//        panel_norte.setBorder(BorderFactory.createTitledBorder(""));
+        panel_norte.setLayout(gridBagLayout);
 
         panel_centro = new JPanel();
         panel_centro.setPreferredSize(new Dimension(800,290));
         panel_centro.setLayout(gridBagLayout);
         panel_centro.setBackground(new Color(0x0000000, true));
-//        panel_centro.setBorder(BorderFactory.createTitledBorder(""));
 
         panel_sur = new JPanel();
         panel_sur.setPreferredSize(new Dimension(700,100));
         panel_sur.setLayout(gridBagLayout);
         panel_sur.setBackground(new Color(0x0000000, true));
-//        panel_sur.setBorder(BorderFactory.createTitledBorder(""));
 
         this.setBackground( new Color(13, 64, 123));
         gbc = new GridBagConstraints();
-//        gbc.ipady=10;
-//        gbc.ipadx=10;
 
         escucha = new Escucha();
         panel_botones = new JPanel();
@@ -151,11 +122,25 @@ public class Panel_4_juego extends FondoPanel {
          * Panel norte
          */
         mensaje_puntos =  new Area_de_Texto();
-        panel_norte.add(mensaje_puntos.seText("PUNTOS "+juego.getPuntaje_Local()),BorderLayout.WEST+"     ");
+        gbc.gridx=0; // columna 0
+        gbc.gridy=0; // fila 0
+        gbc.gridwidth=1; // ocupara 4 columnas
+        gbc.gridheight=1; // ocupara 3 filas
+        gbc.insets.set(0,0,0,200);
+        gbc.anchor=GridBagConstraints.LINE_START;
+        panel_norte.add(mensaje_puntos.seText("("+juego.getNombre()+")"+
+                "       SCORE "+juego.getPuntaje_Total()+
+                "   NIVEL "+juego.getNivel())
+                ,gbc);
 
-        mensaje_nivel =  new Area_de_Texto();
-        panel_norte.add(mensaje_nivel.seText("     NIVEL "+juego.getNivel()),BorderLayout.EAST);
-
+        boton_salir_1 = new Botones("",30,120,50);
+        gbc.gridx=2; // columna 0
+        gbc.gridy=0; // fila 0
+        gbc.gridwidth=1; // ocupara 4 columnas
+        gbc.gridheight=1; // ocupara 3 filas
+        gbc.insets.set(0,0,0,0);
+        gbc.anchor=GridBagConstraints.LINE_END;
+        panel_norte.add(boton_salir_1.getBoton_style_0("SALIR"),gbc);
         /**
          * Panel centro
          */
@@ -168,7 +153,6 @@ public class Panel_4_juego extends FondoPanel {
         gbc.insets.set(0,0,0,0);
         gbc.anchor=GridBagConstraints.CENTER;
         panel_centro.add(palabras_memoria.seText_grafico("",1,1,1), gbc);
-//        panel_centro.add(palabras_memoria.sin_estilo(""), gbc);
 
         //mensaje informacion
         info_pantalla = new FondoPanel();
@@ -234,7 +218,6 @@ public class Panel_4_juego extends FondoPanel {
         gbc.gridy=1; // fila 00
         gbc.gridwidth=2; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
-//        boton_siguiente.addActionListener(escucha);
         gbc.insets.set(0,0,0,0);
         gbc.anchor=GridBagConstraints.PAGE_END;
         panel_sur.add(boton_siguiente.getBoton_style_0("SIGUIENTE"), gbc);
@@ -245,10 +228,19 @@ public class Panel_4_juego extends FondoPanel {
         gbc.gridy = 1; // fila 0
         gbc.gridwidth = 2; // ocupara 4 columnas
         gbc.gridheight = 1; // ocupara 3 filas
-//        boton_repetir.addActionListener(escucha);
         gbc.insets.set(0,0,0,0);
         gbc.anchor=GridBagConstraints.PAGE_END;
         panel_sur.add(boton_repetir.getBoton_style_0("REPETIR"), gbc);
+
+        //botn repetir
+        boton_salir = new Botones();
+        gbc.gridx = 0; // columna 0
+        gbc.gridy = 1; // fila 0
+        gbc.gridwidth = 2; // ocupara 4 columnas
+        gbc.gridheight = 1; // ocupara 3 filas
+        gbc.insets.set(0,0,0,0);
+        gbc.anchor=GridBagConstraints.PAGE_END;
+        panel_sur.add(boton_salir.getBoton_style_0("SALIR"), gbc);
 
         this.add(panel_norte);
         this.add(panel_centro);
@@ -265,6 +257,7 @@ public class Panel_4_juego extends FondoPanel {
         palabras_memoria.setVisible(false);
         mensaje.setVisible(false);
         boton_repetir.setVisible(false);
+        boton_salir.setVisible(false);
         info_pantalla.setVisible(false);
         conteo_321.setVisible(false);
 
@@ -318,19 +311,20 @@ public class Panel_4_juego extends FondoPanel {
                 palabras_memoria.setVisible(false);
                 mensaje.setVisible(false);
                 boton_repetir.setVisible(false);
+                boton_salir.setVisible(false);
                 info_pantalla.setVisible(false);
                 conteo_321.setVisible(false);
 
-                jugador.setName();
+                juego.iniciar_datos();
 
+                //JOptionPane
                 JOptionPane.showMessageDialog(null,"..Linea 327.. ::Class Panel_4::\n\n" +
                         "Nivel " +juego.getNivel()+
-                        "\nPuntaje_local " +juego.getPuntaje_Local()+
+                        "\nPuntaje_local " +juego.getPuntaje_nivel()+
                         //todo revisarar despues getname
-                        "\nNombre " +getName()+
-                        //todo esto es de jugador
+                        "\nNombre " +juego.getNombre()+
                         "\nNiveles superdos " +juego.getNivel_Superado()+
-                        "\nPuntaje_global "+juego.getPuntaje_global()+
+                        "\nPuntaje_global "+juego.getPuntaje_Total()+
                         "\nPalabra a memorizar " +juego.getCant_Palabras_a_Memorizar()+
                         "\nPalabras de nivel "+juego.getTotal_Palabras_del_Nivel());
                 primer_inicio=0;
@@ -546,13 +540,11 @@ public class Panel_4_juego extends FondoPanel {
                     mensaje.seText("");
 
                     //acumular 10  puntos al jugador
-                    juego.incrementar_puntaje_local(); //estado indica que acerto.
-                    //juego.setPuntaje_Logrado_nivel(); //estado indica que acerto.
-                    jugador.setPuntaje_Total(juego);
-                    System.out.println(" el puntaje ahora es" + juego.getPuntaje_Local() + " el jugador lleva estos puntos " +
-                            jugador.getPuntaje_Total());
+                    juego.incrementar_puntaje_nivel(); //estado indica que acerto.
+                    System.out.println(" el puntaje ahora es" + juego.getPuntaje_nivel() + " el jugador lleva estos puntos " +
+                            juego.getPuntaje_Total());
 
-                    mensaje_puntos.seText("Puntos      "+juego.getPuntaje_Local());
+//                    mensaje_puntos.seText("Puntos      "+juego.getPuntaje_nivel());
 
 
                 }else {
@@ -597,13 +589,11 @@ public class Panel_4_juego extends FondoPanel {
                     mensaje.seText("");
 
                     //acumular 10  puntos al jugador
-                    juego.incrementar_puntaje_local(); //estado indica que acerto.
-                   // juego.setPuntaje_Logrado_nivel(); //estado indica que acerto.
-                    jugador.setPuntaje_Total(juego);
-                    System.out.println(" el puntaje ahora es" + juego.getPuntaje_Local() + " el jugador lleva estos puntos " +
-                            jugador.getPuntaje_Total());
+                    juego.incrementar_puntaje_nivel(); //estado indica que acerto.
+                    System.out.println(" el puntaje ahora es" + juego.getPuntaje_nivel() + " el jugador lleva estos puntos " +
+                            juego.getPuntaje_Total());
 
-                    mensaje_puntos.seText("Puntos      "+juego.getPuntaje_Local());
+//                    mensaje_puntos.seText("Puntos      "+juego.getPuntaje_nivel());
                 }
                 cuenta_nivel++;
                 timer = new Timer(2000,escucha);
@@ -614,7 +604,7 @@ public class Panel_4_juego extends FondoPanel {
              * Condicion que evalua si se gana el juego
              * si es correcto permite cambiar de nivel
              */
-            if(cuenta_nivel > palabra.getPalabra_del_nivel().size()-1){
+            if(cuenta_nivel == palabra.getPalabra_del_nivel().size()){
                 timer_acierto_2.stop();
                 timer.stop();
 
@@ -622,16 +612,25 @@ public class Panel_4_juego extends FondoPanel {
                 panel_botones.setVisible(false);
                 mensaje.seText("");
 
-                if (juego.nivel_Superado()) {
+                if (juego.nivel_Superado() == 1) {
                     set_ruta_fondo(4);
-                    palabras_memoria.seText_grafico("PASAS AL SIGUIENTE NIVEL");
+                    palabras_memoria.seText_grafico("YOU WIN"
+                            ,3,40,100,100);
                     boton_siguiente.setVisible(true);
                 }
-                else {
+                else if (juego.nivel_Superado() == 0){
                     set_ruta_fondo(5);
                     mensaje.seText("");
-                    palabras_memoria.seText_grafico("GAME OVER");
+                    palabras_memoria.seText_grafico("YOU LOSE"
+                            ,3,40,100,100);
                     boton_repetir.setVisible(true);
+                }
+                else if (juego.nivel_Superado() == 2){
+                    set_ruta_fondo(6);
+                    mensaje.seText("");
+                    palabras_memoria.seText_grafico("FELICIDADES GANASTE"
+                            ,3,40,70,70);
+                    boton_salir.setVisible(true);
                 }
             }
         }

@@ -10,7 +10,7 @@ public class FondoPanel extends JPanel {
 
     public FondoPanel() {
         index = 1;
-       imageIcon = "/resources/fondos/fondo_"+index+".png";
+       imageIcon = "/resources/fondos/fondo_1.png";
     }
 
     @Override

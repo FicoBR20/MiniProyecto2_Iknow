@@ -1,7 +1,5 @@
 package controlador;
 
-import modelo.Juego;
-import modelo.Palabra;
 import vista.*;
 import vista.Panel_4_juego;
 import vista.Front_RegistroJugador;
@@ -28,30 +26,29 @@ public class Lanza_app_Prueba {
     private  Panel_6_continuar panel_6_continuar;
     private Front_RegistroJugador front_registroJugador;
 
-    private Jugador jugador;
-    private static Lanza_app_Prueba bill = null;
+//    private Jugador jugador;
+    private static Lanza_app_Prueba lanzador = null;
 
     /**
      * Método constructor
      */
     public Lanza_app_Prueba() throws IOException {
         gui = new GUI();
-        jugador = new Jugador();
         panel_0_bienvenida = new Panel_0_bienvenida();
         panel_1_inicial = new Panel_1_Inicial();
         panel_2_menu = new Panel_2_menu();
         panel_3_reglas = new Panel_3_reglas();
         panel_4_juego = new Panel_4_juego();
         panel_5_opciones = new Panel_5_opciones();
-
         panel_6_continuar = new Panel_6_continuar();
-        panel_7_niveles = new Panel_7_niveles();
 
         frontJugadorHabitual = new Front_Jugador_Habitual();
-
         front_registroJugador = new Front_RegistroJugador();
-
         seleccionar_pantalla(0);
+    }
+
+    public void iniciar_registro(){
+        new Control_FileManager().writer_Jugador("___"+" "+0+" "+0);
     }
 
     public void secuencia_Logica(int secuencial){
@@ -77,8 +74,8 @@ public class Lanza_app_Prueba {
                 gui.setContentPane(panel_1_inicial);
                 gui.revalidate();
                 gui.repaint();
-               // secuencia_Logica(9);
             }
+
             case 2 ->{
                 gui.setContentPane(panel_2_menu);
                 gui.revalidate();
@@ -94,11 +91,9 @@ public class Lanza_app_Prueba {
             //Inicia un juego nuevo
             case 4 ->{
 
-                JOptionPane.showMessageDialog(null,"..Linea 102.. ::Class Lanza_app_Prueba::\n\n" +
-                        "Nivel "+panel_4_juego.getJuego().getNivel());
-
+                //NOta quite jugador del argumento
                 //Obtiene los valores del ultimio nivel jugado
-                panel_4_juego = new Panel_4_juego(panel_4_juego.getJuego(),jugador);
+                panel_4_juego = new Panel_4_juego(panel_4_juego.getJuego());
                 panel_4_juego.start(); // inicializa timer
                 gui.setContentPane(panel_4_juego);
                 gui.revalidate();
@@ -127,24 +122,27 @@ public class Lanza_app_Prueba {
 
             // Ingresa al juego y lo reanuda donde queda
             case 8->{
-                gui.setContentPane(panel_4_juego);
-                gui.revalidate();
-                gui.repaint();;
+//                panel_4_juego = new Panel_4_juego(panel_4_juego.getJuego());
+//                panel_4_juego.start(); // inicializa timer
+//                gui.setContentPane(panel_4_juego);
+//                gui.revalidate();
+//                gui.repaint();
             }
             case 9->{
+                panel_7_niveles = new Panel_7_niveles();
                 gui.setContentPane(panel_7_niveles);
                 gui.revalidate();
                 gui.repaint();;
             }
 
             case 10->{
-                bill.seleccionar_pantalla(8);
+                lanzador.seleccionar_pantalla(8);
             }
 
             case 12->{ // para presentar front jugador habitual
                 gui.setContentPane(frontJugadorHabitual);
                 gui.revalidate();
-                gui.repaint();;
+                gui.repaint();
 
             }
             default -> {
@@ -156,10 +154,10 @@ public class Lanza_app_Prueba {
 
 
     private  void set_lanza_app(Lanza_app_Prueba iknow) {
-        bill = iknow;
+        lanzador = iknow;
     }
     private  Lanza_app_Prueba get_lanza_app() {
-        return bill;
+        return lanzador;
     }
 
     /**
@@ -171,65 +169,63 @@ public class Lanza_app_Prueba {
         public void actionPerformed(ActionEvent e) {
 
             if(e.getActionCommand()== "ATRAS"){
-                bill.seleccionar_pantalla(1);
+                lanzador.seleccionar_pantalla(1);
             }
 
             else if(e.getActionCommand()== "AVANZAR"){
-                bill.seleccionar_pantalla(1);
+                lanzador.seleccionar_pantalla(1);
+            }
+
+            else if(e.getActionCommand()== "SALIR"){
+                lanzador.seleccionar_pantalla(1);
             }
 
             else if(Objects.equals(e.getActionCommand(), "MENÚ")){ // muestra un menu
-                bill.seleccionar_pantalla(2);
+                lanzador.seleccionar_pantalla(2);
             }
 
             else if(Objects.equals(e.getActionCommand(), "COMO JUGAR")){ // va a reglas
-                bill.seleccionar_pantalla(3);
+                lanzador.seleccionar_pantalla(3);
             }
 
             else if(Objects.equals(e.getActionCommand(), "NUEVO JUEGO")){ // va a registro jugador
-                bill.seleccionar_pantalla(6);
+                lanzador.seleccionar_pantalla(6);
             }
 
             else if(Objects.equals(e.getActionCommand(), "CONTINUAR")) {
-                bill.seleccionar_pantalla(9);
+                lanzador.seleccionar_pantalla(4);
             }
 
             else if(Objects.equals(e.getActionCommand(), "SEGUIR")) {
-                bill.seleccionar_pantalla(9);
-            }
-
-            else if(Objects.equals(e.getActionCommand(), "1")) {
-                bill.seleccionar_pantalla(8);
+                lanzador.seleccionar_pantalla(9);
             }
 
             else if(Objects.equals(e.getActionCommand(), "OPCIONES")){
-                bill.seleccionar_pantalla(5);
+                lanzador.seleccionar_pantalla(5);
             }
 
             else if(Objects.equals(e.getActionCommand(), "INICIAR")){ // empieza a mostrar palabras en el Nivel 1 del juego
-                bill.seleccionar_pantalla(4);
+                lanzador.seleccionar_pantalla(4);
             }
 
             else if(Objects.equals(e.getActionCommand(), "ENTRAR")){
-                bill.seleccionar_pantalla(3);
+                lanzador.seleccionar_pantalla(3);
             }
 
             else if(Objects.equals(e.getActionCommand(), "SIGUIENTE")){
-                bill.seleccionar_pantalla(4);
+                lanzador.seleccionar_pantalla(4);
             }
 
             else if(Objects.equals(e.getActionCommand(), "REPETIR")){
-                bill.seleccionar_pantalla(4);
+                lanzador.seleccionar_pantalla(4);
             }
-
         }
-
     }
 
     public static void main(String[] args){
         EventQueue.invokeLater(() -> {
             try {
-                bill = new Lanza_app_Prueba();
+                lanzador = new Lanza_app_Prueba();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

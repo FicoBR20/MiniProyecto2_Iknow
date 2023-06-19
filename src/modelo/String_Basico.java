@@ -41,15 +41,16 @@ public class String_Basico {
             while (limite <= juego.getLimite_string_basico()) {
                 limite ++;
                 linea = lector.readLine();
-                linea.split("\n");
+                //comentario
+//                linea.split("\n");
                 //Recorre cada letra de una palabra
                 for (String palabra : linea.split("\n")) {
                     // Remplaza cualquier caracter que no sea alfabetico con un espacio vacio
-                    palabra = palabra.replaceAll("^[^a-zA-Z]+|[^a-zA-Z]+$", "");
-                    if (!linea.isEmpty()) {
                         lista_palabra.add(palabra);
-                    }
-
+//                    palabra = palabra.replaceAll("^[^a-zA-Z]+|[^a-zA-Z]+$", "");
+//                    if (!linea.isEmpty()) {
+//                        lista_palabra.add(palabra);
+//                    }
                 }
             }
         } catch (FileNotFoundException e) {

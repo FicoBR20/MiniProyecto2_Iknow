@@ -1,8 +1,7 @@
 package modelo;
 
+import controlador.Control_FileManager;
 import controlador.Jugador;
-
-import javax.swing.*;
 
 /**
  * Esta Clase manejara la lógica del juego.
@@ -39,8 +38,7 @@ public class Juego extends Jugador {
      * Acumulador que suma de a 10 puntos
      * por cada acierto del jugador.
      */
-    private int puntaje_Local;
-    private int puntaje_global;
+    private int puntaje_nivel;
 
     /**
      * Una palabra se le presenta al jugador, el debe decidir en dos vías; SI Ó NO.
@@ -123,8 +121,8 @@ public class Juego extends Jugador {
         total_Palabras_del_Nivel = 0;
         cant_Palabras_a_Memorizar = 0;
 
-        puntaje_Local =0;
-        puntaje_global =0;
+        puntaje_nivel =0;
+//        puntaje_global =0;
 
         acierto_Exigido = 1;
         cambiar_Nivel(estado);// juego inicia en nivel 1
@@ -183,36 +181,24 @@ public class Juego extends Jugador {
      * Control del puntaje local
      * @return puntaje_logrado
      */
-    public int getPuntaje_Local() {
-        return puntaje_Local;
+    public int getPuntaje_nivel() {
+        return puntaje_nivel;
     }
 
-    public void incrementar_puntaje_local() {
-
-        puntaje_Local +=10;
-
-    }
-    public void reset_puntos_local() {
-        puntaje_Local =0;
+    public void incrementar_puntaje_nivel() {
+        puntaje_nivel +=10;
     }
 
-    /**
-     * control del puntaje global
-     */
-
-    public int getPuntaje_global() {
-        return puntaje_global;
+    public void reset_puntos_nivel() {
+        puntaje_nivel =0;
     }
 
-    public void incrementar_puntaje_global(int puntaje_local) {
-        this.puntaje_global += puntaje_local;
-    }
-
-
+    //sin usar
     public boolean isAcierto_del_Jugador() {
         return acierto_del_Jugador;
     }
 
+    //sin usar
     public void setAcierto_del_Jugador(boolean acierto_del_Jugador) {
         this.acierto_del_Jugador = acierto_del_Jugador;
     }
@@ -334,6 +320,7 @@ public class Juego extends Jugador {
      * bien sea que la palabra SI está entre las palabras a memorizar
      * ó bien sea que la palabra NO está entre las palabras a memorizar.
      */
+    //sin usar
     public void decision_Correcta(){
         estado=12;
         acierto_del_Jugador=true;
@@ -342,51 +329,29 @@ public class Juego extends Jugador {
     /**
      * Método que indica si el jugador supera un nivel tomando como base
      * los puntos obtenidos.
-     * @return true -> si logra igualar o superar el porcentaje de acierto exigido en el nivel en el cual está.
-     *          false -> si NO se logra igualar o superar el porcentaje de acierto exigido en el nivel que está.
+     * @return  0 -> si NO se logra igualar o superar el porcentaje de acierto exigido en el nivel que está.
+     *          1 -> si logra igualar o superar el porcentaje de acierto exigido en el nivel en el cual está.
+     *          2 -> SI SE FINALIZA EL JUGO.
      */
-    public boolean nivel_Superado(){
-        if (puntaje_Local / (10 * total_Palabras_del_Nivel) <= acierto_Exigido){
+    public int nivel_Superado(){
+        if (puntaje_nivel / (10 * total_Palabras_del_Nivel) <= acierto_Exigido){
 
-            reset_puntos_local();
-            JOptionPane.showMessageDialog(null,"..Linea 347.. ::Class Juego::\n\n" +
-                    "Nivel " +getNivel()+
-                    "\nPuntaje_local " +getPuntaje_Local()+
-                    "\nPuntaje_global "+getPuntaje_global()+
-                    "\nPalabra a memorizar " +getCant_Palabras_a_Memorizar()+
-                    "\nPalabras de nivel "+getTotal_Palabras_del_Nivel());
-
-            return false;
+            reset_puntos_nivel();
+            return 0;
         }
         else {
-            if (getNivel()<=3){
+            if (getNivel()<3){
+                setNivel_Superado(getNivel());
                 setNivel(getNivel()+1);
                 cambiar_Nivel(getNivel());
-                incrementar_puntaje_global(getPuntaje_Local());
-
-                //TODO Hacer registro a base de datos para que persistan los datos del jugador
-
-//                new Control_FileManager().reescribir_Datos(
-//                        "");
-
-                reset_puntos_local();
-
-                JOptionPane.showMessageDialog(null,"..Linea 362.. ::Class Juego::\n\n" +
-                        "Nivel " +getNivel()+
-                        "\nPuntaje_local " +getPuntaje_Local()+
-                        "\nPuntaje_global "+getPuntaje_global()+
-                        "\nPalabra a memorizar " +getCant_Palabras_a_Memorizar()+
-                        "\nPalabras de nivel "+getTotal_Palabras_del_Nivel());
+                setPuntaje_Total(getPuntaje_nivel());
+                new Control_FileManager().writer_Jugador(ToString_Jugador());
+                reset_puntos_nivel();
+                return 1;
             }
             else {
-                JOptionPane.showMessageDialog(null,"..Linea 373.. ::Class Juego::\n\n" +
-                        "\nEres un triunfador superaste el nivel 4 "+getTotal_Palabras_del_Nivel());
-
-                System.out.println(" eres un triunfador llegaste al nivel 01");
+                return 2;
             }
-
-            return true;
         }
     }
-
 }

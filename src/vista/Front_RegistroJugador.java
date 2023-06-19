@@ -53,7 +53,6 @@ public class Front_RegistroJugador extends FondoPanel {
      */
     public Front_RegistroJugador(){
         init_Panel();
-        //this.setSize(300,400);
         this.setPreferredSize(new Dimension(800,500));
         this.setBackground(fondoLila);
 
@@ -98,10 +97,6 @@ public class Front_RegistroJugador extends FondoPanel {
 
         jTextField_NombreJugador = new JTextField("",20);
         jTextField_NombreJugador.setSize(new Dimension(100,60));
-
-
-       // this.add(atras_boton.getBoton_style_0("ATRAS"), gbc);
-
 
         iniciar_Juego = new Botones("START",20,210,60);
         iniciar_Juego.getBoton_style_0("INICIAR");
@@ -193,32 +188,32 @@ public class Front_RegistroJugador extends FondoPanel {
 
                 if (name_Player.contains(" ") || name_Player.isEmpty()==true || name_Player.length()!=5 ) {
                     System.out.println(" debe ingresar un nombre sin espacios para registrarse ");
-
-                    JOptionPane.showMessageDialog(null,"..Linea 197.. ::Class Registro::\n\n" +
-
-                            "Ingrese su nombre de jugador\nUse SOLO 5 caracteres \n" +
-                            "sin espacios en blanco\nGracias.");
+                    //JOptionPane
+//                    JOptionPane.showMessageDialog(null,"..Linea 197.. ::Class Registro::\n\n" +
+//
+//                            "Ingrese su nombre de jugador\nUse SOLO 5 caracteres \n" +
+//                            "sin espacios en blanco\nGracias.");
                     iniciar_Juego.setEnabled(false);
 
 
                 }
                 else if (db.contains(name_Player)){
                     System.out.println(" Ese nombre ya existe..use otro nombre..");
-
-                    JOptionPane.showMessageDialog(null,"..Linea 205.. ::Class Registro::\n\n" +
-
-                            " Ese nombre ya existe en la base de datos\n" +
-                            "por favor use otro \nGracias.");
+                    //JOptionPane
+//                    JOptionPane.showMessageDialog(null,"..Linea 205.. ::Class Registro::\n\n" +
+//
+//                            " Ese nombre ya existe en la base de datos\n" +
+//                            "por favor use otro \nGracias.");
 
                     iniciar_Juego.setEnabled(false);
-
                     juego_Ik.setEstado(12); // presenta de nuevo el panel de registro de jugador
                 }else {
 
                     // se registran los datos del nuevo jugador.
 
-                    jugador.setName(name_Player);
-                    jugador.setNivel_Superado(juego_Ik.getNivel()); // nivel sera 1
+                    jugador.setNombre(name_Player);
+                    //Nota cambie esto juego_Ik.getNivel() a 0
+                    jugador.setNivel_Superado(0); // nivel sera 1
 
                     juego_Ik.setEstado(4);//.....con estado 4 DEBEMOS PROGRAMAR IR AL JUEGO AL NIVEL 1
 
@@ -234,9 +229,6 @@ public class Front_RegistroJugador extends FondoPanel {
                     System.out.println(" to string es " + jugador.ToString_Jugador());
 
                 }
-
-
-
             }
         }
     }
@@ -246,17 +238,8 @@ public class Front_RegistroJugador extends FondoPanel {
             super.mouseClicked(e);
 
             if (e.getSource() == iniciar_Juego) {
-
-               // jugador.setName();
                 System.out.println(" Empezamos a jugar en el nivel = 1 ");
-
-
             }
-
         }
     }
-
-
-
-
 }

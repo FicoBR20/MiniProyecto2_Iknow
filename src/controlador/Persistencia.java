@@ -24,14 +24,14 @@ public class Persistencia {
         texto = scanner.nextLine();
 
         //Escribe
-        controlFileManager.writer_Jugador_con_indice(texto);
+        controlFileManager.reescribir_Datos(texto);
 
 //        //Rescribe segun indice
 //        controlFileManager.reescribir_Datos(texto);
 
         datos = (controlFileManager.leer_Datos_ultimo_jugador());
         System.out.println("______________________________________");
-        System.out.println("Nombre = "+datos[0]+"        Nombre = "+datos[1]+"       Nivel = "+datos[2]+"        Puntos = "+datos[3]);
+//        System.out.println("Nombre = "+datos[0]+"        Nombre = "+datos[1]+"       Nivel = "+datos[2]+"        Puntos = "+datos[3]);
     }
 
     public static void main(String[] args){
