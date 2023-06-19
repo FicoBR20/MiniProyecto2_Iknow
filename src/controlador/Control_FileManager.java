@@ -350,7 +350,7 @@ public class Control_FileManager {
 
         ArrayList<String>recogeDatos = new ArrayList<>();
 
-        recogeDatos.add(array_reader_Jugador().get(auxiliar));
+        recogeDatos.add(array_reader_Jugador().get(auxiliar-1));
 
         return recogeDatos;
     }
