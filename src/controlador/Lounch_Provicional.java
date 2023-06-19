@@ -11,10 +11,8 @@ public class Lounch_Provicional {
     private  Boolean acierto;
     private  String_Basico stringBasico;
     private static Palabra palabra;
-    private static Juego juego;
 
     public Lounch_Provicional() {
-        juego = new Juego();
         stringBasico = new String_Basico();
         acierto = false;
     }
@@ -42,12 +40,9 @@ public class Lounch_Provicional {
 
 
     //Usa la consola para pruebas
-    public static void main(String[] args){
-        Juego juego1 = new Juego();
+    public static void main(String[] args) throws IOException {
+        Juego juego = new Juego();
         palabra = new Palabra();
-        juego1.setUp_Nivel(1);
-        juego1.setCategoria(2);
-        palabra.setJuego(juego1);
         palabra.setPalabra_del_nivel();
         palabra.setPalabra_a_Memorizar();
         ini();

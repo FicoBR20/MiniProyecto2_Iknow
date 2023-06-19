@@ -1,13 +1,15 @@
 package controlador;
 
+
 /**
  * Clase que contiene la información relacionada con el jugador.
  */
-public class Jugador {
+public class Jugador{
+    private  Control_FileManager lector_nombre;
     /**
      * Identificación del jugador.
      */
-    private String name;
+    private String nombre;
     /**
      * Nivel del juego que el jugador ya superó.
      * Su proximo juego iniciará en el nivel (nivel_Superado + 1)
@@ -21,18 +23,30 @@ public class Jugador {
      */
     private  int puntaje_Total;
 
-    public String getName() {
-        return name;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setName(String name) {
-        this.name = name;
+
+    /**
+     * Método que sobrecarga el setNombre, tomando el dato
+     * de la base de datos en el campo [0] del ultimo jugador.
+      */
+    public void setNombre() {
+        // Se lee nombre desde archivo
+        this.nombre = lector_nombre.leer_ultimo_jugador()[0];
+    }
+
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public int getNivel_Superado() {
         return nivel_Superado;
     }
 
+    //TODO revisar no nivel superado
     public void setNivel_Superado(int nivel_Superado) {
         this.nivel_Superado = nivel_Superado;
     }
@@ -42,27 +56,38 @@ public class Jugador {
     }
 
     public void setPuntaje_Total(int puntaje_Total) {
-        this.puntaje_Total = puntaje_Total;
+        this.puntaje_Total += puntaje_Total;
+    }
+    public void setPuntaje_Total() {
+        this.puntaje_Total = Integer.parseInt(lector_nombre.leer_ultimo_jugador()[2]);
     }
 
     /**
      * Métooo constructor
      */
+    //NOTA Cambié los iniciadores de juego
     public Jugador(){
-        name = " ";
+        lector_nombre = new Control_FileManager();
+        nombre = "___";
         nivel_Superado = 0;
         puntaje_Total = 0;
+    }
 
+    public void iniciar_datos(){
+        nombre = lector_nombre.leer_ultimo_jugador()[0];
+        nivel_Superado = Integer.parseInt(lector_nombre.leer_ultimo_jugador()[1]);
+        puntaje_Total = Integer.parseInt(lector_nombre.leer_ultimo_jugador()[2]);
     }
 
     /**
-     * Genera un String con la información del jugdor.
+     * Genera un String con la información del jugador.
      * @return info.
      */
-    public String ToString(){
+    //NOTA esto enter "\n" no va ya esta en el metodo write de controlfilemanager
+    public String ToString_Jugador(){
 
         String info= "";
-        info = getName() +" " +  getNivel_Superado() + " " + getPuntaje_Total();
+        info = getNombre() +" " +  getNivel_Superado() + " " + getPuntaje_Total();
 
         return info;
 

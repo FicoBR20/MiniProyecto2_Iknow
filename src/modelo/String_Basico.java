@@ -27,7 +27,7 @@ public class String_Basico {
      *Este método me permite leer el archivo de (.txt) y obtener las palabras
      * y las almacena en un objeto de tipo Arraylist
      * @param categoria
-     * @return
+     * @return lista_palabra
      * @throws IOException
      */
     public List<String> obtenerPalabras(String categoria){
@@ -36,20 +36,21 @@ public class String_Basico {
             lector = new BufferedReader(new FileReader(categoria));
             String linea;
 
-
             int limite = 0;
+
             while (limite <= juego.getLimite_string_basico()) {
                 limite ++;
                 linea = lector.readLine();
-                linea.split("\n");
+                //comentario
+//                linea.split("\n");
                 //Recorre cada letra de una palabra
                 for (String palabra : linea.split("\n")) {
                     // Remplaza cualquier caracter que no sea alfabetico con un espacio vacio
-                    palabra = palabra.replaceAll("^[^a-zA-Z]+|[^a-zA-Z]+$", "");
-                    if (!linea.isEmpty()) {
                         lista_palabra.add(palabra);
-                    }
-
+//                    palabra = palabra.replaceAll("^[^a-zA-Z]+|[^a-zA-Z]+$", "");
+//                    if (!linea.isEmpty()) {
+//                        lista_palabra.add(palabra);
+//                    }
                 }
             }
         } catch (FileNotFoundException e) {

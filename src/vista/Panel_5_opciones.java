@@ -1,10 +1,9 @@
 package vista;
 
-import javax.swing.*;
 import java.awt.*;
 
 
-public class Panel_5_opciones extends JPanel {
+public class Panel_5_opciones extends FondoPanel {
 
     private  final Botones sonido_boton, grafico_boton, idioma_boton, atras_boton;
     private  final Area_de_Texto area_de_texto;
@@ -45,28 +44,28 @@ public class Panel_5_opciones extends JPanel {
         gbc.gridy=1; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
-        this.add(sonido_boton.getBoton_style_1("SONIDO"), gbc);
+        this.add(sonido_boton.getBoton_style_0("SONIDO"), gbc);
 
         gbc.insets.set(0,0,0,0);
         gbc.gridx=2; // columna 0
         gbc.gridy=1; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
-        this.add(idioma_boton.getBoton_style_1("IDIOMA"), gbc);
+        this.add(idioma_boton.getBoton_style_0("IDIOMA"), gbc);
 
         gbc.insets.set(0,0,0,0);
         gbc.gridx=1; // columna 0
         gbc.gridy=2; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
-        this.add(grafico_boton.getBoton_style_1("GRAFICO"), gbc);
+        this.add(grafico_boton.getBoton_style_0("GRAFICO"), gbc);
 
         gbc.insets.set(0,0,0,0);
         gbc.gridx=2; // columna 0
         gbc.gridy=2; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
         gbc.gridheight=1; // ocupara 3 filas
-        this.add(atras_boton.getBoton_style_1("ATRAS"), gbc);
+        this.add(atras_boton.getBoton_style_0("ATRAS"), gbc);
 
     }
 

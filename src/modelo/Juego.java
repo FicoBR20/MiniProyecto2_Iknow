@@ -1,11 +1,18 @@
 package modelo;
 
+import controlador.Control_FileManager;
+import controlador.Jugador;
+
 import javax.swing.*;
 
 /**
  * Esta Clase manejara la lógica del juego.
  */
-public class Juego {
+public class Juego extends Jugador {
+
+    /**
+     *
+     */
     private int limite_string_basico;
     /**
      * nivel: indica el nivel en que se desarrolla el juego
@@ -33,7 +40,7 @@ public class Juego {
      * Acumulador que suma de a 10 puntos
      * por cada acierto del jugador.
      */
-    private int puntaje_Logrado;
+    private int puntaje_nivel;
 
     /**
      * Una palabra se le presenta al jugador, el debe decidir en dos vías; SI Ó NO.
@@ -69,7 +76,7 @@ public class Juego {
      *
      * 11 -> El juego empieza en el nivel 1
      *
-     *
+     * 12 -> Se presenta " DE NUEVO" el panel de registro porque el nombre de jugador ya existe en la base de datos.
      *
      *
      * 99 -> indica un error de nivel debordado, solo existen 10 niveles.
@@ -85,6 +92,10 @@ public class Juego {
      * @info se cuenta con 3 categorias; Ciudades, Animales, Profesiones.
      */
     private int categoria;
+    /**
+     * String que nos indica el sitio del recurso.
+     * bien sea a escribir o a leer.
+     */
     private  String ruta;
 
     public int getLimite_string_basico() {
@@ -97,26 +108,32 @@ public class Juego {
 
 
     // From here implements the Class methods ==================================================
-
     /**
      * Constructor method.
      */
     public Juego(){
+        super();
+        nivel=1;
+        categoria = 1;
+        ruta = "";
+        estado=1;
+
         limite_string_basico = 199;
+
         total_Palabras_del_Nivel = 0;
         cant_Palabras_a_Memorizar = 0;
+
+        puntaje_nivel =0;
+//        puntaje_global =0;
+
         acierto_Exigido = 1;
-        ruta = "";
-        categoria = 0;
-        estado=1;
-        setUp_Nivel(estado);// juego inicia en nivel 1
-        puntaje_Logrado=0;
+        cambiar_Nivel(estado);// juego inicia en nivel 1
+        setCategoria(categoria);
         acierto_del_Jugador=false;
 
     }
 
     // Getter and Setter ===============================
-
 
     public String getRuta() {
         return ruta;
@@ -132,6 +149,10 @@ public class Juego {
 
     public void setNivel(int nivel) {
         this.nivel = nivel;
+    }
+
+    public void incrementar_nivel() {
+        this.nivel++;
     }
 
     public int getCant_Palabras_a_Memorizar() {
@@ -159,25 +180,27 @@ public class Juego {
     }
 
     /**
-     * Acumula de a 10 puntos por cada
-     * acierto del jugador.
+     * Control del puntaje local
      * @return puntaje_logrado
      */
-    public int getPuntaje_Logrado() {
-        if (estado==2){
-            puntaje_Logrado +=10;
-        }
-        return puntaje_Logrado;
+    public int getPuntaje_nivel() {
+        return puntaje_nivel;
     }
 
-    public void setPuntaje_Logrado(int puntaje_Logrado) {
-        this.puntaje_Logrado = puntaje_Logrado;
+    public void incrementar_puntaje_nivel() {
+        puntaje_nivel +=10;
     }
 
+    public void reset_puntos_nivel() {
+        puntaje_nivel =0;
+    }
+
+    //sin usar
     public boolean isAcierto_del_Jugador() {
         return acierto_del_Jugador;
     }
 
+    //sin usar
     public void setAcierto_del_Jugador(boolean acierto_del_Jugador) {
         this.acierto_del_Jugador = acierto_del_Jugador;
     }
@@ -216,8 +239,6 @@ public class Juego {
         }
     }
 
-
-
     // Methods of Class ===============================
 
     /**
@@ -232,27 +253,29 @@ public class Juego {
      * Método que configura el juego según el nivel.
      * @param nivel_de_Juego
      */
-    public void setUp_Nivel(int nivel_de_Juego){
+    public void cambiar_Nivel(int nivel_de_Juego){
 
         switch (nivel_de_Juego){
             case 1:
-                cant_Palabras_a_Memorizar =10;
-                total_Palabras_del_Nivel =20;
-                acierto_Exigido=0.7;
+                System.out.println(" Juego ===== level 1 ");
+                cant_Palabras_a_Memorizar =1; //10
+                total_Palabras_del_Nivel =2; //20
+                acierto_Exigido=0.2;//07
                 break;
             case 2:
-                cant_Palabras_a_Memorizar =20;
-                total_Palabras_del_Nivel =40;
-                acierto_Exigido=0.7;
+                System.out.println(" Juego ===== level 2 ");
+                cant_Palabras_a_Memorizar =2; //20
+                total_Palabras_del_Nivel =3; //40
+                acierto_Exigido=0.2;//0.7
                 break;
             case 3:
-                cant_Palabras_a_Memorizar =25;
-                total_Palabras_del_Nivel =50;
+                cant_Palabras_a_Memorizar =3;
+                total_Palabras_del_Nivel =4;
                 acierto_Exigido=0.75;
                 break;
             case 4:
-                cant_Palabras_a_Memorizar =30;
-                total_Palabras_del_Nivel =60;
+                cant_Palabras_a_Memorizar =4;
+                total_Palabras_del_Nivel =5;
                 acierto_Exigido=0.8;
                 break;
             case 5:
@@ -299,6 +322,7 @@ public class Juego {
      * bien sea que la palabra SI está entre las palabras a memorizar
      * ó bien sea que la palabra NO está entre las palabras a memorizar.
      */
+    //sin usar
     public void decision_Correcta(){
         estado=12;
         acierto_del_Jugador=true;
@@ -307,87 +331,33 @@ public class Juego {
     /**
      * Método que indica si el jugador supera un nivel tomando como base
      * los puntos obtenidos.
-     * @return true -> si logra igualar o superar el porcentaje de acierto exigido en el nivel en el cual está.
-     *          false -> si NO se logra igualar o superar el porcentaje de acierto exigido en el nivel que está.
+     * @return  0 -> si NO se logra igualar o superar el porcentaje de acierto exigido en el nivel que está.
+     *          1 -> si logra igualar o superar el porcentaje de acierto exigido en el nivel en el cual está.
+     *          2 -> SI SE FINALIZA EL JUGO.
      */
-    public boolean nivel_Superado(){
-        if (puntaje_Logrado/10* total_Palabras_del_Nivel <acierto_Exigido){
-            return false;
+    public int nivel_Superado(){
+        if (puntaje_nivel / (10 * total_Palabras_del_Nivel) <= acierto_Exigido){
+
+            reset_puntos_nivel();
+            return 0;
         }
         else {
-            return true;
+            if (getNivel()<3){
+                setNivel_Superado(getNivel());
+                setNivel(getNivel()+1);
+                cambiar_Nivel(getNivel());
+                setPuntaje_Total(getPuntaje_nivel());
+
+//              Nota  new Control_FileManager().writer_Jugador(ToString_Jugador());
+                JOptionPane.showMessageDialog(null," el nombre es " + getNombre() + " supero el nivel ");
+                new Control_FileManager().actualiza_Info_Jugador(ToString_Jugador());// Nota si funciona, solo aparecera un registro actaulizado en la db.
+
+                reset_puntos_nivel();
+                return 1;
+            }
+            else {
+                return 2;
+            }
         }
     }
-
-
-//    public  void validador_palabla_correcta{
-//        if(e.getSource()==timer){
-//            System.out.println("Palabra " +palabra.getPalabra_a_Memorizar().get(counter)
-//                    +" Time "+counter+" El timer está corriendo? " + String.valueOf(timer.isRunning()));
-//            if(counter <= palabra.getPalabra_a_Memorizar().size()-2) {
-//                area_de_texto.seText(palabra.getPalabra_a_Memorizar().get(counter));
-//                counter++;
-//            }else {
-//                timer.stop();
-//                area_de_texto.seText(palabra.getPalabra_del_nivel().get(0));
-//                panel_botones.setVisible(true);
-//            }
-//        }else{
-//            counter=0;
-//        }
-//
-//        if(e.getSource()==timer_acierto){
-//            System.out.println("timer 2");
-//            timer_acierto.stop();
-//            area_de_texto_2.seText_2("");
-//            area_de_texto.seText(palabra.getPalabra_del_nivel().get(contador));
-//            panel_botones.setVisible(true);
-//            timer_acierto.stop();
-//        }
-//
-//        if (e.getSource()==si_boton && contador <= palabra.getPalabra_del_nivel().size()-1){
-//            timer_acierto = new Timer(4000,escucha);
-//            timer_acierto.start();
-//            area_de_texto.seText("");
-//            panel_botones.setVisible(false);
-//
-//            if (palabra.getPalabra_a_Memorizar().contains(palabra.getPalabra_del_nivel().get(contador))){
-//                area_de_texto_2.seText_2("CORRECTO\n"
-//                        +palabra.getPalabra_del_nivel().get(contador)
-//                        +"\nsi es una palabra memorizada"
-//                );
-//            }else {
-//                area_de_texto_2.seText_2("INCORRECTO\n"
-//                        +palabra.getPalabra_del_nivel().get(contador)
-//                        +"\nno es una palabra memorizada"
-//                );
-//            }
-//            contador++;
-//        }
-//
-//        else if (e.getSource()==no_boton && contador <= palabra.getPalabra_del_nivel().size()-1){
-//            timer_acierto = new Timer(4000,escucha);
-//            timer_acierto.start();
-//            area_de_texto.seText("");
-//            panel_botones.setVisible(false);
-//
-//            if (palabra.getPalabra_a_Memorizar().contains(palabra.getPalabra_del_nivel().get(contador))){
-//                area_de_texto_2.seText_2("INCORRECTO\n"
-//                        +palabra.getPalabra_del_nivel().get(contador)
-//                        +"\nsi es una palabra memorizada"
-//                );
-//            }else {
-//                area_de_texto_2.seText_2("CORRECTO\n"
-//                        +palabra.getPalabra_del_nivel().get(contador)
-//                        +"\nno es una palabra memorizada"
-//                );
-//            }
-//            contador++;
-//        }
-//        else if(contador == palabra.getPalabra_del_nivel().size()-1){
-//
-//        }
-//    }
-
-
 }
