@@ -3,6 +3,8 @@ package modelo;
 import controlador.Control_FileManager;
 import controlador.Jugador;
 
+import javax.swing.*;
+
 /**
  * Esta Clase manejara la lógica del juego.
  */
@@ -345,7 +347,11 @@ public class Juego extends Jugador {
                 setNivel(getNivel()+1);
                 cambiar_Nivel(getNivel());
                 setPuntaje_Total(getPuntaje_nivel());
-                new Control_FileManager().writer_Jugador(ToString_Jugador());
+
+//              Nota  new Control_FileManager().writer_Jugador(ToString_Jugador());
+                JOptionPane.showMessageDialog(null," el nombre es " + getNombre() + " supero el nivel ");
+                new Control_FileManager().actualiza_Info_Jugador(ToString_Jugador());// Nota si funciona, solo aparecera un registro actaulizado en la db.
+
                 reset_puntos_nivel();
                 return 1;
             }

@@ -1,6 +1,6 @@
 package vista;
 
-import controlador.Control_FileManager;
+//import controlador.Control_FileManager;
 import modelo.Juego;
 import modelo.Palabra;
 
@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 
 public class Panel_4_juego extends FondoPanel {
 
-    private Control_FileManager cfm;
+//    private Control_FileManager cfm;
 
 /**
  * Clase que presenta el Panel del juego, tanto las palabras memorizar
@@ -54,7 +54,7 @@ public class Panel_4_juego extends FondoPanel {
      */
     public Panel_4_juego() {
 
-        this.cfm = new Control_FileManager();
+//        this.cfm = new Control_FileManager();
         this.juego = new Juego();
         this.juego.setNivel(1);
         iniciar();
@@ -65,7 +65,7 @@ public class Panel_4_juego extends FondoPanel {
      * @param juego
      */
     public Panel_4_juego(Juego juego){
-        this.cfm = new Control_FileManager();
+//        this.cfm = new Control_FileManager();
         this.juego = juego;;
         iniciar();
     }
@@ -544,9 +544,6 @@ public class Panel_4_juego extends FondoPanel {
                     System.out.println(" el puntaje ahora es" + juego.getPuntaje_nivel() + " el jugador lleva estos puntos " +
                             juego.getPuntaje_Total());
 
-//                    mensaje_puntos.seText("Puntos      "+juego.getPuntaje_nivel());
-
-
                 }else {
                     si_boton.setVisible(false);
                     no_boton.setVisible(false);
@@ -592,8 +589,6 @@ public class Panel_4_juego extends FondoPanel {
                     juego.incrementar_puntaje_nivel(); //estado indica que acerto.
                     System.out.println(" el puntaje ahora es" + juego.getPuntaje_nivel() + " el jugador lleva estos puntos " +
                             juego.getPuntaje_Total());
-
-//                    mensaje_puntos.seText("Puntos      "+juego.getPuntaje_nivel());
                 }
                 cuenta_nivel++;
                 timer = new Timer(2000,escucha);

@@ -2,6 +2,7 @@ package controlador;
 
 import javax.swing.*;
 import java.io.*;
+import java.util.ArrayList;
 
 /**
  * Clase que registrara la información del jugador
@@ -76,8 +77,10 @@ public class Control_FileManager {
      *
      * @return
      */
-    public String reader_Jugador() {
-        String text = "";
+    public ArrayList<String> reader_Jugador() {
+        ArrayList<String> text = new ArrayList<>();
+
+
 
         try {
             fileReader = new FileReader("src/resources/file/info_Jugador.txt");
@@ -85,14 +88,23 @@ public class Control_FileManager {
 
             String line = input.readLine(); // almacena lo que se escribe en el text field
 
+
             String prueba = line;
 
             System.out.println(" lo de line " + line + " \n");
 
             while (line != null) {
-                text += line;
-                text += "\n";
-                line = input.readLine();
+
+                for (String i : line.split("\n")) {
+                    text.add(line);
+                }
+
+
+//                text += line;
+//                text += "\n";
+//                line = input.readLine();
+
+
             }
         } catch (FileNotFoundException e) {
             System.out.println("Estoy dentro de la excepcion");
@@ -122,13 +134,22 @@ public class Control_FileManager {
      *
      * @param line
      */
-    public void writer_Jugador(String line) {
+    public void writer_Jugador(String line) { // llega un String
         try {
-            String text = reader_Jugador();// recepciona el String generado en el reader.
+            String text = "";// recepciona el String generado en el reader.
+
             text += line + "\n";
+
             fileWriter = new FileWriter("src/resources/file/info_Jugador.txt");
             output = new BufferedWriter(fileWriter);
+//
+//            for (int i = 0; i < reader_Jugador().size(); i++) {
+//                text = reader_Jugador().get(i);
+//                output.write(text);
+//            }
+
             output.write(text);
+
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -151,41 +172,29 @@ public class Control_FileManager {
      *
      * @param nombre_buscado
      */
-    public void entrega_Info_Detallada(String nombre_buscado) {
+    public String entrega_Info_Detallada(String nombre_buscado) {
 
-        String listado_Registros = reader_Jugador();
+        String info_Actualizada=" ";
+
+        ArrayList<String> listado_Registros = reader_Jugador();
+
+        int auxiliar =0;
 
 
         if (listado_Registros.contains(nombre_buscado)) {
-            int puntodeinicio = listado_Registros.indexOf(nombre_buscado);
-            if (!(listado_Registros.substring(puntodeinicio + 5, puntodeinicio + 6).equals(" "))) {
-                System.out.println(" Los datos están mal tabulados ");
-                JOptionPane.showMessageDialog(null, "los datos están mal tabulados");
-            } else if (listado_Registros.substring(puntodeinicio + 7, puntodeinicio + 8).equals(" ")) {// en otros niveles
-                setNombre_Obtenido(listado_Registros.substring(puntodeinicio, puntodeinicio + 5));
-                setUltimo_nivel_Obtenido(String.valueOf(listado_Registros.substring(puntodeinicio + 6, puntodeinicio + 7)));
-                setTotal_puntos_Obtenido(String.valueOf(listado_Registros.substring(puntodeinicio + 8)));
 
-                System.out.println(" en lo que va la funcion el punto de inicio es " + puntodeinicio +
-                        " el nombre es " + getNombre_Obtenido() + " el nivel es " + getUltimo_nivel_Obtenido() +
-                        " el puntaje obtenido es " + getTotal_puntos_Obtenido());
-            } else if (!(listado_Registros.substring(puntodeinicio + 7, puntodeinicio + 8).equals(" "))) {// en nivel 10
-                setNombre_Obtenido(listado_Registros.substring(puntodeinicio, puntodeinicio + 5));
-                setUltimo_nivel_Obtenido(String.valueOf(listado_Registros.substring(puntodeinicio + 6, puntodeinicio + 8)));
-                setTotal_puntos_Obtenido(String.valueOf(listado_Registros.substring(puntodeinicio + 9)));
+            auxiliar = listado_Registros.indexOf(nombre_buscado);
 
-                System.out.println(" en lo que va la funcion el punto de inicio es " + puntodeinicio +
-                        " el nombre es " + getNombre_Obtenido() + " el nivel es " + getUltimo_nivel_Obtenido() +
-                        " el puntaje obtenido es " + getTotal_puntos_Obtenido());
-            } else {
-                JOptionPane.showMessageDialog(null, "los datos están mal tabulados");
-            }
+            info_Actualizada = listado_Registros.get(auxiliar);
+
 
 
         } else {
             JOptionPane.showMessageDialog(null, " Ese nombre no está en la base de datos\n" +
                     " es un jugador nuevo.");
         }
+
+        return info_Actualizada;
 
 
     }
@@ -201,14 +210,13 @@ public class Control_FileManager {
      */
     public void actualiza_Info_Jugador(String infoJugador_Habitual) {
 
-        String puntero = infoJugador_Habitual.substring(0, 5);
-        System.out.println(" el puntero es " + puntero);
+        String[] puntero = infoJugador_Habitual.split( " ");
+        System.out.println(" el puntero es " + puntero[0]);
 
-        String todosJuntos_Correctos = reader_Jugador();
+        String todosJuntos_Correctos = "";
 
-
-        if (todosJuntos_Correctos.contains(puntero)) {
-            todosJuntos_Correctos = infoJugador_Habitual + todosJuntos_Correctos;
+        if (reader_Jugador().contains(puntero[0])) {
+            todosJuntos_Correctos = infoJugador_Habitual + reader_Jugador();
             System.out.println(" ya con la actualizacion queda asi \n" + todosJuntos_Correctos);
         } else {
             JOptionPane.showMessageDialog(null, " Ese nombre no está en la base de datos\n" +
@@ -264,27 +272,40 @@ public class Control_FileManager {
 
     }
 
-    public String leer_ultimo_jugador() {
-        String text = "";
-        for (String linea : reader_Jugador().split("\n")){
-            text = linea;
-        }
-        String[] paso = text.split(" ");
-        return paso[0];
+    /**
+     * Método que extrae la información del ultimon jugador
+     * registrado en la base de datos
+     * @return
+     */
+    public String[] leer_ultimo_jugador() {
+        String[] text = reader_Jugador().toArray(new String[0]);
+        int aux = reader_Jugador().size();
+
+        text = reader_Jugador().get(aux).split (" ");
+
+        return text;
     }
 
-    public String[] leer_Datos_ultimo_jugador() {
+    /**
+     * Método que recibe un nombre de jugador y entrega
+     * la información actualizada del mismo.
+     * @param nombreJug
+     * @return
+     */
+    public String leer_Datos_Determinado_Jugador(String nombreJug) {
         String text = "";
-        for (String linea : reader_Jugador().split("\n")){
-            text = linea;
+        if (reader_Jugador().contains(nombreJug)){
+            int aux = reader_Jugador().indexOf(nombreJug);
+
+            text = reader_Jugador().get(aux);
         }
-        String[] paso = text.split(" ");
-        return paso;
+
+        return text;
     }
 
     public void escribir_Datos(String line) {
         try {
-            String text = reader_Jugador();// recepciona el String generado en el reader.
+            String text = String.valueOf(reader_Jugador());// recepciona el String generado en el reader.
             text = line + "\n" + text;
             fileWriter = new FileWriter("src/resources/file/info_Jugador.txt");
             output = new BufferedWriter(fileWriter);
@@ -300,51 +321,4 @@ public class Control_FileManager {
         }
     }
 
-    public void reescribir_Datos(String line) {
-        try {
-            String text = reader_Jugador();// recepciona el String generado en el reader.
-//            text += line + "\n";
-//            text = line  + text.replace("a","");
-//            text = line  + text.replaceFirst("^a", "_");
-//            text = line  + text.replace("^[^a-zA-Z]+|[^a-zA-Z]+$", "");
-
-
-            fileWriter = new FileWriter("src/resources/file/info_Jugador.txt");
-            output = new BufferedWriter(fileWriter);
-            output.write(text);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                output.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public void writer_Jugador_con_indice(String line) {
-        try {
-            String[] linea = reader_Jugador().split(" ,");
-            int total_jugadores = linea.length;
-            String texto = reader_Jugador();
-
-            texto += total_jugadores + " " + line + " ,";
-            fileWriter = new FileWriter("src/resources/file/info_Jugador.txt");
-            output = new BufferedWriter(fileWriter);
-            output.write(texto);
-        }
-
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        finally {
-            try {
-                output.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 }
