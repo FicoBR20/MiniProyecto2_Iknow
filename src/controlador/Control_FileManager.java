@@ -71,28 +71,27 @@ public class Control_FileManager {
 //        jugador = new Jugador();
     }
 
+    /**
+     * Método que genera un Array de String a partir del buffer de lectura
+      * @return
+     */
     public ArrayList<String> array_reader_Jugador(){
-        //String[] text = new String[10];
         ArrayList<String> text = new ArrayList<String>();
 
         try {
-            fileReader = new FileReader("src/resources/file/info_Jugador.txt");
+            fileReader = new FileReader("src/resources/file/Array_info_Jugador.txt");
             input = new BufferedReader(fileReader);
 
             String line = input.readLine(); // almacena lo que se escribe en el text field
 
-//            String prueba = line;
-//
-//            System.out.println(" lo de line " + line + " \n");
 
             while (line != null) {
                 text.add(line);
-//                text += line;
-//                text += "\n";
+
                 line = input.readLine();
             }
         } catch (FileNotFoundException e) {
-            System.out.println("Estoy dentro de la excepcion");
+            System.out.println("Estoy dentro de la excepcion del Array");
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
@@ -102,16 +101,18 @@ public class Control_FileManager {
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (NullPointerException e) {
-                System.out.println("Estoy dentro del finally");
+                System.out.println("Estoy dentro del finally del Arry");
                 e.printStackTrace();
             }
         }
 
         //TODO ...metodo de prueba ciclo for
 
+        for (String cadena:text) {
+            System.out.println(" los datos del array son" + cadena);
+            
+        }
 
-
-        System.out.println(" al final de reader entrega text " + text + " \n");
 
 
         return text;// es un Arrylist<String>
@@ -161,6 +162,29 @@ public class Control_FileManager {
 
 
         return text;
+    }
+
+    /**
+     * Método que recibe un String con la informaión del jugador,
+     * lo adiciona a el arraylist e escribe lo recibido.
+     * @param line
+     */
+    public void array_writer_Jugador(String line){//TODO line es un Tostring de Jugador
+        try {
+            ArrayList<String> text = array_reader_Jugador();
+            text.add(line);
+            fileWriter = new FileWriter("src/resources/file/Array_info_Jugador.txt");
+            output = new BufferedWriter(fileWriter);
+            output.write(line);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                output.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /**

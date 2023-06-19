@@ -217,8 +217,8 @@ public class Front_RegistroJugador extends FondoPanel {
 
                     juego_Ik.setEstado(4);//.....con estado 4 DEBEMOS PROGRAMAR IR AL JUEGO AL NIVEL 1
 
-
-                    new Control_FileManager().writer_Jugador(jugador.ToString_Jugador()); // toda la info del jugador
+//TODO...se prueba el lector de arrays....
+                    new Control_FileManager().array_writer_Jugador(jugador.ToString_Jugador()); // toda la info del jugador
 
                     jTextField_NombreJugador.setText(name_Player);
                     jTextField_NombreJugador.setEnabled(false);
