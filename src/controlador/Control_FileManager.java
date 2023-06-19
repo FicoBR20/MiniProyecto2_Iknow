@@ -2,6 +2,7 @@ package controlador;
 
 import javax.swing.*;
 import java.io.*;
+import java.util.ArrayList;
 
 /**
  * Clase que registrara la información del jugador
@@ -70,6 +71,52 @@ public class Control_FileManager {
 //        jugador = new Jugador();
     }
 
+    public ArrayList<String> array_reader_Jugador(){
+        //String[] text = new String[10];
+        ArrayList<String> text = new ArrayList<String>();
+
+        try {
+            fileReader = new FileReader("src/resources/file/info_Jugador.txt");
+            input = new BufferedReader(fileReader);
+
+            String line = input.readLine(); // almacena lo que se escribe en el text field
+
+//            String prueba = line;
+//
+//            System.out.println(" lo de line " + line + " \n");
+
+            while (line != null) {
+                text.add(line);
+//                text += line;
+//                text += "\n";
+                line = input.readLine();
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Estoy dentro de la excepcion");
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                input.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (NullPointerException e) {
+                System.out.println("Estoy dentro del finally");
+                e.printStackTrace();
+            }
+        }
+
+        //TODO ...metodo de prueba ciclo for
+
+
+
+        System.out.println(" al final de reader entrega text " + text + " \n");
+
+
+        return text;// es un Arrylist<String>
+    }
+
     /**
      * Método que lee el archivo de texto con la infomación
      * de los jugadores y genera un string con dicha información.
@@ -122,7 +169,7 @@ public class Control_FileManager {
      *
      * @param line
      */
-    public void writer_Jugador(String line) {
+    public void writer_Jugador(String line) {//TODO line es un Tostring de Jugador
         try {
             String text = reader_Jugador();// recepciona el String generado en el reader.
             text += line + "\n";
