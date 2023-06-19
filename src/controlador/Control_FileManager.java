@@ -344,6 +344,17 @@ public class Control_FileManager {
         return paso[0];
     }
 
+    public ArrayList<String> array_leer_Datos_ultimo_jugador() {
+
+        int auxiliar=array_reader_Jugador().size();
+
+        ArrayList<String>recogeDatos = new ArrayList<>();
+
+        recogeDatos.add(array_reader_Jugador().get(auxiliar));
+
+        return recogeDatos;
+    }
+
     public String[] leer_Datos_ultimo_jugador() {
         String text = "";
         for (String linea : reader_Jugador().split("\n")){

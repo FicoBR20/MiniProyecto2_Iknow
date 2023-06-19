@@ -30,7 +30,9 @@ public class Jugador{
     //comentario Esto no es adecuado se debe hacer en el constructor
     public void setNombre() {
        // Se lee nombre desde archivo
-        this.nombre = lector_nombre.leer_Datos_ultimo_jugador()[0];
+        //TODO...se actualiza set nombre tomandolo del array.
+        this.nombre = lector_nombre.array_leer_Datos_ultimo_jugador().get(0);
+        //this.nombre = lector_nombre.leer_Datos_ultimo_jugador()[0];
     }
 
 
