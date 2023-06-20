@@ -24,11 +24,12 @@ public class Jugador{
     private  int puntaje_Total;
 
     public String getNombre() {
+
         return nombre;
     }
 
     //comentario Esto no es adecuado se debe hacer en el constructor
-    public void setNombre() {
+    public void setNombre_leido_de_Array() {
        // Se lee nombre desde archivo
         //TODO...se actualiza set nombre tomandolo del array.
         this.nombre = lector_nombre.array_leer_Datos_ultimo_jugador().get(0);

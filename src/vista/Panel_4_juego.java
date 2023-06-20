@@ -78,7 +78,7 @@ public class Panel_4_juego extends FondoPanel {
     private void iniciar(){
 
 //        juego.setNivel();
-        juego.setNombre();
+        juego.setNombre_leido_de_Array();
         set_ruta_fondo(2);
         GridBagLayout gridBagLayout = new GridBagLayout();
 
@@ -611,12 +611,13 @@ public class Panel_4_juego extends FondoPanel {
                 info_pantalla.setVisible(false);
                 panel_botones.setVisible(false);
                 mensaje.seText("");
-
                 if (juego.nivel_Superado() == 1) {
                     set_ruta_fondo(4);
                     palabras_memoria.seText_grafico("YOU WIN"
                             ,3,40,100,100);
                     boton_siguiente.setVisible(true);
+
+
                 }
                 else if (juego.nivel_Superado() == 0){
                     set_ruta_fondo(5);
@@ -632,6 +633,9 @@ public class Panel_4_juego extends FondoPanel {
                             ,3,40,70,70);
                     boton_salir.setVisible(true);
                 }
+
+                //TODO...TODA LA INFO DEL NIVEL AQUI SE RECOGE
+               // JOptionPane.showMessageDialog(null, " toda info" + juego.ToString_Jugador());
             }
         }
         // tiene los totales ?
