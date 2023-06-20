@@ -73,9 +73,14 @@ public class Jugador{
     }
 
     public void iniciar_datos(){
-        nombre = lector_nombre.leer_Datos_ultimo_jugador()[0];
-        nivel_Superado = Integer.parseInt(lector_nombre.leer_Datos_ultimo_jugador()[1]);
-        puntaje_Total = Integer.parseInt(lector_nombre.leer_Datos_ultimo_jugador()[2]);
+
+        nombre = lector_nombre.array_leer_Datos_ultimo_jugador().get(0).substring(0,5);
+        nivel_Superado = Integer.parseInt(lector_nombre.array_leer_Datos_ultimo_jugador().get(0).substring(6,7));
+        puntaje_Total = Integer.parseInt(lector_nombre.array_leer_Datos_ultimo_jugador().get(0).substring(8));
+
+//        nombre = lector_nombre.leer_Datos_ultimo_jugador()[0];
+//        nivel_Superado = Integer.parseInt(lector_nombre.leer_Datos_ultimo_jugador()[1]);
+//        puntaje_Total = Integer.parseInt(lector_nombre.leer_Datos_ultimo_jugador()[2]);
     }
 
     /**
