@@ -256,24 +256,24 @@ public class Juego extends Jugador {
         switch (nivel_de_Juego){
             case 1:
                 System.out.println(" Juego ===== level 1 ");
-                cant_Palabras_a_Memorizar =1; //10
-                total_Palabras_del_Nivel =2; //20
+                cant_Palabras_a_Memorizar =10; //10
+                total_Palabras_del_Nivel =20; //20
                 acierto_Exigido=0.2;//07
                 break;
             case 2:
                 System.out.println(" Juego ===== level 2 ");
-                cant_Palabras_a_Memorizar =2; //20
-                total_Palabras_del_Nivel =3; //40
+                cant_Palabras_a_Memorizar =20; //20
+                total_Palabras_del_Nivel =40; //40
                 acierto_Exigido=0.2;//0.7
                 break;
             case 3:
-                cant_Palabras_a_Memorizar =3;
-                total_Palabras_del_Nivel =4;
+                cant_Palabras_a_Memorizar =25;
+                total_Palabras_del_Nivel =50;
                 acierto_Exigido=0.75;
                 break;
             case 4:
-                cant_Palabras_a_Memorizar =4;
-                total_Palabras_del_Nivel =5;
+                cant_Palabras_a_Memorizar =30;
+                total_Palabras_del_Nivel =60;
                 acierto_Exigido=0.8;
                 break;
             case 5:

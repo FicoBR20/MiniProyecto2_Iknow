@@ -503,7 +503,7 @@ public class Panel_4_juego extends FondoPanel {
                 info_pantalla.set_ruta_fondo("/resources/info/tiempo.png");
                 palabras_memoria.seText_grafico("",1,1,1);
                 cuenta_nivel++;
-                timer = new Timer(2000,escucha);
+                timer = new Timer(5000,escucha);
                 timer.start();
             }
 
@@ -612,8 +612,9 @@ public class Panel_4_juego extends FondoPanel {
                 }
                 else if (juego.nivel_Superado() == 2){
                     set_ruta_fondo(6);
-                    mensaje_puntos.setVisible(false);
-                    mensaje.seText("sdfsdfsdfsdf");
+                    mensaje_puntos.seText("");
+                    mensaje.seText("NOMBRE ("+juego.getNombre()+")"+
+                            "       MAXIMA PUNTUACIÓN ("+juego.getPuntaje_Total()+")");
                     palabras_memoria.seText_grafico("",40,70,70);
                     boton_salir.setVisible(true);
                     boton_salir_1.setVisible(false);
