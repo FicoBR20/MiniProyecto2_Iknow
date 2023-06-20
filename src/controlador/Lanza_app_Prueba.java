@@ -1,10 +1,9 @@
 package controlador;
 
+import vista.GUI;
 import vista.*;
 import vista.Panel_4_juego;
 import vista.Front_RegistroJugador;
-
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,7 +14,7 @@ import java.util.Objects;
 public class Lanza_app_Prueba {
 
     private Front_Jugador_Habitual frontJugadorHabitual;
-    private  GUI gui;
+    private GUI gui;
     private  Panel_0_bienvenida panel_0_bienvenida;
     private  Panel_1_Inicial panel_1_inicial;
     private  Panel_2_menu panel_2_menu;
@@ -52,9 +51,7 @@ public class Lanza_app_Prueba {
     }
 
     public void secuencia_Logica(int secuencial){
-
         seleccionar_pantalla(secuencial);
-
     }
 
     /**
@@ -113,7 +110,6 @@ public class Lanza_app_Prueba {
                 gui.repaint();
             }
 
-
             case 7 ->{
                 gui.setContentPane(panel_6_continuar);
                 gui.revalidate();
@@ -122,11 +118,6 @@ public class Lanza_app_Prueba {
 
             // Ingresa al juego y lo reanuda donde queda
             case 8->{
-//                panel_4_juego = new Panel_4_juego(panel_4_juego.getJuego());
-//                panel_4_juego.start(); // inicializa timer
-//                gui.setContentPane(panel_4_juego);
-//                gui.revalidate();
-//                gui.repaint();
             }
             case 9->{
                 panel_7_niveles = new Panel_7_niveles();

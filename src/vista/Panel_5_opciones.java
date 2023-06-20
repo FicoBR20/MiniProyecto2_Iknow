@@ -30,8 +30,6 @@ public class Panel_5_opciones extends FondoPanel {
         gbc.ipady=15;
         gbc.ipadx=15;
 
-
-
         gbc.insets.set(0,0,50,5);
         gbc.gridx=1; // columna 0
         gbc.gridy=0; // fila 0

@@ -6,10 +6,8 @@ import java.awt.*;
 public class FondoPanel extends JPanel {
     private Image image;
     private String imageIcon;
-    private int index;
 
     public FondoPanel() {
-        index = 1;
        imageIcon = "/resources/fondos/fondo_1.png";
     }
 

@@ -27,10 +27,6 @@ public class Panel_2_menu extends FondoPanel {
 
     public void initGui(){
         GridBagConstraints gbc = new GridBagConstraints();
-//        gbc.weightx = 1; // no se deformara
-//        gbc.weighty = 1; // no se deformara
-
-
         gbc.gridx=1; // columna 0
         gbc.gridy=0; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas

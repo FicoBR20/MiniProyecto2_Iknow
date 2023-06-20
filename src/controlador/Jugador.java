@@ -1,13 +1,15 @@
 package controlador;
 
 
+import controlador.Control_FileManager;
+
 import java.util.ArrayList;
 
 /**
  * Clase que contiene la información relacionada con el jugador.
  */
 public class Jugador{
-    private  Control_FileManager lector_nombre;
+    private Control_FileManager lector_nombre;
     /**
      * Identificación del jugador.
      */

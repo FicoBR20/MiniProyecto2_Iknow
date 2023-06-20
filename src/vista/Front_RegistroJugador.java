@@ -3,8 +3,6 @@ package vista;
 import controlador.Control_FileManager;
 import controlador.Jugador;
 import modelo.Juego;
-import vista.old.Header;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -19,8 +17,9 @@ public class Front_RegistroJugador extends FondoPanel {
 
     private Juego juego_Ik;
 
-    private Header header;
-
+    /**
+     * Atributo para el nombre del jugador.
+     */
     private String name_Player;
 
 
@@ -34,8 +33,14 @@ public class Front_RegistroJugador extends FondoPanel {
     private JTextField jTextField_NombreJugador;
 
 
+    /**
+     * Atributo MouseAdapter
+     */
     private Escucha escucha;
 
+    /**
+     * Atributo KeyAdapter
+     */
     private Teclado teclado;
 
     public String getName_Player() {
@@ -48,6 +53,8 @@ public class Front_RegistroJugador extends FondoPanel {
 
     private Color verdeClaro = new Color(188, 234, 192);
     private Color fondoLila = new Color(82, 25, 196);
+
+
     /**
      * Constructor
      */
@@ -58,6 +65,9 @@ public class Front_RegistroJugador extends FondoPanel {
 
     }
 
+    /**
+     * Método que inicializa los atrubutos de la clase.
+      */
     public void init_Panel(){
         Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 24);
 //        String info_Registro= "Ingrese su nombre de jugador\n" +
@@ -79,11 +89,6 @@ public class Front_RegistroJugador extends FondoPanel {
         jugador = new Jugador();
 
         juego_Ik =  new Juego();
-
-
-        header = new Header(" Registro del Jugador ", verdeClaro);
-        header.setPreferredSize(new Dimension(600,20));
-
 
         jlabel_Title = new JLabel(" \nIngrese su nombre de jugador\n" +
                 "generaremos un registro de los niveles que logra superar y\n" +
@@ -119,8 +124,6 @@ public class Front_RegistroJugador extends FondoPanel {
         this.setLayout(gridBagLayout);
 
         GridBagConstraints gbc = new GridBagConstraints();
-
-
 
 
         gbc.gridx=1; // columna 0
@@ -169,13 +172,11 @@ public class Front_RegistroJugador extends FondoPanel {
 
 
 
-    /**
-     * inner class implements Listeners used by Front_Inicial class
-     */
-    /**
-     * inner class implements Listeners used by Front_Inicial class
-     */
 
+
+    /**
+     * inner class extends kdyAdapter
+      */
     private class Teclado extends KeyAdapter {
 
         @Override
@@ -189,6 +190,7 @@ public class Front_RegistroJugador extends FondoPanel {
                 name_Player = jTextField_NombreJugador.getText();
 
                 String db = new Control_FileManager().reader_Jugador();
+
 
                 if (name_Player.contains(" ") || name_Player.isEmpty()==true || name_Player.length()!=5 ) {
                     System.out.println(" debe ingresar un nombre sin espacios para registrarse ");
@@ -228,13 +230,20 @@ public class Front_RegistroJugador extends FondoPanel {
             }
         }
     }
+
+
+    /**
+     * inner class extends MouseAdapter
+     */
     private class Escucha extends MouseAdapter {
 
         public void mouseClicked(MouseEvent e) {
             super.mouseClicked(e);
 
             if (e.getSource() == iniciar_Juego) {
+
                 System.out.println(" Empezamos a jugar en el nivel = 1 ");
+
             }
         }
     }

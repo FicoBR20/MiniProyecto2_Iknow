@@ -58,15 +58,6 @@ public class Panel_3_reglas extends FondoPanel{
         gbc.insets.set(0,0,260,0);
         this.add(logo, gbc);
 
-//        gbc.insets.set(30,0,0,0);
-//        gbc.anchor=GridBagConstraints.CENTER;
-//        gbc.gridx=0; // columna 0
-//        gbc.gridy=0; // fila 0
-//        gbc.gridwidth=2; // ocupara 4 columnas
-//        gbc.gridheight=1; // ocupara 3 filas
-//        this.add(area_de_texto.reglas(), gbc);
-
-
         box = new FondoPanel();
         box.set_ruta_fondo("/resources/fondos/f7.png");
         box.setPreferredSize(new Dimension(600,250));

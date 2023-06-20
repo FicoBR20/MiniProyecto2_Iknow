@@ -12,8 +12,6 @@ public class Botones extends  JButton{
     private ImageIcon imageIcon;
     private ImageIcon imageIcon_Pressed;
     private int tamaño_fuente,alto,ancho;
-    private JPanel panel_palabra;
-    private JPanel panel_linea;
 
     private ArrayList<JButton> palabras_array;
 
@@ -37,8 +35,6 @@ public class Botones extends  JButton{
         this.setEnabled(false);
     }
     public Botones() {
-        panel_palabra = new JPanel();
-        panel_linea = new JPanel();
         palabras_array = new ArrayList<>();
         tamaño_fuente = 25;
         ancho=240;
@@ -104,16 +100,6 @@ public class Botones extends  JButton{
         return this;
     }
 
-    public JButton getBoton_style_2(String titulo) {
-        imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/botones/Boton_2.png")));
-        imageIcon_Pressed = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/botones/Boton_PRESSED_2.png")));
-        this.setForeground(Color.white);
-        this.setText(titulo);
-        this.setFont(new Font(null,Font.BOLD,tamaño_fuente));
-        this.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(ancho,alto,Image.SCALE_SMOOTH)));
-        this.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(ancho,alto,Image.SCALE_SMOOTH)));
-        return this;
-    }
     public JButton nivel(String titulo) {
         imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/botones_nivel/nivel.png")));
         imageIcon_Pressed = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/botones_nivel/nivel_pressed.png")));
@@ -125,51 +111,4 @@ public class Botones extends  JButton{
         return this;
     }
 
-    public JButton convert(String letra) {
-        imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/botones_nivel/nivel.png")));
-        imageIcon_Pressed = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/botones_nivel/nivel_pressed.png")));
-        this.setForeground(Color.white);
-        this.setFont(new Font(null,Font.BOLD,50));
-        this.setIcon(new ImageIcon(imageIcon.getImage().getScaledInstance(70,70,Image.SCALE_SMOOTH)));
-        this.setPressedIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(70,70,Image.SCALE_SMOOTH)));
-        this.setText(letra);
-        return this;
-    }
-
-
-    public JPanel seText_grafico(String palabra) {
-        GridBagConstraints gbc = new GridBagConstraints();
-        GridBagLayout gridBagLayout = new GridBagLayout();
-
-        panel_palabra.removeAll();
-        panel_palabra.setBackground(null);
-        panel_palabra.setLayout(gridBagLayout);
-
-        panel_linea.removeAll();
-        panel_linea.setBackground(null);
-        panel_linea.setLayout(gridBagLayout);
-
-        int cont_y = 0;
-        int cont_x = 0;
-
-        for ( String linea : palabra.split(" ")) {
-            gbc.ipady = 15;
-            gbc.ipadx = 15;
-            gbc.gridwidth=1; // ocupara 1 columnas
-            gbc.gridheight=1; // ocupara 1 filas
-
-            for ( String letra : linea.split("")) {
-                gbc.gridx=cont_x; // columna
-                gbc.gridy=cont_y; // fila
-                Botones botonX = new Botones();
-                panel_palabra.add(botonX.convert(letra),gbc);
-                cont_x++;
-            }
-            panel_linea.add(panel_palabra,gbc);
-
-            cont_y++;
-            cont_x=0;
-        }
-        return panel_linea;
-    }
 }

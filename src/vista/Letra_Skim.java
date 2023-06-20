@@ -128,8 +128,6 @@ public class Letra_Skim extends  JLabel{
         int cont_x = 0;
 
         for ( String linea : palabra.split(" ")) {
-//            gbc.ipady = 15;
-//            gbc.ipadx = 5;
             gbc.gridwidth=1; // ocupara 1 columnas
             gbc.gridheight=1; // ocupara 1 filas
 

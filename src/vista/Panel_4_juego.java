@@ -319,17 +319,6 @@ public class Panel_4_juego extends FondoPanel {
                 conteo_321.setVisible(false);
 
                 juego.iniciar_datos();
-
-                //JOptionPane
-                JOptionPane.showMessageDialog(null,"..Linea 327.. ::Class Panel_4::\n\n" +
-                        "Nivel " +juego.getNivel()+
-                        "\nPuntaje_local " +juego.getPuntaje_nivel()+
-                        //todo revisarar despues getname
-                        "\nNombre " +juego.getNombre()+
-                        "\nNiveles superdos " +juego.getNivel_Superado()+
-                        "\nPuntaje_global "+juego.getPuntaje_Total()+
-                        "\nPalabra a memorizar " +juego.getCant_Palabras_a_Memorizar()+
-                        "\nPalabras de nivel "+juego.getTotal_Palabras_del_Nivel());
                 primer_inicio=0;
                 info_pantalla.setVisible(true);
                 mensaje.seText("NIVEL "+juego.getNivel() );
@@ -401,7 +390,6 @@ public class Panel_4_juego extends FondoPanel {
                 timer.start();
             }
 
-
             /**
              * espacio
              */
@@ -412,7 +400,6 @@ public class Panel_4_juego extends FondoPanel {
                 timer = new Timer(100, escucha);
                 timer.start();
             }
-
 
             /**
              * numero 1
@@ -494,17 +481,14 @@ public class Panel_4_juego extends FondoPanel {
                 timer.stop();
                 info_pantalla.setVisible(true);
                 info_pantalla.setVisible(false);
-                mensaje.seText("¿Es esta una palbra memorizada?");
+                mensaje.seText("¿Es esta una palabra memorizada?");
                 palabras_memoria.seText_grafico(palabra.getPalabra_del_nivel().get(cuenta_nivel),3,35,60,60);
                 si_boton.setVisible(true);
                 no_boton.setVisible(true);
                 timer_acierto_2 = new Timer(7000, escucha);
                 timer_acierto_2.start();
             }
-//
-            //cambia el estado del juego se empieza la secuencia para que el jugador empieze a decidiir
-            // sobre las palabras presentadas decide si o no.
-//
+
             /**
              * Temporizador
              * cambia la palabra si se exede el tiempo
@@ -546,9 +530,6 @@ public class Panel_4_juego extends FondoPanel {
                     juego.incrementar_puntaje_nivel(); //estado indica que acerto.
                     System.out.println(" el puntaje ahora es" + juego.getPuntaje_nivel() + " el jugador lleva estos puntos " +
                             juego.getPuntaje_Total());
-
-//                    mensaje_puntos.seText("Puntos      "+juego.getPuntaje_nivel());
-
 
                 }else {
                     si_boton.setVisible(false);
@@ -616,8 +597,8 @@ public class Panel_4_juego extends FondoPanel {
                 mensaje.seText("");
                 if (juego.nivel_Superado() == 1) {
                     set_ruta_fondo(4);
-                    palabras_memoria.seText_grafico("YOU WIN"
-                            ,3,40,100,100);
+                    palabras_memoria.seText_grafico(""
+                            ,40,100,100);
                     boton_siguiente.setVisible(true);
 
 
@@ -625,21 +606,19 @@ public class Panel_4_juego extends FondoPanel {
                 else if (juego.nivel_Superado() == 0){
                     set_ruta_fondo(5);
                     mensaje.seText("");
-                    palabras_memoria.seText_grafico("YOU LOSE"
-                            ,3,40,100,100);
+                    palabras_memoria.seText_grafico(""
+                            ,40,100,100);
                     boton_repetir.setVisible(true);
                 }
                 else if (juego.nivel_Superado() == 2){
                     set_ruta_fondo(6);
-                    mensaje.seText("");
-                    palabras_memoria.seText_grafico("FELICIDADES GANASTE"
-                            ,3,40,70,70);
+                    mensaje_puntos.setVisible(false);
+                    mensaje.seText("sdfsdfsdfsdf");
+                    palabras_memoria.seText_grafico("",40,70,70);
                     boton_salir.setVisible(true);
+                    boton_salir_1.setVisible(false);
                 }
 
-                //TODO...TODA LA INFO DEL NIVEL AQUI SE RECOGE
-               // JOptionPane.showMessageDialog(null, " toda info" + juego.ToString_Jugador());
-                //cfm.array_writer_Jugador_Experto(juego.ToString_Jugador()); // escribe en la base de datos GLOBALES Array_Expertos_info_Jugador
             }
         }
         // tiene los totales ?

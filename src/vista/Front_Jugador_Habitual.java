@@ -56,11 +56,8 @@ public class Front_Jugador_Habitual extends JPanel {
      */
     public Front_Jugador_Habitual(){
         init_Panel();
-        //this.setSize(300,400);
         this.setPreferredSize(new Dimension(600,400));
         this.setBackground(fondoLila);
-
-
     }
 
     public void init_Panel(){
@@ -105,25 +102,15 @@ public class Front_Jugador_Habitual extends JPanel {
         jTextField_NivelSuperado.setSize(new Dimension(100,60));
 
 
-
-
         boton_SI = new Botones("SI",15,70,30);
         boton_NO = new Botones("NO",15,70,30);
         boton_Actualizar = new Botones("ACTUALIZAR",15,70,30);
 
 
-
         escucha = new Escucha();
-       // teclado = new Teclado();
-
         boton_SI.addMouseListener(escucha);
         boton_NO.addMouseListener(escucha);
         boton_Actualizar.addMouseListener(escucha);
-
-
-       // jTextField_NombreJugador.addKeyListener(teclado);
-
-
 
         GridBagLayout gridBagLayout = new GridBagLayout();
 

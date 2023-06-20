@@ -23,7 +23,6 @@ public class Area_de_Texto extends JPanel{
         label_letra.setDisabledIcon(new ImageIcon(imageIcon_Pressed.getImage().getScaledInstance(50,50,Image.SCALE_SMOOTH)));
 
         Color verdeClaro = new Color(188, 234, 192);
-        Color fondoLila = new Color(82, 25, 196);
         Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 24);
         info_al_Jugador.setCaretColor(new Color(255, 255, 255, 0));
         info_al_Jugador.setFont(font);
@@ -69,35 +68,10 @@ public class Area_de_Texto extends JPanel{
     }
 
 
-    public JTextArea continuar() {
-        info_al_Jugador.append(":::CONTINUAR:::\n" +
-                "Este panel permite ingresar\n" +
-                "a una partida previa?\n");
-        return info_al_Jugador;
-    }
-
     public JTextArea seText(String palabra) {
         Font font = new Font(Font.SANS_SERIF, Font.BOLD, 25);
         info_al_Jugador.setFont(font);
         info_al_Jugador.setText(palabra);
-        return info_al_Jugador;
-    }
-
-    public JTextArea seText_2(String palabra) {
-        Font font = new Font(Font.SANS_SERIF, Font.BOLD, 35);
-        info_al_Jugador.setFont(font);
-        int anchoTotal = 40; // Ancho total del espacio en el que se centrará el texto
-
-        String[] lineas = palabra.split("\n");
-        StringBuilder resultado = new StringBuilder();
-
-        for (String linea : lineas) {
-            int espacios = (anchoTotal - linea.length()) / 2;
-            String lineaCentrada = String.format("%" + espacios + "s%s%" + espacios + "s", "", linea, "");
-            resultado.append(lineaCentrada).append("\n");
-        }
-
-        info_al_Jugador.setText(resultado.toString());
         return info_al_Jugador;
     }
 

@@ -6,13 +6,10 @@ import java.awt.*;
 public class Panel_6_continuar extends FondoPanel {
 
     private  final Botones continuar_boton, atras_boton;
-    private  final Area_de_Texto area_de_texto;
 
     public Panel_6_continuar(){
         continuar_boton = new Botones();
         atras_boton = new Botones();
-
-        area_de_texto = new Area_de_Texto();
 
         GridBagLayout gridBagLayout = new GridBagLayout();
         this.setLayout(gridBagLayout);
@@ -24,11 +21,6 @@ public class Panel_6_continuar extends FondoPanel {
 
     public void initGui(){
         GridBagConstraints gbc = new GridBagConstraints();
-//        gbc.weightx = 1; // no se deformara
-//        gbc.weighty = 1; // no se deformara
-//        gbc.insets.set(0,0,150,5);
-
-
         gbc.gridx=1; // columna 0
         gbc.gridy=0; // fila 0
         gbc.gridwidth=1; // ocupara 4 columnas
