@@ -1,10 +1,14 @@
 package controlador;
 
 
+import vista.Front_RegistroJugador;
+
 /**
  * Clase que contiene la información relacionada con el jugador.
  */
 public class Jugador{
+
+    private Front_RegistroJugador front_registroJugador;
     private  Control_FileManager lector_nombre;
     /**
      * Identificación del jugador.
@@ -66,21 +70,23 @@ public class Jugador{
      */
     //NOTA Cambié los iniciadores de juego
     public Jugador(){
+        front_registroJugador = new Front_RegistroJugador();
         lector_nombre = new Control_FileManager();
         nombre = "___";
         nivel_Superado = 0;
         puntaje_Total = 0;
     }
 
+    /**
+     * Método que configura los datos de inicio del juego.
+     * los captura del archivo de texto (base de datos)
+     */
     public void iniciar_datos(){
 
         nombre = lector_nombre.array_leer_Datos_ultimo_jugador().get(0).substring(0,5);
         nivel_Superado = Integer.parseInt(lector_nombre.array_leer_Datos_ultimo_jugador().get(0).substring(6,7));
         puntaje_Total = Integer.parseInt(lector_nombre.array_leer_Datos_ultimo_jugador().get(0).substring(8));
 
-//        nombre = lector_nombre.leer_Datos_ultimo_jugador()[0];
-//        nivel_Superado = Integer.parseInt(lector_nombre.leer_Datos_ultimo_jugador()[1]);
-//        puntaje_Total = Integer.parseInt(lector_nombre.leer_Datos_ultimo_jugador()[2]);
     }
 
     /**
