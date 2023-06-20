@@ -345,7 +345,7 @@ public class Juego extends Jugador {
                 setNivel(getNivel()+1);
                 cambiar_Nivel(getNivel());
                 setPuntaje_Total(getPuntaje_nivel());
-                new Control_FileManager().writer_Jugador(ToString_Jugador());
+                new Control_FileManager().array_writer_Jugador(ToString_Jugador());
                 reset_puntos_nivel();
                 return 1;
             }

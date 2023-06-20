@@ -187,6 +187,29 @@ public class Control_FileManager {
         }
     }
 
+
+    /**
+     * Método que escribe en una base de datos los resultados GLOBALES de un jugador
+     * @param line
+     */
+//    public void array_writer_Jugador_Experto(String line){//TODO line es un Tostring de Jugador
+//        try {
+//            ArrayList<String> text = array_reader_Jugador();
+//            text.add(line);
+//            fileWriter = new FileWriter("src/resources/file/Array_Expertos_info_Jugador.txt");
+//            output = new BufferedWriter(fileWriter);
+//            output.write(line);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } finally {
+//            try {
+//                output.close();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
+
     /**
      * Método que recibe un string con la información de los jugadores
      * y la escribe sobre un archivo de texto.

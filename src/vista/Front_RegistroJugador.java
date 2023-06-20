@@ -60,15 +60,19 @@ public class Front_RegistroJugador extends FondoPanel {
 
     public void init_Panel(){
         Font font = new Font(Font.SERIF, Font.BOLD + Font.ITALIC, 24);
-        String info_Registro= "Ingrese su nombre de jugador\n" +
+//        String info_Registro= "Ingrese su nombre de jugador\n" +
+//                "Generamos la info de los niveles superados y puntos logrados\n" +
+//                "Acumula 10 puntos por acierto\n";
+        jTextArea = new JTextArea("Ingrese su nombre de jugador\n" +
                 "Generamos la info de los niveles superados y puntos logrados\n" +
-                "Acumula 10 puntos por acierto\n";
-        jTextArea = new JTextArea();
+                "Acumula 10 puntos por acierto\n");
         jTextArea.setFont(font);
         jTextArea.setColumns(8);
         jTextArea.setRows(5);
         jTextArea.setForeground(verdeClaro);
-        jTextArea.setText(info_Registro);
+//        jTextArea.setText("Ingrese su nombre de jugador\n" +
+//                "Generamos la info de los niveles superados y puntos logrados\n" +
+//                "Acumula 10 puntos por acierto\n");
         jTextArea.setOpaque(false);
 
 

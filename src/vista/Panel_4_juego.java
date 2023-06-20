@@ -128,6 +128,9 @@ public class Panel_4_juego extends FondoPanel {
         gbc.gridheight=1; // ocupara 3 filas
         gbc.insets.set(0,0,0,200);
         gbc.anchor=GridBagConstraints.LINE_START;
+
+        juego.iniciar_datos();
+
         panel_norte.add(mensaje_puntos.seText("("+juego.getNombre()+")"+
                 "       SCORE "+juego.getPuntaje_Total()+
                 "   NIVEL "+juego.getNivel())
@@ -636,6 +639,7 @@ public class Panel_4_juego extends FondoPanel {
 
                 //TODO...TODA LA INFO DEL NIVEL AQUI SE RECOGE
                // JOptionPane.showMessageDialog(null, " toda info" + juego.ToString_Jugador());
+                //cfm.array_writer_Jugador_Experto(juego.ToString_Jugador()); // escribe en la base de datos GLOBALES Array_Expertos_info_Jugador
             }
         }
         // tiene los totales ?
